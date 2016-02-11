@@ -2,10 +2,6 @@ package kr.sam1000po.sharoom;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
-import android.util.Range;
-import android.view.Menu;
-import android.view.MenuItem;
 
 import com.squareup.timessquare.CalendarPickerView;
 
@@ -28,8 +24,20 @@ public class MainActivity extends Activity {
         //calendar.init(today, nextYear.getTime())
         //        .withSelectedDate(today);
 
+        calendar.setOnDateSelectedListener(new CalendarPickerView.OnDateSelectedListener() {
+            @Override
+            public void onDateSelected(Date date) {
+
+            }
+
+            @Override
+            public void onDateUnselected(Date date) {
+
+            }
+        });
+
         calendar.init(today, nextYear.getTime())
                 .inMode(CalendarPickerView.SelectionMode.RANGE);
-        calendar.
+
     }
 }

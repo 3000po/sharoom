@@ -2,6 +2,7 @@ package kr.sam1000po.sharoom;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.squareup.timessquare.CalendarPickerView;
 
@@ -39,6 +40,6 @@ public class MainActivity extends Activity {
         calendar.init(today, nextYear.getTime())
                 .inMode(CalendarPickerView.SelectionMode.RANGE);
 
-        Log.i("aaa","test");
+        Log.i("aaa", "test");
     }
 }

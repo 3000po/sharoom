@@ -39,5 +39,6 @@ public class MainActivity extends Activity {
         calendar.init(today, nextYear.getTime())
                 .inMode(CalendarPickerView.SelectionMode.RANGE);
 
+        Log.i("aaa","test");
     }
 }

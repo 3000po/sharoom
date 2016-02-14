@@ -6,8 +6,11 @@ import android.util.Log;
 
 import com.squareup.timessquare.CalendarPickerView;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Date;
+import java.util.Iterator;
 
 
 public class MainActivity extends Activity {
@@ -40,6 +43,19 @@ public class MainActivity extends Activity {
         calendar.init(today, nextYear.getTime())
                 .inMode(CalendarPickerView.SelectionMode.RANGE);
 
-        Log.i("aaa", "test");
+        /*안되는날 클릭 못하게 하는거*/
+        calendar.setDateSelectableFilter(new CalendarPickerView.DateSelectableFilter() {
+            @Override
+            public boolean isDateSelectable(Date date) {
+                return false;
+            }
+        });
+
+
+        /*특정 날짜 하이라이트
+        ArrayList<Date> list = new ArrayList<Date>();
+        list.add( new Date());
+        calendar.highlightDates(list);
+        */
     }
 }

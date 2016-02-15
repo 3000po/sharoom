@@ -9,12 +9,12 @@ import java.util.Calendar;
 import java.util.Date;
 
 
-public class MainActivity extends Activity {
+public class Activity_calendar extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_calendar);
 
         Calendar nextYear = Calendar.getInstance();
         nextYear.add(Calendar.YEAR, 1);
@@ -39,7 +39,7 @@ public class MainActivity extends Activity {
         calendar.init(today, nextYear.getTime())
                 .inMode(CalendarPickerView.SelectionMode.RANGE);
 
-        /*ì•ˆë˜ëŠ”ë‚  í´ë¦­ ëª»í•˜ê²Œ í•˜ëŠ”ê±°*/
+        /*¾ÈµÇ´Â³¯ Å¬¸¯ ¸øÇÏ°Ô ÇÏ´Â°Å*/
         calendar.setDateSelectableFilter(new CalendarPickerView.DateSelectableFilter() {
             @Override
             public boolean isDateSelectable(Date date) {
@@ -48,7 +48,7 @@ public class MainActivity extends Activity {
         });
 
 
-        /*íŠ¹ì • ë‚ ì§œ í•˜ì´ë¼ì´íŠ¸
+        /*Æ¯Á¤ ³¯Â¥ ÇÏÀÌ¶óÀÌÆ®
         ArrayList<Date> list = new ArrayList<Date>();
         list.add( new Date());
         calendar.highlightDates(list);

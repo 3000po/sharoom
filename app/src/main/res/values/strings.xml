@@ -4,4 +4,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_activity_group">Activity_group</string>
+    <string name="title_activity_activity_calendar">Activity_calendar</string>
+    <string name="title_activity_activity_intro">Activity_intro</string>
+    <string name="title_activity_activity_client">Activity_client</string>
 </resources>

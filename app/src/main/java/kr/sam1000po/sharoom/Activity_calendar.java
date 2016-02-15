@@ -3,7 +3,7 @@ package kr.sam1000po.sharoom;
 import android.app.Activity;
 import android.os.Bundle;
 
-import com.squareup.timessquare.CalendarPickerView;
+import com.squareup.timessquare.*;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -36,10 +36,7 @@ public class Activity_calendar extends Activity {
             }
         });
 
-        calendar.init(today, nextYear.getTime())
-                .inMode(CalendarPickerView.SelectionMode.RANGE);
-
-        /*¾ÈµÇ´Â³¯ Å¬¸¯ ¸øÇÏ°Ô ÇÏ´Â°Å*/
+        /*ë‚ ì§œ ì„ íƒ ì•ˆë˜ê²Œ date cannot selectable*/
         calendar.setDateSelectableFilter(new CalendarPickerView.DateSelectableFilter() {
             @Override
             public boolean isDateSelectable(Date date) {
@@ -48,10 +45,24 @@ public class Activity_calendar extends Activity {
         });
 
 
-        /*Æ¯Á¤ ³¯Â¥ ÇÏÀÌ¶óÀÌÆ®
+        /*íŠ¹ì • ë‚ ì§œ í•˜ì´ë¼ì´íŠ¸ Date highlightÆ®
         ArrayList<Date> list = new ArrayList<Date>();
         list.add( new Date());
         calendar.highlightDates(list);
         */
+
+        CalendarCellDecorator cellDecorator = new CalendarCellDecorator() {
+            @Override
+            public void decorate(CalendarCellView calendarCellView, Date date) {
+
+            }
+        }
+
+        //calendar.setDecorators(LIST);
+
+        calendar.init(today, nextYear.getTime())
+                .inMode(CalendarPickerView.SelectionMode.RANGE);
+
+
     }
 }

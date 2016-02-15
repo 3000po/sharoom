@@ -16,8 +16,7 @@ public class Activity_intro extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
 
-        init(); // µðÀÚÀÎÃÊ±âÈ­
-
+        init(); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½È­
     }
 
     @Override
@@ -25,7 +24,7 @@ public class Activity_intro extends Activity {
 
         super.onResume();
 
-        // ÁÖ ¾²·¹µå¸¦ ½ÇÇà
+        // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½å¸¦ ï¿½ï¿½ï¿½ï¿½
         start_thread();
 
     }
@@ -58,7 +57,7 @@ public class Activity_intro extends Activity {
         }
     }
 
-    // ------------------ »ç¿ëÀÚÁ¤ÀÇ ÇÔ¼ö-------------------
+    // ------------------ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½-------------------
 
     private void init() {
 
@@ -66,21 +65,21 @@ public class Activity_intro extends Activity {
 
     private void start_thread() {
 
-        Toast.makeText(this, "OnResume¿¡¼­ ¸ÞÀÎ¾²·¹µå¸¦ ½ÇÇà½ÃÅµ´Ï´Ù.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "OnResumeï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î¾ï¿½ï¿½ï¿½ï¿½å¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½Åµï¿½Ï´ï¿½.", Toast.LENGTH_SHORT).show();
 
         DisplayHandler.postDelayed(new Runnable() {
 
             public void run() {
 
                 /*
-                // ½Ã½ºÅÛÈ¯°æ¿ä¼Òµî·Ï
+                // ï¿½Ã½ï¿½ï¿½ï¿½È¯ï¿½ï¿½ï¿½Òµï¿½ï¿½
                 if (Data.setting_login) {
 
-                    // ÀÚµ¿·Î±×ÀÎ
+                    // ï¿½Úµï¿½ï¿½Î±ï¿½ï¿½ï¿½
 
                 } else {
 
-                    // »ç¿ëÀÚ°¡ÀÔ¾×Æ¼¹öÆ¼·Î ÀÌµ¿
+                    // ï¿½ï¿½ï¿½ï¿½Ú°ï¿½ï¿½Ô¾ï¿½Æ¼ï¿½ï¿½Æ¼ï¿½ï¿½ ï¿½Ìµï¿½
 
                     Intent intent = new Intent(MainActivity.this, Activity_calendar.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
@@ -89,22 +88,22 @@ public class Activity_intro extends Activity {
                 }
                 */
             }
-        }, 3000); // ½Ã°£ÁöÁ¤
+        }, 3000); // ï¿½Ã°ï¿½ï¿½ï¿½ï¿½ï¿½
 
     }
 
-    // ---------------- »ç¿ëÀÚÀÌº¥Æ®ÇÚµé·¯ --------------------
+    // ---------------- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìºï¿½Æ®ï¿½Úµé·¯ --------------------
 
     public void buttonClicked(View v) {
 
-        Toast.makeText(this, "»ç¿ëÀÚ¹öÆ° onclick buttonÀÌ ´­·¯Á³½À´Ï´Ù.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "ï¿½ï¿½ï¿½ï¿½Ú¹ï¿½Æ° onclick buttonï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.", Toast.LENGTH_SHORT).show();
 
         switch (v.getId()) {
 
 		/*
 		 * case R.id.reconnect:
 		 *
-		 * //´Ù½Ã ½ÃµµÇÏ±â
+		 * //ï¿½Ù½ï¿½ ï¿½Ãµï¿½ï¿½Ï±ï¿½
 		 *
 		 * DisplayHandler.postDelayed(Decision, 0);
 		 *

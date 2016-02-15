@@ -2,15 +2,11 @@ package kr.sam1000po.sharoom;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.squareup.timessquare.CalendarPickerView;
 
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collection;
 import java.util.Date;
-import java.util.Iterator;
 
 
 public class MainActivity extends Activity {

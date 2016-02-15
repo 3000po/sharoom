@@ -18,6 +18,7 @@ android {
     }
     productFlavors {
     }
+    compileOptions.encoding = 'windows-1251'
 }
 
 dependencies {

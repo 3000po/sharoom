@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- ci_color -->
+    
+    <color name="app_ci_1">#000000</color>
+	<color name="app_ci_2">#42d1f7</color>
+	<color name="app_ci_3">#be292f</color>
+	<color name="app_ci_4">#cccccc</color>
+	<color name="app_ci_5">#eeeeee</color>
+		
+    
+    <!-- activity_layout -->
+    
+    <color name="activity_layout_background">#ffffff</color>
+	<color name="activity_layout_header_background">#ffffff</color>
+	
+	<color name="activity_layout_body_background">#ffffff</color>
+	
+	<color name="activity_layout_left_background">#ffffff</color>
+	<color name="activity_layout_center_background">#ffffff</color>
+	<color name="activity_layout_right_background">#ffffff</color>
+	
+	<color name="activity_layout_footer_background">#ffffff</color>
+	
+    
+	<!-- element_layout -->
+    
+    <color name="element_layout_background">#ffffff</color>
+	<color name="element_layout_header_background">#ffffff</color>
+	
+	<color name="element_layout_body_background">#ffffff</color>
+	
+	<color name="element_layout_left_background">#ffffff</color>
+	<color name="element_layout_center_background">#ffffff</color>
+	<color name="element_layout_right_background">#ffffff</color>
+	
+	<color name="element_layout_footer_background">#ffffff</color>
+	
+    
+	
+    <!--activity_main  -->
+	
+	<color name="activity_main_background">#ffffff</color>
+	<color name="activity_main_app_name">#000000</color>
+	<color name="activity_main_app_comment">#000000</color>
+	<color name="activity_main_company">#000000</color>
+	
+	<!--activity_client  -->
+	<color name="activity_client_listview_divider">#ffcc22</color>
+	
+	
+	
+	
+    
+    
+</resources>

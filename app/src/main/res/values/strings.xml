@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">sharoom</string>
+    <string name="app_name">ShaRoom</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -7,4 +7,7 @@
     <string name="title_activity_activity_calendar">Activity_calendar</string>
     <string name="title_activity_activity_intro">Activity_intro</string>
     <string name="title_activity_activity_client">Activity_client</string>
+
+    <string name="activity_main_app_comment"> Welecome to SharRoom</string>
+    <string name="app_company"> 3000po</string>
 </resources>

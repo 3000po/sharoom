@@ -60,12 +60,12 @@ public class Helper_calendar {
         }catch(ParseException e){
             e.getErrorOffset();
         }
-        c.add(Calendar.DATE, 1);  //하루를 더해준다.
-        date = sdf.format(c.getTime());  // dt는 하루를 더한 날짜
+        c.add(Calendar.DATE, 1);
+        date = sdf.format(c.getTime());
         return date;
     }
 
-    //요일 구하기
+    //get DAY OF WEEK
     public static String getDateDay(String date){
         String day = "" ;
 
@@ -98,7 +98,7 @@ public class Helper_calendar {
         }
         return day ;
     }
-    //휴일 구하기
+    //GET HOLIDAY
     public static boolean isHoliday(String yyyymmdd){
         // 검사년도
         int yyyy = Integer.parseInt(yyyymmdd.substring(0, 4));
@@ -117,7 +117,7 @@ public class Helper_calendar {
                     yyyy + "0301",  // 삼일절
                     yyyy + "0405",  // 식목일
                     yyyy + "0505",  // 어린이날
-                    yyyy + "0606",  // 현충일
+                    yyyy + "0606",  // hynchoong ill
                     yyyy + "0815",  // 광복절
                     yyyy + "1003",  // 개천절
                     yyyy + "1009",  // 한글날

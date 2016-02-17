@@ -33,7 +33,7 @@ public class Activity_calendar extends Activity implements com.andexert.calendar
     @Override
     public int getMaxYear()
     {
-        return 2016;
+        return 2017;
     }
 
     @Override

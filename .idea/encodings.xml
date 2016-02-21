@@ -3,5 +3,7 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/app/build.gradle" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/kr/sam1000po/sharoom/Activity_calendar.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/kr/sam1000po/sharoom/Activity_intro.java" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

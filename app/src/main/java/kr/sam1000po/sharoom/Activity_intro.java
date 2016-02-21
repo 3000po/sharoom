@@ -10,13 +10,13 @@ import android.view.View;
 import android.widget.Toast;
 
 public class Activity_intro extends Activity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
 
-        init(); // �������ʱ�ȭ
+        init(); // 디자인초기화
+
     }
 
     @Override
@@ -24,7 +24,7 @@ public class Activity_intro extends Activity {
 
         super.onResume();
 
-        // �� �����带 ����
+        // 주 쓰레드를 실행
         start_thread();
 
     }
@@ -32,7 +32,7 @@ public class Activity_intro extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        //getMenuInflater().inflate(R.menu.activity_intro, menu);
         return true;
     }
 
@@ -57,53 +57,42 @@ public class Activity_intro extends Activity {
         }
     }
 
-    // ------------------ ��������� �Լ�-------------------
-
     private void init() {
 
     }
 
     private void start_thread() {
 
-        Toast.makeText(this, "OnResume���� ���ξ����带 �����ŵ�ϴ�.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "onresume 에서 쓰레드 실행", Toast.LENGTH_SHORT).show();
 
         DisplayHandler.postDelayed(new Runnable() {
 
             public void run() {
 
-                /*
-                // �ý���ȯ���ҵ��
-                if (Data.setting_login) {
 
-                    // �ڵ��α���
 
-                } else {
-
-                    // ����ڰ��Ծ�Ƽ��Ƽ�� �̵�
-
-                    Intent intent = new Intent(MainActivity.this, Activity_calendar.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                    Intent intent = new Intent(Activity_intro.this, Activity_calendar.class);
+                    //intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                     startActivity(intent);
 
-                }
-                */
+
             }
-        }, 3000); // �ð�����
+        }, 3000); // 시간지정
 
     }
 
-    // ---------------- ������̺�Ʈ�ڵ鷯 --------------------
+    // ---------------- 사용자이벤트핸들러 --------------------
 
     public void buttonClicked(View v) {
 
-        Toast.makeText(this, "����ڹ�ư onclick button�� ���������ϴ�.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "onclick 사용자 버튼", Toast.LENGTH_SHORT).show();
 
         switch (v.getId()) {
 
 		/*
 		 * case R.id.reconnect:
 		 *
-		 * //�ٽ� �õ��ϱ�
+
 		 *
 		 * DisplayHandler.postDelayed(Decision, 0);
 		 *

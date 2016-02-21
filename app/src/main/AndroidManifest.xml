@@ -7,9 +7,15 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+
         <activity
             android:name=".Activity_intro"
             android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
 
@@ -21,11 +27,7 @@
             android:name=".Activity_calendar"
             android:label="@string/title_activity_activity_calendar" >
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
 

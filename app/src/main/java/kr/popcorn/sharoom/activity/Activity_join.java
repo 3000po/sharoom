@@ -1,4 +1,4 @@
-package kr.sam1000po.sharoom;
+package kr.popcorn.sharoom.activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -15,6 +15,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.facebook.appevents.AppEventsLogger;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
@@ -22,9 +24,15 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 
+import kr.popcorn.sharoom.activity.Activity_login;
+import kr.popcorn.sharoom.R;
+
 /**
  * Created by Administrator on 2016-02-22.
  */
+
+
+//TODO 입력이 제대로 됐는지 체크
 public class Activity_join extends Activity {
 
     private form_basic form_basic;
@@ -178,4 +186,20 @@ public class Activity_join extends Activity {
         }
     }
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        // Logs 'install' and 'app activate' App Events.
+        AppEventsLogger.activateApp(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        // Logs 'app deactivate' App Event.
+        AppEventsLogger.deactivateApp(this);
+    }
 }

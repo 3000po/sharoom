@@ -1,10 +1,11 @@
-package kr.sam1000po.sharoom;
+package kr.popcorn.sharoom.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 
 import com.andexert.calendarlistview.library.*;
+import com.facebook.appevents.AppEventsLogger;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -41,5 +42,22 @@ public class Activity_calendar extends Activity implements com.andexert.calendar
     public void onDateRangeSelected(SimpleMonthAdapter.SelectedDays<SimpleMonthAdapter.CalendarDay> selectedDays)
     {
         Log.e("Date range selected", selectedDays.getFirst().toString() + " --> " + selectedDays.getLast().toString());
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        // Logs 'install' and 'app activate' App Events.
+        AppEventsLogger.activateApp(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        // Logs 'app deactivate' App Event.
+        AppEventsLogger.deactivateApp(this);
     }
 }

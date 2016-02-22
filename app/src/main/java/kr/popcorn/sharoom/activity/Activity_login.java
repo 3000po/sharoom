@@ -1,4 +1,4 @@
-package kr.sam1000po.sharoom;
+package kr.popcorn.sharoom.activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -15,6 +15,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.facebook.appevents.AppEventsLogger;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -25,9 +27,13 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import kr.popcorn.sharoom.R;
+
 /**
  * Created by Administrator on 2016-02-22.
  */
+
+//TODO 입력이 제대로 됐는지 체크
 
 public class Activity_login extends Activity{
     private String login_id = "";
@@ -216,4 +222,19 @@ public class Activity_login extends Activity{
     }
 
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        // Logs 'install' and 'app activate' App Events.
+        AppEventsLogger.activateApp(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        // Logs 'app deactivate' App Event.
+        AppEventsLogger.deactivateApp(this);
+    }
 }

@@ -153,12 +153,13 @@
                 <LinearLayout
                     android:layout_width = "match_parent"
                     android:layout_height = "50dp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:weightSum="99">
                     <Button
                         android:id="@+id/btn_login"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="50dp"
-                        android:layout_weight = "1"
+                        android:layout_weight = "33"
                         android:layout_marginTop="5dp"
                         android:gravity="center"
                         android:text="@string/login_login"
@@ -168,9 +169,9 @@
                     </Button>
                     <Button
                         android:id="@+id/btn_join"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="50dp"
-                        android:layout_weight = "1"
+                        android:layout_weight = "33"
                         android:layout_marginTop="5dp"
                         android:gravity="center"
                         android:text="@string/login_join"
@@ -178,6 +179,14 @@
                         android:textSize="20sp"
                         android:textStyle="bold" >
                     </Button>
+                    <com.facebook.login.widget.LoginButton
+                        android:id="@+id/login_button"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="33"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginBottom="30dp" />
                 </LinearLayout>
             </LinearLayout>
 

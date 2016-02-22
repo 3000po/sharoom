@@ -1,4 +1,4 @@
-package kr.sam1000po.sharoom;
+package kr.popcorn.sharoom;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

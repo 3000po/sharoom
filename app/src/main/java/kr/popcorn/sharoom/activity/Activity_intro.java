@@ -1,4 +1,4 @@
-package kr.sam1000po.sharoom;
+package kr.popcorn.sharoom.activity;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -8,6 +8,10 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Toast;
+
+import com.facebook.appevents.AppEventsLogger;
+
+import kr.popcorn.sharoom.R;
 
 public class Activity_intro extends Activity {
     @Override
@@ -20,9 +24,20 @@ public class Activity_intro extends Activity {
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+
+        // Logs 'app deactivate' App Event.
+        AppEventsLogger.deactivateApp(this);
+    }
+
+    @Override
     protected void onResume() {
 
         super.onResume();
+
+        // Logs 'install' and 'app activate' App Events.
+        AppEventsLogger.activateApp(this);
 
         // 주 쓰레드를 실행
         start_thread();

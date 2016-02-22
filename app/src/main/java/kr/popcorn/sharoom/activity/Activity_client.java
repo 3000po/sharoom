@@ -1,9 +1,13 @@
-package kr.sam1000po.sharoom;
+package kr.popcorn.sharoom.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.facebook.appevents.AppEventsLogger;
+
+import kr.popcorn.sharoom.R;
 
 
 public class Activity_client extends Activity {
@@ -34,5 +38,21 @@ public class Activity_client extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        // Logs 'install' and 'app activate' App Events.
+        AppEventsLogger.activateApp(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        // Logs 'app deactivate' App Event.
+        AppEventsLogger.deactivateApp(this);
     }
 }

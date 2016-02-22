@@ -147,7 +147,6 @@
                         android:password = "true"
                         android:singleLine = "true"
                         android:lines = "1"
-                        android:nextFocusDown="@id/"
                         />
                 </LinearLayout>
 

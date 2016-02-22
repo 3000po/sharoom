@@ -159,7 +159,8 @@
                         android:text="@string/login_login"
                         android:textColor="@color/activity_main_app_name"
                         android:textSize="20sp"
-                        android:textStyle="bold" >
+                        android:textStyle="bold"
+                        android:onClick="login">
                     </Button>
                     <Button
                         android:id="@+id/btn_join"

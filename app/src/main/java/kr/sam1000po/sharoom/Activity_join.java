@@ -9,7 +9,9 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -78,6 +80,39 @@ public class Activity_join extends Activity {
             // Codes.InitApp(this); // *
         };
         form_basic.btn_submit.setOnClickListener(downloadListener);
+
+        //email 입력후 엔터눌렀을때 회원가입 처
+        form_basic.et_email.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                //Enter key Action
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow( et_id.getWindowToken(), 0);    //hide keyboard
+
+                    if (isNetworkAvailable()) {
+                        String id = form_basic.et_id.getText().toString();
+                        String password = form_basic.et_password.getText().toString();
+                        String name = form_basic.et_name.getText().toString();
+                        String phoneNumber = form_basic.et_phoneNumber.getText().toString();
+                        String email = form_basic.et_email.getText().toString();
+
+                        id=urlEncodeUTF8(id);
+                        password = urlEncodeUTF8(password);
+                        name = urlEncodeUTF8(name);
+                        phoneNumber = urlEncodeUTF8(phoneNumber);
+                        email = urlEncodeUTF8(email);
+
+                        String url = "http://14.63.223.92/member_Insert.php?id="+id+"&password="+password+"&name="+name+"&phoneNumber="+phoneNumber+"&email="+email;
+
+                        phpTask phpTask = new phpTask();
+                        phpTask.execute(url);
+                    }
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     private boolean isNetworkAvailable(){

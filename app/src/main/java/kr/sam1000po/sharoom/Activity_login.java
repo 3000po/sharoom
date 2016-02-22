@@ -9,7 +9,9 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -26,9 +28,12 @@ import java.net.URL;
 /**
  * Created by Administrator on 2016-02-22.
  */
-public class Activity_login extends Activity {
 
+public class Activity_login extends Activity{
     private String login_id = "";
+
+    EditText et_id;
+    EditText et_password;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +44,36 @@ public class Activity_login extends Activity {
         // activity_layout.xml을
 
         // 만듦
-        final EditText et_id = (EditText)findViewById(R.id.et_login_id);
-        final EditText et_password = (EditText)findViewById(R.id.et_login_password);
+        et_id = (EditText)findViewById(R.id.et_login_id);
+        et_password = (EditText)findViewById(R.id.et_login_password);
+        et_id.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                //Enter key Action
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow( et_id.getWindowToken(), 0);    //hide keyboard
+
+                    login(v);
+                    return true;
+                }
+                return false;
+            }
+        });
+        et_password.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                //Enter key Action
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow( et_password.getWindowToken(), 0);    //hide keyboard
+
+                    login(v);
+                    return true;
+                }
+                return false;
+            }
+        });
 
 
         Button btn_login = (Button) findViewById(R.id.btn_login);
@@ -68,6 +101,23 @@ public class Activity_login extends Activity {
 
             }
         });
+    }
+
+    public void login(View v){
+        if (isNetworkAvailable()) {
+            et_id = (EditText)v.findViewById(R.id.et_login_id);
+            et_password = (EditText)v.findViewById(R.id.et_login_password);
+
+            String id = et_id.getText().toString();
+            String password = et_password.getText().toString();
+            login_id = id;
+            String url = "http://14.63.223.92/login.php?id=" + id + "&password=" + password; //서버전송쿼리
+            phpTask phpTask = new phpTask();
+            phpTask.execute(url);
+
+            et_id.setText("");
+            et_password.setText("");
+        }
     }
 
     private boolean isNetworkAvailable(){

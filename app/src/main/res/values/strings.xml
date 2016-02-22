@@ -10,12 +10,10 @@
     <string name="title_activity_activity_join">Activity_join</string>
     <string name="title_activity_activity_login">Activity_login</string>
 
-
-
     <string name="join_title">Join</string>
     <string name="join_id">ID</string>
     <string name="join_password">Password</string>
-    <string name="join_nickName">Nickname</string>
+    <string name="join_name">Name</string>
     <string name="join_phoneNumber">PhoneNumber</string>
     <string name="join_email">Email</string>
     <string name="join_submit">Submit</string>

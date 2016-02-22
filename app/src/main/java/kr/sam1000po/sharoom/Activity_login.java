@@ -62,7 +62,7 @@ public class Activity_login extends Activity {
         btn_join.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Activity_login.this, Activity_group.class);
+                Intent intent = new Intent(Activity_login.this, Activity_join.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
 

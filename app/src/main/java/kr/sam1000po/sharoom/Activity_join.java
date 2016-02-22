@@ -93,7 +93,7 @@ public class Activity_join extends Activity {
                 //Enter key Action
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
                     InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow( et_id.getWindowToken(), 0);    //hide keyboard
+                    imm.hideSoftInputFromWindow( form_basic.et_email.getWindowToken(), 0);    //hide keyboard
 
                     if (isNetworkAvailable()) {
                         String id = form_basic.et_id.getText().toString();

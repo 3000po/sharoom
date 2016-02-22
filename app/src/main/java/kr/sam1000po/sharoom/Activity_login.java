@@ -46,20 +46,7 @@ public class Activity_login extends Activity{
         // 만듦
         et_id = (EditText)findViewById(R.id.et_login_id);
         et_password = (EditText)findViewById(R.id.et_login_password);
-        et_id.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                //Enter key Action
-                if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                    InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow( et_id.getWindowToken(), 0);    //hide keyboard
 
-                    login(v);
-                    return true;
-                }
-                return false;
-            }
-        });
         et_password.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {

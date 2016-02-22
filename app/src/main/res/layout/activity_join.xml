@@ -98,6 +98,8 @@
                         android:layout_gravity="center"
                         android:hint="input data"
                         android:imeOptions="actionNext"
+                        android:singleLine = "true"
+                        android:lines = "1"
                         />
                 </LinearLayout>
 
@@ -126,6 +128,8 @@
                         android:hint="input data"
                         android:password = "true"
                         android:imeOptions="actionNext"
+                        android:singleLine = "true"
+                        android:lines = "1"
                         />
                 </LinearLayout>
 
@@ -153,6 +157,8 @@
                         android:layout_gravity="center"
                         android:hint="input data"
                         android:imeOptions="actionNext"
+                        android:singleLine = "true"
+                        android:lines = "1"
                         />
                 </LinearLayout>
 
@@ -182,6 +188,8 @@
                         android:inputType = "phone"
                         android:phoneNumber = "true"
                         android:imeOptions="actionNext"
+                        android:singleLine = "true"
+                        android:lines = "1"
                         />
                 </LinearLayout>
 
@@ -209,6 +217,8 @@
                         android:layout_gravity="center"
                         android:hint="input data"
                         android:inputType = "textEmailAddress"
+                        android:singleLine = "true"
+                        android:lines = "1"
                         />
                 </LinearLayout>
 

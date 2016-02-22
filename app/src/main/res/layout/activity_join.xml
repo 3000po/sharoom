@@ -97,6 +97,7 @@
                         android:layout_weight ="1"
                         android:layout_gravity="center"
                         android:hint="input data"
+                        android:imeOptions="actionNext"
                         />
                 </LinearLayout>
 
@@ -124,6 +125,7 @@
                         android:layout_gravity="center"
                         android:hint="input data"
                         android:password = "true"
+                        android:imeOptions="actionNext"
                         />
                 </LinearLayout>
 
@@ -150,6 +152,7 @@
                         android:layout_weight ="1"
                         android:layout_gravity="center"
                         android:hint="input data"
+                        android:imeOptions="actionNext"
                         />
                 </LinearLayout>
 
@@ -178,6 +181,7 @@
                         android:hint="input data"
                         android:inputType = "phone"
                         android:phoneNumber = "true"
+                        android:imeOptions="actionNext"
                         />
                 </LinearLayout>
 

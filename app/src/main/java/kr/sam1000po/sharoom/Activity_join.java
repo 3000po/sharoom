@@ -54,11 +54,6 @@ public class Activity_join extends Activity {
         form_basic.et_phoneNumber = (EditText) findViewById(R.id.et_join_phoneNumber);
         form_basic.et_email = (EditText) findViewById(R.id.et_join_email);
 
-        form_basic.et_id.setNextFocusDownId(R.id.et_join_password);
-        form_basic.et_password.setNextFocusDownId(R.id.et_join_name);
-        form_basic.et_name.setNextFocusDownId(R.id.et_join_phoneNumber);
-        form_basic.et_phoneNumber.setNextFocusDownId(R.id.et_join_email);
-
         form_basic.btn_submit = (Button) findViewById(R.id.btn_join_submit);
         //this.overridePendingTransition( R.anim.anim_slide_in_left, R.anim.anim_slide_in_right);
         View.OnClickListener downloadListener = new View.OnClickListener() {

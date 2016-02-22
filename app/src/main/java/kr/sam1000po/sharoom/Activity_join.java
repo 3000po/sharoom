@@ -54,6 +54,11 @@ public class Activity_join extends Activity {
         form_basic.et_phoneNumber = (EditText) findViewById(R.id.et_join_phoneNumber);
         form_basic.et_email = (EditText) findViewById(R.id.et_join_email);
 
+        form_basic.et_id.setNextFocusDownId(R.id.et_join_password);
+        form_basic.et_password.setNextFocusDownId(R.id.et_join_name);
+        form_basic.et_name.setNextFocusDownId(R.id.et_join_phoneNumber);
+        form_basic.et_phoneNumber.setNextFocusDownId(R.id.et_join_email);
+
         form_basic.btn_submit = (Button) findViewById(R.id.btn_join_submit);
         //this.overridePendingTransition( R.anim.anim_slide_in_left, R.anim.anim_slide_in_right);
         View.OnClickListener downloadListener = new View.OnClickListener() {
@@ -81,7 +86,7 @@ public class Activity_join extends Activity {
         };
         form_basic.btn_submit.setOnClickListener(downloadListener);
 
-        //email 입력후 엔터눌렀을때 회원가입 처
+        //email 입력후 엔터눌렀을때 회원가입 처리
         form_basic.et_email.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {

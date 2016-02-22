@@ -97,7 +97,6 @@
                         android:layout_weight ="1"
                         android:layout_gravity="center"
                         android:hint="input data"
-                        android:nextFocusDown="@id/et_join_password"
                         />
                 </LinearLayout>
 
@@ -125,7 +124,6 @@
                         android:layout_gravity="center"
                         android:hint="input data"
                         android:password = "true"
-                        android:nextFocusDown="@id/et_join_name"
                         />
                 </LinearLayout>
 
@@ -152,7 +150,6 @@
                         android:layout_weight ="1"
                         android:layout_gravity="center"
                         android:hint="input data"
-                        android:nextFocusDown="@id/et_join_phoneNumber"
                         />
                 </LinearLayout>
 
@@ -181,7 +178,6 @@
                         android:hint="input data"
                         android:inputType = "phone"
                         android:phoneNumber = "true"
-                        android:nextFocusDown="@id/et_join_email"
                         />
                 </LinearLayout>
 

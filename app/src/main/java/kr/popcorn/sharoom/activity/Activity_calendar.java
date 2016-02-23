@@ -12,6 +12,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import kr.popcorn.sharoom.R;
 
 
 public class Activity_calendar extends Activity implements com.andexert.calendarlistview.library.DatePickerController {

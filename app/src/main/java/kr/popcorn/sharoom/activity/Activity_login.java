@@ -14,8 +14,15 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -41,13 +48,43 @@ public class Activity_login extends Activity{
     EditText et_id;
     EditText et_password;
 
+    private LoginButton loginButton;
+    private CallbackManager callbackManager;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        callbackManager = CallbackManager.Factory.create();
 
         setContentView(R.layout.activity_login); // 항상 제공되는
         // activity_layout.xml을
+
+
+        loginButton = (LoginButton)findViewById(R.id.login_button);
+
+        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                Log.i("bhc :",
+                        "User ID: "
+                                + loginResult.getAccessToken().getUserId()
+                                + "\n" +
+                                "Auth Token: "
+                                + loginResult.getAccessToken().getToken()
+                );
+            }
+
+            @Override
+            public void onCancel() {
+                Log.i("bhc :","Login attempt canceled.");
+            }
+
+            @Override
+            public void onError(FacebookException e) {
+                Log.i("bhc :", "Login attempt failed.");
+            }
+        });
 
         // 만듦
         et_id = (EditText)findViewById(R.id.et_login_id);
@@ -107,6 +144,11 @@ public class Activity_login extends Activity{
 
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
     private boolean isNetworkAvailable(){

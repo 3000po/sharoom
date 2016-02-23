@@ -1,68 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="kr.popcorn.sharoom" >
+    package="kr.popcorn.sharoom">
 
+    <permission
+        android:name="kr.popcorn.sharoom.activity.locationapi.maps.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="kr.popcorn.sharoom.activity.locationapi.maps.permission.MAPS_RECEIVE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
 
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
 
-        <meta-data android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id"/>
+        <!--google maps api key-->
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyCEzfkWaI2Cd7Cu2GLcqZ5XebqdWEV2oK0" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version"/>
+
 
         <activity
             android:name=".activity.Activity_intro"
-            android:label="@string/app_name" >
-
-        </activity>
-
+            android:label="@string/app_name" />
         <activity
             android:name=".activity.Activity_login"
-            android:label="@string/app_name" >
-
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
         <activity
             android:name=".activity.Activity_join"
-            android:label="@string/app_name" >
-
-        </activity>
-
+            android:label="@string/app_name" />
         <activity
             android:name=".activity.Activity_group"
             android:label="@string/title_activity_activity_group" />
-
         <activity
             android:name=".activity.Activity_calendar"
-            android:label="@string/title_activity_activity_calendar" >
-
-
-
-        </activity>
-
-         <activity android:name=".Activity_client"
-            android:label="@string/title_activity_activity_client"
-            >
-        </activity>
-
-        <activity android:name=".activity.Activity_facebook"
-            android:configChanges=
-                "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            android:label="@string/app_name"/>
-
+            android:label="@string/title_activity_activity_calendar" />
+        <activity
+            android:name=".Activity_client"
+            android:label="@string/title_activity_activity_client" />
+        <activity
+            android:name=".activity.Activity_facebook"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity android:name=".activity.Activity_mapTest"></activity>
     </application>
 
 </manifest>
-

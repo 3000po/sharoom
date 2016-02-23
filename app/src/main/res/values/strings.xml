@@ -25,8 +25,8 @@
     <string name="login_join">join</string>
 
 
-
-
     <string name="activity_main_app_comment"> Welecome to SharRoom</string>
     <string name="app_company"> 3000po</string>
+    <string name="input_text" />
+    <string name="button_send" />
 </resources>

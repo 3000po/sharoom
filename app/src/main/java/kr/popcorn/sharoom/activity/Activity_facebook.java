@@ -11,7 +11,7 @@ import kr.popcorn.sharoom.R;
 /**
  * Created by user on 16. 2. 22.
  */
-public class Activity_facebook extends FacebookActivity{
+public class Activity_facebook extends Activity{
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

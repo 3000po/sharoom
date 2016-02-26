@@ -29,4 +29,7 @@
     <string name="app_company"> 3000po</string>
     <string name="input_text" />
     <string name="button_send" />
+    <string name="title_activity_main">MainActivity</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_main2">Main2Activity</string>
 </resources>

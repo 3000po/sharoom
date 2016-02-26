@@ -1,68 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="kr.popcorn.sharoom" >
+    package="kr.popcorn.sharoom">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
-
-        <meta-data android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id"/>
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
 
         <activity
             android:name=".activity.Activity_intro"
-            android:label="@string/app_name" >
-
-        </activity>
-
+            android:label="@string/app_name" />
         <activity
             android:name=".activity.Activity_login"
-            android:label="@string/app_name" >
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-        </activity>
-
+            android:label="@string/app_name"></activity>
         <activity
             android:name=".activity.Activity_join"
-            android:label="@string/app_name" >
-
-        </activity>
-
+            android:label="@string/app_name" />
         <activity
             android:name=".activity.Activity_group"
             android:label="@string/title_activity_activity_group" />
-
         <activity
             android:name=".activity.Activity_calendar"
-            android:label="@string/title_activity_activity_calendar" >
-
-
-
+            android:label="@string/title_activity_activity_calendar" />
+        <activity
+            android:name=".activity.Activity_client"
+            android:label="@string/title_activity_activity_client" />
+        <activity
+            android:name=".activity.Activity_facebook"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name=".activity.MainActivity"
+            android:label="@string/title_activity_main">
         </activity>
-
-         <activity android:name=".Activity_client"
-            android:label="@string/title_activity_activity_client"
-            >
+        <activity
+            android:name=".activity.Main2Activity"
+            android:label="@string/title_activity_main2"
+            android:uiOptions="splitActionBarWhenNarrow">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-
-        <activity android:name=".activity.Activity_facebook"
-            android:configChanges=
-                "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            android:label="@string/app_name"/>
-
     </application>
 
 </manifest>
-

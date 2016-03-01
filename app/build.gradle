@@ -30,7 +30,7 @@ android {
 
         // 앱 구동 시 자바 할당 힙을 지정
 
-        javaMaxHeapSize "4g"
+        javaMaxHeapSize "8g"
 
     }
 

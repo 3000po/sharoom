@@ -2,6 +2,9 @@ package kr.popcorn.sharoom.activity;
 
 import android.app.TabActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 
@@ -29,10 +32,20 @@ public class MainActivity extends TabActivity {
         tabHost.addTab(tabSpecTab3);
 
         TabSpec tabSpecTab4 = tabHost.newTabSpec("TAB4").setIndicator("My Page");
-        tabSpecTab4.setContent(R.id.tab1);
+        tabSpecTab4.setContent(R.id.tab4);
         tabHost.addTab(tabSpecTab4);
 
+
+        init();
         tabHost.setCurrentTab(0);
+
+    }
+
+
+    private void init() {
+            LayoutInflater inflater = getLayoutInflater();
+            LinearLayout ll_header = (LinearLayout) findViewById(R.id.tab1);
+            View element_header = inflater.inflate(R.layout.activity_join, ll_header);
 
     }
 }

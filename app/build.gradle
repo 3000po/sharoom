@@ -19,6 +19,20 @@ android {
     }
     productFlavors {
     }
+    defaultConfig {
+        multiDexEnabled true
+    }
+    dexOptions {
+
+        // dex의 크기를 늘리기 위한 설정(2^16개 초과)
+        // com.google.android.gms:play-services:8.3.0를 사용할때 heap 사이즈 작아서 오류
+        jumboMode true
+
+        // 앱 구동 시 자바 할당 힙을 지정
+
+        javaMaxHeapSize "4g"
+
+    }
 
 }
 
@@ -32,7 +46,7 @@ dependencies {
         }
     }
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    //compile 'com.google.android.gms:play-services:8.3.0'
+    compile 'com.google.android.gms:play-services:8.3.0'
     compile 'com.android.support:appcompat-v7:21.0.3'
     compile 'com.android.support:recyclerview-v7:21.0.3'
     compile 'com.andexert.calendarlistview:library:1.2.3@aar'

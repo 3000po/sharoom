@@ -24,7 +24,6 @@
                     android:id="@+id/tab1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#00ff00"
                     android:orientation="vertical" >
 
                     <TextView
@@ -37,7 +36,6 @@
                     android:id="@+id/tab2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#0000ff"
                     android:orientation="vertical" >
 
                     <TextView
@@ -50,7 +48,6 @@
                     android:id="@+id/tab3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#ff0000"
                     android:orientation="vertical" >
 
                     <TextView
@@ -63,7 +60,8 @@
             <TabWidget
                 android:id="@android:id/tabs"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp">
             </TabWidget>
         </LinearLayout>
     </TabHost>

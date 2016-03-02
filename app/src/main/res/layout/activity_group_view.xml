@@ -1,0 +1,118 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/activity_layout_background"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/ll_header"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_layout_header_height"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="@dimen/activity_layout_header_margin"
+        android:background="@color/activity_layout_header_background"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_layout_header_padding" >
+    </LinearLayout>
+
+    <!--  android:padding="@color/activity_layout_header_background" -->
+
+    <LinearLayout
+        android:id="@+id/ll_body"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/activity_layout_body_margin"
+        android:layout_weight="1"
+        android:background="@color/activity_layout_left_background"
+        android:orientation="horizontal"
+        android:padding="@dimen/activity_layout_body_padding" >
+
+        <LinearLayout
+            android:id="@+id/ll_left"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_gravity="top"
+            android:layout_margin="@dimen/activity_layout_left_margin"
+            android:layout_weight="1"
+
+            android:background="@color/activity_layout_left_background"
+            android:orientation="vertical"
+            android:padding="@dimen/activity_layout_left_padding"
+            android:visibility="gone">
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_center"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_gravity="top"
+            android:layout_margin="@dimen/activity_layout_center_margin"
+            android:layout_weight="1"
+            android:background="@color/activity_layout_center_background"
+            android:orientation="vertical"
+            android:padding="@dimen/activity_layout_center_padding" >
+
+            <LinearLayout
+                android:id="@+id/ll_center_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/blank"
+                android:orientation="vertical"
+                >
+                <android.support.v4.view.ViewPager
+                    android:visibility="visible"
+                    android:id="@+id/pager"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    />
+
+                <kr.popcorn.sharoom.activity.Fragment.IconPageIndicator
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/indicator"
+                    android:background="#FFFFFFFF"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_right"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_gravity="top"
+            android:layout_margin="@dimen/activity_layout_right_margin"
+            android:padding="@dimen/activity_layout_right_padding"
+            android:layout_weight="1"
+            android:background="@color/activity_layout_right_background"
+            android:orientation="vertical"
+            android:visibility="gone">
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_body"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:visibility="gone" >
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="@dimen/activity_layout_footer_margin"
+        android:padding="@dimen/activity_layout_footer_padding"
+        android:background="@color/activity_layout_footer_background"
+        android:gravity="center_vertical"
+        android:orientation="vertical" >
+
+
+    </LinearLayout>
+
+</LinearLayout>
+

@@ -1,4 +1,4 @@
-package kr.popcorn.sharoom.Helper;
+package kr.popcorn.sharoom.helper;
 
 import android.content.Context;
 import android.widget.Toast;

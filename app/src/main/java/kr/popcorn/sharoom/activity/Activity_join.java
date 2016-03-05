@@ -74,7 +74,7 @@ public class Activity_join extends Activity {
                     String phoneNumber = form_basic.et_phoneNumber.getText().toString();
                     String email = form_basic.et_email.getText().toString();
 
-                    if(!Helper_checker.validJoin(this, email, name, id, password)){
+                    if(!Helper_checker.validJoin(Activity_join.this, email, name, id, password)){
                         return;
                     }
 
@@ -110,8 +110,8 @@ public class Activity_join extends Activity {
                         String phoneNumber = form_basic.et_phoneNumber.getText().toString();
                         String email = form_basic.et_email.getText().toString();
 
-                        if(!Helper_checker.validJoin(this, email, name, id, password)){
-                            return;
+                        if(!Helper_checker.validJoin(Activity_join.this, email, name, id, password)){
+                            return false;
                         }
 
                         id=urlEncodeUTF8(id);

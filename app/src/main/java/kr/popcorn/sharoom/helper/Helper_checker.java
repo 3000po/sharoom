@@ -53,7 +53,6 @@ public class Helper_checker {
             Toast.makeText(context, "이메일 형식이 잘못되었습니다. ", Toast.LENGTH_LONG).show();
             return false;
         }
-
         return true;
     }
 }

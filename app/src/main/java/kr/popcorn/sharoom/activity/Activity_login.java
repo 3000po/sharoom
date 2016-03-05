@@ -198,7 +198,6 @@ public class Activity_login extends Activity{
     }
 
     private class phpTask extends AsyncTask<String, Integer, String> {
-
         protected String doInBackground(String... url){
 
             String ok = "";
@@ -213,22 +212,17 @@ public class Activity_login extends Activity{
         }
 
         protected void onPostExecute(String result){
-
             String ok="";
 
-
             try{
-
                 JSONObject root = new JSONObject(result);
                 //JSONArray json_arr = root.getJSONArray("ok");
 
                 ok = root.getString("ok");
-                Log.d("aaa", ok);
                 //for(int i=0; i<json_arr.length(); i++){
                 //    JSONObject sub = json_arr.getJSONObject(i);
                 //    ok = sub.getString("imgurl");
                 //}
-
 
                 AlertDialog.Builder alert = new AlertDialog.Builder(Activity_login.this);
                 if(ok.equals("true")) {
@@ -253,13 +247,10 @@ public class Activity_login extends Activity{
                         }
                     });
                     alert.show();
-
                 }
-
             }catch(JSONException e){
                 e.printStackTrace();
             }
-
         }
     }
 

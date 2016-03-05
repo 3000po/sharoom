@@ -161,7 +161,6 @@ public class Activity_join extends Activity {
 
     private class phpTask extends AsyncTask<String, Integer, String> {
         protected String doInBackground(String... url){
-
             try{
                 Log.d("url",url[0].toString());
                 downloadUrl(url[0]);

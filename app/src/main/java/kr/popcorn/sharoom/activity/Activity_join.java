@@ -26,6 +26,7 @@ import java.net.URLEncoder;
 
 import kr.popcorn.sharoom.activity.Activity_login;
 import kr.popcorn.sharoom.R;
+import kr.popcorn.sharoom.helper.Helper_checker;
 
 /**
  * Created by Administrator on 2016-02-22.
@@ -73,6 +74,10 @@ public class Activity_join extends Activity {
                     String phoneNumber = form_basic.et_phoneNumber.getText().toString();
                     String email = form_basic.et_email.getText().toString();
 
+                    if(!Helper_checker.validJoin(this, email, name, id, password)){
+                        return;
+                    }
+
                     id=urlEncodeUTF8(id);
                     password = urlEncodeUTF8(password);
                     name = urlEncodeUTF8(name);
@@ -104,6 +109,10 @@ public class Activity_join extends Activity {
                         String name = form_basic.et_name.getText().toString();
                         String phoneNumber = form_basic.et_phoneNumber.getText().toString();
                         String email = form_basic.et_email.getText().toString();
+
+                        if(!Helper_checker.validJoin(this, email, name, id, password)){
+                            return;
+                        }
 
                         id=urlEncodeUTF8(id);
                         password = urlEncodeUTF8(password);

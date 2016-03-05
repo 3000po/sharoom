@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
  * Created by user on 16. 2. 22.
  */
 
-//패키지를 나누기 위해서 일단 만들었음
+//TODO 전화번호 검사를 해줘야함
 public class Helper_checker {
     public static final int MIN=5;
     public static final int MAX=20;
@@ -46,14 +46,13 @@ public class Helper_checker {
             return false;
         }
         if (!validName(name)) {
-            Toast.makeText(context, "이름은 5글자이상 20글자 이하여야합니다. ", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "이름은 3글자이상 20글자 이하여야합니다. ", Toast.LENGTH_LONG).show();
              return false;
         }
         if( !isEmail(email) ){
             Toast.makeText(context, "이메일 형식이 잘못되었습니다. ", Toast.LENGTH_LONG).show();
             return false;
         }
-
 
         return true;
     }

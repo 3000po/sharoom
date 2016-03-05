@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import kr.popcorn.sharoom.R;
+import kr.popcorn.sharoom.helper.Helper_rentListAdapter;
 import kr.popcorn.sharoom.helper.Helper_roomData;
 
 /**
@@ -20,14 +21,14 @@ import kr.popcorn.sharoom.helper.Helper_roomData;
  */public class Activity_roomList extends Activity {
 
     public RecyclerView recyclerView;
-    public kr.popcorn.sharoom.Helper.Helper_rentListAdapter contactAdapter;
+    public Helper_rentListAdapter contactAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-        ArrayList<Helper_roomData> list = (ArrayList<ImageList>) getIntent().getSerializableExtra("list");
+        ArrayList<Helper_roomData> list = (ArrayList<Helper_roomData>) getIntent().getSerializableExtra("list");
 
         recyclerView = (RecyclerView) findViewById(R.id.list);
         recyclerView.addItemDecoration(new HorizontalDividerItemDecoration.Builder(this).
@@ -35,15 +36,8 @@ import kr.popcorn.sharoom.helper.Helper_roomData;
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        contactAdapter = new ImageRecyclerAdapter(this,
+        contactAdapter = new Helper_rentListAdapter(this,
                 list, (LinearLayoutManager) recyclerView.getLayoutManager());
         recyclerView.setAdapter(contactAdapter);
-
-        try {
-
-
-        }catch(IOException e){
-            e.printStackTrace();
-        }
     }
 }

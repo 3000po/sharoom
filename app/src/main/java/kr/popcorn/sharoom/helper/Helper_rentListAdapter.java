@@ -74,8 +74,8 @@ public class Helper_rentListAdapter extends RecyclerView.Adapter<Helper_rentList
 
         public ViewHolder(View itemView) {
             super(itemView);
-            album = (ImageView) itemView.findViewById(R.id.album_art1);
-            text = (TextView) itemView.findViewById(R.id.year);
+            //album = (ImageView) itemView.findViewById(R.id.album_art1);
+            //text = (TextView) itemView.findViewById(R.id.year);
 
             itemView.setClickable(true);
             itemView.setOnClickListener(this);
@@ -91,7 +91,7 @@ public class Helper_rentListAdapter extends RecyclerView.Adapter<Helper_rentList
 
         @Override
         public void onClick(View v) {
-            //TODO 전화걸기
+            //TODO
         }
 
     }

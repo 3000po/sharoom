@@ -81,7 +81,6 @@ public class Activity_join extends Activity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 id_check_ok = false;
-                Log.d("check","false");
             }
 
             @Override
@@ -231,16 +230,13 @@ public class Activity_join extends Activity {
                 iStream.close();
                 urlConnection.disconnect();
                 JSONObject root = new JSONObject(id);
-                Log.d("a2222",id);
                 id = root.getString("id");
 
                 if(id.equals("valid")) {
                     id_check_ok = true;
-                    Log.d("aaaaa",id);
                 }
                 else if(id.equals("invalid")){
                     id_check_ok = false;
-                    Log.d("aaaaa", id);
                 }
             }
         } catch(Exception e){

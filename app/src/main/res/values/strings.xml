@@ -19,6 +19,8 @@
     <string name="join_phoneNumber">PhoneNumber</string>
     <string name="join_email">Email</string>
     <string name="join_submit">Submit</string>
+    <string name="btn_join_idcheck">idcheck</string>
+
 
     <string name="login_login">Login</string>
     <string name="login_image">Image</string>

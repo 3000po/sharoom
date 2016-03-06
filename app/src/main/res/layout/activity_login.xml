@@ -119,6 +119,14 @@
                         android:singleLine = "true"
                         android:lines = "1"
                         />
+                    <Button
+                        android:id="@+id/btn_id_duplication"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        >
+
+                    </Button>
                 </LinearLayout>
 
                 <LinearLayout

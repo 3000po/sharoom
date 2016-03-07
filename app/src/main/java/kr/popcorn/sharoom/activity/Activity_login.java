@@ -311,4 +311,9 @@ public class Activity_login extends Activity{
         // Logs 'app deactivate' App Event.
         AppEventsLogger.deactivateApp(this);
     }
+
+    public void Login_ok(){
+
+    }
+
 }

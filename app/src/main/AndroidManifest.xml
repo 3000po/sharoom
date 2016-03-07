@@ -32,11 +32,11 @@
         <activity
             android:name=".activity.Activity_client"
             android:label="@string/title_activity_activity_client" />
-        <activity
-            android:name=".activity.Activity_facebook"
-            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            android:label="@string/app_name"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity     android:name="com.facebook.FacebookActivity"
+            android:configChanges=
+                "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:label="@string/app_name" />
         <activity
             android:name=".activity.MainActivity"
             android:label="@string/title_activity_main">

@@ -111,6 +111,7 @@ public final class TestFragment extends Fragment {
         }else if(mContent.equalsIgnoreCase("y")){;
             setAdapterView(inflater, container, 4);
         }else {
+
             TextView text = new TextView(getActivity());
             text.setGravity(Gravity.CENTER);
             text.setText(mContent);

@@ -23,6 +23,12 @@ import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.ibm.mobilefirstplatform.clientsdk.android.core.api.BMSClient;
+import com.ibm.mobilefirstplatform.clientsdk.android.core.api.Request;
+import com.ibm.mobilefirstplatform.clientsdk.android.core.api.Response;
+import com.ibm.mobilefirstplatform.clientsdk.android.core.api.ResponseListener;
+import com.ibm.mobilefirstplatform.clientsdk.android.security.api.AuthorizationManager;
+import com.ibm.mobilefirstplatform.clientsdk.android.security.facebookauthentication.FacebookAuthenticationManager;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -32,6 +38,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 import kr.popcorn.sharoom.R;
@@ -144,11 +151,45 @@ public class Activity_login extends Activity{
 
             }
         });
+
+
+        try {
+            BMSClient.getInstance().initialize(getApplicationContext(),
+                    "http://bangpool.au-syd.mybluemix.net",
+                    "68955bcb-5ea5-4ea1-b78b-4e5a642e0d51");
+
+            FacebookAuthenticationManager.getInstance().register(getApplicationContext());
+        }catch(MalformedURLException e){
+            e.printStackTrace();
+        }
+
+        Request request = new Request("/protected", Request.GET);
+        request.send(this, new ResponseListener() {
+            @Override
+            public void onSuccess (Response response) {
+                Log.d("Myapp", "onSuccess :: " + response.getResponseText());
+                Log.d("MyApp", AuthorizationManager.getInstance().getUserIdentity().toString());
+            }
+            @Override
+            public void onFailure (Response response, Throwable t, JSONObject extendedInfo) {
+                if (null != t) {
+                    Log.d("Myapp", "onFailure :: " + t.getMessage());
+                } else if (null != extendedInfo) {
+                    Log.d("Myapp", "onFailure :: " + extendedInfo.toString());
+                } else {
+                    Log.d("Myapp", "onFailure :: " + response.getResponseText());
+                }
+            }
+        });
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         callbackManager.onActivityResult(requestCode, resultCode, data);
+
+        super.onActivityResult(requestCode, resultCode, data);
+        FacebookAuthenticationManager.getInstance()
+                .onActivityResultCalled(requestCode, resultCode, data);
     }
 
     private boolean isNetworkAvailable(){

@@ -19,7 +19,7 @@
             android:label="@string/app_name" />
         <activity
             android:name=".activity.Activity_login"
-            android:label="@string/app_name"></activity>
+            android:label="@string/app_name" />
         <activity
             android:name=".activity.Activity_join"
             android:label="@string/app_name" />
@@ -32,28 +32,23 @@
         <activity
             android:name=".activity.Activity_client"
             android:label="@string/title_activity_activity_client" />
-        <activity     android:name="com.facebook.FacebookActivity"
-            android:configChanges=
-                "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            android:label="@string/app_name" />
         <activity
-            android:name=".activity.MainActivity"
-            android:label="@string/title_activity_main">
-        </activity>
-        <activity
-            android:name=".activity.Main2Activity"
-            android:label="@string/title_activity_main2"
-            android:uiOptions="splitActionBarWhenNarrow">
-        </activity>
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name=".activity.Fragment.Activity_group_view"
             android:theme="@android:style/Theme.Holo.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activity.Fragment.Activity_myself"
+            android:label="@string/title_activity_activity_myself"></activity>
     </application>
 
 </manifest>

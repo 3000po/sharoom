@@ -1,4 +1,4 @@
-package kr.popcorn.sharoom.activity.Fragment;
+package kr.popcorn.sharoom.activity;
 
 import android.os.Bundle;
 import android.app.Activity;

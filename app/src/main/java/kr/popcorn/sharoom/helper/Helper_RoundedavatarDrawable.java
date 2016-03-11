@@ -10,6 +10,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.drawable.Drawable;
+import android.os.Environment;
 
 /**
  * Created by Administrator on 2016-03-10.
@@ -97,5 +98,6 @@ public class Helper_RoundedavatarDrawable extends Drawable{
         public Bitmap getBitmap() {
             return mBitmap;
         }
+
 
 }

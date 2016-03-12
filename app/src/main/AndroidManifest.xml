@@ -63,6 +63,14 @@
             </intent-filter>
 
         </activity>
+
+        <activity
+            android:name=".activity.Activity_login2"
+            android:theme="@android:style/Theme.Holo.NoActionBar">
+
+        </activity>
+
+
     </application>
 
 </manifest>

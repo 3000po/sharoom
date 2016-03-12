@@ -110,6 +110,7 @@
                         android:layout_gravity="center"
                         android:rating="3"
                         android:numStars="5"
+                        android:stepSize="1"
                         android:isIndicator="true"
                         />
                 </LinearLayout>

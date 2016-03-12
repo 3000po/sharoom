@@ -50,12 +50,14 @@ dependencies {
             transitive: true
 
     //compile 'com.google.android.gms:play-services:8.3.0'
+    compile 'com.android.support:appcompat-v7:21.0.3'
+    compile 'com.android.support:recyclerview-v7:21.0.3'
     compile 'com.andexert.calendarlistview:library:1.2.3@aar'
     compile 'com.facebook.android:facebook-android-sdk:4.1.0'
     compile 'com.android.support:support-v13:21.0.3'
     compile 'com.android.support:appcompat-v7:22.1.1'
+    compile 'com.android.support:support-v4:22.2.0'
     compile 'com.android.support:recyclerview-v7:22.0.0'
     compile 'com.squareup.picasso:picasso:2.5.0'
     compile 'com.yqritc:recyclerview-flexibledivider:1.2.5'
-    compile 'me.yokeyword:imagepicker:0.2.1'
 }

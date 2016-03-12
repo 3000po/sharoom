@@ -16,6 +16,7 @@ import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.ibm.mobilefirstplatform.clientsdk.android.security.api.AuthorizationManager;
 import com.loopj.android.http.*;
 
 import cz.msebera.android.httpclient.Header;

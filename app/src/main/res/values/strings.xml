@@ -35,4 +35,14 @@
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="title_activity_main2">Main2Activity</string>
     <string name="title_activity_activity_myself">Activity_myself</string>
+
+    <string name="yo_pick_pic">사진 선택</string>
+    <string name="yo_my_pic">사진 선택</string>
+    <string name="yo_screenshots">스크린샷</string>
+    <string name="yo_count">( %1$d 장)</string>
+    <string name="yo_tip_select">선택없음</string>
+    <string name="yo_preview">미리보기</string>
+    <string name="yo_select_pic_count">%1$d</string>
+    <string name="yo_pic_detail">상세</string>
+    <string name="yo_loding">로딩중</string>
 </resources>

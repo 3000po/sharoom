@@ -74,6 +74,10 @@ public class Helper_roomPicListAdapter extends RecyclerView.Adapter<Helper_roomP
         list.addAll(pathList);
     }
 
+    public void setList(ArrayList<String> arrayList){
+        list = arrayList;
+    }
+
     public void setOnClickListener(Helper_adapterCommunication listener){
         mListener = listener;
     }

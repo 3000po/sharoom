@@ -4,14 +4,14 @@
     <!-- Action Bar에 버튼을 추가하기 위해서는 <item> 사용 -->
     <item
         android:id="@+id/camera"
-        android:icon="@drawable/ic_photo_camera_white_24dp"
+        android:icon="@drawable/ic_photo_camera_black_24dp"
         android:title="@string/camera"
         android:showAsAction="always" />
 
     <!-- 세팅 버튼 -->
     <item
         android:id="@+id/gallery"
-        android:icon="@drawable/ic_photo_white_24dp"
+        android:icon="@drawable/ic_photo_black_24dp"
         android:title="@string/gallery"
         android:showAsAction="always"/>
 

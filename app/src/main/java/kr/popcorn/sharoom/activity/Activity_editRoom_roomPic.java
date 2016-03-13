@@ -20,6 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
 import java.io.File;
@@ -92,6 +93,14 @@ public class Activity_editRoom_roomPic extends Activity {
     }
 
     @Override
+    public void onBackPressed(){
+        Intent it = getIntent();
+        it.putExtra("list", list);
+        setResult(1, it);
+        finish();
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // inflater함수를 이용해서 menu 리소스를 menu로 변환.
         // 두 줄 코드
@@ -113,47 +122,58 @@ public class Activity_editRoom_roomPic extends Activity {
 
             case R.id.camera:
                 // camera 이 눌렸을 경우 이벤트 발생
-                mImagePicker.openCamera(new CallbackForCamera() {
-                    @Override
-                    public void onError(Exception error) {
-
-                    }
-                    @Override
-                    public void onComplete(String imagePath) {
-                        list.add(imagePath);
-                        listAdapter.add(imagePath, listAdapter.getItemCount());
-                        updateTitle();
-                    }
-                    @Override
-                    public void onCancel(String imagePath) {
-                        Toast.makeText(getApplicationContext(), "실패..", Toast.LENGTH_SHORT).show();
-
-                        File tempFile = new File(imagePath);
-                        if (tempFile.exists()) {
-                            tempFile.delete();
-                        }
-                    }
-                });
+                mImagePicker.openCamera(new CallbackForCam());
                 return true;
 
             case R.id.gallery:
                 // gallery 이 눌렸을 경우 이벤트 발생
-                mImagePicker.openImagePiker(true, new CallbackForImagePicker() {
-                    @Override
-                    public void onError(Exception error) {
-
-                    }
-                    @Override
-                    public void onComplete(List<String> imagePath) {
-                        list.addAll(imagePath);
-                        listAdapter.addAll((ArrayList<String>)imagePath);
-                        updateTitle();
-                    }
-                });
+                mImagePicker.openImagePiker(true, new CallbackForGal());
                 return true;
 
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public class CallbackForCam implements CallbackForCamera{
+        @Override
+        public void onError(Exception error) {
+
+        }
+        @Override
+        public void onComplete(String imagePath) {
+            list.add(imagePath);
+            listAdapter.setList(list);
+            listAdapter.notifyDataSetChanged();
+            updateTitle();
+        }
+        @Override
+        public void onCancel(String imagePath) {
+            Toast.makeText(getApplicationContext(), "실패..", Toast.LENGTH_SHORT).show();
+
+            File tempFile = new File(imagePath);
+            if (tempFile.exists()) {
+                tempFile.delete();
+            }
+        }
+    }
+    public class CallbackForGal implements CallbackForImagePicker{
+        @Override
+        public void onError(Exception error) {
+        }
+        @Override
+        public void onComplete(List<String> imagePath) {
+            list.addAll(imagePath);
+            listAdapter.setList(list);
+            listAdapter.notifyDataSetChanged();
+            updateTitle();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        mImagePicker.delegateActivityResult(requestCode, resultCode, data);
     }
 }

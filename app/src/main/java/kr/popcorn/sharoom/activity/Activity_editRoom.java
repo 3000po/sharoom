@@ -16,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
 import java.io.File;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -125,6 +127,7 @@ public class Activity_editRoom extends Activity  implements View.OnClickListener
         switch (resultCode){
             case PICK_THE_ALBUM:
                 list = data.getStringArrayListExtra("list");
+                Picasso.with(getApplicationContext()).load(list.get(0)).into(picButton);
                 break;
         }
 

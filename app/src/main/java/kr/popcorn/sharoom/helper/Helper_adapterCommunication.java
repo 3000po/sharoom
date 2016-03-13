@@ -5,4 +5,5 @@ package kr.popcorn.sharoom.helper;
  */
 public interface Helper_adapterCommunication {
     void removeItem(int position);
+    void longClickItem(int position);
 }

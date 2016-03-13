@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/yo_bg_app">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="@dimen/yo_btn_height"
+        android:layout_height="match_parent"/>
+
+    <TextView
+        android:id="@+id/tv_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="120dp"
+        android:layout_marginRight="24dp"
+        android:text="1/25"
+        android:textColor="@color/yo_text_light"
+        android:textSize="16sp"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/yo_btn_height"
+        android:layout_gravity="bottom"
+        android:background="@color/yo_bg_app">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.6dp"
+            android:background="@color/yo_bg_divider"/>
+
+        <TextView
+            android:id="@+id/tv_pick_pic_count"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="16dp"
+            android:textColor="@color/yo_text_light"
+            android:textSize="13sp"/>
+
+        <TextView
+            android:id="@+id/tv_btn_yes"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="false"
+            android:gravity="center_vertical"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            android:text="@android:string/yes"
+            android:textColor="@color/yo_blue"/>
+
+    </FrameLayout>
+</FrameLayout>

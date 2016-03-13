@@ -2,8 +2,14 @@ package kr.popcorn.sharoom.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -23,6 +29,7 @@ import java.util.List;
 import kr.popcorn.sharoom.R;
 import kr.popcorn.sharoom.helper.Helper_adapterCommunication;
 import kr.popcorn.sharoom.helper.Helper_roomPicListAdapter;
+import kr.popcorn.sharoom.helper.Helper_roomPicPreview;
 import me.yokeyword.imagepicker.ImagePicker;
 import me.yokeyword.imagepicker.callback.CallbackForCamera;
 import me.yokeyword.imagepicker.callback.CallbackForImagePicker;
@@ -31,7 +38,7 @@ import me.yokeyword.imagepicker.callback.CallbackForImagePicker;
  * Created by user on 16. 3. 13.
  */
 
-//TODO 뒤로가기시 저장, 액티비티종료시 저장, 리스트 전달
+//TODO 리스트 , 미리보기
 public class Activity_editRoom_roomPic extends Activity {
 
     private RecyclerView recyclerView;
@@ -39,6 +46,10 @@ public class Activity_editRoom_roomPic extends Activity {
 
     private  ArrayList<String> list;
     private ImagePicker mImagePicker;
+
+    public void updateTitle(){
+        getActionBar().setTitle("사진 "+list.size()+"장");
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -49,7 +60,7 @@ public class Activity_editRoom_roomPic extends Activity {
         mImagePicker = new ImagePicker(this);
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
-        getActionBar().setTitle("사진 "+list.size()+"장");
+        updateTitle();
 
         recyclerView = (RecyclerView) findViewById(R.id.list);
         recyclerView.addItemDecoration(new HorizontalDividerItemDecoration.Builder(this).
@@ -63,24 +74,21 @@ public class Activity_editRoom_roomPic extends Activity {
         listAdapter.setOnClickListener(new Helper_adapterCommunication(){
             public void removeItem(int position){
                 list.remove(position);
-                getActionBar().setTitle("사진 "+list.size()+"장");
+                updateTitle();
                 listAdapter.notifyDataSetChanged();
             }
-        });
-
-        recyclerView.setAdapter(listAdapter);
-        recyclerView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i("aab","click");
-                switch(v.getId()){
-                    case R.id.delete:
-                        Log.i("aab","delete");
-                        listAdapter.remove(recyclerView.getChildAdapterPosition(v));
-                }
+            public void longClickItem(int position){
+                openPreview(position);
             }
         });
+        recyclerView.setAdapter(listAdapter);
+    }
 
+    public void openPreview(int position){
+        Intent it = new Intent(this, Helper_roomPicPreview.class);
+        it.putExtra("list", list);
+        it.putExtra("idx", position);
+        startActivity(it);
     }
 
     @Override
@@ -113,6 +121,8 @@ public class Activity_editRoom_roomPic extends Activity {
                     @Override
                     public void onComplete(String imagePath) {
                         list.add(imagePath);
+                        listAdapter.add(imagePath, listAdapter.getItemCount());
+                        updateTitle();
                     }
                     @Override
                     public void onCancel(String imagePath) {
@@ -136,6 +146,8 @@ public class Activity_editRoom_roomPic extends Activity {
                     @Override
                     public void onComplete(List<String> imagePath) {
                         list.addAll(imagePath);
+                        listAdapter.addAll((ArrayList<String>)imagePath);
+                        updateTitle();
                     }
                 });
                 return true;

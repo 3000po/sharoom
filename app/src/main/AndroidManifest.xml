@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="kr.popcorn.sharoom">
 
+    <uses-feature android:name="android.hardware.camera" android:required="true" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />  <!-- Read Permission -->
@@ -62,6 +64,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.Activity_editRoom_roomPic"
+            android:theme="@style/EditRoomPicTheme">
+        </activity>
+        <activity android:name=".helper.Helper_roomPicPreview"
             android:theme="@style/EditRoomPicTheme">
 
         </activity>

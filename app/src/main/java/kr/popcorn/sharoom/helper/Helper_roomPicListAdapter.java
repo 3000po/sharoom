@@ -1,6 +1,8 @@
 package kr.popcorn.sharoom.helper;
 
+import android.app.FragmentTransaction;
 import android.content.Context;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -68,6 +70,9 @@ public class Helper_roomPicListAdapter extends RecyclerView.Adapter<Helper_roomP
         list.add(position, path);
         notifyItemInserted(position);
     }
+    public void addAll(ArrayList<String> pathList){
+        list.addAll(pathList);
+    }
 
     public void setOnClickListener(Helper_adapterCommunication listener){
         mListener = listener;
@@ -90,6 +95,7 @@ public class Helper_roomPicListAdapter extends RecyclerView.Adapter<Helper_roomP
                 @Override
                 public boolean onLongClick(View v) {
                     // path is selected
+                    mListener.longClickItem(getAdapterPosition());
                     return true;
                 }
             });

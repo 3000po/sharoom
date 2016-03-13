@@ -127,7 +127,7 @@ public class Activity_editRoom extends Activity  implements View.OnClickListener
         switch (resultCode){
             case PICK_THE_ALBUM:
                 list = data.getStringArrayListExtra("list");
-                Picasso.with(getApplicationContext()).load(list.get(0)).into(picButton);
+                Picasso.with(getApplicationContext()).load(list.get(1)).into(picButton);
                 break;
         }
 

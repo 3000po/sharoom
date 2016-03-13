@@ -45,4 +45,7 @@
     <string name="yo_select_pic_count">%1$d</string>
     <string name="yo_pic_detail">상세</string>
     <string name="yo_loding">로딩중</string>
+
+    <string name="camera">카메라</string>
+    <string name="gallery">갤러리</string>
 </resources>

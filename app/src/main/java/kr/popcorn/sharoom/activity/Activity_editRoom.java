@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +33,7 @@ public class Activity_editRoom extends Activity  implements View.OnClickListener
 
     public final int PICK_THE_ALBUM=1;
 
-    private List<String> list;
+    private ArrayList<String> list;
     private ImagePicker mImagePicker;
 
     private Dialog dialog;
@@ -58,20 +59,19 @@ public class Activity_editRoom extends Activity  implements View.OnClickListener
         dialogGal.setOnClickListener(this);
 
         mImagePicker = new ImagePicker(this);
-        list = new ArrayList<>();
+        list = new ArrayList<String>();
     }
 
     @Override
     public void onClick(View v) {
-
         switch (v.getId()){
             case R.id.picture:
                 if(list.size() == 0 ) dialog.show();
                 else{
                     //TODO 새액티비티 띄워서 거기서 리스트보여주고 삭제가능하게하고 사진 추가(카메라,앨범) 가능하게해야함
+                    openActivity();
                 }
                 break;
-
             case R.id.camera:
                 dialog.dismiss();
                 mImagePicker.openCamera(new CallbackForCamera() {
@@ -79,10 +79,10 @@ public class Activity_editRoom extends Activity  implements View.OnClickListener
                     public void onError(Exception error) {
 
                     }
-
                     @Override
                     public void onComplete(String imagePath) {
                         list.add(imagePath);
+                        openActivity();
                     }
 
                     @Override
@@ -103,18 +103,30 @@ public class Activity_editRoom extends Activity  implements View.OnClickListener
                     public void onError(Exception error) {
 
                     }
-
                     @Override
                     public void onComplete(List<String> imagePath) {
                         list.addAll(imagePath);
+                        openActivity();
                     }
                 });
                 break;
         }
     }
+    public void openActivity(){
+        Intent it = new Intent(this, Activity_editRoom_roomPic.class);
+        it.putExtra("list", list);
+        startActivityForResult(it, PICK_THE_ALBUM);
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        switch (resultCode){
+            case PICK_THE_ALBUM:
+                list = data.getStringArrayListExtra("list");
+                break;
+        }
 
         mImagePicker.delegateActivityResult(requestCode, resultCode, data);
     }

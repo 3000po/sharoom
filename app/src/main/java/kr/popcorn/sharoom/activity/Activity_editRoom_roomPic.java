@@ -7,9 +7,11 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
@@ -19,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.popcorn.sharoom.R;
+import kr.popcorn.sharoom.helper.Helper_adapterCommunication;
 import kr.popcorn.sharoom.helper.Helper_roomPicListAdapter;
 import me.yokeyword.imagepicker.ImagePicker;
 import me.yokeyword.imagepicker.callback.CallbackForCamera;
@@ -28,7 +31,7 @@ import me.yokeyword.imagepicker.callback.CallbackForImagePicker;
  * Created by user on 16. 3. 13.
  */
 
-//TODO 뒤로가기시 저장, 액티비티종료시 저장, 리스트 전
+//TODO 뒤로가기시 저장, 액티비티종료시 저장, 리스트 전달
 public class Activity_editRoom_roomPic extends Activity {
 
     private RecyclerView recyclerView;
@@ -45,16 +48,38 @@ public class Activity_editRoom_roomPic extends Activity {
         list = (ArrayList<String>) getIntent().getSerializableExtra("list");
         mImagePicker = new ImagePicker(this);
 
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setTitle("사진 "+list.size()+"장");
 
         recyclerView = (RecyclerView) findViewById(R.id.list);
         recyclerView.addItemDecoration(new HorizontalDividerItemDecoration.Builder(this).
                 color(Color.LTGRAY).sizeResId(R.dimen.divider).marginResId(R.dimen.leftmargin, R.dimen.rightmargin).build());
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-달
+
         listAdapter = new Helper_roomPicListAdapter(this,
                 list, (LinearLayoutManager) recyclerView.getLayoutManager());
+
+        listAdapter.setOnClickListener(new Helper_adapterCommunication(){
+            public void removeItem(int position){
+                list.remove(position);
+                getActionBar().setTitle("사진 "+list.size()+"장");
+                listAdapter.notifyDataSetChanged();
+            }
+        });
+
         recyclerView.setAdapter(listAdapter);
+        recyclerView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("aab","click");
+                switch(v.getId()){
+                    case R.id.delete:
+                        Log.i("aab","delete");
+                        listAdapter.remove(recyclerView.getChildAdapterPosition(v));
+                }
+            }
+        });
 
     }
 
@@ -71,6 +96,13 @@ public class Activity_editRoom_roomPic extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case android.R.id.home:
+                Intent it = getIntent();
+                it.putExtra("list", list);
+                setResult(1, it);
+                finish();
+                return true;
+
             case R.id.camera:
                 // camera 이 눌렸을 경우 이벤트 발생
                 mImagePicker.openCamera(new CallbackForCamera() {
@@ -82,7 +114,6 @@ public class Activity_editRoom_roomPic extends Activity {
                     public void onComplete(String imagePath) {
                         list.add(imagePath);
                     }
-
                     @Override
                     public void onCancel(String imagePath) {
                         Toast.makeText(getApplicationContext(), "실패..", Toast.LENGTH_SHORT).show();

@@ -22,6 +22,8 @@ import kr.popcorn.sharoom.R;
  */
 public class Helper_roomPicListAdapter extends RecyclerView.Adapter<Helper_roomPicListAdapter.ViewHolder> {
 
+    private Helper_adapterCommunication mListener;
+
     private Context mContext;
     private LinearLayoutManager linearLayoutManager;
     private ArrayList<String> list;
@@ -67,6 +69,10 @@ public class Helper_roomPicListAdapter extends RecyclerView.Adapter<Helper_roomP
         notifyItemInserted(position);
     }
 
+    public void setOnClickListener(Helper_adapterCommunication listener){
+        mListener = listener;
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public ImageView roompic;
         public ImageButton deleteButton;
@@ -91,14 +97,11 @@ public class Helper_roomPicListAdapter extends RecyclerView.Adapter<Helper_roomP
 
         @Override
         public void onClick(View v) {
-            //TODO
             switch (v.getId()){
                 case R.id.delete:
-                    list.remove(getAdapterPosition());
-                    notifyDataSetChanged();
+                    mListener.removeItem(getAdapterPosition());
                     break;
             }
         }
-
     }
 }

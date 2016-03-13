@@ -3,4 +3,6 @@
     <style name="AppTheme" parent="android:Theme.Material.Light">
         <item name="android:windowNoTitle">true</item>
     </style>
+    <style name="EditRoomPicTheme" parent="android:Theme.Material.Light">
+    </style>
 </resources>

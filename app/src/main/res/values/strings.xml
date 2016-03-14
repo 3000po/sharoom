@@ -48,4 +48,7 @@
 
     <string name="camera">카메라</string>
     <string name="gallery">갤러리</string>
+
+    <string name="map_button">Find</string>
+    <string name="hnt_et_location">Enter location</string>
 </resources>

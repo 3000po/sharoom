@@ -42,13 +42,7 @@ dependencies {
         }
     }
     compile fileTree(dir: 'libs', include: ['*.jar'])
-
-    compile group: 'com.ibm.mobilefirstplatform.clientsdk.android',
-            name:'facebookauthentication',
-            version: '2.+',
-            ext: 'aar',
-            transitive: true
-
+    compile 'com.ibm.mobilefirstplatform.clientsdk.android:facebookauthentication:2.+@aar'
     //compile 'com.google.android.gms:play-services:8.3.0'
     compile 'com.ibm.mobilefirstplatform.clientsdk.android:facebookauthentication:2.+@aar'
     compile 'com.android.support:appcompat-v7:21.0.3'
@@ -63,4 +57,5 @@ dependencies {
     compile 'com.yqritc:recyclerview-flexibledivider:1.2.5'
     compile 'me.yokeyword:imagepicker:0.2.1'
     compile 'com.loopj.android:android-async-http:1.4.9'
+    compile 'com.google.android.gms:play-services-maps:8.3.0'
 }

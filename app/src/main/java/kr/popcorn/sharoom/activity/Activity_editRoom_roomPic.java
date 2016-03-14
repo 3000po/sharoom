@@ -39,7 +39,7 @@ import me.yokeyword.imagepicker.callback.CallbackForImagePicker;
  * Created by user on 16. 3. 13.
  */
 
-//TODO 리스트 , 미리보기
+
 public class Activity_editRoom_roomPic extends Activity {
 
     private RecyclerView recyclerView;

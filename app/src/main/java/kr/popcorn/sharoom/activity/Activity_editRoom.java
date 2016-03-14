@@ -5,9 +5,11 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -61,7 +63,7 @@ public class Activity_editRoom extends Activity  implements View.OnClickListener
         dialogGal.setOnClickListener(this);
 
         mImagePicker = new ImagePicker(this);
-        list = new ArrayList<String>();
+        loadData();
     }
 
     @Override
@@ -127,12 +129,63 @@ public class Activity_editRoom extends Activity  implements View.OnClickListener
         switch (resultCode){
             case PICK_THE_ALBUM:
                 list = data.getStringArrayListExtra("list");
-
-                picButton.setImageURI(Uri.fromFile(new File(list.get(0))));
+                saveData();
                 break;
         }
 
         mImagePicker.delegateActivityResult(requestCode, resultCode, data);
+    }
+
+
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        loadData();
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        saveData();
+    }
+
+    private void saveData(){
+        Log.i("aab","saved");
+        SharedPreferences shrdPref = PreferenceManager
+                .getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor edt = shrdPref.edit();
+
+        // 저장
+        edt.putInt("picCount", list.size());
+        for(int i=0; i<list.size(); i++){
+            edt.putString("pic"+i, list.get(i));
+        }
+
+        // 수행
+        edt.commit();
+    }
+
+    private void loadData(){
+        Log.i("aab","Loaded");
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(getApplicationContext());
+
+        // 로드
+        int size = prefs.getInt("picCount",0);
+        ArrayList<String> arrayList = new ArrayList<>();
+
+        for (int i = 0; i < size; i++) {
+            arrayList.add(prefs.getString("pic" + i, null));
+        }
+
+        list = arrayList;
+
+        if( list.size() > 0 ) {
+            picButton.setImageURI( Uri.fromFile( new File(list.get(0))));
+        }else{
+            picButton.setImageResource(R.drawable.roompic);
+        }
     }
 }
 

@@ -42,8 +42,13 @@ dependencies {
         }
     }
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.ibm.mobilefirstplatform.clientsdk.android:facebookauthentication:2.+@aar'
     //compile 'com.google.android.gms:play-services:8.3.0'
+
+    compile group: 'com.ibm.mobilefirstplatform.clientsdk.android',
+            name:'facebookauthentication',
+                version: '2.+',
+                ext: 'aar',
+                transitive: true
     compile 'com.ibm.mobilefirstplatform.clientsdk.android:facebookauthentication:2.+@aar'
     compile 'com.android.support:appcompat-v7:21.0.3'
     compile 'com.android.support:recyclerview-v7:21.0.3'

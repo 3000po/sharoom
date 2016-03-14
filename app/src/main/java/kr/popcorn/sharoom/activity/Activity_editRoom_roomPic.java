@@ -185,7 +185,7 @@ public class Activity_editRoom_roomPic extends Activity {
     private void saveData(){
         Log.i("aab","saved");
         // 특정번호의 공유저장소를 편집가능 상태로 불러온다.
-        SharedPreferences.Editor edt = getPreferences(0).edit();
+        SharedPreferences.Editor edt = getSharedPreferences("room", 0).edit();
 
         // 저장
         edt.putInt("picCount", list.size());

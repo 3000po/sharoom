@@ -152,7 +152,7 @@ public class Activity_editRoom extends Activity  implements View.OnClickListener
     private void saveData(){
         Log.i("aab","saved");
         // 특정번호의 공유저장소를 편집가능 상태로 불러온다.
-        SharedPreferences.Editor edt = getPreferences(0).edit();
+        SharedPreferences.Editor edt = getSharedPreferences("room",0).edit();
 
         // 저장
         edt.putInt("picCount", list.size());
@@ -167,7 +167,7 @@ public class Activity_editRoom extends Activity  implements View.OnClickListener
     private void loadData(){
         Log.i("aab","Loaded");
         // 저장소 객체를 생성
-        SharedPreferences prefs = getPreferences(0);
+        SharedPreferences prefs = getSharedPreferences("room",0);
 
         // 로드
         int size = prefs.getInt("picCount",0);

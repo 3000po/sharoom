@@ -2,10 +2,12 @@ package kr.popcorn.sharoom.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
@@ -75,6 +77,7 @@ public class Activity_editRoom_roomPic extends Activity {
         listAdapter.setOnClickListener(new Helper_adapterCommunication(){
             public void removeItem(int position){
                 list.remove(position);
+                saveData();
                 updateTitle();
                 listAdapter.notifyDataSetChanged();
             }
@@ -144,6 +147,7 @@ public class Activity_editRoom_roomPic extends Activity {
         public void onComplete(String imagePath) {
             list.add(imagePath);
             listAdapter.setList(list);
+            saveData();
             listAdapter.notifyDataSetChanged();
             updateTitle();
         }
@@ -165,6 +169,7 @@ public class Activity_editRoom_roomPic extends Activity {
         public void onComplete(List<String> imagePath) {
             list.addAll(imagePath);
             listAdapter.setList(list);
+            saveData();
             listAdapter.notifyDataSetChanged();
             updateTitle();
         }
@@ -176,4 +181,20 @@ public class Activity_editRoom_roomPic extends Activity {
 
         mImagePicker.delegateActivityResult(requestCode, resultCode, data);
     }
+
+    private void saveData(){
+        Log.i("aab","saved");
+        // 특정번호의 공유저장소를 편집가능 상태로 불러온다.
+        SharedPreferences.Editor edt = getPreferences(0).edit();
+
+        // 저장
+        edt.putInt("picCount", list.size());
+        for(int i=0; i<list.size(); i++){
+            edt.putString("pic"+i, list.get(i));
+        }
+
+        // 수행
+        edt.commit();
+    }
+
 }

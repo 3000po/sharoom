@@ -72,7 +72,6 @@ public class Activity_editRoom extends Activity  implements View.OnClickListener
             case R.id.picture:
                 if(list.size() == 0 ) dialog.show();
                 else{
-                    //TODO 새액티비티 띄워서 거기서 리스트보여주고 삭제가능하게하고 사진 추가(카메라,앨범) 가능하게해야함
                     openActivity();
                 }
                 break;

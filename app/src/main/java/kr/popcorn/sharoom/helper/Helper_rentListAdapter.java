@@ -91,7 +91,6 @@ public class Helper_rentListAdapter extends RecyclerView.Adapter<Helper_rentList
 
         @Override
         public void onClick(View v) {
-            //TODO
         }
 
     }

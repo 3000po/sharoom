@@ -156,19 +156,19 @@
                         android:id="@+id/confirm1"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/app_logo">
+                        android:src="@drawable/facebook_gray">
                     </ImageView>
                     <ImageView
                         android:id="@+id/confirm2"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/app_logo">
+                        android:src="@drawable/facebook_green">
                     </ImageView>
                     <ImageView
                         android:id="@+id/confirm3"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/app_logo">
+                        android:src="@drawable/phone_gray">
                     </ImageView>
                 </LinearLayout>
                 <LinearLayout
@@ -181,7 +181,7 @@
                         android:id="@+id/confirm4"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/app_logo">
+                        android:src="@drawable/phone_green">
                     </ImageView>
                     <ImageView
                         android:id="@+id/confirm5"

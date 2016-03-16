@@ -25,6 +25,7 @@ public class Activity_myself extends Activity {
         myface= (ImageView)findViewById(R.id.myface);
         myface.getDrawable();
         init();
+
     }
 
     void init(){

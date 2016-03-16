@@ -89,14 +89,16 @@
                     android:layout_height = "50dp"
                     android:orientation="horizontal"
                     android:layout_gravity="center_vertical"
+                    android:gravity="center_horizontal"
                     android:layout_marginTop="10dp">
+
                     <TextView
                         android:id="@+id/tv_login_id"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="40dp"
-                        android:layout_weight = "2"
+
                         android:layout_marginTop="5dp"
-                        android:gravity="center"
+                        android:gravity="center_horizontal"
                         android:text="평점"
                         android:textColor="@color/activity_main_app_name"
                         android:textSize="20sp"
@@ -104,15 +106,18 @@
                     </TextView>
 
                     <RatingBar
+                        style="@style/heartRatingBar"
                         android:id="@+id/myrating"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:rating="3"
+                        android:gravity="center_horizontal"
+                        android:layout_margin="5dp"
                         android:numStars="5"
-                        android:stepSize="1"
-                        android:isIndicator="true"
-                        />
+                        android:stepSize="0.5"
+                        android:rating="0.0"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:soundEffectsEnabled="true"/>
                 </LinearLayout>
 
             <LinearLayout
@@ -130,7 +135,7 @@
                     android:text="인증"
                     android:layout_marginBottom="20dp"
                     android:textColor="@color/activity_main_app_name"
-                    android:textSize="25sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" >
                 </TextView>
 

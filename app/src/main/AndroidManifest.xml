@@ -71,21 +71,24 @@
             android:name=".activity.Activity_myself"
             android:label="@string/title_activity_activity_myself"
             android:theme="@android:style/Theme.Holo.NoActionBar">
-        </activity>
 
-        <activity android:name=".activity.Activity_editRoom">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+
+        <activity android:name=".activity.Activity_editRoom">
+        </activity>
+
         <activity android:name=".activity.Activity_editRoom_roomPic"
             android:theme="@style/EditRoomPicTheme">
         </activity>
+
         <activity android:name=".helper.Helper_roomPicPreview"
             android:theme="@style/EditRoomPicTheme">
-
         </activity>
 
         <activity android:name=".activity.Activity_largeMap">

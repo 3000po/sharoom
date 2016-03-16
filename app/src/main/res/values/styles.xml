@@ -88,9 +88,9 @@
 
     <style name="heartRatingBar" parent="@android:style/Widget.RatingBar">
         <item name ="android:indeterminateOnly">false</item>
-        <item name="android:progressDrawable">@drawable/ic_action_mapview_g</item>
-        <item name="android:minHeight">57dip</item>
-        <item name="android:maxHeight">57dip</item>
+        <item name="android:progressDrawable">@drawable/custom_ratingbar_full</item>
+        <item name="android:minHeight">40dip</item>
+        <item name="android:maxHeight">40dip</item>
         <item name="android:thumb">@null</item> 
     </style>
 

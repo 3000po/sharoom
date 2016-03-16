@@ -16,6 +16,10 @@
         android:padding="@dimen/activity_layout_header_padding"
         android:visibility="gone"
          >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
     <!-- android:padding="@color/activity_layout_header_background" -->

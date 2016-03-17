@@ -179,14 +179,6 @@
                         android:textSize="20sp"
                         android:textStyle="bold" >
                     </Button>
-
-                    <com.facebook.login.widget.LoginButton
-                        android:id="@+id/login_button"
-                        android:layout_width="0dp"
-                        android:layout_height="50dp"
-                        android:layout_weight="33"
-                        android:layout_marginTop="5dp"
-                        android:layout_gravity="center_horizontal" />
                 </LinearLayout>
             </LinearLayout>
 

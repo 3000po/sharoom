@@ -7,7 +7,7 @@ import com.loopj.android.http.*;
  */
 public class Helper_server {
 
-    private static final String BASE_URL = "http://192.168.168.111:52273/";
+    private static final String BASE_URL = "http://14.63.227.200/";
 
     private static AsyncHttpClient client = new AsyncHttpClient();
 

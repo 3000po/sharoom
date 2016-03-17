@@ -10,13 +10,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
-import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
-import com.ibm.mobilefirstplatform.clientsdk.android.security.api.AuthorizationManager;
 import com.loopj.android.http.*;
 
 import cz.msebera.android.httpclient.Header;
@@ -78,7 +71,7 @@ public class Activity_login2 extends Activity {
                                              params.put("password", password);
 
 
-                                             Helper_server.get("", params, new AsyncHttpResponseHandler() {
+                                             Helper_server.post("login.php", params, new AsyncHttpResponseHandler() {
                                                  @Override
 
                                                  public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {

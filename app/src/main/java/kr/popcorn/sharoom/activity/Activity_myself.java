@@ -31,6 +31,7 @@ public class Activity_myself extends Activity {
     void init(){
 
         Bitmap face = BitmapFactory.decodeResource(getBaseContext().getResources(),R.drawable.myself_50x50);
+        
         myface.setImageBitmap(getCircleBitmap(face));
 
     }

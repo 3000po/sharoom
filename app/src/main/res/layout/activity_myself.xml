@@ -69,7 +69,7 @@
                 android:layout_height="150dp"
                 android:layout_marginTop="50dp"
                 android:layout_gravity="center_vertical|center_horizontal|center"
-                android:src="@drawable/app_logo" >
+                android:src="@drawable/myself_50x50" >
             </ImageView>
 
             <TextView

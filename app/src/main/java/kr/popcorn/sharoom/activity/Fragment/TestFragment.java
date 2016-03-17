@@ -1,8 +1,12 @@
 package kr.popcorn.sharoom.activity.Fragment;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Layout;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,12 +15,14 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 
+import kr.popcorn.sharoom.R;
+import kr.popcorn.sharoom.activity.Activity_roomList;
 import kr.popcorn.sharoom.helper.Helper_rentListAdapter;
 
 public final class TestFragment extends Fragment {
     private static final String KEY_CONTENT = "TestFragment:Content";
 
-    final int NOTICE = 0;
+    final int ROOMLIST = 0;
     final int CALENDAR = 1;
     final int COMUNICATION = 2;
     final int ETC = 3;
@@ -24,6 +30,7 @@ public final class TestFragment extends Fragment {
     private View view;
 
     public RecyclerView recyclerView;
+
     public Helper_rentListAdapter rentListAdapter;
 
     public static TestFragment newInstance(String content) {
@@ -34,7 +41,7 @@ public final class TestFragment extends Fragment {
             builder.append(content).append(" ");
         }
         builder.deleteCharAt(builder.length() - 1);
-        fragment.mContent = builder.toString();
+        fragment.mContent = content;
 
         return fragment;
     }
@@ -42,8 +49,9 @@ public final class TestFragment extends Fragment {
     private String mContent = "???";
 
     private void setAdapterView(LayoutInflater inflater, ViewGroup container, int cases){
-/*        view = inflater.inflate(R.layout.list);
-        if( cases == 1 ){
+        view = inflater.inflate(R.layout.activity_list, container, false);
+        recyclerView = (RecyclerView) view.findViewById(R.id.list);
+        /*if( cases == 1 ){
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             recyclerView.setItemAnimator(new DefaultItemAnimator());
 
@@ -65,6 +73,12 @@ public final class TestFragment extends Fragment {
             return;
         }
 */
+
+        if(cases == ROOMLIST){
+            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+            recyclerView.setItemAnimator(new DefaultItemAnimator());
+            //recyclerView.setAdapter(new Activity_roomList().contactAdapter);
+        }
     }
 
 
@@ -80,9 +94,18 @@ public final class TestFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        if(mContent.equalsIgnoreCase("f")){ //Ignore Lower Upper case
-            //setAdapterView(inflater, container, 1);
-        }else if(mContent.equalsIgnoreCase("w")){
+        if(mContent.equalsIgnoreCase("a")){ //Ignore Lower Upper case
+            //setAdapterView(inflater, container, ROOMLIST);
+          //  LinearLayout layout = new LinearLayout(getActivity());
+          //  layout.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
+         //   layout.setGravity(Gravity.CENTER);
+
+            //Activity l =  (Activity) new Activity_roomList();
+            //LinearLayout layout = (LinearLayout) l.findViewById(R.id.roomlist);
+
+            //return inflater.inflate(R.layout.activity_list, container, false);
+        }
+        else if(mContent.equalsIgnoreCase("w")){
             TextView text = new TextView(getActivity());
             text.setGravity(Gravity.CENTER);
             text.setText(mContent);

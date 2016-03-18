@@ -57,7 +57,6 @@
                 android:id="@+id/ll_center_content"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/blank"
                 android:orientation="vertical"
                 >
                 <android.support.v4.view.ViewPager

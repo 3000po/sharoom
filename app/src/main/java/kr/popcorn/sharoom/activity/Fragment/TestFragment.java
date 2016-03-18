@@ -15,9 +15,12 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import kr.popcorn.sharoom.R;
-import kr.popcorn.sharoom.activity.Activity_roomList;
+
 import kr.popcorn.sharoom.helper.Helper_rentListAdapter;
+import kr.popcorn.sharoom.helper.Helper_roomData;
 
 public final class TestFragment extends Fragment {
     private static final String KEY_CONTENT = "TestFragment:Content";
@@ -74,10 +77,25 @@ public final class TestFragment extends Fragment {
         }
 */
 
+        Helper_roomData first = new Helper_roomData();
+        ArrayList<Helper_roomData> se = new ArrayList<Helper_roomData>();
+        se.add(first);
+        se.add(first);
+        se.add(first);
+        se.add(first);
+        se.add(first);
+        se.add(first);
+        se.add(first);
         if(cases == ROOMLIST){
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             recyclerView.setItemAnimator(new DefaultItemAnimator());
-            //recyclerView.setAdapter(new Activity_roomList().contactAdapter);
+
+            rentListAdapter = new Helper_rentListAdapter(getActivity(),
+                    se,
+                    (LinearLayoutManager) recyclerView.getLayoutManager());
+            recyclerView.setAdapter(rentListAdapter);
+
+            return;
         }
     }
 
@@ -104,6 +122,8 @@ public final class TestFragment extends Fragment {
             //LinearLayout layout = (LinearLayout) l.findViewById(R.id.roomlist);
 
             //return inflater.inflate(R.layout.activity_list, container, false);
+            setAdapterView(inflater, container, ROOMLIST);
+            return view;
         }
         else if(mContent.equalsIgnoreCase("w")){
             TextView text = new TextView(getActivity());

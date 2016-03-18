@@ -36,7 +36,6 @@ public class Helper_rentListAdapter extends RecyclerView.Adapter<Helper_rentList
         list = _dataSet;
         this.linearLayoutManager = linearLayoutManager;
     }
-
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(mContext)
@@ -49,6 +48,8 @@ public class Helper_rentListAdapter extends RecyclerView.Adapter<Helper_rentList
     public void onBindViewHolder(ViewHolder holder, int position) {
         //Picasso.with(mContext).load(new File(list.get(position).path)).into(holder.album);
 
+        holder.roomimage.setImageResource(R.drawable.ic_action_mapview_m);
+        holder.rating.setText(list.get(position).roomname);
         //holder.text.setText(tmp.substring(0,4));
     }
 
@@ -69,13 +70,16 @@ public class Helper_rentListAdapter extends RecyclerView.Adapter<Helper_rentList
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public ImageView album;
-        public TextView text;
+        public ImageView roomimage;
+        public TextView rating;
 
         public ViewHolder(View itemView) {
             super(itemView);
             //album = (ImageView) itemView.findViewById(R.id.album_art1);
             //text = (TextView) itemView.findViewById(R.id.year);
+
+            roomimage = (ImageView) itemView.findViewById(R.id.roomimage);
+            rating = (TextView) itemView.findViewById(R.id.roomrating);
 
             itemView.setClickable(true);
             itemView.setOnClickListener(this);

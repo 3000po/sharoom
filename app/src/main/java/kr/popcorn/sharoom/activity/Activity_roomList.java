@@ -30,6 +30,7 @@ import kr.popcorn.sharoom.helper.Helper_roomData;
 
         ArrayList<Helper_roomData> list = (ArrayList<Helper_roomData>) getIntent().getSerializableExtra("list");
 
+
         recyclerView = (RecyclerView) findViewById(R.id.list);
         recyclerView.addItemDecoration(new HorizontalDividerItemDecoration.Builder(this).
                 color(Color.LTGRAY).sizeResId(R.dimen.divider).marginResId(R.dimen.leftmargin, R.dimen.rightmargin).build());

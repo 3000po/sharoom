@@ -6,11 +6,13 @@
 
 
     <ImageView
+        android:id="@+id/roomimage"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:src="@drawable/ic_action_mapview_g"
         android:scaleType="fitXY"/>
     <TextView
+        android:id="@+id/roomrating"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:background="#80000000"

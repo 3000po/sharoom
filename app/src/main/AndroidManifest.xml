@@ -66,10 +66,6 @@
         <activity
             android:name=".activity.Fragment.Activity_group_view"
             android:theme="@android:style/Theme.Holo.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity
@@ -104,8 +100,18 @@
         <activity
             android:name=".activity.Activity_login2"
             android:theme="@android:style/Theme.Holo.NoActionBar">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
         </activity>
 
+        <activity
+            android:name=".activity.Activity_join2"
+            android:theme="@android:style/Theme.Holo.NoActionBar">
+        </activity>
 
     </application>
 

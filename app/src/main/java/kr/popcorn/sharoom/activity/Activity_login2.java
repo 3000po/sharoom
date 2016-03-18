@@ -87,5 +87,18 @@ public class Activity_login2 extends Activity {
 
 
         });
+
+        Button btn_join = (Button) findViewById(R.id.btn_join);
+
+        btn_join.setOnClickListener(new Button.OnClickListener() {
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Activity_login2.this, Activity_join2.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(intent);
+
+                }
+        });
+
     }
 }

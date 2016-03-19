@@ -42,10 +42,6 @@
         <activity
             android:name=".activity.Activity_intro"
             android:label="@string/app_name" >
-<<<<<<< HEAD
-
-=======
->>>>>>> 634baac3c4911df0832dc8e61164ed681d139af8
         </activity>
 
         <activity

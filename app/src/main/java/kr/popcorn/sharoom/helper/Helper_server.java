@@ -30,5 +30,4 @@ public class Helper_server {
         return BASE_URL + relativeUrl;
     }
 
-
 }

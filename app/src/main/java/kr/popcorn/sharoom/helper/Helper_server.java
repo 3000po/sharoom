@@ -22,10 +22,13 @@ public class Helper_server {
     public static void post(String url, RequestParams params, AsyncHttpResponseHandler responseHandler){
         client.post(getAbsoluteUrl(url), params, responseHandler);
     }
-
+    public static void loginPost(String url, AsyncHttpResponseHandler responseHandler){
+        client.post(getAbsoluteUrl(url), responseHandler);
+    }
 
     public static String getAbsoluteUrl(String relativeUrl){
         return BASE_URL + relativeUrl;
     }
+
 
 }

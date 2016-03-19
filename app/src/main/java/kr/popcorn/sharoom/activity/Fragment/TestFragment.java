@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 import kr.popcorn.sharoom.R;
 
+import kr.popcorn.sharoom.activity.TabView.TabView_myselfAdapter;
 import kr.popcorn.sharoom.activity.TabView.TabView_rentListAdapter;
 import kr.popcorn.sharoom.helper.Helper_roomData;
 
@@ -26,13 +27,14 @@ public final class TestFragment extends Fragment {
     final int ROOMLIST = 0;
     final int CALENDAR = 1;
     final int COMUNICATION = 2;
-    final int ETC = 3;
+    final int MyInformation = 5;
 
     private View view;
 
     public RecyclerView recyclerView;
 
     public TabView_rentListAdapter rentListAdapter;
+    public TabView_myselfAdapter myselfAdapter;
 
     public static TestFragment newInstance(String content) {
         TestFragment fragment = new TestFragment();
@@ -95,6 +97,16 @@ public final class TestFragment extends Fragment {
 
             return;
         }
+        else if(cases == MyInformation){
+            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+            recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+            myselfAdapter = new TabView_myselfAdapter(getActivity(),
+                    se,
+                    (LinearLayoutManager) recyclerView.getLayoutManager());
+            recyclerView.setAdapter(myselfAdapter);
+            return;
+        }
     }
 
 
@@ -149,8 +161,9 @@ public final class TestFragment extends Fragment {
             layout.addView(text);
 
             return layout;
-        }else if(mContent.equalsIgnoreCase("y")){;
-            setAdapterView(inflater, container, 4);
+        }else if(mContent.equalsIgnoreCase("e")){;
+            setAdapterView(inflater, container, MyInformation);
+            return view;
         }else {
 
             TextView text = new TextView(getActivity());
@@ -165,8 +178,6 @@ public final class TestFragment extends Fragment {
             layout.addView(text);
             return layout;
         }
-
-        return view;
     }
 
     @Override

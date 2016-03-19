@@ -33,6 +33,9 @@ import me.yokeyword.imagepicker.callback.CallbackForImagePicker;
 /**
  * Created by user on 16. 3. 12.
  */
+
+
+//방을 등록하기 위한 액티비티
 public class Activity_editRoom extends Activity  implements View.OnClickListener{
 
     public final int PICK_THE_ALBUM=1;
@@ -51,10 +54,15 @@ public class Activity_editRoom extends Activity  implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editroom);
 
+
+        //사진 클릭시 카메라와 갤러리에서 고를수있게 지원해주는 다이얼로그
         dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.activity_editroom_dialog);
+
         picButton = (ImageButton) findViewById(R.id.picture);
+
+        //다이얼로그의 카메라와 갤러리 버튼
         dialogCam = (ImageButton) dialog.findViewById(R.id.camera);
         dialogGal = (ImageButton) dialog.findViewById(R.id.gallery);
 
@@ -69,9 +77,12 @@ public class Activity_editRoom extends Activity  implements View.OnClickListener
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+
+            //방 사진을 눌렀을때 처리
             case R.id.picture:
+                //방에 사진이 하나도 없을경우 다이얼로그를 띄워서 카메라와 갤러리를 고를수있게해줌
                 if(list.size() == 0 ) dialog.show();
-                else{
+                else{   //사진이 하나이상 있을경우 사진편집 액티비티를 띄워서 그곳에서 방사진을 편집하게끔한다.
                     openActivity();
                 }
                 break;

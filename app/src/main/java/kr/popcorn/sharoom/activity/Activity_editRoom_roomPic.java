@@ -42,6 +42,7 @@ import me.yokeyword.imagepicker.callback.CallbackForImagePicker;
  */
 
 
+//Acitivity_editRoom에서 방사진목록을 따로 편집하기위한 액티비티
 public class Activity_editRoom_roomPic extends Activity {
 
     private RecyclerView recyclerView;
@@ -50,6 +51,7 @@ public class Activity_editRoom_roomPic extends Activity {
     private  ArrayList<String> list;
     private ImagePicker mImagePicker;
 
+    //방 사진 개수에 변동사항이있을떄 호출되서 현재 방사진이 몇개 올라왔는지 수정해준다.
     public void updateTitle(){
         getActionBar().setTitle("사진 "+list.size()+"장");
     }
@@ -59,12 +61,16 @@ public class Activity_editRoom_roomPic extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
+        //Activity_editRoom_roomPic에서 전달한 리스트를 불러온다.
         list = (ArrayList<String>) getIntent().getSerializableExtra("list");
         mImagePicker = new ImagePicker(this);
+        saveData(); //Activity_editRoom_roomPic에서 전달한 리스트를 저장한다. (강제종료됐을경우 리스트를 불러오기 위함)
 
-        getActionBar().setDisplayHomeAsUpEnabled(true);
-        updateTitle();
+        getActionBar().setDisplayHomeAsUpEnabled(true);     //액션바에 뒤로가기 버튼 추가
+        updateTitle();                                      //액션바 타이틀 수정
 
+
+        //RecyclerView(ListView)를 초기화해줌.
         recyclerView = (RecyclerView) findViewById(R.id.list);
         recyclerView.addItemDecoration(new HorizontalDividerItemDecoration.Builder(this).
                 color(Color.LTGRAY).sizeResId(R.dimen.divider).marginResId(R.dimen.leftmargin, R.dimen.rightmargin).build());
@@ -74,13 +80,18 @@ public class Activity_editRoom_roomPic extends Activity {
         listAdapter = new Helper_roomPicListAdapter(this,
                 list, (LinearLayoutManager) recyclerView.getLayoutManager());
 
+        //RecyclerView 각 원소에 버튼이 눌렸을때 처리
         listAdapter.setOnClickListener(new Helper_adapterCommunication(){
+
+            //삭제버튼이 눌렸을경우 지워주고 그 리스트를 저장한다.
             public void removeItem(int position){
                 list.remove(position);
                 saveData();
                 updateTitle();
                 listAdapter.notifyDataSetChanged();
             }
+
+            //원소가 길게 클릭될경우 해당사진을 크게보여준다.
             public void longClickItem(int position){
                 openPreview(position);
             }
@@ -88,6 +99,7 @@ public class Activity_editRoom_roomPic extends Activity {
         recyclerView.setAdapter(listAdapter);
     }
 
+    //롱클릭시 해당 사진부터 현재 업로드된 사진을 크게 보여준다.
     public void openPreview(int position){
         Intent it = new Intent(this, Helper_roomPicPreview.class);
         it.putExtra("list", list);
@@ -95,6 +107,7 @@ public class Activity_editRoom_roomPic extends Activity {
         startActivity(it);
     }
 
+    //뒤로가기버튼시 현재 리스트를 Activity_editRoom에 리턴해준다.
     @Override
     public void onBackPressed(){
         Intent it = getIntent();
@@ -103,6 +116,8 @@ public class Activity_editRoom_roomPic extends Activity {
         finish();
     }
 
+
+    //메뉴에 사진찍기버튼과 갤러리에서 불러오기버튼을 추가해준다.
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // inflater함수를 이용해서 menu 리소스를 menu로 변환.
@@ -113,9 +128,12 @@ public class Activity_editRoom_roomPic extends Activity {
         return super.onCreateOptionsMenu(menu);
     }
 
+
+    //메뉴의 버튼 클릭시 처리
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            //뒤로가기버튼시 현재 리스트를 Activity_editRoom에 리턴해준다.
             case android.R.id.home:
                 Intent it = getIntent();
                 it.putExtra("list", list);
@@ -123,11 +141,13 @@ public class Activity_editRoom_roomPic extends Activity {
                 finish();
                 return true;
 
+            //카메라버튼을 눌렀을때 카메라를 오픈해 사진을 찍을수 있게해준다.
             case R.id.camera:
                 // camera 이 눌렸을 경우 이벤트 발생
                 mImagePicker.openCamera(new CallbackForCam());
                 return true;
 
+            //갤러리버튼을 눌렀을때 갤러리를 불러와 사진을 선택할수있게해준다.
             case R.id.gallery:
                 // gallery 이 눌렸을 경우 이벤트 발생
                 mImagePicker.openImagePiker(true, new CallbackForGal());
@@ -138,6 +158,7 @@ public class Activity_editRoom_roomPic extends Activity {
         }
     }
 
+    //카메라로 사진 찍었을 경우 호출
     public class CallbackForCam implements CallbackForCamera{
         @Override
         public void onError(Exception error) {
@@ -161,6 +182,8 @@ public class Activity_editRoom_roomPic extends Activity {
             }
         }
     }
+
+    //갤러리에서 사진 선택시 호출
     public class CallbackForGal implements CallbackForImagePicker{
         @Override
         public void onError(Exception error) {
@@ -182,6 +205,7 @@ public class Activity_editRoom_roomPic extends Activity {
         mImagePicker.delegateActivityResult(requestCode, resultCode, data);
     }
 
+    //저장을 안하고 종료했을경우 현재 상태를 저장한다.
     private void saveData(){
         // 특정번호의 공유저장소를 편집가능 상태로 불러온다.
         SharedPreferences.Editor edt = getSharedPreferences("room", 0).edit();

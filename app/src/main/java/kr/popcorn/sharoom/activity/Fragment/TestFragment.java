@@ -1,5 +1,6 @@
 package kr.popcorn.sharoom.activity.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 
 import kr.popcorn.sharoom.R;
 
+import kr.popcorn.sharoom.activity.Activity_editRoom;
 import kr.popcorn.sharoom.activity.TabView.TabView_myselfAdapter;
 import kr.popcorn.sharoom.activity.TabView.TabView_rentListAdapter;
 import kr.popcorn.sharoom.helper.Helper_roomData;
@@ -30,11 +32,14 @@ public final class TestFragment extends Fragment {
     final int MyInformation = 5;
 
     private View view;
+    private View view2;
 
     public RecyclerView recyclerView;
 
     public TabView_rentListAdapter rentListAdapter;
     public TabView_myselfAdapter myselfAdapter;
+
+
 
     public static TestFragment newInstance(String content) {
         TestFragment fragment = new TestFragment();
@@ -54,6 +59,10 @@ public final class TestFragment extends Fragment {
     private void setAdapterView(LayoutInflater inflater, ViewGroup container, int cases){
         view = inflater.inflate(R.layout.activity_list, container, false);
         recyclerView = (RecyclerView) view.findViewById(R.id.list);
+
+
+       // inflater.
+
         /*if( cases == 1 ){
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -135,35 +144,15 @@ public final class TestFragment extends Fragment {
             setAdapterView(inflater, container, ROOMLIST);
             return view;
         }
-        else if(mContent.equalsIgnoreCase("w")){
-            TextView text = new TextView(getActivity());
-            text.setGravity(Gravity.CENTER);
-            text.setText(mContent);
-            text.setTextSize(20 * getResources().getDisplayMetrics().density);
-            text.setPadding(20, 20, 20, 20);
-
-            LinearLayout layout = new LinearLayout(getActivity());
-            layout.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
-            layout.setGravity(Gravity.CENTER);
-            layout.addView(text);
-
-            return layout;
-        }else if(mContent.equalsIgnoreCase("r")){
-            TextView text = new TextView(getActivity());
-            text.setGravity(Gravity.CENTER);
-            text.setText(mContent);
-            text.setTextSize(20 * getResources().getDisplayMetrics().density);
-            text.setPadding(20, 20, 20, 20);
-
-            LinearLayout layout = new LinearLayout(getActivity());
-            layout.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
-            layout.setGravity(Gravity.CENTER);
-            layout.addView(text);
-
-            return layout;
-        }else if(mContent.equalsIgnoreCase("e")){;
+        else if(mContent.equalsIgnoreCase("e")){;
             setAdapterView(inflater, container, MyInformation);
-            return view;
+            Activity_editRoom abc = new Activity_editRoom();
+
+            //view2 = abc.getLayoutInflater().inflate(R.layout.activity_editroom, container,false);
+            view2 = inflater.inflate(R.layout.activity_editroom, container,false);
+
+
+            return view2;
         }else {
 
             TextView text = new TextView(getActivity());
@@ -184,5 +173,6 @@ public final class TestFragment extends Fragment {
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putString(KEY_CONTENT, mContent);
+
     }
 }

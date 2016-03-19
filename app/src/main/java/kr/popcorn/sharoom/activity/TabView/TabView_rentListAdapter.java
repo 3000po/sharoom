@@ -1,7 +1,6 @@
-package kr.popcorn.sharoom.helper;
+package kr.popcorn.sharoom.activity.TabView;
 
 import android.content.Context;
-import android.media.ExifInterface;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,18 +9,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
-
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import kr.popcorn.sharoom.R;
+import kr.popcorn.sharoom.helper.Helper_roomData;
 
 /**
  * Created by user on 16. 3. 2.
  */
-public class Helper_rentListAdapter extends RecyclerView.Adapter<Helper_rentListAdapter.ViewHolder> {
+public class TabView_rentListAdapter extends RecyclerView.Adapter<TabView_rentListAdapter.ViewHolder> {
 
     private Context mContext;
     public ArrayList<Helper_roomData> list;
@@ -31,7 +27,7 @@ public class Helper_rentListAdapter extends RecyclerView.Adapter<Helper_rentList
         return list;
     }
 
-    public Helper_rentListAdapter(Context context, ArrayList<Helper_roomData> _dataSet, LinearLayoutManager linearLayoutManager) {
+    public TabView_rentListAdapter(Context context, ArrayList<Helper_roomData> _dataSet, LinearLayoutManager linearLayoutManager) {
         mContext = context;
         list = _dataSet;
         this.linearLayoutManager = linearLayoutManager;

@@ -1,4 +1,4 @@
-package kr.popcorn.sharoom.activity;
+package kr.popcorn.sharoom.activity.TabView;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -13,7 +13,7 @@ import android.widget.ImageView;
 
 import kr.popcorn.sharoom.R;
 
-public class Activity_myself extends Activity {
+public class TabView_myselfAdapter extends Activity {
 
     ImageView myface;
 

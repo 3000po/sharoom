@@ -1,12 +1,10 @@
 package kr.popcorn.sharoom.activity.Fragment;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.Layout;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +17,7 @@ import java.util.ArrayList;
 
 import kr.popcorn.sharoom.R;
 
-import kr.popcorn.sharoom.helper.Helper_rentListAdapter;
+import kr.popcorn.sharoom.activity.TabView.TabView_rentListAdapter;
 import kr.popcorn.sharoom.helper.Helper_roomData;
 
 public final class TestFragment extends Fragment {
@@ -34,7 +32,7 @@ public final class TestFragment extends Fragment {
 
     public RecyclerView recyclerView;
 
-    public Helper_rentListAdapter rentListAdapter;
+    public TabView_rentListAdapter rentListAdapter;
 
     public static TestFragment newInstance(String content) {
         TestFragment fragment = new TestFragment();
@@ -90,7 +88,7 @@ public final class TestFragment extends Fragment {
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-            rentListAdapter = new Helper_rentListAdapter(getActivity(),
+            rentListAdapter = new TabView_rentListAdapter(getActivity(),
                     se,
                     (LinearLayoutManager) recyclerView.getLayoutManager());
             recyclerView.setAdapter(rentListAdapter);

@@ -10,6 +10,8 @@ import kr.popcorn.sharoom.R;
 /**
  * Created by user on 16. 3. 2.
  */
+
+//TODO 방정보를 저장할 자료형 클래스
 public class Helper_roomData {
 
     public String roomname;

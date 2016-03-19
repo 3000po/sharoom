@@ -152,35 +152,6 @@ public class Activity_login extends Activity{
             }
         });
 
-
-        try {
-            BMSClient.getInstance().initialize(getApplicationContext(),
-                    "http://bangpool.au-syd.mybluemix.net",
-                    "68955bcb-5ea5-4ea1-b78b-4e5a642e0d51");
-
-            FacebookAuthenticationManager.getInstance().register(getApplicationContext());
-        }catch(MalformedURLException e){
-            e.printStackTrace();
-        }
-
-        Request request = new Request("/protected", Request.GET);
-        request.send(this, new ResponseListener() {
-            @Override
-            public void onSuccess (Response response) {
-                Log.d("Myapp", "onSuccess :: " + response.getResponseText());
-                Log.d("MyApp", AuthorizationManager.getInstance().getUserIdentity().toString());
-            }
-            @Override
-            public void onFailure (Response response, Throwable t, JSONObject extendedInfo) {
-                if (null != t) {
-                    Log.d("Myapp", "onFailure :: " + t.getMessage());
-                } else if (null != extendedInfo) {
-                    Log.d("Myapp", "onFailure :: " + extendedInfo.toString());
-                } else {
-                    Log.d("Myapp", "onFailure :: " + response.getResponseText());
-                }
-            }
-        });
     }
 
     @Override
@@ -188,8 +159,6 @@ public class Activity_login extends Activity{
         callbackManager.onActivityResult(requestCode, resultCode, data);
 
         super.onActivityResult(requestCode, resultCode, data);
-        FacebookAuthenticationManager.getInstance()
-                .onActivityResultCalled(requestCode, resultCode, data);
     }
 
     private boolean isNetworkAvailable(){

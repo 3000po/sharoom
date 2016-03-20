@@ -1,6 +1,8 @@
 package kr.popcorn.sharoom.activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -109,6 +111,9 @@ public class Activity_login2 extends Activity {
                                                          startActivity(intent);
 
                                                      }
+                                                     else{
+                                                         loginAlert();
+                                                     }
                                                  }
 
                                                  @Override
@@ -141,5 +146,22 @@ public class Activity_login2 extends Activity {
 
         );
 
-        }
+        }//onCreateEnd
+
+    public void loginAlert() {
+        AlertDialog.Builder alert = new AlertDialog.Builder(Activity_login2.this);
+        alert.setTitle("로그인 실패");
+        alert.setMessage("아이디 혹은 비밀번호가 확인해주세요 ");
+        alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                et_id.setText(null);
+                et_password.setText(null);
+            }
+        });
+        alert.show();
     }
+
+    public void onBackPressed(){
+        finish();
+    }
+}

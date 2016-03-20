@@ -96,7 +96,7 @@
                         android:layout_height="40dp"
                         android:layout_weight ="1"
                         android:layout_gravity="center"
-                        android:hint="5~20자리 숫자를 입력하세요"
+                        android:hint="5~20문자"
                         android:imeOptions="actionNext"
                         android:singleLine = "true"
                         android:lines = "1"

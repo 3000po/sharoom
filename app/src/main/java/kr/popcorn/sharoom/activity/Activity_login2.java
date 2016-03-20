@@ -15,7 +15,10 @@ import com.loopj.android.http.*;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.List;
+
 import cz.msebera.android.httpclient.Header;
+import cz.msebera.android.httpclient.cookie.Cookie;
 import cz.msebera.android.httpclient.impl.cookie.BasicClientCookie;
 import kr.popcorn.sharoom.R;
 import kr.popcorn.sharoom.activity.Fragment.Activity_group_view;
@@ -44,30 +47,12 @@ public class Activity_login2 extends Activity {
         final PersistentCookieStore myCookieStore = new PersistentCookieStore(this);
         client.setCookieStore(myCookieStore);
 
-        Helper_server.loginPost("alreadylogin.php", new JsonHttpResponseHandler() {
-            @Override
-
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                String data="false";
-                try{
-                    data = response.get("login").toString();
-                } catch(JSONException e){
-                    e.printStackTrace();
+        //자동 로그인 파트.
+        if (Helper_server.login(myCookieStore)) {
+                Intent intent = new Intent(Activity_login2.this, Activity_group_view.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(intent);
                 }
-                Log.d("testLog", ""+data);
-                if(data.equals("true")){
-                    Intent intent = new Intent(Activity_login2.this, Activity_group_view.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                    startActivity(intent);
-                }
-
-            }
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                super.onFailure(statusCode, headers, responseString, throwable);
-                Log.d("Failed: ", ""+statusCode);
-                Log.d("Error : ", "" + throwable);
-            }
-        });
 
             et_password.setOnKeyListener(new View.OnKeyListener() {
                                              @Override

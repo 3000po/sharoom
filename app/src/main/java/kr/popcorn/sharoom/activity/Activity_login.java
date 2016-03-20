@@ -21,6 +21,7 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
@@ -34,6 +35,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Arrays;
 
 import kr.popcorn.sharoom.R;
 
@@ -63,6 +65,11 @@ public class Activity_login extends Activity{
 
 
         loginButton = (LoginButton)findViewById(R.id.login_button);
+
+        //loginButton.setPublishPermissions(Arrays.asList("public_profile", "user_friends", "email"));
+        //LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile","user_friends","email"));
+        loginButton.setReadPermissions(Arrays.asList("public_profile","user_friends","email"));
+
 
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override

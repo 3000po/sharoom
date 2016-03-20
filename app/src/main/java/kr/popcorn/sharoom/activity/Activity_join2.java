@@ -36,6 +36,7 @@ import cz.msebera.android.httpclient.Header;
 import kr.popcorn.sharoom.activity.Activity_login;
 import kr.popcorn.sharoom.R;
 import kr.popcorn.sharoom.helper.Helper_checker;
+import kr.popcorn.sharoom.helper.Helper_network;
 import kr.popcorn.sharoom.helper.Helper_server;
 
 /**
@@ -70,6 +71,7 @@ public class Activity_join2 extends Activity {
         // activity_layout.xml을 복사해서
         // 만듦
         final form_basic form_basic = new form_basic();
+        final Helper_network network_check = new Helper_network(this);
 
         form_basic.et_id = (EditText) findViewById(R.id.et_join_id);
         form_basic.et_password = (EditText) findViewById(R.id.et_join_password);
@@ -102,7 +104,7 @@ public class Activity_join2 extends Activity {
 
         View.OnClickListener requestJoin = new View.OnClickListener() {
             public void onClick(View v) {
-                if (isNetworkAvailable()) {
+                if (network_check.isNetWork()) {
                     RequestParams params = new RequestParams();
 
                     String id = form_basic.et_id.getText().toString();
@@ -154,7 +156,7 @@ public class Activity_join2 extends Activity {
 
         View.OnClickListener idCheck = new View.OnClickListener() {
             public void onClick(View v) {
-                if (isNetworkAvailable()) {
+                if (network_check.isNetWork()) {
                     String id = form_basic.et_id.getText().toString();
 
                     if (!Helper_checker.validId_context(Activity_join2.this, id)) {
@@ -185,7 +187,7 @@ public class Activity_join2 extends Activity {
                                                          InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
                                                          imm.hideSoftInputFromWindow(form_basic.et_email.getWindowToken(), 0);    //hide keyboard
 
-                                                         if (isNetworkAvailable()) {
+                                                         if (network_check.isNetWork()) {
                                                              String id = form_basic.et_id.getText().toString();
                                                              String password = form_basic.et_password.getText().toString();
                                                              String name = form_basic.et_name.getText().toString();
@@ -215,16 +217,6 @@ public class Activity_join2 extends Activity {
                                              }
 
         );
-    }
-
-    private boolean isNetworkAvailable(){
-        boolean available = false;
-        ConnectivityManager connMgr= (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        if(networkInfo != null & networkInfo.isAvailable())
-            available = true;
-
-        return available;
     }
 
     private void downloadUrl(String php) throws IOException {

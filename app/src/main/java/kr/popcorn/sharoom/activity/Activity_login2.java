@@ -52,7 +52,7 @@ public class Activity_login2 extends Activity {
                 Intent intent = new Intent(Activity_login2.this, Activity_group_view.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
-                }
+        }
 
             et_password.setOnKeyListener(new View.OnKeyListener() {
                                              @Override
@@ -61,11 +61,6 @@ public class Activity_login2 extends Activity {
                                                  if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
                                                      InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
                                                      imm.hideSoftInputFromWindow(et_password.getWindowToken(), 0);    //hide keyboard
-
-                                                     //login source
-                                                     RequestParams params = new RequestParams();
-
-
                                                      return true;
                                                  }
                                                  return false;

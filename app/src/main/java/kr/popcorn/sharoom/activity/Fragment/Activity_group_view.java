@@ -9,7 +9,11 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.PersistentCookieStore;
+
 import kr.popcorn.sharoom.R;
+import kr.popcorn.sharoom.helper.Helper_server;
 
 public class Activity_group_view extends FragmentActivity {
 
@@ -22,6 +26,11 @@ public class Activity_group_view extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_view);
+
+        AsyncHttpClient client = Helper_server.getInstance();
+        final PersistentCookieStore myCookieStore = new PersistentCookieStore(this);
+        Helper_server.logout(myCookieStore);
+        client.setCookieStore(myCookieStore);
 
         mAdapter = new TestFragmentAdapter(getSupportFragmentManager());
 

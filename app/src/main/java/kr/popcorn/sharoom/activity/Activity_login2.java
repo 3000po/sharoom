@@ -1,6 +1,8 @@
 package kr.popcorn.sharoom.activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,7 +17,10 @@ import com.loopj.android.http.*;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.List;
+
 import cz.msebera.android.httpclient.Header;
+import cz.msebera.android.httpclient.cookie.Cookie;
 import cz.msebera.android.httpclient.impl.cookie.BasicClientCookie;
 import kr.popcorn.sharoom.R;
 import kr.popcorn.sharoom.activity.Fragment.Activity_group_view;
@@ -44,30 +49,12 @@ public class Activity_login2 extends Activity {
         final PersistentCookieStore myCookieStore = new PersistentCookieStore(this);
         client.setCookieStore(myCookieStore);
 
-        Helper_server.loginPost("alreadylogin.php", new JsonHttpResponseHandler() {
-            @Override
-
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                String data="false";
-                try{
-                    data = response.get("login").toString();
-                } catch(JSONException e){
-                    e.printStackTrace();
-                }
-                Log.d("testLog", ""+data);
-                if(data.equals("true")){
-                    Intent intent = new Intent(Activity_login2.this, Activity_group_view.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                    startActivity(intent);
-                }
-
-            }
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                super.onFailure(statusCode, headers, responseString, throwable);
-                Log.d("Failed: ", ""+statusCode);
-                Log.d("Error : ", "" + throwable);
-            }
-        });
+        //자동 로그인 파트.
+        if (Helper_server.login(myCookieStore)) {
+                Intent intent = new Intent(Activity_login2.this, Activity_group_view.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(intent);
+        }
 
             et_password.setOnKeyListener(new View.OnKeyListener() {
                                              @Override
@@ -76,11 +63,6 @@ public class Activity_login2 extends Activity {
                                                  if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
                                                      InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
                                                      imm.hideSoftInputFromWindow(et_password.getWindowToken(), 0);    //hide keyboard
-
-                                                     //login source
-                                                     RequestParams params = new RequestParams();
-
-
                                                      return true;
                                                  }
                                                  return false;
@@ -129,6 +111,9 @@ public class Activity_login2 extends Activity {
                                                          startActivity(intent);
 
                                                      }
+                                                     else{
+                                                         loginAlert();
+                                                     }
                                                  }
 
                                                  @Override
@@ -161,5 +146,22 @@ public class Activity_login2 extends Activity {
 
         );
 
-        }
+        }//onCreateEnd
+
+    public void loginAlert() {
+        AlertDialog.Builder alert = new AlertDialog.Builder(Activity_login2.this);
+        alert.setTitle("로그인 실패");
+        alert.setMessage("아이디 혹은 비밀번호가 확인해주세요 ");
+        alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                et_id.setText(null);
+                et_password.setText(null);
+            }
+        });
+        alert.show();
     }
+
+    public void onBackPressed(){
+        finish();
+    }
+}

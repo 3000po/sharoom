@@ -96,22 +96,20 @@
                         android:layout_height="40dp"
                         android:layout_weight ="1"
                         android:layout_gravity="center"
-                        android:hint="input data"
+                        android:hint="5~20문자"
                         android:imeOptions="actionNext"
                         android:singleLine = "true"
                         android:lines = "1"
                         />
-                    <Button
-                        android:id="@+id/btn_join_idcheck"
+                    <TextView
+                        android:id="@+id/tv_idcheck"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:text="@string/btn_join_idcheck"
+                        android:layout_weight ="1"
+                        android:gravity="center"
                         android:textColor="@color/activity_main_app_name"
-                        android:textSize="10sp"
-                        android:textStyle="bold"
-                        />
+                        android:textSize="25sp" >
+                    </TextView>
                 </LinearLayout>
 
                 <LinearLayout

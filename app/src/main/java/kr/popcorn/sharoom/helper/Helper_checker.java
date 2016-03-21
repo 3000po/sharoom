@@ -54,7 +54,7 @@ public class Helper_checker {
 
     public static boolean id_check_ok(Context context, boolean id_check){
         if(!id_check){
-            Toast.makeText(context, "아이디 중복검사를 해아합니다. ", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "중복된 아이디 입니다. ", Toast.LENGTH_LONG).show();
             return false;
         }
         return true;

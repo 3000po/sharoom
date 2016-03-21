@@ -95,27 +95,32 @@ public final class TestFragment extends Fragment {
         se.add(first);
         se.add(first);
         se.add(first);
-        if(cases == ROOMLIST){
-            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-            recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-            rentListAdapter = new TabView_rentListAdapter(getActivity(),
-                    se,
-                    (LinearLayoutManager) recyclerView.getLayoutManager());
-            recyclerView.setAdapter(rentListAdapter);
+        switch (cases){
+            case ROOMLIST:
+                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+                recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-            return;
+                rentListAdapter = new TabView_rentListAdapter(getActivity(),
+                        se,
+                        (LinearLayoutManager) recyclerView.getLayoutManager());
+                recyclerView.setAdapter(rentListAdapter);
+
+                break;
+
+            case MyInformation:
+                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+                recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+                myselfAdapter = new TabView_myselfAdapter(getActivity(),
+                        se,
+                        (LinearLayoutManager) recyclerView.getLayoutManager());
+                recyclerView.setAdapter(myselfAdapter);
+                break;
+
+
         }
-        else if(cases == MyInformation){
-            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-            recyclerView.setItemAnimator(new DefaultItemAnimator());
-
-            myselfAdapter = new TabView_myselfAdapter(getActivity(),
-                    se,
-                    (LinearLayoutManager) recyclerView.getLayoutManager());
-            recyclerView.setAdapter(myselfAdapter);
-            return;
-        }
+        return ;
     }
 
 

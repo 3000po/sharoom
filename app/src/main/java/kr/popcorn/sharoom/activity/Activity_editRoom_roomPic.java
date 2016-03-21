@@ -45,6 +45,8 @@ import me.yokeyword.imagepicker.callback.CallbackForImagePicker;
 //Acitivity_editRoom에서 방사진목록을 따로 편집하기위한 액티비티
 public class Activity_editRoom_roomPic extends Activity {
 
+    public final int MAX_SIZE=7;
+
     private RecyclerView recyclerView;
     private Helper_roomPicListAdapter listAdapter;
 
@@ -68,7 +70,6 @@ public class Activity_editRoom_roomPic extends Activity {
 
         getActionBar().setDisplayHomeAsUpEnabled(true);     //액션바에 뒤로가기 버튼 추가
         updateTitle();                                      //액션바 타이틀 수정
-
 
         //RecyclerView(ListView)를 초기화해줌.
         recyclerView = (RecyclerView) findViewById(R.id.list);
@@ -144,13 +145,21 @@ public class Activity_editRoom_roomPic extends Activity {
             //카메라버튼을 눌렀을때 카메라를 오픈해 사진을 찍을수 있게해준다.
             case R.id.camera:
                 // camera 이 눌렸을 경우 이벤트 발생
-                mImagePicker.openCamera(new CallbackForCam());
+                if( list.size() > MAX_SIZE ){
+                    Toast.makeText(Activity_editRoom_roomPic.this, "사진을 8개이상 등록 할 수 없습니다.", Toast.LENGTH_SHORT).show();
+                }else {
+                    mImagePicker.openCamera(new CallbackForCam());
+                }
                 return true;
 
             //갤러리버튼을 눌렀을때 갤러리를 불러와 사진을 선택할수있게해준다.
             case R.id.gallery:
                 // gallery 이 눌렸을 경우 이벤트 발생
-                mImagePicker.openImagePiker(true, new CallbackForGal());
+                if( list.size() > MAX_SIZE ){
+                    Toast.makeText(Activity_editRoom_roomPic.this, "사진을 8개이상 등록 할 수 없습니다.", Toast.LENGTH_SHORT).show();
+                }else {
+                    mImagePicker.openImagePiker(true, new CallbackForGal());
+                }
                 return true;
 
             default:
@@ -191,6 +200,9 @@ public class Activity_editRoom_roomPic extends Activity {
         @Override
         public void onComplete(List<String> imagePath) {
             list.addAll(imagePath);
+            for(int i=MAX_SIZE; i<list.size(); i++){
+                list.remove(i);
+            }
             listAdapter.setList(list);
             saveData();
             listAdapter.notifyDataSetChanged();

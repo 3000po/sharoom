@@ -37,7 +37,7 @@ import me.yokeyword.imagepicker.callback.CallbackForImagePicker;
 
 //방을 등록하기 위한 액티비티
 public class Activity_editRoom extends Activity  implements View.OnClickListener{
-
+    public final int MAX_SIZE=7;
     public final int PICK_THE_ALBUM=1;
 
     private ArrayList<String> list;
@@ -115,11 +115,14 @@ public class Activity_editRoom extends Activity  implements View.OnClickListener
                 mImagePicker.openImagePiker(true, new CallbackForImagePicker() {
                     @Override
                     public void onError(Exception error) {
-
+                        Log.i("aab", "error");
                     }
                     @Override
                     public void onComplete(List<String> imagePath) {
                         list.addAll(imagePath);
+                        for(int i=MAX_SIZE; i<list.size(); i++){
+                            list.remove(i);
+                        }
                         openActivity();
                     }
                 });
@@ -175,7 +178,7 @@ public class Activity_editRoom extends Activity  implements View.OnClickListener
 
     private void loadData(){
         // 저장소 객체를 생성
-        SharedPreferences prefs = getSharedPreferences("room",0);
+        SharedPreferences prefs = getSharedPreferences("room", 0);
 
         // 로드
         int size = prefs.getInt("picCount",0);

@@ -12,11 +12,17 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.loopj.android.http.*;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Arrays;
 import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
@@ -35,11 +41,44 @@ public class Activity_login2 extends Activity {
     EditText et_id;
     EditText et_password;
 
+    private LoginButton loginButton;
+    private CallbackManager callbackManager;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_login2); // 항상 제공되는
         // activity_layout.xml을
+
+        loginButton = (LoginButton)findViewById(R.id.login_button);
+
+        //loginButton.setPublishPermissions(Arrays.asList("public_profile", "user_friends", "email"));
+        //LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile","user_friends","email"));
+        loginButton.setReadPermissions(Arrays.asList("public_profile", "user_friends", "email"));
+        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                Log.i("bhc :",
+                        "User ID: "
+                                + loginResult.getAccessToken().getUserId()
+                                + "\n" +
+                                "Auth Token: "
+                                + loginResult.getAccessToken().getToken()
+                );
+
+                //TODO 전화번호 인증모듈 띄우기
+            }
+
+            @Override
+            public void onCancel() {
+                Log.i("bhc :","Login attempt canceled.");
+            }
+
+            @Override
+            public void onError(FacebookException e) {
+                Log.i("bhc :", "Login attempt failed.");
+            }
+        });
 
         // 만듦
         et_id = (EditText)findViewById(R.id.et_login_id);
@@ -51,25 +90,25 @@ public class Activity_login2 extends Activity {
 
         //자동 로그인 파트.
         if (Helper_server.login(myCookieStore)) {
-                Intent intent = new Intent(Activity_login2.this, Activity_group_view.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                startActivity(intent);
+            Intent intent = new Intent(Activity_login2.this, Activity_group_view.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+            startActivity(intent);
         }
 
-            et_password.setOnKeyListener(new View.OnKeyListener() {
-                                             @Override
-                                             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                                                 //Enter key Action
-                                                 if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                                                     InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
-                                                     imm.hideSoftInputFromWindow(et_password.getWindowToken(), 0);    //hide keyboard
-                                                     return true;
-                                                 }
-                                                 return false;
+        et_password.setOnKeyListener(new View.OnKeyListener() {
+                                         @Override
+                                         public boolean onKey(View v, int keyCode, KeyEvent event) {
+                                             //Enter key Action
+                                             if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                                                 InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+                                                 imm.hideSoftInputFromWindow(et_password.getWindowToken(), 0);    //hide keyboard
+                                                 return true;
                                              }
+                                             return false;
                                          }
+                                     }
 
-            );
+        );
 
         //login buton click
         Button btn_login = (Button) findViewById(R.id.btn_login);
@@ -85,7 +124,7 @@ public class Activity_login2 extends Activity {
                                              //put params
                                              params.put("id", id);
                                              params.put("password", password);
-                                            //server connect
+                                             //server connect
                                              Helper_server.post("login.php", params,  new JsonHttpResponseHandler() {
                                                  @Override
 
@@ -130,7 +169,7 @@ public class Activity_login2 extends Activity {
 
         );
 
-            Button btn_join = (Button) findViewById(R.id.btn_join);
+        Button btn_join = (Button) findViewById(R.id.btn_join);
 
         btn_join.setOnClickListener(new Button.OnClickListener()
 
@@ -146,7 +185,7 @@ public class Activity_login2 extends Activity {
 
         );
 
-        }//onCreateEnd
+    }//onCreateEnd
 
     public void loginAlert() {
         AlertDialog.Builder alert = new AlertDialog.Builder(Activity_login2.this);
@@ -163,5 +202,12 @@ public class Activity_login2 extends Activity {
 
     public void onBackPressed(){
         finish();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

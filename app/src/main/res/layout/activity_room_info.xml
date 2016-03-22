@@ -1,0 +1,440 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:scrollbarStyle="insideOverlay"
+    android:scrollbars="vertical"
+    android:background="#ffffff"
+    android:isScrollContainer="true">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="1">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="0.6">
+                <!--방사진-->
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/pager"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_count"
+                    android:textColor="#20c589"
+                    android:layout_gravity="bottom|right"
+                    android:layout_marginBottom="120dp"
+                    android:layout_marginRight="24dp"
+                    android:text="1/25"
+                    android:textSize="16sp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <!--방주소-->
+                    <EditText
+                        android:id="@+id/et_location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:hint="@string/hnt_et_location"
+                        android:layout_toLeftOf="@+id/map_button"
+                        android:layout_gravity="center_horizontal"
+                        android:textStyle="bold"/>
+
+                    <Button
+                        android:id="@+id/map_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/map_button" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="11,000원/하루"
+                    android:id="@+id/roomPrice"
+                    android:layout_gravity="center_horizontal"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:textSize="25dp"/>
+
+                <!--프로필-->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal">
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:id="@+id/profileImg"
+                        android:src="@drawable/user"
+                        android:layout_gravity="center_horizontal" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/userName"
+                        android:layout_gravity="center_horizontal"
+                        android:text="유시진"
+                        android:textStyle="bold"
+                        android:textColor="#000000"
+                        android:textSize="25dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="님 프로필"
+                        android:textStyle="bold"
+                        android:textColor="#000000"
+                        android:textSize="25dp"/>
+
+                </LinearLayout> <!--프로필 끝-->
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:width="3dp"
+                    android:background="#20c589"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="center_horizontal" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!--방정보 아이콘-->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:src="@drawable/roominfoicon"
+                            android:layout_gravity="left"
+                            android:layout_marginLeft="10dp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="방정보"
+                            android:textStyle="bold"
+                            android:textColor="#000000"
+                            android:textSize="25dp"
+                            android:layout_margin="3dp"/>
+                    </LinearLayout>
+
+                    <!--위치-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center_horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#000000"
+                            android:text="위치"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="95dp"
+                            />
+                        <View
+                            android:layout_width="3dp"
+                            android:layout_height="match_parent"
+                            android:height="15dp"
+                            android:background="#20c589"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginBottom="3dp"
+                            android:layout_marginTop="3dp"
+                            android:layout_gravity="center_vertical" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="#000000"
+                            android:text="성북구 정릉동 123-1 202호 국민대학교 정문에서 10분 거리"
+                            android:textStyle="bold"
+                            android:textSize="15dp"/>
+                    </LinearLayout>
+
+                    <!--인원-->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#000000"
+                            android:text="인원(최대인원)"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="32dp"
+                            />
+
+                        <View
+                            android:layout_width="3dp"
+                            android:layout_height="match_parent"
+                            android:height="15dp"
+                            android:background="#20c589"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginBottom="3dp"
+                            android:layout_marginTop="3dp"
+                            android:layout_gravity="center_vertical" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#000000"
+                            android:text="2(3)"
+                            android:textStyle="bold"
+                            android:textSize="15dp"/>
+                    </LinearLayout>
+
+                    <!--체크인-->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#000000"
+                            android:text="체크인"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="82dp"
+                            />
+                        <View
+                            android:layout_width="3dp"
+                            android:layout_height="match_parent"
+                            android:height="15dp"
+                            android:background="#20c589"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginBottom="3dp"
+                            android:layout_marginTop="3dp"
+                            android:layout_gravity="center_vertical" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#000000"
+                            android:text="16:00"
+                            android:textStyle="bold"
+                            android:textSize="15dp"/>
+
+                    </LinearLayout>
+
+                    <!--체크아웃-->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#000000"
+                            android:text="체크아웃"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="69dp"
+                            />
+                        <View
+                            android:layout_width="3dp"
+                            android:layout_height="match_parent"
+                            android:height="15dp"
+                            android:background="#20c589"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginBottom="3dp"
+                            android:layout_marginTop="3dp"
+                            android:layout_gravity="center_vertical" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#000000"
+                            android:text="11:00"
+                            android:textStyle="bold"
+                            android:textSize="15dp"/>
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/facillitiesIcon"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:background="@drawable/selector_facillitiesbtn"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"/>
+
+                    <!--방 소개-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_gravity="center_horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#20c589"
+                            android:text="방 소개"
+                            android:textStyle="bold"
+                            android:textSize="15dp"
+                            android:layout_gravity="center_horizontal"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="국민대학교 정문에서 걸어서 10분정도 걸리는 거리에 위치한 원룸입니다. 2달 정도 방을 비워야 할일이 생겨서 같은 학교 학생분께 저렴한 가격에 대여해드리고 싶습니다. 연락주세요."
+                            android:textColor="#949494"
+                            android:textStyle="bold"
+                            android:textSize="15dp"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginRight="30dp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <ImageView
+                                android:layout_width="35dp"
+                                android:layout_height="35dp"
+                                android:src="@drawable/calendaricon"
+                                android:layout_gravity="left"
+                                android:layout_marginLeft="10dp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="일정"
+                                android:textStyle="bold"
+                                android:textColor="#000000"
+                                android:textSize="25dp"
+                                android:layout_margin="3dp"/>
+                        </LinearLayout>
+
+                        <!--리뷰-->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <ImageView
+                                android:layout_width="35dp"
+                                android:layout_height="35dp"
+                                android:src="@drawable/roomscore"
+                                android:layout_gravity="left"
+                                android:layout_marginLeft="10dp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="리뷰"
+                                android:textStyle="bold"
+                                android:textColor="#000000"
+                                android:textSize="25dp"
+                                android:layout_margin="3dp"/>
+                        </LinearLayout>
+
+                        <!--리뷰관련 -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_gravity="center_vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="parkjihyun"
+                                    android:textColor="#000000"
+                                    android:textStyle="bold"
+                                    android:textSize="15dp"
+                                    android:layout_marginLeft="10dp"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="님"
+                                    android:textColor="#000000"
+                                    android:textStyle="bold"
+                                    android:textSize="15dp"
+                                    android:layout_margin="3dp"/>
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="시험기간에 밤새느라 묵었던 곳인데 학교랑 가깝고 청결해서 좋았어요. 다만 새벽에 좀 시끄러웠어요."
+                                android:textColor="#949494"
+                                android:textSize="15dp"
+                                android:textStyle="bold"
+                                android:layout_marginLeft="10dp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:width="3dp"
+                    android:background="#20c589"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="center_horizontal" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="지도"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:textSize="25dp"
+                    android:layout_margin="10dp"
+                    android:layout_gravity="center_horizontal"/>
+
+            </LinearLayout>
+            <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/mapView"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_gravity="bottom"
+                android:clickable="true"
+                class="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_weight="0.4" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

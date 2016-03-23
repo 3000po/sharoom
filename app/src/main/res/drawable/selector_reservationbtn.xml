@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 평상시 -->
+    <item android:state_focused="false" android:state_pressed="false">
+        <shape>
+            <solid android:color="#f020c589" />
+            <corners android:radius="10dp" />
+            <padding android:bottom="20dp" android:left="20dp"
+                android:right="20dp" android:top="20dp" />
+        </shape>
+    </item>
+
+    <!-- 클릭했을 때 -->
+    <item android:state_focused="false" android:state_pressed="true">
+        <shape>
+            <solid android:color="#c020c589" />
+            <corners android:radius="10dp" />
+            <padding android:bottom="20dp" android:left="20dp"
+                android:right="20dp" android:top="20dp" />
+        </shape>
+    </item>
+</selector>

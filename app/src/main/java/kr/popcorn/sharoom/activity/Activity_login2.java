@@ -5,36 +5,19 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.preference.PreferenceActivity;
 import android.util.Log;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.JsonHttpResponseHandler;
-import com.loopj.android.http.PersistentCookieStore;
-import com.loopj.android.http.RequestParams;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.Arrays;
 
-import cz.msebera.android.httpclient.Header;
-import cz.msebera.android.httpclient.HttpStatus;
-import cz.msebera.android.httpclient.impl.cookie.BasicClientCookie;
 import kr.popcorn.sharoom.R;
-import kr.popcorn.sharoom.activity.Fragment.Activity_group_view;
-import kr.popcorn.sharoom.helper.Helper_server;
 
 /**
  * Created by Administrator on 2016-03-11.
@@ -61,7 +44,6 @@ public class Activity_login2 extends Activity {
 
         //loginButton.setPublishPermissions(Arrays.asList("public_profile", "user_friends", "email"));
         //LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile","user_friends","email"));
-
         loginButton.setReadPermissions(Arrays.asList("public_profile", "user_friends", "email"));
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
@@ -102,6 +84,7 @@ public class Activity_login2 extends Activity {
             intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             startActivity(intent);
         }
+
         et_password.setOnKeyListener(new View.OnKeyListener() {
                                          @Override
                                          public boolean onKey(View v, int keyCode, KeyEvent event) {
@@ -134,6 +117,7 @@ public class Activity_login2 extends Activity {
                                              //server connect
                                              Helper_server.post("login.php", params,  new JsonHttpResponseHandler() {
                                                  @Override
+
                                                  public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                                                      Log.i("Msg", "success");
                                                      String data="";
@@ -144,6 +128,7 @@ public class Activity_login2 extends Activity {
                                                      }
                                                      Log.d("ok", "" + data);
                                                      if(data.equals("true")){
+
                                                          BasicClientCookie newCookie = new BasicClientCookie("login_cookie", "id");
                                                          newCookie.setVersion(1);
                                                          newCookie.setDomain("14.63.227.200");

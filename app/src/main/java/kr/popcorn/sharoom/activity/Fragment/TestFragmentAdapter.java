@@ -9,11 +9,11 @@ import kr.popcorn.sharoom.R;
 public class TestFragmentAdapter extends FragmentPagerAdapter implements IconPagerAdapter {
     protected static final String[] CONTENT = new String[] { "a", "b", "c", "d", "e" };
     protected static final int[] ICONS = new int[] {
-            R.drawable.perm_group_roomview,
-            R.drawable.perm_group_mapview,
-            R.drawable.perm_group_favorite,
-            R.drawable.perm_group_option,
-            R.drawable.perm_group_option
+            R.drawable.facebook_green,
+            R.drawable.facebook_gray,
+            R.drawable.facebook_green,
+            R.drawable.facebook_gray,
+            R.drawable.facebook_green
     };
 
     private int mCount = CONTENT.length;

@@ -34,12 +34,14 @@ public class Activity_group_view extends FragmentActivity {
 
         mAdapter = new TestFragmentAdapter(getSupportFragmentManager());
 
+
         mPager = (ViewPager) findViewById(R.id.pager);
         mPager.setAdapter(mAdapter);
 
         mPager.setOffscreenPageLimit(5);
 
         mIndicator = (IconPageIndicator) findViewById(R.id.indicator);
+
         mIndicator.setViewPager(mPager);
 
 

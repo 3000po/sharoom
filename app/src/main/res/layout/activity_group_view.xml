@@ -1,10 +1,4 @@
-<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/drawer_layout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
-
-    <LinearLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@color/activity_layout_background"
@@ -13,13 +7,21 @@
     <LinearLayout
         android:id="@+id/ll_header"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/activity_layout_header_height"
+        android:layout_height="40dp"
         android:layout_gravity="center_vertical"
-        android:layout_margin="@dimen/activity_layout_header_margin"
-        android:background="@color/activity_layout_header_background"
+       android:background="#20c589"
         android:gravity="center_vertical"
-        android:orientation="vertical"
-        android:padding="@dimen/activity_layout_header_padding" >
+        android:orientation="vertical">
+             <TextView
+            android:id="@+id/toptext"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="환영합니다."
+            android:textSize="20sp"
+             android:textStyle="bold"
+            android:textColor="#FFFFFF">
+        </TextView>
     </LinearLayout>
 
     <!--  android:padding="@color/activity_layout_header_background" -->
@@ -46,6 +48,8 @@
             android:orientation="vertical"
             android:padding="@dimen/activity_layout_left_padding"
             android:visibility="gone">
+
+
         </LinearLayout>
 
         <LinearLayout
@@ -75,10 +79,12 @@
 
                 <kr.popcorn.sharoom.activity.Fragment.IconPageIndicator
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
                     android:id="@+id/indicator"
                     android:background="#FFFFFFFF"
                     />
+
             </LinearLayout>
         </LinearLayout>
 
@@ -120,5 +126,3 @@
     </LinearLayout>
 
 </LinearLayout>
-
-</android.support.v4.widget.DrawerLayout>

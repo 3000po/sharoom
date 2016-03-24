@@ -151,13 +151,8 @@ public final class TestFragment extends Fragment {
         }
         else if(mContent.equalsIgnoreCase("e")){;
             setAdapterView(inflater, container, MyInformation);
-            Activity_editRoom abc = new Activity_editRoom();
 
-            //view2 = abc.getLayoutInflater().inflate(R.layout.activity_editroom, container,false);
-            view2 = inflater.inflate(R.layout.activity_editroom, container,false);
-
-
-            return view2;
+            return view;
         }else {
 
             TextView text = new TextView(getActivity());

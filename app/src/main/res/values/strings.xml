@@ -51,4 +51,5 @@
 
     <string name="map_button">Find</string>
     <string name="hnt_et_location">Enter location</string>
+    <string name="title_activity_test">test</string>
 </resources>

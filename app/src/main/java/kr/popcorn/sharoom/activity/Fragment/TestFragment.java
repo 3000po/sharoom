@@ -21,13 +21,15 @@ import kr.popcorn.sharoom.R;
 import kr.popcorn.sharoom.activity.Activity_editRoom;
 import kr.popcorn.sharoom.activity.TabView.TabView_myselfAdapter;
 import kr.popcorn.sharoom.activity.TabView.TabView_rentListAdapter;
+import kr.popcorn.sharoom.activity.TabView.TabView_reservationAdapter;
 import kr.popcorn.sharoom.helper.Helper_roomData;
+import kr.popcorn.sharoom.helper.Helper_userData;
 
 public final class TestFragment extends Fragment {
     private static final String KEY_CONTENT = "TestFragment:Content";
 
     final int ROOMLIST = 0;
-    final int CALENDAR = 1;
+    final int RESERVATONROOM = 1;
     final int COMUNICATION = 2;
     final int MyInformation = 5;
 
@@ -36,8 +38,10 @@ public final class TestFragment extends Fragment {
 
     public RecyclerView recyclerView;
 
-    public TabView_rentListAdapter rentListAdapter;
-    public TabView_myselfAdapter myselfAdapter;
+    private TabView_rentListAdapter rentListAdapter;
+    private TabView_myselfAdapter myselfAdapter;
+    private TabView_reservationAdapter reservationAdapter;
+
 
 
 
@@ -96,6 +100,10 @@ public final class TestFragment extends Fragment {
         se.add(first);
         se.add(first);
 
+        Helper_userData second = new Helper_userData();
+        ArrayList<Helper_userData> ee = new ArrayList<Helper_userData>();
+        ee.add(second);
+
         switch (cases){
             case ROOMLIST:
                 recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -113,12 +121,20 @@ public final class TestFragment extends Fragment {
                 recyclerView.setItemAnimator(new DefaultItemAnimator());
 
                 myselfAdapter = new TabView_myselfAdapter(getActivity(),
-                        se,
+                        ee,
                         (LinearLayoutManager) recyclerView.getLayoutManager());
                 recyclerView.setAdapter(myselfAdapter);
                 break;
 
+            case RESERVATONROOM:
+                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+                recyclerView.setItemAnimator(new DefaultItemAnimator());
 
+                reservationAdapter = new TabView_reservationAdapter(getActivity(),
+                        se,
+                        (LinearLayoutManager) recyclerView.getLayoutManager());
+                recyclerView.setAdapter(reservationAdapter);
+                break;
         }
         return ;
     }
@@ -149,9 +165,12 @@ public final class TestFragment extends Fragment {
             setAdapterView(inflater, container, ROOMLIST);
             return view;
         }
-        else if(mContent.equalsIgnoreCase("e")){;
+        else if(mContent.equalsIgnoreCase("b")){
+            setAdapterView(inflater, container, RESERVATONROOM);
+            return view;
+        }
+        else if(mContent.equalsIgnoreCase("e")){
             setAdapterView(inflater, container, MyInformation);
-
             return view;
         }else {
 

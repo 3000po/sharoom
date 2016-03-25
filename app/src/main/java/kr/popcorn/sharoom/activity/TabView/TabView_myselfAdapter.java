@@ -8,8 +8,6 @@ import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
-import android.os.Bundle;
-import android.app.Activity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -21,21 +19,21 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import kr.popcorn.sharoom.R;
-import kr.popcorn.sharoom.helper.Helper_roomData;
+import kr.popcorn.sharoom.helper.Helper_userData;
 
 public class TabView_myselfAdapter extends RecyclerView.Adapter<TabView_myselfAdapter.ViewHolder> {
 
     ImageView myface;
 
     private Context mContext;
-    public ArrayList<Helper_roomData> list;
+    public ArrayList<Helper_userData> list;
     private LinearLayoutManager linearLayoutManager;
 
-    public ArrayList<Helper_roomData> getContactsList() {
+    public ArrayList<Helper_userData> getContactsList() {
         return list;
     }
 
-    public TabView_myselfAdapter(Context context, ArrayList<Helper_roomData> _dataSet, LinearLayoutManager linearLayoutManager) {
+    public TabView_myselfAdapter(Context context, ArrayList<Helper_userData> _dataSet, LinearLayoutManager linearLayoutManager) {
         mContext = context;
         list = _dataSet;
         this.linearLayoutManager = linearLayoutManager;
@@ -44,7 +42,7 @@ public class TabView_myselfAdapter extends RecyclerView.Adapter<TabView_myselfAd
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(mContext)
-                .inflate(R.layout.activity_myself, parent, false);
+                .inflate(R.layout.activity_myself_adapter, parent, false);
 
         return new ViewHolder(v);
     }
@@ -56,7 +54,7 @@ public class TabView_myselfAdapter extends RecyclerView.Adapter<TabView_myselfAd
 
         //holder.myface.setImageResource(R.drawable.ic_action_mapview_m);
         holder.myface.setImageBitmap(getCircleBitmap(face));
-        holder.myname.setText(list.get(position).roomname);
+        //holder.myname.setText((CharSequence) list.get(position));
         //holder.text.setText(tmp.substring(0,4));
     }
 
@@ -66,7 +64,7 @@ public class TabView_myselfAdapter extends RecyclerView.Adapter<TabView_myselfAd
         return list.size();
     }
 
-    public void add(Helper_roomData song, int position) {
+    public void add(Helper_userData song, int position) {
         list.add(position, song);
         notifyItemInserted(position);
     }

@@ -2,10 +2,10 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 21
-    buildToolsVersion '22.0.1'
+    buildToolsVersion '23.0.1'
     defaultConfig {
         applicationId "kr.popcorn.sharoom"
-        minSdkVersion 21
+        minSdkVersion 19
         targetSdkVersion 21
         versionCode 1
         versionName "1.0"
@@ -41,18 +41,17 @@ dependencies {
             dirs 'libs'
         }
     }
-    compile fileTree(include: ['*.jar'], dir: 'libs')    //compile 'com.google.android.gms:play-services:8.3.0'
+    compile fileTree(dir: 'libs', include: ['*.jar'])    //compile 'com.google.android.gms:play-services:8.3.0'
 
-    compile 'com.android.support:recyclerview-v7:21.0.3'
     compile 'com.andexert.calendarlistview:library:1.2.3@aar'
     compile 'com.facebook.android:facebook-android-sdk:4.+'
-    compile 'com.android.support:support-v13:21.0.3'
+    compile 'com.android.support:support-v13:21.+'
     compile 'com.android.support:appcompat-v7:22.+'
     
     compile 'com.android.support:support-v4:22.+'
     compile 'com.android.support:recyclerview-v7:22.+'
-    compile 'com.squareup.picasso:picasso:2.5.0'
-    compile 'com.yqritc:recyclerview-flexibledivider:1.2.5'
+    compile 'com.squareup.picasso:picasso:2.5.+'
+    compile 'com.yqritc:recyclerview-flexibledivider:1.2.+'
     compile 'me.yokeyword:imagepicker:0.2.1'
     compile 'com.loopj.android:android-async-http:1.4.9'
     compile 'com.google.android.gms:play-services-maps:8.3.0'

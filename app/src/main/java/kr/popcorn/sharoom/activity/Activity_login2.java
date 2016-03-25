@@ -59,7 +59,7 @@ public class Activity_login2 extends Activity {
 
         //loginButton.setPublishPermissions(Arrays.asList("public_profile", "user_friends", "email"));
         //LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile","user_friends","email"));
-        loginButton.setReadPermissions(Arrays.asList("public_profile", "user_friends", "email"));
+        loginButton.setReadPermissions(Arrays.asList("public_profile", "user_friends"));
 
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override

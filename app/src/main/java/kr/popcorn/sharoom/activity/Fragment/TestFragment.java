@@ -20,6 +20,7 @@ import kr.popcorn.sharoom.R;
 
 import kr.popcorn.sharoom.activity.Activity_editRoom;
 import kr.popcorn.sharoom.activity.TabView.TabView_myselfAdapter;
+import kr.popcorn.sharoom.activity.TabView.TabView_registerAdapter;
 import kr.popcorn.sharoom.activity.TabView.TabView_rentListAdapter;
 import kr.popcorn.sharoom.activity.TabView.TabView_reservationAdapter;
 import kr.popcorn.sharoom.helper.Helper_roomData;
@@ -30,7 +31,7 @@ public final class TestFragment extends Fragment {
 
     final int ROOMLIST = 0;
     final int RESERVATONROOM = 1;
-    final int COMUNICATION = 2;
+    final int REGISTER = 2;
     final int MyInformation = 5;
 
     private View view;
@@ -41,7 +42,7 @@ public final class TestFragment extends Fragment {
     private TabView_rentListAdapter rentListAdapter;
     private TabView_myselfAdapter myselfAdapter;
     private TabView_reservationAdapter reservationAdapter;
-
+    private TabView_registerAdapter registerAdapter;
 
 
 
@@ -135,6 +136,15 @@ public final class TestFragment extends Fragment {
                         (LinearLayoutManager) recyclerView.getLayoutManager());
                 recyclerView.setAdapter(reservationAdapter);
                 break;
+            case REGISTER:
+                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+                recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+                registerAdapter = new TabView_registerAdapter(getActivity(),
+                        se,
+                        (LinearLayoutManager) recyclerView.getLayoutManager());
+                recyclerView.setAdapter(registerAdapter);
+                break;
         }
         return ;
     }
@@ -169,7 +179,10 @@ public final class TestFragment extends Fragment {
             setAdapterView(inflater, container, RESERVATONROOM);
             return view;
         }
-        else if(mContent.equalsIgnoreCase("e")){
+        else if(mContent.equalsIgnoreCase("c")){
+            setAdapterView(inflater, container, REGISTER);
+            return view;
+        }else if(mContent.equalsIgnoreCase("e")){
             setAdapterView(inflater, container, MyInformation);
             return view;
         }else {

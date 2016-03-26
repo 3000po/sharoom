@@ -1,6 +1,7 @@
 package kr.popcorn.sharoom.activity.TabView;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -8,17 +9,23 @@ import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
+import android.support.v4.app.DialogFragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
 import kr.popcorn.sharoom.R;
+import kr.popcorn.sharoom.activity.Fragment.Activity_group_view;
+import kr.popcorn.sharoom.activity.Fragment.TestFragment;
 import kr.popcorn.sharoom.helper.Helper_userData;
 
 public class TabView_myselfAdapter extends RecyclerView.Adapter<TabView_myselfAdapter.ViewHolder> {
@@ -43,6 +50,49 @@ public class TabView_myselfAdapter extends RecyclerView.Adapter<TabView_myselfAd
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(mContext)
                 .inflate(R.layout.activity_myself_adapter, parent, false);
+
+//        ImageView email_btn;
+//        email_btn = (ImageView) v.findViewById(R.id.confirm1);
+//        email_btn.setOnClickListener(new View.OnClickListener(){
+//            public void onClick(View v2) {
+//                if (v2.getId() == R.id.confirm1) {
+//
+////
+////                    AlertDialog.Builder alert = new AlertDialog.Builder(v2.Context());
+////
+////                    alert.setTitle("Title");
+////                    alert.setMessage("Message");
+////
+////                    // Set an EditText view to get user input
+////                    final EditText input = new EditText(v2.getContext());
+////                    alert.setView(input);
+////
+////                    alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+////                        public void onClick(DialogInterface dialog, int whichButton) {
+////                            String value = input.getText().toString();
+////                            value.toString();
+////                            // Do something with value!
+////                        }
+////                    });
+////
+////
+////                    alert.setNegativeButton("Cancel",
+////                            new DialogInterface.OnClickListener() {
+////                                public void onClick(DialogInterface dialog, int whichButton) {
+////                                    // Canceled.
+////                                }
+////                            });
+////
+////                    alert.show();
+////
+////
+////
+////
+////                    Log.i("kisang", "confirm1");
+////                    System.out.println("test");
+////                }
+////            }});
+        System.out.println("noKisang");
 
         return new ViewHolder(v);
     }

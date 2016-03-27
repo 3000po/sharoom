@@ -17,15 +17,20 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.PersistentCookieStore;
 
 import java.util.ArrayList;
 
 import kr.popcorn.sharoom.R;
 import kr.popcorn.sharoom.activity.Fragment.Activity_group_view;
 import kr.popcorn.sharoom.activity.Fragment.TestFragment;
+import kr.popcorn.sharoom.helper.Helper_server;
 import kr.popcorn.sharoom.helper.Helper_userData;
 
 public class TabView_myselfAdapter extends RecyclerView.Adapter<TabView_myselfAdapter.ViewHolder> {
@@ -51,47 +56,24 @@ public class TabView_myselfAdapter extends RecyclerView.Adapter<TabView_myselfAd
         View v = LayoutInflater.from(mContext)
                 .inflate(R.layout.activity_myself_adapter, parent, false);
 
-//        ImageView email_btn;
-//        email_btn = (ImageView) v.findViewById(R.id.confirm1);
-//        email_btn.setOnClickListener(new View.OnClickListener(){
-//            public void onClick(View v2) {
-//                if (v2.getId() == R.id.confirm1) {
-//
-////
-////                    AlertDialog.Builder alert = new AlertDialog.Builder(v2.Context());
-////
-////                    alert.setTitle("Title");
-////                    alert.setMessage("Message");
-////
-////                    // Set an EditText view to get user input
-////                    final EditText input = new EditText(v2.getContext());
-////                    alert.setView(input);
-////
-////                    alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-////                        public void onClick(DialogInterface dialog, int whichButton) {
-////                            String value = input.getText().toString();
-////                            value.toString();
-////                            // Do something with value!
-////                        }
-////                    });
-////
-////
-////                    alert.setNegativeButton("Cancel",
-////                            new DialogInterface.OnClickListener() {
-////                                public void onClick(DialogInterface dialog, int whichButton) {
-////                                    // Canceled.
-////                                }
-////                            });
-////
-////                    alert.show();
-////
-////
-////
-////
-////                    Log.i("kisang", "confirm1");
-////                    System.out.println("test");
-////                }
-////            }});
+        ImageView logout_btn;
+        logout_btn = (ImageView) v.findViewById(R.id.logout);
+        logout_btn.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v2) {
+                if (v2.getId() == R.id.logout) {
+                    // Set an EditText view to get user input
+                    //로그아웃파트.
+                    AsyncHttpClient client = Helper_server.getInstance();
+                    final PersistentCookieStore myCookieStore = new PersistentCookieStore(mContext); //이부분 Context 확인해야함. Activity context로.
+                    Helper_server.logout(myCookieStore);
+                    client.setCookieStore(myCookieStore);
+
+                    //여기에 로그아웃 됬다는 말과 함께 로그인 화면으로 이동시켜 주어야 함.
+
+                    Log.i("kisang", "logout");
+                    System.out.println("test");
+                }
+            }});
         System.out.println("noKisang");
 
         return new ViewHolder(v);
@@ -127,6 +109,7 @@ public class TabView_myselfAdapter extends RecyclerView.Adapter<TabView_myselfAd
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public ImageView myface;
         public TextView myname;
+        public Button logout;
 
         public ViewHolder(View itemView) {
             super(itemView);

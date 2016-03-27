@@ -33,9 +33,6 @@ public class Activity_group_view extends FragmentActivity {
         setContentView(R.layout.activity_group_view);
 
         AsyncHttpClient client = Helper_server.getInstance();
-        final PersistentCookieStore myCookieStore = new PersistentCookieStore(this);
-        Helper_server.logout(myCookieStore);
-        client.setCookieStore(myCookieStore);
 
         mAdapter = new TestFragmentAdapter(getSupportFragmentManager());
 

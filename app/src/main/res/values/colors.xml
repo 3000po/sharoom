@@ -49,7 +49,7 @@
     <!--activity_client  -->
     <color name="activity_client_listview_divider">#ffcc22</color>
 
-
+    <color name="activity_login_edit">#363636</color>
 
 
 

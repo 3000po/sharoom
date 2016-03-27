@@ -90,6 +90,7 @@
         <activity android:name=".activity.Activity_roomList" />
         <activity
             android:name=".activity.Activity_login"
+            android:windowSoftInputMode="adjustResize|adjustPan"
             android:theme="@android:style/Theme.Holo.NoActionBar">
 
         </activity>

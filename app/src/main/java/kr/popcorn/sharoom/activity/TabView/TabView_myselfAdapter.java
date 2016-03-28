@@ -170,12 +170,12 @@ public class TabView_myselfAdapter extends RecyclerView.Adapter<TabView_myselfAd
     }
 
     public void joinAlert() {
-        android.app.AlertDialog.Builder alert = new android.app.AlertDialog.Builder(mContext.getApplicationContext());
+        android.app.AlertDialog.Builder alert = new android.app.AlertDialog.Builder(mContext);
         alert.setTitle("로그아웃");
         alert.setMessage("로그아웃 하겠습니까?");
         alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
-                Intent intent = new Intent(mContext.getApplicationContext(), Activity_login.class);
+                Intent intent = new Intent(mContext, Activity_login.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 //                startActivity(intent);
             }

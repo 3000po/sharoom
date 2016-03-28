@@ -19,7 +19,9 @@
         android:src="@drawable/ic_action_mapview_g"
         android:scaleType="fitXY"
         android:orientation="horizontal"
-        android:background="#e1dfdf">
+        android:background="#e1dfdf"
+        android:layout_gravity="center_vertical|center_horizontal"
+        >
 
         <ImageView
             android:layout_width="50dp"

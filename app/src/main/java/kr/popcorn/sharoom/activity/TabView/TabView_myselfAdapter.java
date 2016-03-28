@@ -2,6 +2,7 @@ package kr.popcorn.sharoom.activity.TabView;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -28,6 +29,8 @@ import com.loopj.android.http.PersistentCookieStore;
 import java.util.ArrayList;
 
 import kr.popcorn.sharoom.R;
+import kr.popcorn.sharoom.activity.Activity_join;
+import kr.popcorn.sharoom.activity.Activity_login;
 import kr.popcorn.sharoom.activity.Fragment.Activity_group_view;
 import kr.popcorn.sharoom.activity.Fragment.TestFragment;
 import kr.popcorn.sharoom.helper.Helper_server;
@@ -56,25 +59,6 @@ public class TabView_myselfAdapter extends RecyclerView.Adapter<TabView_myselfAd
         View v = LayoutInflater.from(mContext)
                 .inflate(R.layout.activity_myself_adapter, parent, false);
 
-        ImageView logout_btn;
-        logout_btn = (ImageView) v.findViewById(R.id.logout);
-        logout_btn.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v2) {
-                if (v2.getId() == R.id.logout) {
-                    // Set an EditText view to get user input
-                    //로그아웃파트.
-                    AsyncHttpClient client = Helper_server.getInstance();
-                    final PersistentCookieStore myCookieStore = new PersistentCookieStore(mContext); //이부분 Context 확인해야함. Activity context로.
-                    Helper_server.logout(myCookieStore);
-                    client.setCookieStore(myCookieStore);
-
-                    //여기에 로그아웃 됬다는 말과 함께 로그인 화면으로 이동시켜 주어야 함.
-
-                    Log.i("kisang", "logout");
-                    System.out.println("test");
-                }
-            }});
-        System.out.println("noKisang");
 
         return new ViewHolder(v);
     }
@@ -133,6 +117,28 @@ public class TabView_myselfAdapter extends RecyclerView.Adapter<TabView_myselfAd
 
         @Override
         public void onClick(View v) {
+            ImageView logout_btn;
+            logout_btn = (ImageView) v.findViewById(R.id.logout);
+
+            logout_btn.setOnClickListener(new View.OnClickListener(){
+                public void onClick(View v2) {
+                    if (v2.getId() == R.id.logout) {
+                        // Set an EditText view to get user input
+                        //로그아웃파트.
+                        AsyncHttpClient client = Helper_server.getInstance();
+                        final PersistentCookieStore myCookieStore = new PersistentCookieStore(mContext); //이부분 Context 확인해야함. Activity context로.
+                        Helper_server.logout(myCookieStore);
+                        client.setCookieStore(myCookieStore);
+
+                        joinAlert();
+                        //여기에 로그아웃 됬다는 말과 함께 로그인 화면으로 이동시켜 주어야 함.
+
+                        Log.i("kisang", "logout");
+                        System.out.println("test");
+                    }
+                }});
+            System.out.println("noKisang");
+
         }
 
     }
@@ -161,5 +167,19 @@ public class TabView_myselfAdapter extends RecyclerView.Adapter<TabView_myselfAd
         paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
         canvas.drawBitmap(bitmap, rect, rect, paint);
         return output;
+    }
+
+    public void joinAlert() {
+        android.app.AlertDialog.Builder alert = new android.app.AlertDialog.Builder(mContext.getApplicationContext());
+        alert.setTitle("로그아웃");
+        alert.setMessage("로그아웃 하겠습니까?");
+        alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(mContext.getApplicationContext(), Activity_login.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+//                startActivity(intent);
+            }
+        });
+        alert.show();
     }
 }

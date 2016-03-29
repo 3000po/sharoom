@@ -91,7 +91,7 @@ public class Activity_login2 extends Activity {
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                         RequestParams params = new RequestParams();
                         params.put("facebook", loginResult.getAccessToken().getUserId());
-                        Log.i("Msg", "success");
+                        Log.i("ABD", "success"+loginResult.getAccessToken().getUserId());
                         String data = "";
                         try {
                             data = response.get("ok").toString();
@@ -100,11 +100,13 @@ public class Activity_login2 extends Activity {
                         }
                         Log.d("ok", "" + data);
                         if (data.equals("true")) {
+                            return;
+                        } else {
                             Helper_server.post("facebook.php", params, new AsyncHttpResponseHandler() {
                                 @Override
 
                                 public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                                    Log.i("Msg", "success");
+                                    Log.i("ABD", "회원가입");
                                     loginAlert();
                                 }
 
@@ -113,8 +115,6 @@ public class Activity_login2 extends Activity {
                                     Log.i("Msg", "fail");
                                 }
                             });
-                            return;
-                        } else {
                             return;
                         }
                     }

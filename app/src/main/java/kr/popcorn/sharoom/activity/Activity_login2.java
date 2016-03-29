@@ -19,6 +19,7 @@ import com.facebook.FacebookSdk;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.PersistentCookieStore;
 import com.loopj.android.http.RequestParams;
@@ -57,13 +58,17 @@ public class Activity_login2 extends Activity {
 
         loginButton = (LoginButton)findViewById(R.id.login_button);
 
+        AsyncHttpClient client = Helper_server.getInstance();
+        final PersistentCookieStore myCookieStore = new PersistentCookieStore(this);
+        client.setCookieStore(myCookieStore);
+
         //loginButton.setPublishPermissions(Arrays.asList("public_profile", "user_friends", "email"));
         //LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile","user_friends","email"));
         loginButton.setReadPermissions(Arrays.asList("public_profile", "user_friends"));
 
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
-            public void onSuccess(LoginResult loginResult) {
+            public void onSuccess(final LoginResult loginResult) {
                 Log.i("bhc :",
                         "User ID: "
                                 + loginResult.getAccessToken().getUserId()
@@ -73,6 +78,54 @@ public class Activity_login2 extends Activity {
                 );
 
                 //TODO 전화번호 인증모듈 띄우기
+
+                RequestParams params = new RequestParams();
+                String id = loginResult.getAccessToken().getUserId();
+
+                //put params
+                params.put("facebook", id);
+
+                //server connect
+                Helper_server.post("fbCheck.php", params, new JsonHttpResponseHandler() {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                        RequestParams params = new RequestParams();
+                        params.put("facebook", loginResult.getAccessToken().getUserId());
+                        Log.i("Msg", "success");
+                        String data = "";
+                        try {
+                            data = response.get("ok").toString();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        Log.d("ok", "" + data);
+                        if (data.equals("true")) {
+                            Helper_server.post("facebook.php", params, new AsyncHttpResponseHandler() {
+                                @Override
+
+                                public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                                    Log.i("Msg", "success");
+                                    loginAlert();
+                                }
+
+                                @Override
+                                public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                                    Log.i("Msg", "fail");
+                                }
+                            });
+                            return;
+                        } else {
+                            return;
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                        super.onFailure(statusCode, headers, responseString, throwable);
+                        Log.d("Failed: ", "" + statusCode);
+                        Log.d("Error : ", "" + throwable);
+                    }
+                });
             }
 
             @Override
@@ -89,10 +142,6 @@ public class Activity_login2 extends Activity {
         // 만듦
         et_id = (EditText)findViewById(R.id.et_login_id);
         et_password = (EditText)findViewById(R.id.et_login_password);
-
-        AsyncHttpClient client = Helper_server.getInstance();
-        final PersistentCookieStore myCookieStore = new PersistentCookieStore(this);
-        client.setCookieStore(myCookieStore);
 
         //자동 로그인 파트.
         if (Helper_server.login(myCookieStore)) {
@@ -193,6 +242,7 @@ public class Activity_login2 extends Activity {
         );
 
     }//onCreateEnd
+
 
     public void loginAlert() {
         AlertDialog.Builder alert = new AlertDialog.Builder(Activity_login2.this);

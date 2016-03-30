@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin">
+
+
+    <ImageView
+        android:id="@+id/roomimage"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/ic_action_mapview_g"
+        android:scaleType="fitXY"/>
+
+    <ImageView
+        android:id="@+id/roomface"
+        android:layout_width="60dp"
+        android:layout_height= "60dp"
+        android:layout_marginTop="130dp"
+        android:layout_marginLeft="20dp"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/facebook_gray"/>
+
+    <TextView
+        android:id="@+id/roomrating"
+        android:layout_width="150dp"
+        android:layout_height="200dp"
+        android:background="#80000000"
+        android:text="일정 : 03/01 ~ 03/22 인원 : 1명 예시입니다. 대충한거니까 뭐라하기 있기없긔?"
+        android:layout_alignParentRight="true"
+
+        android:textColor="#ffffff"
+        android:textSize="20sp"/>
+
+</RelativeLayout>

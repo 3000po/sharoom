@@ -1,11 +1,17 @@
 package kr.popcorn.sharoom.activity.Fragment;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -17,7 +23,6 @@ import kr.popcorn.sharoom.helper.Helper_server;
 
 public class Activity_group_view extends FragmentActivity {
 
-
     TestFragmentAdapter mAdapter;
     ViewPager mPager;
     PageIndicator mIndicator;
@@ -28,12 +33,8 @@ public class Activity_group_view extends FragmentActivity {
         setContentView(R.layout.activity_group_view);
 
         AsyncHttpClient client = Helper_server.getInstance();
-        final PersistentCookieStore myCookieStore = new PersistentCookieStore(this);
-        Helper_server.logout(myCookieStore);
-        client.setCookieStore(myCookieStore);
 
         mAdapter = new TestFragmentAdapter(getSupportFragmentManager());
-
 
         mPager = (ViewPager) findViewById(R.id.pager);
         mPager.setAdapter(mAdapter);
@@ -44,11 +45,52 @@ public class Activity_group_view extends FragmentActivity {
 
         mIndicator.setViewPager(mPager);
 
-
+//        ImageView email_btn;
+//        email_btn = (ImageView) v.findViewById(R.id.confirm1);
+//        email_btn.setOnClickListener(new View.OnClickListener(){
+//            public void onClick(View v) {
+//                if (v.getId() == R.id.confirm1) {
+////                    AlertDialog.Builder alert = new AlertDialog.Builder(mContext.get);
+////
+////                    alert.setTitle("Title");
+////                    alert.setMessage("Message");
+////
+////                    // Set an EditText view to get user input
+////                    final EditText input = new EditText(mContext);
+////                    alert.setView(input);
+////
+////                    alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+////                        public void onClick(DialogInterface dialog, int whichButton) {
+////                            String value = input.getText().toString();
+////                            value.toString();
+////                            // Do something with value!
+////                        }
+////                    });
+////
+////
+////                    alert.setNegativeButton("Cancel",
+////                            new DialogInterface.OnClickListener() {
+////                                public void onClick(DialogInterface dialog, int whichButton) {
+////                                    // Canceled.
+////                                }
+////                            });
+////
+////                    alert.show();
+////
+////
+////
+//
+//                    Log.i("kisang", "confirm2");
+//                    System.out.println("test2");
+//                }
+//            }});
+//        System.out.println("noKisang2");
 
         init();
     }
 
     private void init() {
     }
+
+
 }

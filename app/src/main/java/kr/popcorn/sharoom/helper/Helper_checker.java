@@ -19,8 +19,6 @@ public class Helper_checker {
     public static final int NAMEMIN = 3;
     public static final int NAMEMAX = 20;
 
-
-
     public static boolean isEmail(String email) {
         if (email==null) return false;
         boolean b = Pattern.matches("[\\w\\~\\-\\.]+@[\\w\\~\\-]+(\\.[\\w\\~\\-]+)+", email.trim());

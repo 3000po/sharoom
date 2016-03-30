@@ -44,23 +44,15 @@
         <activity android:name="me.yokeyword.imagepicker.ImagePickerActivity" />
         <!-- Image load -->
 
-        <receiver android:name=".helper.Helper_network">
-            <intent-filter>
-                <action android:name="android.net.conn.BACKGROUND_DATA_SETTING_CHANGED" />
-            </intent-filter>
-        </receiver>
-
         <activity
             android:name=".activity.Activity_intro"
             android:label="@string/app_name" >
-        </activity>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-        <activity
-            android:name=".activity.Activity_login"
-            android:label="@string/app_name" />
-        <activity
-            android:name=".activity.Activity_join"
-            android:label="@string/app_name" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".activity.Activity_group"
             android:label="@string/title_activity_activity_group" />
@@ -77,7 +69,15 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name=".activity.Fragment.Activity_group_view"
-            android:theme="@android:style/Theme.Holo.NoActionBar" />
+            android:theme="@android:style/Theme.Holo.NoActionBar">
+        </activity>
+
+        <activity
+            android:name=".activity.Activity_emailCertification"
+            android:theme="@android:style/Theme.Holo.NoActionBar">
+
+        </activity>
+
         <activity android:name=".activity.Activity_editRoom" />
         <activity
             android:name=".activity.Activity_editRoom_roomPic"
@@ -89,16 +89,13 @@
         <activity android:name=".activity.Activity_roomInfo" />
         <activity android:name=".activity.Activity_roomList" />
         <activity
-            android:name=".activity.Activity_login2"
+            android:name=".activity.Activity_login"
+            android:windowSoftInputMode="adjustResize|adjustPan"
             android:theme="@android:style/Theme.Holo.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
-            android:name=".activity.Activity_join2"
+            android:name=".activity.Activity_join"
             android:theme="@android:style/Theme.Holo.NoActionBar" />
         <activity android:name=".activity.Activity_FacillitiesInfo" />
         <activity android:name=".activity.ReservationButton" />

@@ -1,6 +1,8 @@
 package kr.popcorn.sharoom.activity.TabView;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -8,34 +10,45 @@ import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
-import android.os.Bundle;
-import android.app.Activity;
+import android.support.v4.app.DialogFragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.PersistentCookieStore;
 
 import java.util.ArrayList;
 
 import kr.popcorn.sharoom.R;
-import kr.popcorn.sharoom.helper.Helper_roomData;
+import kr.popcorn.sharoom.activity.Activity_join;
+import kr.popcorn.sharoom.activity.Activity_login;
+import kr.popcorn.sharoom.activity.Fragment.Activity_group_view;
+import kr.popcorn.sharoom.activity.Fragment.TestFragment;
+import kr.popcorn.sharoom.helper.Helper_server;
+import kr.popcorn.sharoom.helper.Helper_userData;
 
 public class TabView_myselfAdapter extends RecyclerView.Adapter<TabView_myselfAdapter.ViewHolder> {
 
     ImageView myface;
 
     private Context mContext;
-    public ArrayList<Helper_roomData> list;
+    public ArrayList<Helper_userData> list;
     private LinearLayoutManager linearLayoutManager;
 
-    public ArrayList<Helper_roomData> getContactsList() {
+    public ArrayList<Helper_userData> getContactsList() {
         return list;
     }
 
-    public TabView_myselfAdapter(Context context, ArrayList<Helper_roomData> _dataSet, LinearLayoutManager linearLayoutManager) {
+    public TabView_myselfAdapter(Context context, ArrayList<Helper_userData> _dataSet, LinearLayoutManager linearLayoutManager) {
         mContext = context;
         list = _dataSet;
         this.linearLayoutManager = linearLayoutManager;
@@ -44,7 +57,8 @@ public class TabView_myselfAdapter extends RecyclerView.Adapter<TabView_myselfAd
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(mContext)
-                .inflate(R.layout.activity_myself, parent, false);
+                .inflate(R.layout.activity_myself_adapter, parent, false);
+
 
         return new ViewHolder(v);
     }
@@ -56,7 +70,7 @@ public class TabView_myselfAdapter extends RecyclerView.Adapter<TabView_myselfAd
 
         //holder.myface.setImageResource(R.drawable.ic_action_mapview_m);
         holder.myface.setImageBitmap(getCircleBitmap(face));
-        holder.myname.setText(list.get(position).roomname);
+        //holder.myname.setText((CharSequence) list.get(position));
         //holder.text.setText(tmp.substring(0,4));
     }
 
@@ -66,7 +80,7 @@ public class TabView_myselfAdapter extends RecyclerView.Adapter<TabView_myselfAd
         return list.size();
     }
 
-    public void add(Helper_roomData song, int position) {
+    public void add(Helper_userData song, int position) {
         list.add(position, song);
         notifyItemInserted(position);
     }
@@ -79,6 +93,7 @@ public class TabView_myselfAdapter extends RecyclerView.Adapter<TabView_myselfAd
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public ImageView myface;
         public TextView myname;
+        public Button logout;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -102,6 +117,28 @@ public class TabView_myselfAdapter extends RecyclerView.Adapter<TabView_myselfAd
 
         @Override
         public void onClick(View v) {
+            ImageView logout_btn;
+            logout_btn = (ImageView) v.findViewById(R.id.logout);
+
+            logout_btn.setOnClickListener(new View.OnClickListener(){
+                public void onClick(View v2) {
+                    if (v2.getId() == R.id.logout) {
+                        // Set an EditText view to get user input
+                        //로그아웃파트.
+                        AsyncHttpClient client = Helper_server.getInstance();
+                        final PersistentCookieStore myCookieStore = new PersistentCookieStore(mContext); //이부분 Context 확인해야함. Activity context로.
+                        Helper_server.logout(myCookieStore);
+                        client.setCookieStore(myCookieStore);
+
+                        joinAlert();
+                        //여기에 로그아웃 됬다는 말과 함께 로그인 화면으로 이동시켜 주어야 함.
+
+                        Log.i("kisang", "logout");
+                        System.out.println("test");
+                    }
+                }});
+            System.out.println("noKisang");
+
         }
 
     }
@@ -130,5 +167,19 @@ public class TabView_myselfAdapter extends RecyclerView.Adapter<TabView_myselfAd
         paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
         canvas.drawBitmap(bitmap, rect, rect, paint);
         return output;
+    }
+
+    public void joinAlert() {
+        android.app.AlertDialog.Builder alert = new android.app.AlertDialog.Builder(mContext);
+        alert.setTitle("로그아웃");
+        alert.setMessage("로그아웃 하겠습니까?");
+        alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(mContext, Activity_login.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+//                startActivity(intent);
+            }
+        });
+        alert.show();
     }
 }

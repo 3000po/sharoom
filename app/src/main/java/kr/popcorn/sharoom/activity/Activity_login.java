@@ -19,6 +19,7 @@ import com.facebook.FacebookSdk;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.PersistentCookieStore;
 import com.loopj.android.http.RequestParams;
@@ -73,6 +74,48 @@ public class Activity_login extends Activity {
                 );
 
                 //TODO 전화번호 인증모듈 띄우기
+                String id = loginResult.getAccessToken().getUserId();
+                final RequestParams idParams = new RequestParams();
+                idParams.put("fbid", id);
+                Helper_server.post("fbCheck.php", idParams, new JsonHttpResponseHandler() {
+                    @Override
+
+                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                        Log.i("Msg", "success");
+                        String data = "";
+                        try {
+                            data = response.get("ok").toString();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        Log.d("ok", "" + data);
+                        if (data.equals("true")) {  //페북 가입이 안되있을경우
+                            Helper_server.post("member_Insert.php", idParams, new AsyncHttpResponseHandler() {
+                                @Override
+
+                                public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                                    Log.i("Msg", "success");
+                                    loginAlert();
+                                }
+
+                                @Override
+                                public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                                    Log.i("Msg", "fali");
+                                }
+                            });
+                            return;
+                        } else {
+                            return;
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                        super.onFailure(statusCode, headers, responseString, throwable);
+                        Log.d("Failed: ", "" + statusCode);
+                        Log.d("Error : ", "" + throwable);
+                    }
+                });
             }
 
             @Override

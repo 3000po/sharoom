@@ -74,14 +74,14 @@ public class Activity_login extends Activity {
                 );
 
                 //TODO 전화번호 인증모듈 띄우기
-                String id = loginResult.getAccessToken().getUserId();
+                final String id = loginResult.getAccessToken().getUserId();
                 final RequestParams idParams = new RequestParams();
                 idParams.put("fbid", id);
                 Helper_server.post("fbCheck.php", idParams, new JsonHttpResponseHandler() {
                     @Override
 
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                        Log.i("Msg", "success");
+                        Log.i("abde", "success");
                         String data = "";
                         try {
                             data = response.get("ok").toString();
@@ -90,17 +90,21 @@ public class Activity_login extends Activity {
                         }
                         Log.d("ok", "" + data);
                         if (data.equals("true")) {  //페북 가입이 안되있을경우
-                            Helper_server.post("member_Insert.php", idParams, new AsyncHttpResponseHandler() {
+                            Helper_server.post("facebook.php", idParams, new AsyncHttpResponseHandler() {
                                 @Override
 
                                 public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                                    Log.i("Msg", "success");
-                                    loginAlert();
+                                    Log.i("abde", "success : " + id);
+
+                                    Intent intent = new Intent(Activity_login.this, Activity_group_view.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                                    startActivity(intent);
+                                    finish();
                                 }
 
                                 @Override
                                 public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                                    Log.i("Msg", "fali");
+                                    Log.i("abde", "fali");
                                 }
                             });
                             return;
@@ -170,7 +174,7 @@ public class Activity_login extends Activity {
                                              String id = et_id.getText().toString();
                                              String password = et_password.getText().toString();
 
-                                             Log.i("Msg", "id : " + id + "pwd : " + password);
+                                             Log.i("abde", "id : " + id + "pwd : " + password);
                                              //put params
                                              params.put("id", id);
                                              params.put("password", password);
@@ -179,7 +183,7 @@ public class Activity_login extends Activity {
                                                  @Override
 
                                                  public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                                                     Log.i("Msg", "success");
+                                                     Log.i("abde", "success");
                                                      String data="";
                                                      try{
                                                          data = response.get("ok").toString();
@@ -198,6 +202,7 @@ public class Activity_login extends Activity {
                                                          Intent intent = new Intent(Activity_login.this, Activity_group_view.class);
                                                          intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                                                          startActivity(intent);
+                                                         finish();
 
                                                      }
                                                      else{

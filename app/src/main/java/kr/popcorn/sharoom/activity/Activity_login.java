@@ -16,6 +16,8 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.Profile;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.loopj.android.http.AsyncHttpClient;
@@ -57,6 +59,15 @@ public class Activity_login extends Activity {
         // activity_layout.xml을
 
         loginButton = (LoginButton)findViewById(R.id.login_button);
+
+        Profile profile = Profile.getCurrentProfile();
+        if (profile != null) {
+            Log.v("abde", "Logged, user name=" + profile.getFirstName() + " " + profile.getLastName());
+            Intent intent = new Intent(Activity_login.this, Activity_group_view.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+            startActivity(intent);
+            finish();
+        }
 
         //loginButton.setPublishPermissions(Arrays.asList("public_profile", "user_friends", "email"));
         //LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile","user_friends","email"));

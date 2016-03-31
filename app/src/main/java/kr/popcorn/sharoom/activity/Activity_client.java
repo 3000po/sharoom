@@ -4,10 +4,12 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 
 import com.facebook.appevents.AppEventsLogger;
 
 import kr.popcorn.sharoom.R;
+import kr.popcorn.sharoom.floatingactionbutton.FloatingActionButton;
 
 
 public class Activity_client extends Activity {
@@ -16,6 +18,10 @@ public class Activity_client extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client);
+      //  ListView mListView = (ListView) findViewById(R.id.mListView);
+
+       // FloatingActionButton mFloatingButton = (FloatingActionButton) findViewById(R.id.mFloatingActionButton);
+       // mFloatingButton.attachToListView(mListView);
     }
 
     @Override
@@ -32,10 +38,7 @@ public class Activity_client extends Activity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+
 
         return super.onOptionsItemSelected(item);
     }

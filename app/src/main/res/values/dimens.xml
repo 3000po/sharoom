@@ -51,4 +51,13 @@
     <dimen name="leftmargin">1dp</dimen>
     <dimen name="rightmargin">1dp</dimen>
 
+
+
+
+    <!-- FloatingActionButton -->
+    <dimen name="fab_size_normal">56dp</dimen>
+    <dimen name="fab_size_mini">40dp</dimen>
+    <dimen name="fab_shadow_size">8dp</dimen>
+    <dimen name="fab_mini_shadow_size">6dp</dimen>
+
 </resources>

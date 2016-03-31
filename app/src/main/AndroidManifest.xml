@@ -56,7 +56,13 @@
             android:label="@string/title_activity_activity_calendar" />
         <activity
             android:name=".activity.Activity_client"
-            android:label="@string/title_activity_activity_client" />
+            android:label="@string/title_activity_activity_client" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
@@ -87,11 +93,7 @@
             android:name=".activity.Activity_login"
             android:windowSoftInputMode="adjustResize|adjustPan"
             android:theme="@android:style/Theme.Holo.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
         <activity

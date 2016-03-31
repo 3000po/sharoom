@@ -17,19 +17,17 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:src="@drawable/ic_action_mapview_g"
-        android:scaleType="fitXY"
         android:orientation="horizontal"
         android:background="#e1dfdf"
-        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_gravity="center"
         >
 
         <ImageView
-            android:layout_width="50dp"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
             android:src="@drawable/plus180x180"
-            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_gravity="center"
             />
-
 
     </LinearLayout>
 

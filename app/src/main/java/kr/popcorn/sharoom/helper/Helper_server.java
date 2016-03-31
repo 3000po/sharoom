@@ -5,6 +5,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
 
+import com.facebook.Profile;
+import com.facebook.login.LoginManager;
 import com.loopj.android.http.*;
 
 import java.util.List;
@@ -53,6 +55,12 @@ public class Helper_server {
     public static void logout(PersistentCookieStore myCookieStore){
         myCookieStore.clear();
         client.setCookieStore(myCookieStore);
+
+        Profile profile = Profile.getCurrentProfile();
+        if (profile != null) {
+            LoginManager loginManager = LoginManager.getInstance();
+            loginManager.logOut();
+        }
     }
 
     public static String getAbsoluteUrl(String relativeUrl){

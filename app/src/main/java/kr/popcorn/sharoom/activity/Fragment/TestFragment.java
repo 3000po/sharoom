@@ -44,8 +44,6 @@ public final class TestFragment extends Fragment {
     private TabView_reservationAdapter reservationAdapter;
     private TabView_registerAdapter registerAdapter;
 
-
-
     public static TestFragment newInstance(String content) {
         TestFragment fragment = new TestFragment();
 
@@ -64,7 +62,6 @@ public final class TestFragment extends Fragment {
     private void setAdapterView(LayoutInflater inflater, ViewGroup container, int cases){
         view = inflater.inflate(R.layout.activity_list, container, false);
         recyclerView = (RecyclerView) view.findViewById(R.id.list);
-
 
        // inflater.
 

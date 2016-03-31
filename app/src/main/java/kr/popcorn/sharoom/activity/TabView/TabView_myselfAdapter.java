@@ -33,6 +33,7 @@ import kr.popcorn.sharoom.activity.Activity_join;
 import kr.popcorn.sharoom.activity.Activity_login;
 import kr.popcorn.sharoom.activity.Fragment.Activity_group_view;
 import kr.popcorn.sharoom.activity.Fragment.TestFragment;
+import kr.popcorn.sharoom.helper.Helper_adapterCommunication;
 import kr.popcorn.sharoom.helper.Helper_server;
 import kr.popcorn.sharoom.helper.Helper_userData;
 
@@ -125,20 +126,12 @@ public class TabView_myselfAdapter extends RecyclerView.Adapter<TabView_myselfAd
                     if (v2.getId() == R.id.logout) {
                         // Set an EditText view to get user input
                         //로그아웃파트.
-                        AsyncHttpClient client = Helper_server.getInstance();
-                        final PersistentCookieStore myCookieStore = new PersistentCookieStore(mContext); //이부분 Context 확인해야함. Activity context로.
-                        Helper_server.logout(myCookieStore);
-                        client.setCookieStore(myCookieStore);
-
                         joinAlert();
                         //여기에 로그아웃 됬다는 말과 함께 로그인 화면으로 이동시켜 주어야 함.
 
                         Log.i("kisang", "logout");
-                        System.out.println("test");
                     }
                 }});
-            System.out.println("noKisang");
-
         }
 
     }
@@ -175,9 +168,16 @@ public class TabView_myselfAdapter extends RecyclerView.Adapter<TabView_myselfAd
         alert.setMessage("로그아웃 하겠습니까?");
         alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
+                AsyncHttpClient client = Helper_server.getInstance();
+                final PersistentCookieStore myCookieStore = new PersistentCookieStore(mContext); //이부분 Context 확인해야함. Activity context로.
+                Helper_server.logout(myCookieStore);
+                client.setCookieStore(myCookieStore);
+
                 Intent intent = new Intent(mContext, Activity_login.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-//                startActivity(intent);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                mContext.startActivity(intent);
             }
         });
         alert.show();

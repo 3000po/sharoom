@@ -14,9 +14,12 @@ tools:context="kr.sam1000po.sharoom.Activity_client">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
-        android:layout_margin="16dp"
         android:src="@android:drawable/ic_menu_add"
         fab:fab_colorNormal="#009688"
-        fab:fab_colorPressed="#26a69a" />
+        fab:fab_colorPressed="#26a69a"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

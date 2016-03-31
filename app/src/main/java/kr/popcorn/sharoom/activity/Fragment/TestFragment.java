@@ -35,9 +35,10 @@ public final class TestFragment extends Fragment {
     final int MyInformation = 5;
 
     private View view;
-    private View view2;
+    private View view_register;
 
     public RecyclerView recyclerView;
+    public RecyclerView recyclerView_register;
 
     private TabView_rentListAdapter rentListAdapter;
     private TabView_myselfAdapter myselfAdapter;
@@ -61,8 +62,10 @@ public final class TestFragment extends Fragment {
 
     private void setAdapterView(LayoutInflater inflater, ViewGroup container, int cases){
         view = inflater.inflate(R.layout.activity_list, container, false);
-        recyclerView = (RecyclerView) view.findViewById(R.id.list);
+        view_register = inflater.inflate(R.layout.activity_list2, container, false);
 
+        recyclerView = (RecyclerView) view.findViewById(R.id.list);
+        recyclerView_register = (RecyclerView) view_register.findViewById(R.id.list_register);
        // inflater.
 
         /*if( cases == 1 ){
@@ -134,13 +137,13 @@ public final class TestFragment extends Fragment {
                 recyclerView.setAdapter(reservationAdapter);
                 break;
             case REGISTER:
-                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-                recyclerView.setItemAnimator(new DefaultItemAnimator());
+                recyclerView_register.setLayoutManager(new LinearLayoutManager(getActivity()));
+                recyclerView_register.setItemAnimator(new DefaultItemAnimator());
 
                 registerAdapter = new TabView_registerAdapter(getActivity(),
                         se,
-                        (LinearLayoutManager) recyclerView.getLayoutManager());
-                recyclerView.setAdapter(registerAdapter);
+                        (LinearLayoutManager) recyclerView_register.getLayoutManager());
+                recyclerView_register.setAdapter(registerAdapter);
                 break;
         }
         return ;
@@ -178,7 +181,7 @@ public final class TestFragment extends Fragment {
         }
         else if(mContent.equalsIgnoreCase("c")){
             setAdapterView(inflater, container, REGISTER);
-            return view;
+            return view_register;
         }else if(mContent.equalsIgnoreCase("e")){
             setAdapterView(inflater, container, MyInformation);
             return view;

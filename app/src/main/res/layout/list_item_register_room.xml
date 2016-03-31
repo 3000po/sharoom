@@ -9,8 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:src="@drawable/ic_action_mapview_g"
-        android:scaleType="fitXY"
-        android:visibility="gone"/>
+        android:scaleType="fitXY"/>
 
     <LinearLayout
         android:id="@+id/addroom"
@@ -18,7 +17,6 @@
         android:layout_height="200dp"
         android:src="@drawable/ic_action_mapview_g"
         android:orientation="horizontal"
-        android:background="#e1dfdf"
         android:layout_gravity="center"
         >
 
@@ -40,7 +38,6 @@
         android:layout_alignParentRight="true"
         android:layout_marginTop="10dp"
         android:textColor="#ffffff"
-        android:textSize="30sp"
-        android:visibility="gone"/>
+        android:textSize="30sp"/>
 
 </RelativeLayout>

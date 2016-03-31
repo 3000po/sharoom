@@ -1,10 +1,12 @@
 package kr.popcorn.sharoom.helper;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
 
+import com.facebook.FacebookSdk;
 import com.facebook.Profile;
 import com.facebook.login.LoginManager;
 import com.loopj.android.http.*;
@@ -52,10 +54,11 @@ public class Helper_server {
         return false;
     }
 
-    public static void logout(PersistentCookieStore myCookieStore){
+    public static void logout(PersistentCookieStore myCookieStore, Context mContext){
         myCookieStore.clear();
         client.setCookieStore(myCookieStore);
 
+        FacebookSdk.sdkInitialize(mContext);
         Profile profile = Profile.getCurrentProfile();
         if (profile != null) {
             LoginManager loginManager = LoginManager.getInstance();

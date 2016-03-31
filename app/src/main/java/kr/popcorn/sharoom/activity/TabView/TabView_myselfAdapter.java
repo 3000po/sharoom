@@ -170,7 +170,7 @@ public class TabView_myselfAdapter extends RecyclerView.Adapter<TabView_myselfAd
             public void onClick(DialogInterface dialog, int which) {
                 AsyncHttpClient client = Helper_server.getInstance();
                 final PersistentCookieStore myCookieStore = new PersistentCookieStore(mContext); //이부분 Context 확인해야함. Activity context로.
-                Helper_server.logout(myCookieStore);
+                Helper_server.logout(myCookieStore,mContext);
                 client.setCookieStore(myCookieStore);
 
                 Intent intent = new Intent(mContext, Activity_login.class);

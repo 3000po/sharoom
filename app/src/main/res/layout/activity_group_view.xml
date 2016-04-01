@@ -82,7 +82,7 @@
                     android:layout_height="50dp"
                     android:layout_gravity="center"
                     android:id="@+id/indicator"
-                    android:background="#FFFFFFFF"
+                    android:background="#96FFFFFFFF"
                     />
 
             </LinearLayout>

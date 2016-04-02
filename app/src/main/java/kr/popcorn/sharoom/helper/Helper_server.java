@@ -66,6 +66,7 @@ public class Helper_server {
         }
     }
 
+
     public static String getAbsoluteUrl(String relativeUrl){
         return BASE_URL + relativeUrl;
     }

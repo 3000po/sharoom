@@ -208,7 +208,6 @@ public class Activity_join extends Activity {
 
                                                              Helper_server.post("member_Insert.php", params, new AsyncHttpResponseHandler() {
                                                                  @Override
-
                                                                  public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                                                                      Log.i("Msg", "success");
                                                                      joinAlert();
@@ -216,7 +215,7 @@ public class Activity_join extends Activity {
 
                                                                  @Override
                                                                  public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                                                                     Log.i("Msg", "fali");
+                                                                     Log.i("Msg", "fail");
                                                                  }
                                                              });
                                                          }

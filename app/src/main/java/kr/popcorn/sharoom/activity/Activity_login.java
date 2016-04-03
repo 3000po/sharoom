@@ -60,15 +60,6 @@ public class Activity_login extends Activity {
 
         loginButton = (LoginButton)findViewById(R.id.login_button);
 
-        Profile profile = Profile.getCurrentProfile();
-        if (profile != null) {
-            Log.v("abde", "Logged, user name=" + profile.getFirstName() + " " + profile.getLastName());
-            Intent intent = new Intent(Activity_login.this, Activity_group_view.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-            startActivity(intent);
-            finish();
-        }
-
         //loginButton.setPublishPermissions(Arrays.asList("public_profile", "user_friends", "email"));
         //LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile","user_friends","email"));
         loginButton.setReadPermissions(Arrays.asList("public_profile", "user_friends"));
@@ -76,21 +67,13 @@ public class Activity_login extends Activity {
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                Log.i("bhc :",
-                        "User ID: "
-                                + loginResult.getAccessToken().getUserId()
-                                + "\n" +
-                                "Auth Token: "
-                                + loginResult.getAccessToken().getToken()
-                );
 
                 //TODO 전화번호 인증모듈 띄우기
                 final String id = loginResult.getAccessToken().getUserId();
-                final RequestParams idParams = new RequestParams();
-                idParams.put("fbid", id);
+                final RequestParams idParams = new RequestParams("fbid", id);
+
                 Helper_server.post("fbCheck.php", idParams, new JsonHttpResponseHandler() {
                     @Override
-
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                         Log.i("abde", "success");
                         String data = "";
@@ -108,18 +91,20 @@ public class Activity_login extends Activity {
                                     Log.i("abde", "success : " + id);
 
                                     Intent intent = new Intent(Activity_login.this, Activity_group_view.class);
-                                    intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                                     startActivity(intent);
                                     finish();
                                 }
 
                                 @Override
                                 public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                                    Log.i("abde", "fali");
+                                    Log.i("abde", "fail");
                                 }
                             });
                             return;
                         } else {
+                            Intent intent = new Intent(Activity_login.this, Activity_group_view.class);
+                            startActivity(intent);
+                            finish();
                             return;
                         }
                     }
@@ -155,8 +140,15 @@ public class Activity_login extends Activity {
         //자동 로그인 파트.
         if (Helper_server.login(myCookieStore)) {
             Intent intent = new Intent(Activity_login.this, Activity_group_view.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             startActivity(intent);
+            finish();
+        }else{ //페이스북 자동로그인 파트
+            Profile profile = Profile.getCurrentProfile();
+            if (profile != null) {
+                Intent intent = new Intent(Activity_login.this, Activity_group_view.class);
+                startActivity(intent);
+                finish();
+            }
         }
 
         et_password.setOnKeyListener(new View.OnKeyListener() {
@@ -211,7 +203,6 @@ public class Activity_login extends Activity {
                                                          myCookieStore.addCookie(newCookie);
 
                                                          Intent intent = new Intent(Activity_login.this, Activity_group_view.class);
-                                                         intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                                                          startActivity(intent);
                                                          finish();
 

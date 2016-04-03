@@ -1,0 +1,145 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/activity_layout_background"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/ll_header"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_layout_header_height"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="@dimen/activity_layout_header_margin"
+        android:background="@color/activity_layout_header_background"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_layout_header_padding"
+        android:visibility="gone" >
+    </LinearLayout>
+
+    <!-- android:padding="@color/activity_layout_header_background" -->
+
+    <LinearLayout
+        android:id="@+id/ll_body"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/activity_layout_body_margin"
+        android:layout_weight="1"
+        android:background="@color/activity_layout_left_background"
+        android:orientation="horizontal"
+        android:padding="@dimen/activity_layout_body_padding" >
+
+        <LinearLayout
+            android:id="@+id/ll_left"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_gravity="top"
+            android:layout_margin="@dimen/activity_layout_left_margin"
+            android:layout_weight="1"
+            android:background="@color/activity_layout_left_background"
+            android:orientation="vertical"
+            android:padding="@dimen/activity_layout_left_padding"
+            android:visibility="gone" >
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_center"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_gravity="top"
+            android:layout_margin="@dimen/activity_layout_center_margin"
+            android:layout_weight="2"
+            android:background="@color/activity_layout_center_background"
+            android:orientation="vertical"
+            android:padding="@dimen/activity_layout_center_padding" >
+
+            <!-- content start -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:id="@+id/iv_upload"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center_vertical|center_horizontal|center"
+                    android:src="@drawable/app_logo" >
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/tv_app_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="@string/app_name"
+                    android:textColor="@color/activity_main_app_name"
+                    android:textSize="25sp"
+                    android:textStyle="bold" >
+                </TextView>
+
+                <TextView
+                    android:id="@+id/tv_app_comment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="@string/activity_main_app_comment"
+                    android:textColor="@color/activity_main_app_comment"
+                    android:textSize="16sp" >
+                </TextView>
+            </LinearLayout>
+
+            <!-- content end -->
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_right"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_gravity="top"
+            android:layout_margin="@dimen/activity_layout_right_margin"
+            android:layout_weight="1"
+            android:background="@color/activity_layout_right_background"
+            android:orientation="vertical"
+            android:padding="@dimen/activity_layout_right_padding"
+            android:visibility="gone" >
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_body"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:visibility="gone" >
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_footer"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_layout_footer_height"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="@dimen/activity_layout_footer_margin"
+        android:background="@color/activity_layout_footer_background"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_layout_footer_padding" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/app_company"
+            android:textColor="@color/activity_main_company"
+            android:textSize="15sp" >
+        </TextView>
+    </LinearLayout>
+
+</LinearLayout>

@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -26,6 +27,7 @@ public class Activity_group_view extends FragmentActivity {
     TestFragmentAdapter mAdapter;
     ViewPager mPager;
     PageIndicator mIndicator;
+    TextView mToptext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,8 @@ public class Activity_group_view extends FragmentActivity {
 
         mAdapter = new TestFragmentAdapter(getSupportFragmentManager());
 
+        mToptext = (TextView) findViewById(R.id.toptext);
+
         mPager = (ViewPager) findViewById(R.id.pager);
         mPager.setAdapter(mAdapter);
 
@@ -44,6 +48,36 @@ public class Activity_group_view extends FragmentActivity {
         mIndicator = (IconPageIndicator) findViewById(R.id.indicator);
 
         mIndicator.setViewPager(mPager);
+
+        mIndicator.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                //Log.i("abbde", "hohoho page scrolled");
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                //Log.i("abbde", "now page"+position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                Log.i("abbde", mPager.getCurrentItem() + "hohoho");
+                switch (mPager.getCurrentItem()){
+                    case 0 : mToptext.setText("메인 화면");
+                        break;
+                    case 1 : mToptext.setText("예약 확인");
+                        break;
+                    case 2 : mToptext.setText("등록한 방");
+                        break;
+                    case 3 : mToptext.setText("메세지");
+                        break;
+                    case 4 : mToptext.setText("내 정보");
+                        break;
+
+                }
+            }
+        });
 
 //        ImageView email_btn;
 //        email_btn = (ImageView) v.findViewById(R.id.confirm1);

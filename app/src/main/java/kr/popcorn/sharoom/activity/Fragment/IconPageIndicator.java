@@ -21,11 +21,13 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import kr.popcorn.sharoom.R;
 
@@ -43,17 +45,31 @@ public class IconPageIndicator extends HorizontalScrollView implements PageIndic
     private OnPageChangeListener mListener;
     private Runnable mIconSelector;
     private int mSelectedIndex;
+    private TextView mToptext;
+
+    // pageindicator 를 위한 callback
+    interface Callback{
+        void callbackMethod();
+    }
+    private boolean m_condition;
+    private Callback m_callback;
+
 
     public IconPageIndicator(Context context) {
         this(context, null);
+
+        m_condition = false;
+        m_callback = null;
     }
 
     public IconPageIndicator(Context context, AttributeSet attrs) {
         super(context, attrs);
         setHorizontalScrollBarEnabled(false);
-
         mIconsLayout = new IcsLinearLayout(context, R.attr.vpiIconPageIndicatorStyle);
         addView(mIconsLayout, new LayoutParams(WRAP_CONTENT, FILL_PARENT, Gravity.CENTER));
+
+        m_condition = false;
+        m_callback = null;
     }
 
     private void animateToIcon(final int position) {
@@ -156,6 +172,7 @@ public class IconPageIndicator extends HorizontalScrollView implements PageIndic
         if (mSelectedIndex > count) {
             mSelectedIndex = count - 1;
         }
+
         setCurrentItem(mSelectedIndex);
         requestLayout();
     }
@@ -184,6 +201,7 @@ public class IconPageIndicator extends HorizontalScrollView implements PageIndic
             }
         }
     }
+
 
     @Override
     public void setOnPageChangeListener(OnPageChangeListener listener) {

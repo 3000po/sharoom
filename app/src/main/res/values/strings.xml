@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ShaRoom</string>
+    <string name="app_name">방풀</string>
 
     <string name="facebook_app_id">1073682272682418</string>
 
@@ -27,8 +27,8 @@
     <string name="login_join">join</string>
 
 
-    <string name="activity_main_app_comment"> Welecome to SharRoom</string>
-    <string name="app_company"> 3000po</string>
+    <string name="activity_main_app_comment">방풀에 오신것을 환영합니다.</string>
+    <string name="app_company"> popcorn</string>
     <string name="input_text" />
     <string name="button_send" />
     <string name="title_activity_main">MainActivity</string>

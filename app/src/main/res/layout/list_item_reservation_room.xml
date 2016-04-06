@@ -26,7 +26,7 @@
         android:layout_width="150dp"
         android:layout_height="200dp"
         android:background="#80000000"
-        android:text="일정 : 03/01 ~ 03/22 인원 : 1명 예시입니다. 대충한거니까 뭐라하기 있기없긔?"
+        android:text="일정 : 03/01 ~ 03/22 인원 : 1명 예시입니다."
         android:layout_alignParentRight="true"
 
         android:textColor="#ffffff"

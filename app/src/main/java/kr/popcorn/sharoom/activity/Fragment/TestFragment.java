@@ -92,18 +92,56 @@ public final class TestFragment extends Fragment {
 */
 
         Helper_roomData first = new Helper_roomData();
+        Helper_roomData second = new Helper_roomData();
+        Helper_roomData third = new Helper_roomData();
+        first.roomname ="방 화면 예시 1";
+        second.roomname = "방 화면 예시 2";
+        second.roomimage = R.drawable.room2;
+        third.roomimage = R.drawable.room3;
+        third.roomname = "방 화면 예시 3";
+
+        Helper_roomData first2 = new Helper_roomData();
+        Helper_roomData second2 = new Helper_roomData();
+        Helper_roomData third2 = new Helper_roomData();
+
+        first2.roomimage = R.drawable.room2;
+        second2.roomimage = R.drawable.room3;
+        third2.roomimage = R.drawable.room1;
+
+        first2.roomname = "일정 : 03/01 ~ 03/22 인원 : 1명 예시입니다";
+        second2.roomname = "일정 : 03/05 ~ 03/08 인원 : 3명 예시입니다";
+        third2.roomname = "일정 : 03/25 ~ 03/29 인원 : 2명 예시입니다";
+
+        Helper_roomData first3 = new Helper_roomData();
+        Helper_roomData second3 = new Helper_roomData();
+        Helper_roomData third3 = new Helper_roomData();
+
+        first3.roomimage = R.drawable.room3;
+        second3.roomimage = R.drawable.room2;
+        third3.roomimage = R.drawable.room1;
+
+        first3.roomname = "등록한 방 예시 1";
+        second3.roomname = "등록한 방 예시 2";
+        third3.roomname = "등록한 방 예시 3";
+
         ArrayList<Helper_roomData> se = new ArrayList<Helper_roomData>();
         se.add(first);
-        se.add(first);
-        se.add(first);
-        se.add(first);
-        se.add(first);
-        se.add(first);
-        se.add(first);
+        se.add(second);
+        se.add(third);
 
-        Helper_userData second = new Helper_userData();
+        ArrayList<Helper_roomData> se2 = new ArrayList<Helper_roomData>();
+        se2.add(first2);
+        se2.add(second2);
+        se2.add(third2);
+
+        ArrayList<Helper_roomData> se3 = new ArrayList<Helper_roomData>();
+        se3.add(first3);
+        se3.add(second3);
+        se3.add(third3);
+
+        Helper_userData user = new Helper_userData();
         ArrayList<Helper_userData> ee = new ArrayList<Helper_userData>();
-        ee.add(second);
+        ee.add(user);
 
         switch (cases){
             case ROOMLIST:
@@ -132,7 +170,7 @@ public final class TestFragment extends Fragment {
                 recyclerView.setItemAnimator(new DefaultItemAnimator());
 
                 reservationAdapter = new TabView_reservationAdapter(getActivity(),
-                        se,
+                        se2,
                         (LinearLayoutManager) recyclerView.getLayoutManager());
                 recyclerView.setAdapter(reservationAdapter);
                 break;
@@ -141,7 +179,7 @@ public final class TestFragment extends Fragment {
                 recyclerView_register.setItemAnimator(new DefaultItemAnimator());
 
                 registerAdapter = new TabView_registerAdapter(getActivity(),
-                        se,
+                        se3,
                         (LinearLayoutManager) recyclerView_register.getLayoutManager());
                 recyclerView_register.setAdapter(registerAdapter);
                 break;

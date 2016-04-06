@@ -23,7 +23,7 @@ public class Helper_roomData {
     public Helper_roomData(){
         //list = new ArrayList<Integer>();
        // list.add(0, R.drawable.facebook_gray);
-        roomname = "구수하다";
-        roomimage = R.drawable.ic_action_mapview_g;
+        roomname = "방 화면 예시";
+        roomimage = R.drawable.room1;
     }
 }

@@ -60,6 +60,8 @@ public class TabView_reservationAdapter extends RecyclerView.Adapter<TabView_res
         holder.roomface.setImageBitmap(getCircleBitmap(face));
         //holder.myname.setText((CharSequence) list.get(position));
         //holder.text.setText(tmp.substring(0,4));
+        holder.roomimage.setImageResource(list.get(position).roomimage);
+        holder.rating.setText(list.get(position).roomname);
     }
 
     @Override
@@ -80,15 +82,17 @@ public class TabView_reservationAdapter extends RecyclerView.Adapter<TabView_res
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public ImageView roomface;
-        public TextView myname;
+        public ImageView roomimage;
+        public TextView rating;
 
         public ViewHolder(View itemView) {
             super(itemView);
             //album = (ImageView) itemView.findViewById(R.id.album_art1);
             //text = (TextView) itemView.findViewById(R.id.year);
 
+            roomimage = (ImageView) itemView.findViewById(R.id.roomimage);
             roomface = (ImageView) itemView.findViewById(R.id.roomface);
-            //myname = (TextView) itemView.findViewById(R.id.myname);
+            rating = (TextView) itemView.findViewById(R.id.roomrating);
 
             itemView.setClickable(true);
             itemView.setOnClickListener(this);

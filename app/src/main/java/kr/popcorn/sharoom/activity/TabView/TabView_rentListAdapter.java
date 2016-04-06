@@ -44,7 +44,7 @@ public class TabView_rentListAdapter extends RecyclerView.Adapter<TabView_rentLi
     public void onBindViewHolder(ViewHolder holder, int position) {
         //Picasso.with(mContext).load(new File(list.get(position).path)).into(holder.album);
 
-        holder.roomimage.setImageResource(R.drawable.ic_action_mapview_m);
+        holder.roomimage.setImageResource(list.get(position).roomimage);
         holder.rating.setText(list.get(position).roomname);
         //holder.text.setText(tmp.substring(0,4));
     }

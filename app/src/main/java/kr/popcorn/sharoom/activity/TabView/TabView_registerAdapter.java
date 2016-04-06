@@ -48,6 +48,8 @@ public class TabView_registerAdapter extends RecyclerView.Adapter<TabView_regist
         //holder.roomimage.setImageResource(R.drawable.ic_action_mapview_m);
         //holder.rating.setText(list.get(position).roomname);
         //holder.text.setText(tmp.substring(0,4));
+        holder.roomimage.setImageResource(list.get(position).roomimage);
+        holder.rating.setText(list.get(position).roomname);
     }
 
     @Override

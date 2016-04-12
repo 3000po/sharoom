@@ -73,6 +73,8 @@ public class TabView_myselfAdapter extends RecyclerView.Adapter<TabView_myselfAd
         String id = Helper_server.isLogIn(mContext);
         final RequestParams idParams = new RequestParams("fbid", id);
 
+        Log.i("myself", id);
+
         Helper_server.post("getProfile.php", idParams, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {

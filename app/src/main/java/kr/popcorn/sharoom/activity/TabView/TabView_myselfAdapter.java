@@ -23,11 +23,21 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.facebook.FacebookSdk;
+import com.facebook.Profile;
+import com.facebook.login.LoginManager;
 import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.PersistentCookieStore;
+import com.loopj.android.http.RequestParams;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import cz.msebera.android.httpclient.Header;
 import kr.popcorn.sharoom.R;
 import kr.popcorn.sharoom.activity.Activity_join;
 import kr.popcorn.sharoom.activity.Activity_login;
@@ -60,6 +70,29 @@ public class TabView_myselfAdapter extends RecyclerView.Adapter<TabView_myselfAd
         View v = LayoutInflater.from(mContext)
                 .inflate(R.layout.activity_myself_adapter, parent, false);
 
+        String id = Helper_server.isLogIn(mContext);
+        final RequestParams idParams = new RequestParams("fbid", id);
+
+        Helper_server.post("getProfile.php", idParams, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                Log.i("myself", "success");
+                String data = "";
+                try {
+                    data = response.get("userID").toString();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                Log.d("myself", "" + data);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+                Log.d("Failed: ", "myself " + statusCode);
+                Log.d("Error : ", "myself " + throwable);
+            }
+        });
 
         return new ViewHolder(v);
     }

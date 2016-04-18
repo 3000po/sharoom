@@ -69,7 +69,7 @@ public class TabView_myselfAdapter extends RecyclerView.Adapter<TabView_myselfAd
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(mContext)
                 .inflate(R.layout.activity_myself_adapter, parent, false);
-
+/*
         String id = Helper_server.isLogIn(mContext);
         final RequestParams idParams = new RequestParams("fbid", id);
 
@@ -95,6 +95,7 @@ public class TabView_myselfAdapter extends RecyclerView.Adapter<TabView_myselfAd
                 Log.d("Error : ", "myself " + throwable);
             }
         });
+        */
 
         return new ViewHolder(v);
     }

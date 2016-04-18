@@ -12,7 +12,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.bumptech.glide.util.Util;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -22,8 +21,6 @@ import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.HttpMethod;
 import com.facebook.Profile;
-import com.facebook.login.LoginClient;
-import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.loopj.android.http.AsyncHttpClient;
@@ -31,7 +28,6 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.PersistentCookieStore;
 import com.loopj.android.http.RequestParams;
-import com.squareup.picasso.Downloader;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -69,7 +65,7 @@ public class Activity_login extends Activity {
 
         //loginButton.setPublishPermissions(Arrays.asList("public_profile", "user_friends", "email"));
         //LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile","user_friends","email"));
-        loginButton.setReadPermissions(Arrays.asList("public_profile", "user_friends"));
+        loginButton.setReadPermissions(Arrays.asList("public_profile", "user_friends","email"));
 
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
@@ -97,19 +93,31 @@ public class Activity_login extends Activity {
                             if (profile != null) {
                                 name = profile.getName();
                             }
+                            Bundle params = new Bundle();
+                            params.putString("fields", "id,name,email,gender");
                             new GraphRequest(
-                                    AccessToken.getCurrentAccessToken(),
-                                    "/{user-id}/accounts",
-                                    null,
+                                    AccessToken.getCurrentAccessToken(), //loginResult.getAccessToken(),
+                                    "/me",
+                                    params,
                                     HttpMethod.GET,
                                     new GraphRequest.Callback() {
                                         public void onCompleted(GraphResponse response) {
-                                             /* handle the result */
-                                            response.
+                                            try {
+                                                Log.e("JSON",response.toString());
+                                                JSONObject data = response.getJSONObject();
+                                                String id = data.getString("id");
+                                                String name = data.getString("name");
+                                                String email = data.getString("email");
+                                                String gender = data.getString("gender");
+
+                                                Log.i("abde", "gender:"+gender);
+                                            } catch (Exception e){
+                                                Log.i("abde","fail boy~");
+                                                e.printStackTrace();
+                                            }
                                         }
                                     }
                             ).executeAsync();
-
 
                             Helper_server.post("facebook.php", idParams, new AsyncHttpResponseHandler() {
                                 @Override

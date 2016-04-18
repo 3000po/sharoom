@@ -12,11 +12,17 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.bumptech.glide.util.Util;
+import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.HttpMethod;
 import com.facebook.Profile;
+import com.facebook.login.LoginClient;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
@@ -25,6 +31,7 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.PersistentCookieStore;
 import com.loopj.android.http.RequestParams;
+import com.squareup.picasso.Downloader;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -66,7 +73,7 @@ public class Activity_login extends Activity {
 
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
-            public void onSuccess(LoginResult loginResult) {
+            public void onSuccess(final LoginResult loginResult) {
 
                 //TODO 전화번호 인증모듈 띄우기
                 final String id = loginResult.getAccessToken().getUserId();
@@ -84,6 +91,26 @@ public class Activity_login extends Activity {
                         }
                         Log.d("ok", "" + data);
                         if (data.equals("true")) {  //페북 가입이 안되있을경우
+                            String name;
+                            int sex;
+                            Profile profile = Profile.getCurrentProfile();
+                            if (profile != null) {
+                                name = profile.getName();
+                            }
+                            new GraphRequest(
+                                    AccessToken.getCurrentAccessToken(),
+                                    "/{user-id}/accounts",
+                                    null,
+                                    HttpMethod.GET,
+                                    new GraphRequest.Callback() {
+                                        public void onCompleted(GraphResponse response) {
+                                             /* handle the result */
+                                            response.
+                                        }
+                                    }
+                            ).executeAsync();
+
+
                             Helper_server.post("facebook.php", idParams, new AsyncHttpResponseHandler() {
                                 @Override
 
@@ -177,7 +204,6 @@ public class Activity_login extends Activity {
                                              String id = et_id.getText().toString();
                                              String password = et_password.getText().toString();
 
-                                             Log.i("abde", "id : " + id + "pwd : " + password);
                                              //put params
                                              params.put("id", id);
                                              params.put("password", password);

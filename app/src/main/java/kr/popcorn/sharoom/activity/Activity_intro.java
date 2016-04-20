@@ -85,7 +85,7 @@ public class Activity_intro extends Activity {
 
             public void run() {
 
-                    Intent intent = new Intent(Activity_intro.this, Activity_group_view.class);
+                    Intent intent = new Intent(Activity_intro.this, Activity_login.class);
                     //intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                     startActivity(intent);
 

@@ -9,6 +9,7 @@ import android.util.Log;
 import android.widget.ListAdapter;
 import android.widget.SimpleAdapter;
 
+import com.facebook.AccessToken;
 import com.facebook.FacebookSdk;
 import com.facebook.Profile;
 import com.facebook.login.LoginManager;
@@ -86,9 +87,10 @@ public class Helper_server {
         myCookieStore.clear();
         client.setCookieStore(myCookieStore);
 
-        FacebookSdk.sdkInitialize(mContext);
-        Profile profile = Profile.getCurrentProfile();
-        if (profile != null) {
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        if (accessToken == null) {
+            Log.d("abde", ">>>" + "Signed Out");
+        } else {
             LoginManager loginManager = LoginManager.getInstance();
             loginManager.logOut();
         }
@@ -98,12 +100,12 @@ public class Helper_server {
     public static String isLogIn(Context mContext){
         //TODO 회원가입할때 아이디는 숫자만으로 가입 불가능하게 만들어야한다!
 
-
         //페이스북 로그인 정보 확인 Id를 리턴한다.
-        FacebookSdk.sdkInitialize(mContext);
-        Profile profile = Profile.getCurrentProfile();
-        if (profile != null) {
-            return profile.getId();
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        if (accessToken == null) {
+            Log.d("abde", ">>>" + "Signed Out");
+        } else {
+            return accessToken.getUserId();
         }
 
         //쿠키로 로그인 정보 확인 찾으면 아이디를 리턴

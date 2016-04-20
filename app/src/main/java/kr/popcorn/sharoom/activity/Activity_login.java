@@ -87,12 +87,6 @@ public class Activity_login extends Activity {
                         }
                         Log.d("ok", "" + data);
                         if (data.equals("true")) {  //페북 가입이 안되있을경우
-                            String name;
-                            int sex;
-                            Profile profile = Profile.getCurrentProfile();
-                            if (profile != null) {
-                                name = profile.getName();
-                            }
                             Bundle params = new Bundle();
                             params.putString("fields", "id,name,email,gender");
                             new GraphRequest(
@@ -105,36 +99,44 @@ public class Activity_login extends Activity {
                                             try {
                                                 Log.e("JSON",response.toString());
                                                 JSONObject data = response.getJSONObject();
+
                                                 String id = data.getString("id");
                                                 String name = data.getString("name");
                                                 String email = data.getString("email");
                                                 String gender = data.getString("gender");
 
-                                                Log.i("abde", "gender:"+gender);
+                                                RequestParams params = new RequestParams();
+                                                params.put("id", id);
+                                                params.put("name", name);
+                                                params.put("email", email);
+                                                if( gender.equals("male") == true ){
+                                                    params.put("gender", 1);
+                                                }else{
+                                                    params.put("gender", 2);
+                                                }
+
+                                                Helper_server.post("facebook.php", params, new AsyncHttpResponseHandler() {
+                                                    @Override
+
+                                                    public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                                                        Intent intent = new Intent(Activity_login.this, Activity_group_view.class);
+                                                        startActivity(intent);
+                                                        finish();
+                                                    }
+
+                                                    @Override
+                                                    public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                                                        Log.i("abde", "fail");
+                                                    }
+                                                });
+
                                             } catch (Exception e){
-                                                Log.i("abde","fail boy~");
                                                 e.printStackTrace();
                                             }
                                         }
                                     }
                             ).executeAsync();
 
-                            Helper_server.post("facebook.php", idParams, new AsyncHttpResponseHandler() {
-                                @Override
-
-                                public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                                    Log.i("abde", "success : " + id);
-
-                                    Intent intent = new Intent(Activity_login.this, Activity_group_view.class);
-                                    startActivity(intent);
-                                    finish();
-                                }
-
-                                @Override
-                                public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                                    Log.i("abde", "fail");
-                                }
-                            });
                             return;
                         } else {
                             Intent intent = new Intent(Activity_login.this, Activity_group_view.class);
@@ -174,12 +176,16 @@ public class Activity_login extends Activity {
 
         //자동 로그인 파트.
         if (Helper_server.login(myCookieStore)) {
+            Log.i("abde", "what the!! ");
             Intent intent = new Intent(Activity_login.this, Activity_group_view.class);
             startActivity(intent);
             finish();
         }else{ //페이스북 자동로그인 파트
-            Profile profile = Profile.getCurrentProfile();
-            if (profile != null) {
+            AccessToken accessToken = AccessToken.getCurrentAccessToken();
+            if (accessToken == null) {
+                Log.d("abde", ">>>" + "Signed Out");
+            } else {
+                Log.d("abde", ">>>" + "Signed In");
                 Intent intent = new Intent(Activity_login.this, Activity_group_view.class);
                 startActivity(intent);
                 finish();

@@ -52,17 +52,16 @@ public class Activity_group_view extends FragmentActivity {
         mIndicator.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                //Log.i("abbde", "hohoho page scrolled");
+
             }
 
             @Override
             public void onPageSelected(int position) {
-                //Log.i("abbde", "now page"+position);
+
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
-                Log.i("abbde", mPager.getCurrentItem() + "hohoho");
                 switch (mPager.getCurrentItem()){
                     case 0 : mToptext.setText("메인 화면");
                         break;

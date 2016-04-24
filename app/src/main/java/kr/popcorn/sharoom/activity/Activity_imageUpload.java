@@ -65,8 +65,9 @@ public class Activity_imageUpload extends Activity {
     public static void postImage(String ImageLink){
         RequestParams params = new RequestParams();
         try {
+            params.put("id","111");
             params.put("file", new File(ImageLink));
-            params.put("path", "dfjkla");
+            params.put("path", "aaa");
             System.out.println("sibalbalblabl_imageLink : " + ImageLink );
         } catch (FileNotFoundException e) {
             e.printStackTrace();

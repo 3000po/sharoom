@@ -96,6 +96,8 @@ public class Helper_server {
         }
     }
 
+
+
     //로그인해서 정보 얻을때
     public static String isLogIn(Context mContext){
         //TODO 회원가입할때 아이디는 숫자만으로 가입 불가능하게 만들어야한다!

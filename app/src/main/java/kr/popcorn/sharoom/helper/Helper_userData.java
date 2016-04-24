@@ -8,6 +8,8 @@ package kr.popcorn.sharoom.helper;
 
 public class Helper_userData {
 
+    private static Helper_userData user;
+
     public int userID;
     public String id;
     public String name;
@@ -18,24 +20,26 @@ public class Helper_userData {
     public String school;
     public String facebook;
 
-    public Helper_userData(){}
-
     public Helper_userData(int userID, String id, String name, String phoneNumber, String email, int sex, int rate, String school, String facebook) {
 
-        this.userID = userID;
-        this.id = id;
-        this.name = name;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.sex = sex;
-        this.rate = rate;
-        this.school = school;
-        this.facebook = facebook;
+        user.userID = userID;
+        user.id = id;
+        user.name = name;
+        user.phoneNumber = phoneNumber;
+        user.email = email;
+        user.sex = sex;
+        user.rate = rate;
+        user.school = school;
+        user.facebook = facebook;
     }
 
-    public Helper_userData getUserData(){
-        return new Helper_userData(userID, id, name, phoneNumber, email, sex, rate, school, facebook);
+    public Helper_userData(){
+
     }
+    public static synchronized Helper_userData getInstance() {
+        return user;
+    }
+
 
     public int getUserID() {
         return userID;

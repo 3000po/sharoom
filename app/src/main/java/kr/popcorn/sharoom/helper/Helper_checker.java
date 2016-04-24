@@ -36,6 +36,12 @@ public class Helper_checker {
         if( id.length() < MIN || id.length() > MAX ) return false;
         return true;
     }
+    public static boolean onlyNumberId(String id){
+        if(Pattern.matches("^[0-9]+$", id)) return false;
+        return true;
+    }
+
+
     public static boolean validPassword(String pw){
         if( pw == null ) return false;
         if( pw.length() < MIN ) return false;
@@ -47,6 +53,11 @@ public class Helper_checker {
             Toast.makeText(context, "아이디는 5글자이상 20글자 이하여야합니다. ", Toast.LENGTH_LONG).show();
             return false;
         }
+        if(!onlyNumberId(id)){
+            Toast.makeText(context, "아이디는 숫자로만 이루어지면 안됩니다. ", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
         return true;
     }
 
@@ -62,6 +73,10 @@ public class Helper_checker {
     public static boolean validJoin(Context context, String email, String name, String id, String pw){
         if( !validId(id) ){
             Toast.makeText(context, "아이디는 5글자이상 20글자 이하여야합니다. ", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        if(!onlyNumberId(id)){
+            Toast.makeText(context, "아이디는 숫자로만 이루어지면 안됩니다. ", Toast.LENGTH_LONG).show();
             return false;
         }
         if( !validPassword(pw) ){

@@ -86,6 +86,7 @@ public class Activity_join extends Activity {
                     idParams.put("id", id);
                     if (!Helper_checker.validId_context(Activity_join.this, id)) {
                         id_check_ok = false;
+                        form_basic.tv_idCheck.setText("사용불가");
                         return;
                     } else {
                         Helper_server.post("idCheck.php", idParams, new JsonHttpResponseHandler() {
@@ -130,11 +131,6 @@ public class Activity_join extends Activity {
         View.OnClickListener requestJoin = new View.OnClickListener() {
             public void onClick(View v) {
 
-                if (!Helper_checker.id_check_ok(Activity_join.this, id_check_ok)) {
-                    return;
-                }
-
-
                 if (network_check.isNetWork()) {
                     RequestParams params = new RequestParams();
                     Log.d("idcheck", "" + id_check_ok);
@@ -147,6 +143,35 @@ public class Activity_join extends Activity {
                     if (!Helper_checker.validJoin(Activity_join.this, email, name, id, password)) {
                         return;
                     }
+                    if(id_check_ok==false) {
+                        RequestParams idParams = new RequestParams();
+                        idParams.put("id", id);
+
+                        Helper_server.post("idCheck.php", idParams, new JsonHttpResponseHandler() {
+                            @Override
+
+                            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                                Log.i("Msg", "success");
+                                String data = "";
+                                try {
+                                    data = response.get("ok").toString();
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                                Log.d("ok", "" + data);
+                                if (data.equals("true")) {
+                                    form_basic.tv_idCheck.setText("사용가능");
+                                    id_check_ok = true;
+                                } else {
+                                    form_basic.tv_idCheck.setText("이미있는아이디");
+                                    id_check_ok = false;
+                                    Helper_checker.id_check_ok(Activity_join.this, id_check_ok);
+                                    return;
+                                }
+                            }
+                        });
+                    }
+
 
                     Log.i("Msg", "id : " + id + "pwd : " + password + "name : " + name + "phoneNumber : " + phoneNumber + "email : " + email);
 

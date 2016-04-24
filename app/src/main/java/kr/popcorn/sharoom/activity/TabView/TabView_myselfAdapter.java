@@ -21,6 +21,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.facebook.FacebookSdk;
@@ -49,43 +50,82 @@ import kr.popcorn.sharoom.helper.Helper_userData;
 
 public class TabView_myselfAdapter extends RecyclerView.Adapter<TabView_myselfAdapter.ViewHolder> {
 
-    ImageView myface;
+    ImageView myFace;
 
     private Context mContext;
-    public ArrayList<Helper_userData> list;
+    public Helper_userData data;
     private LinearLayoutManager linearLayoutManager;
 
-    public ArrayList<Helper_userData> getContactsList() {
-        return list;
-    }
-
-    public TabView_myselfAdapter(Context context, ArrayList<Helper_userData> _dataSet, LinearLayoutManager linearLayoutManager) {
+    public TabView_myselfAdapter(Context context, Helper_userData _dataSet, LinearLayoutManager linearLayoutManager) {
         mContext = context;
-        list = _dataSet;
+        data = _dataSet;
         this.linearLayoutManager = linearLayoutManager;
+        loadInfo();
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(mContext)
                 .inflate(R.layout.activity_myself_adapter, parent, false);
-/*
+
+        return new ViewHolder(v);
+    }
+
+    public void onBindViewHolder(ViewHolder holder, int position) {
+
+        Bitmap face = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.myself_50x50);
+        //myFace.setImageBitmap(getCircleBitmap(face));
+
+        //holder.myFace.setImageResource(R.drawable.ic_action_mapview_m);
+        holder.myFace.setImageBitmap(getCircleBitmap(face));
+        //holder.myname.setText((CharSequence) list.get(position));
+        //holder.text.setText(tmp.substring(0,4));
+
+        holder.loadData();
+    }
+
+    @Override
+    public int getItemCount() {
+        return 0;
+    }
+
+    private void loadInfo(){
         String id = Helper_server.isLogIn(mContext);
         final RequestParams idParams = new RequestParams("fbid", id);
-
-        Log.i("myself", id);
 
         Helper_server.post("getProfile.php", idParams, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 Log.i("myself", "success");
-                String data = "";
+                int userID;
+                String id;
+                String name;
+                String phoneNumber;
+                String email;
+                int sex;
+                int rate;
+                String school;
+                String facebook;
+
                 try {
-                    data = response.get("userID").toString();
+                    userID = Integer.parseInt(response.get("userID").toString());
+                    id = response.get("id").toString();
+                    name = response.get("name").toString();
+                    phoneNumber = response.get("phoneNumber").toString();
+                    email = response.get("email").toString();
+                    sex = Integer.parseInt(response.get("sex").toString());
+                    rate = Integer.parseInt(response.get("rate").toString());
+                    school = response.get("school").toString();
+                    facebook = response.get("facebook").toString();
+
+                    Log.i("myself", id+", "+name+","+facebook);
+
+                    data = new Helper_userData(userID,id,name,phoneNumber,email,sex,rate,school,facebook);
+                    //list.add(new Helper_userData(userID,id,name,phoneNumber,email,sex,rate,school,facebook));
+                    //notifyDataSetChanged();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                Log.d("myself", "" + data);
             }
 
             @Override
@@ -95,41 +135,23 @@ public class TabView_myselfAdapter extends RecyclerView.Adapter<TabView_myselfAd
                 Log.d("Error : ", "myself " + throwable);
             }
         });
-        */
-
-        return new ViewHolder(v);
-    }
-
-    public void onBindViewHolder(ViewHolder holder, int position) {
-
-        Bitmap face = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.myself_50x50);
-        //myface.setImageBitmap(getCircleBitmap(face));
-
-        //holder.myface.setImageResource(R.drawable.ic_action_mapview_m);
-        holder.myface.setImageBitmap(getCircleBitmap(face));
-        //holder.myname.setText((CharSequence) list.get(position));
-        //holder.text.setText(tmp.substring(0,4));
-    }
-
-    @Override
-    public int getItemCount() {
-        if (list == null) return 0;
-        return list.size();
-    }
-
-    public void add(Helper_userData song, int position) {
-        list.add(position, song);
-        notifyItemInserted(position);
-    }
-
-    public void remove(int position) {
-        list.remove(position);
-        notifyItemRemoved(position);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public ImageView myface;
-        public TextView myname;
+        public ImageView myFace;
+        public TextView myName;
+        public RatingBar myRating;
+        public ImageView confirm1;
+        public ImageView confirm2;
+        public ImageView confirm3;
+        public ImageView confirm4;
+        public ImageView confirm5;
+        public ImageView confirm6;
+
+        public boolean facebookID;
+        public boolean phoneID;
+        public boolean emailID;
+        
         public Button logout;
 
         public ViewHolder(View itemView) {
@@ -137,11 +159,25 @@ public class TabView_myselfAdapter extends RecyclerView.Adapter<TabView_myselfAd
             //album = (ImageView) itemView.findViewById(R.id.album_art1);
             //text = (TextView) itemView.findViewById(R.id.year);
 
-            myface = (ImageView) itemView.findViewById(R.id.myface);
-            myname = (TextView) itemView.findViewById(R.id.myname);
+            myFace = (ImageView) itemView.findViewById(R.id.myface);
+            myName = (TextView) itemView.findViewById(R.id.myname);
+            myRating = (RatingBar) itemView.findViewById(R.id.myrating);
+            confirm1 = (ImageView) itemView.findViewById(R.id.confirm1);
+            confirm2 = (ImageView) itemView.findViewById(R.id.confirm2);
+            confirm3 = (ImageView) itemView.findViewById(R.id.confirm3);
+            confirm4 = (ImageView) itemView.findViewById(R.id.confirm4);
+            confirm5 = (ImageView) itemView.findViewById(R.id.confirm5);
+            confirm6 = (ImageView) itemView.findViewById(R.id.confirm6);
+
 
             itemView.setClickable(true);
             itemView.setOnClickListener(this);
+            
+            if( data == null ){
+                loadInfo();
+            }
+            loadData();
+
 
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
@@ -150,6 +186,29 @@ public class TabView_myselfAdapter extends RecyclerView.Adapter<TabView_myselfAd
                     return true;
                 }
             });
+        }
+
+        public void loadData(){
+
+            myName.setText(data.name);
+            //내 사진 로드
+            myRating.setRating(data.rate);
+
+            if(data.facebook == null){
+                confirm1.setImageResource(R.drawable.facebook_gray);
+                facebookID=false;
+            }else{
+                confirm1.setImageResource(R.drawable.facebook_green);
+                facebookID=true;
+            }
+
+            if(data.phoneNumber == null){
+                confirm2.setImageResource(R.drawable.phone_gray);
+                phoneID=false;
+            }else{
+                confirm2.setImageResource(R.drawable.phone_green);
+                phoneID=true;
+            }
         }
 
         @Override
@@ -164,8 +223,6 @@ public class TabView_myselfAdapter extends RecyclerView.Adapter<TabView_myselfAd
                         //로그아웃파트.
                         joinAlert();
                         //여기에 로그아웃 됬다는 말과 함께 로그인 화면으로 이동시켜 주어야 함.
-
-                        Log.i("kisang", "logout");
                     }
                 }});
         }
@@ -173,12 +230,12 @@ public class TabView_myselfAdapter extends RecyclerView.Adapter<TabView_myselfAd
     }
     void init(){
 
-        //myface= (ImageView)findViewById(R.id.myface);
-       // myface.getDrawable();
+        //myFace= (ImageView)findViewById(R.id.myFace);
+       // myFace.getDrawable();
        // init();
        // Bitmap face = BitmapFactory.decodeResource(getBaseContext().getResources(),R.drawable.myself_50x50);
 
-        //myface.setImageBitmap(getCircleBitmap(face));
+        //myFace.setImageBitmap(getCircleBitmap(face));
 
     }
 

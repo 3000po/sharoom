@@ -36,6 +36,7 @@ public final class TestFragment extends Fragment {
 
     private View view;
     private View view_register;
+    private View info;
 
     public RecyclerView recyclerView;
     public RecyclerView recyclerView_register;
@@ -63,6 +64,7 @@ public final class TestFragment extends Fragment {
     private void setAdapterView(LayoutInflater inflater, ViewGroup container, int cases){
         view = inflater.inflate(R.layout.activity_list, container, false);
         view_register = inflater.inflate(R.layout.activity_list2, container, false);
+        info = inflater.inflate(R.layout.activity_myself_adapter,container,false);
 
         recyclerView = (RecyclerView) view.findViewById(R.id.list);
         recyclerView_register = (RecyclerView) view_register.findViewById(R.id.list_register);
@@ -140,8 +142,6 @@ public final class TestFragment extends Fragment {
         se3.add(third3);
 
         Helper_userData user = new Helper_userData();
-        ArrayList<Helper_userData> ee = new ArrayList<Helper_userData>();
-        ee.add(user);
 
         switch (cases){
             case ROOMLIST:
@@ -160,7 +160,7 @@ public final class TestFragment extends Fragment {
                 recyclerView.setItemAnimator(new DefaultItemAnimator());
 
                 myselfAdapter = new TabView_myselfAdapter(getActivity(),
-                        ee,
+                        user,
                         (LinearLayoutManager) recyclerView.getLayoutManager());
                 recyclerView.setAdapter(myselfAdapter);
                 break;
@@ -221,8 +221,8 @@ public final class TestFragment extends Fragment {
             setAdapterView(inflater, container, REGISTER);
             return view_register;
         }else if(mContent.equalsIgnoreCase("e")){
-            setAdapterView(inflater, container, MyInformation);
-            return view;
+            //setAdapterView(inflater, container, MyInformation);
+            return info;
         }else {
 
             TextView text = new TextView(getActivity());

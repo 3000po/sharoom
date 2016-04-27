@@ -47,7 +47,7 @@ public class Helper_userData {
     public Helper_userData(){
 
     }
-    public static synchronized Helper_userData getInstance(Context mContext) {
+    public static Helper_userData getInstance(Context mContext) {
         if( user == null ) {
             String id = Helper_server.isLogIn(mContext);
             final RequestParams idParams = new RequestParams("fbid", id);

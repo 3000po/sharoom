@@ -1,5 +1,16 @@
 package kr.popcorn.sharoom.helper;
 
+import android.content.Context;
+import android.util.Log;
+
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import cz.msebera.android.httpclient.Header;
+
 /**
  * Created by Administrator on 2016-03-19.
  */
@@ -36,7 +47,54 @@ public class Helper_userData {
     public Helper_userData(){
 
     }
-    public static synchronized Helper_userData getInstance() {
+    public static synchronized Helper_userData getInstance(Context mContext) {
+        if( user == null ) {
+            String id = Helper_server.isLogIn(mContext);
+            final RequestParams idParams = new RequestParams("fbid", id);
+
+            Helper_server.post("getProfile.php", idParams, new JsonHttpResponseHandler() {
+                @Override
+                public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                    Log.i("myself", "success");
+                    int userID;
+                    String id;
+                    String name;
+                    String phoneNumber;
+                    String email;
+                    int sex;
+                    int rate;
+                    String school;
+                    String facebook;
+
+                    try {
+                        userID = Integer.parseInt(response.get("userID").toString());
+                        id = response.get("id").toString();
+                        name = response.get("name").toString();
+                        phoneNumber = response.get("phoneNumber").toString();
+                        email = response.get("email").toString();
+                        sex = Integer.parseInt(response.get("sex").toString());
+                        rate = Integer.parseInt(response.get("rate").toString());
+                        school = response.get("school").toString();
+                        facebook = response.get("facebook").toString();
+
+                        Log.i("myself", id + ", " + name + "," + facebook);
+
+                        user = new Helper_userData(userID, id, name, phoneNumber, email, sex, rate, school, facebook);
+                        //list.add(new Helper_userData(userID,id,name,phoneNumber,email,sex,rate,school,facebook));
+                        //notifyDataSetChanged();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                @Override
+                public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                    super.onFailure(statusCode, headers, responseString, throwable);
+                    Log.d("Failed: ", "myself " + statusCode);
+                    Log.d("Error : ", "myself " + throwable);
+                }
+            });
+        }
         return user;
     }
 

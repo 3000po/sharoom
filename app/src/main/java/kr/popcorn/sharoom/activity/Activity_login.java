@@ -121,6 +121,9 @@ public class Activity_login extends Activity {
 
                                                     public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                                                         Intent intent = new Intent(Activity_login.this, Activity_group_view.class);
+
+                                                        Helper_server.userData = Helper_userData.getInstance(getApplicationContext());
+
                                                         startActivity(intent);
                                                         finish();
                                                     }
@@ -141,6 +144,9 @@ public class Activity_login extends Activity {
                             return;
                         } else {
                             Intent intent = new Intent(Activity_login.this, Activity_group_view.class);
+
+                            Helper_server.userData = Helper_userData.getInstance(getApplicationContext());
+
                             startActivity(intent);
                             finish();
                             return;
@@ -179,6 +185,9 @@ public class Activity_login extends Activity {
         if (Helper_server.login(myCookieStore)) {
             Log.i("abde", "what the!! ");
             Intent intent = new Intent(Activity_login.this, Activity_group_view.class);
+
+            Helper_server.userData = Helper_userData.getInstance(getApplicationContext());
+
             startActivity(intent);
             finish();
         }else{ //페이스북 자동로그인 파트
@@ -188,6 +197,9 @@ public class Activity_login extends Activity {
             } else {
                 Log.d("abde", ">>>" + "Signed In");
                 Intent intent = new Intent(Activity_login.this, Activity_group_view.class);
+
+                Helper_server.userData = Helper_userData.getInstance(getApplicationContext());
+
                 startActivity(intent);
                 finish();
             }
@@ -264,14 +276,10 @@ public class Activity_login extends Activity {
 
 
                                      }
-
         );
 
         Button btn_join = (Button) findViewById(R.id.btn_join);
-
-        btn_join.setOnClickListener(new Button.OnClickListener()
-
-                                    {
+        btn_join.setOnClickListener(new Button.OnClickListener(){
                                         public void onClick(View v) {
 
                                             Intent intent = new Intent(Activity_login.this, Activity_join.class);
@@ -282,9 +290,7 @@ public class Activity_login extends Activity {
                                     }
 
         );
-
     }//onCreateEnd
-
 
     public void loginAlert() {
         AlertDialog.Builder alert = new AlertDialog.Builder(Activity_login.this);

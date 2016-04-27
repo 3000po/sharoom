@@ -221,8 +221,10 @@ public final class TestFragment extends Fragment {
             setAdapterView(inflater, container, REGISTER);
             return view_register;
         }else if(mContent.equalsIgnoreCase("e")){
-            //setAdapterView(inflater, container, MyInformation);
-            return info;
+            setAdapterView(inflater, container, MyInformation);
+            //return info;
+            return view;
+
         }else {
 
             TextView text = new TextView(getActivity());

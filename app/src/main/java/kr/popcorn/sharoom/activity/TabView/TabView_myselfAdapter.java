@@ -60,7 +60,6 @@ public class TabView_myselfAdapter extends RecyclerView.Adapter<TabView_myselfAd
         mContext = context;
         data = _dataSet;
         this.linearLayoutManager = linearLayoutManager;
-        loadInfo();
     }
 
     @Override
@@ -87,54 +86,6 @@ public class TabView_myselfAdapter extends RecyclerView.Adapter<TabView_myselfAd
     @Override
     public int getItemCount() {
         return 0;
-    }
-
-    private void loadInfo(){
-        String id = Helper_server.isLogIn(mContext);
-        final RequestParams idParams = new RequestParams("fbid", id);
-
-        Helper_server.post("getProfile.php", idParams, new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                Log.i("myself", "success");
-                int userID;
-                String id;
-                String name;
-                String phoneNumber;
-                String email;
-                int sex;
-                int rate;
-                String school;
-                String facebook;
-
-                try {
-                    userID = Integer.parseInt(response.get("userID").toString());
-                    id = response.get("id").toString();
-                    name = response.get("name").toString();
-                    phoneNumber = response.get("phoneNumber").toString();
-                    email = response.get("email").toString();
-                    sex = Integer.parseInt(response.get("sex").toString());
-                    rate = Integer.parseInt(response.get("rate").toString());
-                    school = response.get("school").toString();
-                    facebook = response.get("facebook").toString();
-
-                    Log.i("myself", id+", "+name+","+facebook);
-
-                    data = new Helper_userData(userID,id,name,phoneNumber,email,sex,rate,school,facebook);
-                    //list.add(new Helper_userData(userID,id,name,phoneNumber,email,sex,rate,school,facebook));
-                    //notifyDataSetChanged();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                super.onFailure(statusCode, headers, responseString, throwable);
-                Log.d("Failed: ", "myself " + statusCode);
-                Log.d("Error : ", "myself " + throwable);
-            }
-        });
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -172,12 +123,6 @@ public class TabView_myselfAdapter extends RecyclerView.Adapter<TabView_myselfAd
 
             itemView.setClickable(true);
             itemView.setOnClickListener(this);
-            
-            if( data == null ){
-                loadInfo();
-            }
-            loadData();
-
 
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
@@ -189,6 +134,7 @@ public class TabView_myselfAdapter extends RecyclerView.Adapter<TabView_myselfAd
         }
 
         public void loadData(){
+            data = Helper_userData.getInstance(mContext);
 
             myName.setText(data.name);
             //내 사진 로드

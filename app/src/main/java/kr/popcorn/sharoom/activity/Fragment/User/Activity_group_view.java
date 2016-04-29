@@ -1,27 +1,16 @@
-package kr.popcorn.sharoom.activity.Fragment;
-        import android.content.Context;
-        import android.content.DialogInterface;
-        import android.os.Bundle;
-        import android.support.v4.app.FragmentActivity;
-        import android.support.v4.view.ViewPager;
-        import android.support.v7.app.ActionBar;
-        import android.support.v7.app.AlertDialog;
-        import android.util.Log;
-        import android.view.LayoutInflater;
-        import android.view.View;
-        import android.widget.EditText;
-        import android.widget.ImageView;
-        import android.widget.LinearLayout;
-        import android.widget.TextView;
-        import android.widget.Toast;
+package kr.popcorn.sharoom.activity.Fragment.User;
 
-        import com.loopj.android.http.AsyncHttpClient;
-        import com.loopj.android.http.PersistentCookieStore;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.ViewPager;
+import android.widget.TextView;
 
-        import kr.popcorn.sharoom.R;
-        import kr.popcorn.sharoom.helper.Helper_server;
+import com.loopj.android.http.AsyncHttpClient;
 
-public class Activity_host_view extends FragmentActivity {
+import kr.popcorn.sharoom.R;
+import kr.popcorn.sharoom.helper.Helper_server;
+
+public class Activity_group_view extends FragmentActivity {
 
     TestFragmentAdapter mAdapter;
     ViewPager mPager;

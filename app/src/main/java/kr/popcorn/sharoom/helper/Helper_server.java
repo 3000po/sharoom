@@ -1,34 +1,17 @@
 package kr.popcorn.sharoom.helper;
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.ListAdapter;
-import android.widget.SimpleAdapter;
 
 import com.facebook.AccessToken;
-import com.facebook.FacebookSdk;
-import com.facebook.Profile;
 import com.facebook.login.LoginManager;
 import com.loopj.android.http.*;
 
 import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.HashMap;
 import java.util.List;
 
 import cz.msebera.android.httpclient.cookie.Cookie;
-import kr.popcorn.sharoom.R;
-import kr.popcorn.sharoom.activity.Fragment.Activity_group_view;
 
 /**
  * Created by Administrator on 2016-03-11.

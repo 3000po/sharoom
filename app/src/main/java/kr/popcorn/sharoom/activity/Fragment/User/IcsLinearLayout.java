@@ -1,4 +1,4 @@
-package kr.popcorn.sharoom.activity.Fragment;
+package kr.popcorn.sharoom.activity.Fragment.User;
 
 import android.content.Context;
 import android.content.res.TypedArray;

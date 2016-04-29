@@ -1,4 +1,4 @@
-package kr.popcorn.sharoom.activity.Fragment;
+package kr.popcorn.sharoom.activity.Fragment.User;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

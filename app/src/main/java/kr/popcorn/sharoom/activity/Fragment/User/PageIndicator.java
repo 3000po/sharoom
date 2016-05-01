@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package kr.popcorn.sharoom.activity.Fragment;
+package kr.popcorn.sharoom.activity.Fragment.User;
 
 import android.support.v4.view.ViewPager;
 

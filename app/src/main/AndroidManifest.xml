@@ -71,7 +71,7 @@
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
-            android:name=".activity.Fragment.Activity_group_view"
+            android:name=".activity.Fragment.User.Activity_group_view"
             android:theme="@android:style/Theme.Holo.NoActionBar">
 
         </activity>

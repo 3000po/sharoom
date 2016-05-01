@@ -12,7 +12,6 @@ import android.widget.Toast;
 import com.facebook.appevents.AppEventsLogger;
 
 import kr.popcorn.sharoom.R;
-import kr.popcorn.sharoom.activity.Fragment.Activity_group_view;
 
 public class Activity_intro extends Activity {
     @Override

@@ -1,6 +1,5 @@
-package kr.popcorn.sharoom.activity.Fragment;
+package kr.popcorn.sharoom.activity.Fragment.Host;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -18,7 +17,6 @@ import java.util.ArrayList;
 
 import kr.popcorn.sharoom.R;
 
-import kr.popcorn.sharoom.activity.Activity_editRoom;
 import kr.popcorn.sharoom.activity.TabView.TabView_myselfAdapter;
 import kr.popcorn.sharoom.activity.TabView.TabView_registerAdapter;
 import kr.popcorn.sharoom.activity.TabView.TabView_rentListAdapter;
@@ -46,8 +44,8 @@ public final class TestFragment extends Fragment {
     private TabView_reservationAdapter reservationAdapter;
     private TabView_registerAdapter registerAdapter;
 
-    public static TestFragment newInstance(String content) {
-        TestFragment fragment = new TestFragment();
+    public static kr.popcorn.sharoom.activity.Fragment.User.TestFragment newInstance(String content) {
+        kr.popcorn.sharoom.activity.Fragment.User.TestFragment fragment = new kr.popcorn.sharoom.activity.Fragment.User.TestFragment();
 
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < 20; i++) {

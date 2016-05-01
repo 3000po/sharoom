@@ -186,7 +186,8 @@ public class Activity_login extends Activity {
             Log.i("abde", "what the!! ");
             Intent intent = new Intent(Activity_login.this, Activity_group_view.class);
 
-            Helper_server.userData = Helper_userData.getInstance(getApplicationContext());
+            Helper_userData user = Helper_userData.getInstance();
+            user.getInstance("111");
 
             startActivity(intent);
             finish();
@@ -228,7 +229,7 @@ public class Activity_login extends Activity {
                                      {
                                          public void onClick(View v) {
                                              RequestParams params = new RequestParams();
-                                             String id = et_id.getText().toString();
+                                             final String id = et_id.getText().toString();
                                              String password = et_password.getText().toString();
 
                                              //put params
@@ -256,6 +257,9 @@ public class Activity_login extends Activity {
                                                          myCookieStore.addCookie(newCookie);
 
                                                          Intent intent = new Intent(Activity_login.this, Activity_group_view.class);
+                                                         Helper_userData user = new Helper_userData();
+                                                         user.getInstance(id);
+
                                                          startActivity(intent);
                                                          finish();
 

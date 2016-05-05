@@ -116,12 +116,7 @@
     <orderEntry type="library" exported="" name="customtabs-23.2.1" level="project" />
     <orderEntry type="library" exported="" name="bolts-android-1.4.0" level="project" />
     <orderEntry type="library" exported="" name="glide-3.6.1" level="project" />
-<<<<<<< HEAD
     <orderEntry type="library" exported="" name="android-async-http-1.4.9" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-23.2.1" level="project" />
-=======
-    <orderEntry type="library" exported="" name="support-annotations-23.2.1" level="project" />
-    <orderEntry type="library" exported="" name="android-async-http-1.4.9" level="project" />
->>>>>>> c72126ffdadd49b33a788461fcaa4140c2850363
   </component>
 </module>

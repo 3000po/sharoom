@@ -44,8 +44,8 @@ public final class TestFragment extends Fragment {
     private TabView_reservationAdapter reservationAdapter;
     private TabView_registerAdapter registerAdapter;
 
-    public static kr.popcorn.sharoom.activity.Fragment.User.TestFragment newInstance(String content) {
-        kr.popcorn.sharoom.activity.Fragment.User.TestFragment fragment = new kr.popcorn.sharoom.activity.Fragment.User.TestFragment();
+    public static TestFragment newInstance(String content) {
+        TestFragment fragment = new TestFragment();
 
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < 20; i++) {

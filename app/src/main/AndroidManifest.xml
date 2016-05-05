@@ -63,10 +63,10 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name=".activity.Fragment.User.Activity_group_view"
-            android:theme="@android:style/Theme.Holo.NoActionBar"></activity>
+            android:theme="@android:style/Theme.Holo.NoActionBar" />
         <activity
             android:name=".activity.Activity_emailCertification"
-            android:theme="@android:style/Theme.Holo.NoActionBar"></activity>
+            android:theme="@android:style/Theme.Holo.NoActionBar" />
         <activity android:name=".activity.Activity_editRoom" />
         <activity
             android:name=".activity.Activity_editRoom_roomPic"
@@ -80,19 +80,19 @@
         <activity
             android:name=".activity.Activity_login"
             android:theme="@android:style/Theme.Holo.NoActionBar"
-            android:windowSoftInputMode="adjustResize|adjustPan"></activity>
+            android:windowSoftInputMode="adjustResize|adjustPan" />
         <activity
             android:name=".activity.Activity_join"
             android:theme="@android:style/Theme.Holo.NoActionBar" />
         <activity android:name=".activity.Activity_FacillitiesInfo" />
-        <activity android:name=".activity.ReservationButton" />
         <activity
             android:name=".activity.Acitivity_test"
-            android:theme="@android:style/Theme.Holo.NoActionBar"></activity>
+            android:theme="@android:style/Theme.Holo.NoActionBar" />
         <activity
             android:name=".activity.Activity_imageUpload"
-            android:theme="@android:style/Theme.Holo.NoActionBar"></activity>
-        <activity android:name=".activity.TabView.Activity_Host_to_User_animation"></activity>
+            android:theme="@android:style/Theme.Holo.NoActionBar" />
+        <activity android:name=".activity.TabView.Activity_Host_to_User_animation" />
+        <activity android:name=".activity.Activity_FinishReserv"></activity>
     </application>
 
 </manifest>

@@ -36,6 +36,19 @@ import kr.popcorn.sharoom.helper.Helper_roomData;
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
+        /*recyclerView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (v.getId()) {
+                    case R.id.list:
+                        Intent roomInfo = new Intent(Activity_roomList.this, Activity_roomInfo.class);
+                        startActivity(roomInfo);
+                }
+
+                return false;
+            }
+        });*/
+
         contactAdapter = new TabView_rentListAdapter(this,
                 list, (LinearLayoutManager) recyclerView.getLayoutManager());
         recyclerView.setAdapter(contactAdapter);

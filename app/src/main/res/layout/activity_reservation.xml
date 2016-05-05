@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="kr.popcorn.sharoom.activity.Activity_Reservation"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:gravity="top"
+        android:id="@+id/reservationheader">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:background="#20c589"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/toptext"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="예약하기"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF">
+            </TextView>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/reservationheader"
+        android:id="@+id/roomNameBar">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:background="#ffffff"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/roomName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="2달 장기 렌트 가능합니다!"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:textColor="#000000">
+            </TextView>
+        </LinearLayout>
+    </RelativeLayout>
+
+
+    <!--방사진-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/roomNameBar"
+        android:id="@+id/pagerlayout">
+        <android.support.v4.view.ViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_count"
+            android:textColor="#20c589"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignBottom="@id/pager"
+            android:text="1/25"
+            android:textSize="16sp"/>
+
+    </RelativeLayout>
+
+    <!--일정-->
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pagerlayout"
+        android:id="@+id/datelayout"
+        android:layout_marginTop="30dp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/calendaricon"
+                android:layout_gravity="left"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="5dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="일정"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:layout_margin="3sp"/>
+            <TextView
+                android:id="@+id/startDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:textSize="16sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:text="~"/>
+            <TextView
+                android:id="@+id/endDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <!--인원-->
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/datelayout"
+        android:id="@+id/peopleNumlayout">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="left|top">
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/peoplenum"
+                android:layout_gravity="left"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="5dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="인원"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:layout_margin="3dp"/>
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/peopleNum"
+                android:layout_gravity="center">
+            </Spinner>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:layout_margin="3dp"
+                android:text="명"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+    <!--문의 요청-->
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/peopleNumlayout"
+        android:id="@+id/requestInfo">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+            <!--이름-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:text="yoosijin"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:text="님에게 문의 요청"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="예약할 준비가 다 되었나요?"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:layout_below="@id/requestInfo"/>
+
+    <RelativeLayout
+        android:id="@+id/reservationBtn"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:background="#20c589"
+        android:gravity="bottom">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center"
+            android:text="예약완료"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF">
+        </TextView>
+    </RelativeLayout>
+
+</RelativeLayout>

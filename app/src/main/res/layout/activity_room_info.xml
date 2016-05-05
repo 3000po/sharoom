@@ -1,9 +1,8 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity"
     android:scrollbarStyle="insideOverlay"
     android:scrollbars="vertical"
     android:background="#ffffff"
@@ -24,21 +23,27 @@
                 android:orientation="vertical"
                 android:layout_weight="0.6">
                 <!--방사진-->
-                <android.support.v4.view.ViewPager
-                    android:id="@+id/pager"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="200dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tv_count"
-                    android:textColor="#20c589"
-                    android:layout_gravity="bottom|right"
-                    android:layout_marginBottom="120dp"
-                    android:layout_marginRight="24dp"
-                    android:text="1/25"
-                    android:textSize="16sp"/>
+                    android:layout_below="@id/roomNameBar"
+                    android:id="@+id/pagerlayout">
+                    <android.support.v4.view.ViewPager
+                        android:id="@+id/pager"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_count"
+                        android:textColor="#20c589"
+                        android:layout_marginRight="10dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignBottom="@id/pager"
+                        android:text="1/25"
+                        android:textSize="16sp"/>
+
+                </RelativeLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -53,7 +58,9 @@
                         android:hint="@string/hnt_et_location"
                         android:layout_toLeftOf="@+id/map_button"
                         android:layout_gravity="center_horizontal"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold">
+                        <requestFocus/>
+                    </EditText>
 
                     <Button
                         android:id="@+id/map_button"
@@ -281,8 +288,8 @@
 
                     <Button
                         android:id="@+id/facillitiesIcon"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:background="@drawable/selector_facillitiesbtn"
                         android:layout_gravity="center"
                         android:layout_margin="10dp"/>
@@ -340,6 +347,7 @@
 
                         <!--리뷰-->
                         <LinearLayout
+                            android:id="@+id/reviewBar"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
@@ -436,5 +444,17 @@
 
         </LinearLayout>
     </ScrollView>
+    <RelativeLayout
+        android:id="@+id/reservationBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#20c589"
+        android:layout_alignParentBottom="true">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:elevation="50dp"
+            android:src="@drawable/reservation2" />
+    </RelativeLayout>
 
-</LinearLayout>
+</RelativeLayout>

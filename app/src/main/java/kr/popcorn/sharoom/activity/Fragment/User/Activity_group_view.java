@@ -31,7 +31,7 @@ public class Activity_group_view extends FragmentActivity {
         mPager = (ViewPager) findViewById(R.id.pager);
         mPager.setAdapter(mAdapter);
 
-        mPager.setOffscreenPageLimit(5);
+        mPager.setOffscreenPageLimit(3);
 
         mIndicator = (IconPageIndicator) findViewById(R.id.indicator);
 
@@ -51,17 +51,12 @@ public class Activity_group_view extends FragmentActivity {
             @Override
             public void onPageScrollStateChanged(int state) {
                 switch (mPager.getCurrentItem()){
-                    case 0 : mToptext.setText("메인 화면");
+                    case 0 : mToptext.setText("방 리스트");
                         break;
                     case 1 : mToptext.setText("예약 확인");
                         break;
-                    case 2 : mToptext.setText("등록한 방");
+                    case 2 : mToptext.setText("내 정보");
                         break;
-                    case 3 : mToptext.setText("메세지");
-                        break;
-                    case 4 : mToptext.setText("내 정보");
-                        break;
-
                 }
             }
         });

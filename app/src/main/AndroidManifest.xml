@@ -46,25 +46,16 @@
 
         <activity
             android:name=".activity.Activity_intro"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-        <activity
-            android:name=".activity.Activity_group"
-            android:label="@string/title_activity_activity_group" />
         <activity
             android:name=".activity.Activity_calendar"
             android:label="@string/title_activity_activity_calendar" />
-        <activity
-            android:name=".activity.Activity_client"
-            android:label="@string/title_activity_activity_client" >
-
-        </activity>
-
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
@@ -72,16 +63,10 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name=".activity.Fragment.User.Activity_group_view"
-            android:theme="@android:style/Theme.Holo.NoActionBar">
-
-        </activity>
-
+            android:theme="@android:style/Theme.Holo.NoActionBar"></activity>
         <activity
             android:name=".activity.Activity_emailCertification"
-            android:theme="@android:style/Theme.Holo.NoActionBar">
-
-        </activity>
-
+            android:theme="@android:style/Theme.Holo.NoActionBar"></activity>
         <activity android:name=".activity.Activity_editRoom" />
         <activity
             android:name=".activity.Activity_editRoom_roomPic"
@@ -94,29 +79,20 @@
         <activity android:name=".activity.Activity_roomList" />
         <activity
             android:name=".activity.Activity_login"
-            android:windowSoftInputMode="adjustResize|adjustPan"
-            android:theme="@android:style/Theme.Holo.NoActionBar">
-        </activity>
+            android:theme="@android:style/Theme.Holo.NoActionBar"
+            android:windowSoftInputMode="adjustResize|adjustPan"></activity>
         <activity
             android:name=".activity.Activity_join"
             android:theme="@android:style/Theme.Holo.NoActionBar" />
         <activity android:name=".activity.Activity_FacillitiesInfo" />
         <activity android:name=".activity.ReservationButton" />
-
         <activity
             android:name=".activity.Acitivity_test"
-            android:theme="@android:style/Theme.Holo.NoActionBar">
-        </activity>
-
+            android:theme="@android:style/Theme.Holo.NoActionBar"></activity>
         <activity
             android:name=".activity.Activity_imageUpload"
-            android:theme="@android:style/Theme.Holo.NoActionBar">
-
-        </activity>
-
+            android:theme="@android:style/Theme.Holo.NoActionBar"></activity>
+        <activity android:name=".activity.TabView.Activity_Host_to_User_animation"></activity>
     </application>
-
-
-
 
 </manifest>

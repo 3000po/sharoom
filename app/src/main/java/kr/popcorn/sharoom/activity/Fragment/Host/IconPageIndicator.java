@@ -46,21 +46,10 @@ public class IconPageIndicator extends HorizontalScrollView implements PageIndic
     private OnPageChangeListener mListener;
     private Runnable mIconSelector;
     private int mSelectedIndex;
-    private TextView mToptext;
-
-    // pageindicator 를 위한 callback
-    interface Callback{
-        void callbackMethod();
-    }
-    private boolean m_condition;
-    private Callback m_callback;
-
 
     public IconPageIndicator(Context context) {
         this(context, null);
 
-        m_condition = false;
-        m_callback = null;
     }
 
     public IconPageIndicator(Context context, AttributeSet attrs) {
@@ -69,8 +58,6 @@ public class IconPageIndicator extends HorizontalScrollView implements PageIndic
         mIconsLayout = new IcsLinearLayout(context, R.attr.vpiIconPageIndicatorStyle);
         addView(mIconsLayout, new LayoutParams(WRAP_CONTENT, FILL_PARENT, Gravity.CENTER));
 
-        m_condition = false;
-        m_callback = null;
     }
 
     private void animateToIcon(final int position) {

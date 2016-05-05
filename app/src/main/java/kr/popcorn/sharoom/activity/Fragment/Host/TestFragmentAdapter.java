@@ -10,12 +10,10 @@ import kr.popcorn.sharoom.activity.Fragment.User.IconPagerAdapter;
 import kr.popcorn.sharoom.activity.Fragment.User.TestFragment;
 
 public class TestFragmentAdapter extends FragmentPagerAdapter implements IconPagerAdapter {
-    protected static final String[] CONTENT = new String[] { "a", "b", "c", "d", "e" };
+    protected static final String[] CONTENT = new String[] { "a", "b", "c" };
     protected static final int[] ICONS = new int[] {
-            R.drawable.perm_group_roomview,
-            R.drawable.perm_group_reservation,
             R.drawable.perm_group_register,
-            R.drawable.perm_group_message,
+            R.drawable.perm_group_reservation,
             R.drawable.perm_group_myinformation
     };
 

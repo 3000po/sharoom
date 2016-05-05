@@ -27,10 +27,9 @@ import kr.popcorn.sharoom.helper.Helper_userData;
 public final class TestFragment extends Fragment {
     private static final String KEY_CONTENT = "TestFragment:Content";
 
-    final int ROOMLIST = 0;
+    final int REGISTER = 0;
     final int RESERVATONROOM = 1;
-    final int REGISTER = 2;
-    final int MyInformation = 5;
+    final int MyInformation = 2;
 
     private View view;
     private View view_register;
@@ -142,17 +141,6 @@ public final class TestFragment extends Fragment {
         Helper_userData user = new Helper_userData();
 
         switch (cases){
-            case ROOMLIST:
-                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-                recyclerView.setItemAnimator(new DefaultItemAnimator());
-
-                rentListAdapter = new TabView_rentListAdapter(getActivity(),
-                        se,
-                        (LinearLayoutManager) recyclerView.getLayoutManager());
-                recyclerView.setAdapter(rentListAdapter);
-
-                break;
-
             case MyInformation:
                 recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
                 recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -198,27 +186,15 @@ public final class TestFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        if(mContent.equalsIgnoreCase("a")){ //Ignore Lower Upper case
-            //setAdapterView(inflater, container, ROOMLIST);
-          //  LinearLayout layout = new LinearLayout(getActivity());
-          //  layout.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
-         //   layout.setGravity(Gravity.CENTER);
-
-            //Activity l =  (Activity) new Activity_roomList();
-            //LinearLayout layout = (LinearLayout) l.findViewById(R.id.roomlist);
-
-            //return inflater.inflate(R.layout.activity_list, container, false);
-            setAdapterView(inflater, container, ROOMLIST);
-            return view;
+        if(mContent.equalsIgnoreCase("a")){
+            setAdapterView(inflater, container, REGISTER);
+            return view_register;
         }
-        else if(mContent.equalsIgnoreCase("b")){
+        if(mContent.equalsIgnoreCase("b")){
             setAdapterView(inflater, container, RESERVATONROOM);
             return view;
         }
         else if(mContent.equalsIgnoreCase("c")){
-            setAdapterView(inflater, container, REGISTER);
-            return view_register;
-        }else if(mContent.equalsIgnoreCase("e")){
             setAdapterView(inflater, container, MyInformation);
             //return info;
             return view;

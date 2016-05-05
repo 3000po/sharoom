@@ -29,8 +29,7 @@ public final class TestFragment extends Fragment {
 
     final int ROOMLIST = 0;
     final int RESERVATONROOM = 1;
-    final int REGISTER = 2;
-    final int MyInformation = 5;
+    final int MyInformation = 2;
 
     private View view;
     private View view_register;
@@ -172,15 +171,6 @@ public final class TestFragment extends Fragment {
                         (LinearLayoutManager) recyclerView.getLayoutManager());
                 recyclerView.setAdapter(reservationAdapter);
                 break;
-            case REGISTER:
-                recyclerView_register.setLayoutManager(new LinearLayoutManager(getActivity()));
-                recyclerView_register.setItemAnimator(new DefaultItemAnimator());
-
-                registerAdapter = new TabView_registerAdapter(getActivity(),
-                        se3,
-                        (LinearLayoutManager) recyclerView_register.getLayoutManager());
-                recyclerView_register.setAdapter(registerAdapter);
-                break;
         }
         return ;
     }
@@ -216,9 +206,6 @@ public final class TestFragment extends Fragment {
             return view;
         }
         else if(mContent.equalsIgnoreCase("c")){
-            setAdapterView(inflater, container, REGISTER);
-            return view_register;
-        }else if(mContent.equalsIgnoreCase("e")){
             setAdapterView(inflater, container, MyInformation);
             //return info;
             return view;

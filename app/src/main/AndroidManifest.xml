@@ -47,11 +47,6 @@
         <activity
             android:name=".activity.Activity_intro"
             android:label="@string/app_name">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".activity.Activity_calendar"
@@ -67,7 +62,13 @@
         <activity
             android:name=".activity.Activity_emailCertification"
             android:theme="@android:style/Theme.Holo.NoActionBar"></activity>
-        <activity android:name=".activity.Activity_editRoom" />
+        <activity android:name=".activity.Activity_editRoom" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".activity.Activity_editRoom_roomPic"
             android:theme="@style/EditRoomPicTheme" />

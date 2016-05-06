@@ -1,13 +1,291 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/activity_layout_background"
+    android:orientation="vertical" >
 
-    <ImageButton
-        android:id="@+id/picture"
+    <LinearLayout
+        android:id="@+id/ll_header"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:src="@drawable/roompic"
-        android:scaleType="fitXY"/>
+        android:layout_height="40dp"
+        android:layout_gravity="center_vertical"
+        android:background="#20c589"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/toptext"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="방 등록하기"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF">
+        </TextView>
+    </LinearLayout>
+
+    <!--  android:padding="@color/activity_layout_header_background" -->
+
+    <LinearLayout
+        android:id="@+id/ll_body"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/activity_layout_body_margin"
+        android:layout_weight="1"
+        android:background="@color/activity_layout_left_background"
+        android:orientation="horizontal"
+        android:padding="@dimen/activity_layout_body_padding" >
+
+        <LinearLayout
+            android:id="@+id/ll_left"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_gravity="top"
+            android:layout_margin="@dimen/activity_layout_left_margin"
+            android:layout_weight="1"
+
+            android:background="@color/activity_layout_left_background"
+            android:orientation="vertical"
+            android:padding="@dimen/activity_layout_left_padding"
+            android:visibility="gone">
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_center"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="top"
+            android:layout_margin="@dimen/activity_layout_center_margin"
+            android:layout_weight="1"
+            android:background="@color/activity_layout_center_background"
+            android:orientation="vertical"
+            android:padding="@dimen/activity_layout_center_padding" >
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:id="@+id/ll_center_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:scrollbars="vertical"
+                    android:paddingTop="@dimen/activity_layout_header_height"
+                    android:paddingLeft="@dimen/activity_layout_left_margin"
+                    android:paddingRight="@dimen/activity_layout_right_margin">
+
+
+                    <ImageButton
+                        android:id="@+id/roompic"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:scaleType="fitXY"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/activity_layout_header_padding"
+                        android:text="타이틀"
+                        android:textColor="#000000"
+                        android:textSize="20sp"/>
+                    <EditText
+                        android:id="@+id/title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/app_ci_4"
+                        android:hint="주말 빌려드립니다! 연락주세요!"
+                        android:textColorHint="#ffffff"
+                        android:textColor="#ffffff"
+                        android:textSize="20sp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/activity_layout_header_padding"
+                        android:text="주소"
+                        android:textColor="#000000"
+                        android:textSize="20sp"/>
+                    <EditText
+                        android:id="@+id/address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/app_ci_4"
+                        android:hint="소서울시 성북구 정릉동 11-12"
+                        android:textColorHint="#ffffff"
+                        android:textColor="#ffffff"
+                        android:textSize="20sp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/activity_layout_header_padding"
+                        android:text="가격"
+                        android:textColor="#000000"
+                        android:textSize="20sp"/>
+                    <EditText
+                        android:id="@+id/price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/app_ci_4"
+                        android:hint="300,000원"
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff"
+                        android:textSize="20sp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/activity_layout_header_padding"
+                        android:text="일정"
+                        android:textColor="#000000"
+                        android:textSize="20sp"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/app_ci_4">
+
+                        <EditText
+                            android:id="@+id/year1"
+                            android:layout_width="55dp"
+                            android:layout_height="wrap_content"
+                            android:textColor="#000000"
+                            android:textSize="19sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="년"
+                            android:textColor="#000000"
+                            android:textSize="19sp"/>
+                        <EditText
+                            android:id="@+id/month1"
+                            android:layout_width="35dp"
+                            android:layout_height="wrap_content"
+                            android:textColor="#000000"
+                            android:textSize="19sp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="월"
+                            android:textColor="#000000"
+                            android:textSize="19sp"/>
+                        <EditText
+                            android:id="@+id/day1"
+                            android:layout_width="35dp"
+                            android:layout_height="wrap_content"
+                            android:textColor="#000000"
+                            android:textSize="19sp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="일 ~"
+                            android:textColor="#000000"
+                            android:textSize="19sp"/>
+
+                        <EditText
+                            android:id="@+id/year2"
+                            android:layout_width="55dp"
+                            android:layout_height="wrap_content"
+                            android:textColor="#000000"
+                            android:textSize="19sp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="년"
+                            android:textColor="#000000"
+                            android:textSize="19sp"/>
+
+                        <EditText
+                            android:id="@+id/month2"
+                            android:layout_width="35dp"
+                            android:layout_height="wrap_content"
+                            android:textColor="#000000"
+                            android:textSize="19sp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="월"
+                            android:textColor="#000000"
+                            android:textSize="19sp"/>
+                        <EditText
+                            android:id="@+id/day2"
+                            android:layout_width="35dp"
+                            android:layout_height="wrap_content"
+                            android:textColor="#000000"
+                            android:textSize="19sp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="일"
+                            android:textColor="#000000"
+                            android:textSize="19sp"/>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/activity_layout_header_padding"
+                        android:text="방정보"
+                        android:textColor="#000000"
+                        android:textSize="20sp"/>
+                    <EditText
+                        android:id="@+id/comment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/app_ci_4"
+                        android:hint="침대 1인용, 컴퓨터 책상, 옷걸이...etc"
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff"
+                        android:textSize="20sp"/>
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_right"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_gravity="top"
+            android:layout_margin="@dimen/activity_layout_right_margin"
+            android:padding="@dimen/activity_layout_right_padding"
+            android:layout_weight="1"
+            android:background="@color/activity_layout_right_background"
+            android:orientation="vertical"
+            android:visibility="gone">
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_body"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:visibility="gone" >
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_footer"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="@dimen/activity_layout_footer_margin"
+        android:background="#20c589"
+        android:gravity="center_vertical"
+        android:orientation="vertical" >
+        <TextView
+            android:id="@+id/bottomtext"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="등록하기"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF">
+        </TextView>
+
+    </LinearLayout>
 
 </LinearLayout>

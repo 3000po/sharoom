@@ -37,6 +37,7 @@ import me.yokeyword.imagepicker.adapter.GlideFragmentAdapter;
 
 public class Activity_roomInfo extends FragmentActivity {
 
+    public static Activity_roomInfo rActivity;
     private GoogleMap googleMap;
     private MarkerOptions markerOptions;
     private LatLng latLng;
@@ -65,8 +66,7 @@ public class Activity_roomInfo extends FragmentActivity {
     //public ImageView cFacillities;
     private Button cFacillities, reservationBtn;
     private Activity_FacillitiesInfo customDialog;
-    private ReservationButton reservationButtonView;
-
+    private ViewGroup layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -170,8 +170,22 @@ public class Activity_roomInfo extends FragmentActivity {
 
         });
 
-        reservationButtonView = new ReservationButton(Activity_roomInfo.this);
-        reservationButtonView.show();
+        layout = (ViewGroup) findViewById(R.id.reservationBar);
+        layout.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                //Intent intent = new Intent(this, SubActivity.class);
+                //startActivity(intent);
+                switch (v.getId()) {
+                    case R.id.reservationBar:
+                        //Toast.makeText(MainActivity.this, "예약버튼이 눌렸습니다.", Toast.LENGTH_SHORT).show();
+                        Intent reservationIntent = new Intent(Activity_roomInfo.this, Activity_Reservation.class);
+                        startActivity(reservationIntent);
+                }
+            }
+        });
     }
 
     public boolean onTouchEvent(MotionEvent event)

@@ -1,8 +1,10 @@
 package kr.popcorn.sharoom.activity.TabView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import kr.popcorn.sharoom.R;
+import kr.popcorn.sharoom.activity.Activity_roomInfo;
+import kr.popcorn.sharoom.activity.Fragment.User.Activity_group_view;
 import kr.popcorn.sharoom.helper.Helper_roomData;
 
 /**
@@ -74,16 +78,21 @@ public class TabView_rentListAdapter extends RecyclerView.Adapter<TabView_rentLi
             //album = (ImageView) itemView.findViewById(R.id.album_art1);
             //text = (TextView) itemView.findViewById(R.id.year);
 
+            Log.e("number", "hihi ");
+
             roomimage = (ImageView) itemView.findViewById(R.id.roomimage);
             rating = (TextView) itemView.findViewById(R.id.roomrating);
 
             itemView.setClickable(true);
             itemView.setOnClickListener(this);
 
+
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
                     // song is selected
+                    Log.i("", "index : " + getAdapterPosition());
+
                     return true;
                 }
             });
@@ -91,6 +100,13 @@ public class TabView_rentListAdapter extends RecyclerView.Adapter<TabView_rentLi
 
         @Override
         public void onClick(View v) {
+            //when user click the roomlist, it show the room information about index!!!
+            Intent intent = new Intent(mContext, Activity_roomInfo.class);
+            mContext.startActivity(intent);
+
+
+            Log.e("number", "index : " + list.get(0).roomname);
+            Log.e("number", "index : " + getAdapterPosition());
         }
 
     }

@@ -77,7 +77,7 @@
 
 
                     <ImageButton
-                        android:id="@+id/roompic"
+                        android:id="@+id/picture"
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
                         android:scaleType="fitXY"/>

@@ -62,7 +62,7 @@
             android:theme="@android:style/Theme.Holo.NoActionBar"></activity>
         <activity
             android:name=".activity.Activity_emailCertification"
-            android:theme="@android:style/Theme.Holo.NoActionBar"></activity>
+            android:theme="@android:style/Theme.Holo.NoActionBar"></activity>roompic
         <activity android:name=".activity.Activity_editRoom">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

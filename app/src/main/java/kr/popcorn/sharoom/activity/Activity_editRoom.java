@@ -60,7 +60,7 @@ public class Activity_editRoom extends Activity  implements View.OnClickListener
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.activity_editroom_dialog);
 
-        picButton = (ImageButton) findViewById(R.id.roompic);
+        picButton = (ImageButton) findViewById(R.id.picture);
 
         //다이얼로그의 카메라와 갤러리 버튼
         dialogCam = (ImageButton) dialog.findViewById(R.id.camera);
@@ -79,7 +79,7 @@ public class Activity_editRoom extends Activity  implements View.OnClickListener
         switch (v.getId()){
 
             //방 사진을 눌렀을때 처리
-            case R.id.roompic:
+            case R.id.picture:
                 //방에 사진이 하나도 없을경우 다이얼로그를 띄워서 카메라와 갤러리를 고를수있게해줌
                 if(list.size() == 0 ) dialog.show();
                 else{   //사진이 하나이상 있을경우 사진편집 액티비티를 띄워서 그곳에서 방사진을 편집하게끔한다.

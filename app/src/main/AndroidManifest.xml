@@ -30,6 +30,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
@@ -63,12 +64,12 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name=".activity.Fragment.User.Activity_group_view"
-            android:theme="@android:style/Theme.Holo.NoActionBar"></activity>
+            android:theme="@android:style/Theme.Holo.NoActionBar" />
         <activity
             android:name=".activity.Activity_emailCertification"
-            android:theme="@android:style/Theme.Holo.NoActionBar"></activity>roompic
-        <activity android:name=".activity.Activity_editRoom">
-        </activity>
+            android:theme="@android:style/Theme.Holo.NoActionBar" />
+        roompic
+        <activity android:name=".activity.Activity_editRoom"></activity>
         <activity
             android:name=".activity.Activity_editRoom_roomPic"
             android:theme="@style/EditRoomPicTheme" />
@@ -81,19 +82,20 @@
         <activity
             android:name=".activity.Activity_login"
             android:theme="@android:style/Theme.Holo.NoActionBar"
-            android:windowSoftInputMode="adjustResize|adjustPan"></activity>
+            android:windowSoftInputMode="adjustResize|adjustPan" />
         <activity
             android:name=".activity.Activity_join"
             android:theme="@android:style/Theme.Holo.NoActionBar" />
         <activity android:name=".activity.Activity_FacillitiesInfo" />
-        <activity android:name=".activity.ReservationButton" />
+        <activity android:name=".activity.Activity_Reservation" />
         <activity
             android:name=".activity.Acitivity_test"
-            android:theme="@android:style/Theme.Holo.NoActionBar"></activity>
+            android:theme="@android:style/Theme.Holo.NoActionBar" />
         <activity
             android:name=".activity.Activity_imageUpload"
-            android:theme="@android:style/Theme.Holo.NoActionBar"></activity>
-        <activity android:name=".activity.TabView.Activity_Host_to_User_animation"></activity>
+            android:theme="@android:style/Theme.Holo.NoActionBar" />
+        <activity android:name=".activity.TabView.Activity_Host_to_User_animation" />
+        <activity android:name=".activity.Activity_mapMenu"></activity>
     </application>
 
 </manifest>

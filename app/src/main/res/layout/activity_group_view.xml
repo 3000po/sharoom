@@ -1,28 +1,41 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@color/activity_layout_background"
     android:orientation="vertical" >
 
-    <LinearLayout
-        android:id="@+id/ll_header"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_gravity="center_vertical"
-       android:background="#20c589"
-        android:gravity="center_vertical"
-        android:orientation="vertical">
-             <TextView
-            android:id="@+id/toptext"
+        android:gravity="top">
+        <LinearLayout
+            android:id="@+id/ll_header"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="환영합니다."
-            android:textSize="20sp"
-             android:textStyle="bold"
-            android:textColor="#FFFFFF">
-        </TextView>
-    </LinearLayout>
+            android:layout_gravity="center_vertical"
+            android:background="#20c589"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/toptext"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="환영합니다."
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF">
+            </TextView>
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/mapMenu"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/mapmenu"
+            android:layout_alignParentRight="true"
+            android:layout_margin="3dp"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
 
     <!--  android:padding="@color/activity_layout_header_background" -->
 

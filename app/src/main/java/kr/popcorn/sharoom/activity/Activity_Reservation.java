@@ -16,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +33,8 @@ public class Activity_Reservation extends Activity {
     private GlideFragmentAdapter listAdapter;
     private ImageAdapter adapter;
     private TextView tvCount, startDate, endDate;
+    private String url = "http://i.imgur.com/DvpvklR.png";
+
     private int position;
     private Paint p;
     private Spinner peopleNum;
@@ -169,7 +173,9 @@ public class Activity_Reservation extends Activity {
 
             ImageView imageView = new ImageView(context);
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-            imageView.setImageResource(imgList[position]);
+            //imageView.setImageResource(imgList[position]);
+
+            Glide.with(context).load(url).into(imageView);
 
             ((ViewPager) container).addView(imageView, 0);
 

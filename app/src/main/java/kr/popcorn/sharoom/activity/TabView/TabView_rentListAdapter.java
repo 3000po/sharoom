@@ -15,7 +15,6 @@ import java.util.ArrayList;
 
 import kr.popcorn.sharoom.R;
 import kr.popcorn.sharoom.activity.Activity_roomInfo;
-import kr.popcorn.sharoom.activity.Fragment.User.Activity_group_view;
 import kr.popcorn.sharoom.helper.Helper_roomData;
 
 /**
@@ -72,6 +71,7 @@ public class TabView_rentListAdapter extends RecyclerView.Adapter<TabView_rentLi
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public ImageView roomimage;
         public TextView rating;
+        public ImageView mapMenu;
 
         public ViewHolder(View itemView) {
             super(itemView);

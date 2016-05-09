@@ -1,13 +1,17 @@
 package kr.popcorn.sharoom.activity.Fragment.User;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.loopj.android.http.AsyncHttpClient;
 
 import kr.popcorn.sharoom.R;
+import kr.popcorn.sharoom.activity.Activity_mapMenu;
 import kr.popcorn.sharoom.helper.Helper_server;
 
 public class Activity_group_view extends FragmentActivity {
@@ -16,6 +20,7 @@ public class Activity_group_view extends FragmentActivity {
     ViewPager mPager;
     PageIndicator mIndicator;
     TextView mToptext;
+    private ImageView mapMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +30,19 @@ public class Activity_group_view extends FragmentActivity {
         AsyncHttpClient client = Helper_server.getInstance();
 
         mAdapter = new TestFragmentAdapter(getSupportFragmentManager());
+        mapMenu = (ImageView)findViewById(R.id.mapMenu);
+
+        mapMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()){
+                    case R.id.mapMenu:
+                        Intent mapIntent = new Intent(Activity_group_view.this, Activity_mapMenu.class);
+                        startActivity(mapIntent);
+                }
+            }
+        });
+
 
         mToptext = (TextView) findViewById(R.id.toptext);
 

@@ -13,7 +13,6 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -24,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -46,6 +46,7 @@ public class Activity_roomInfo extends FragmentActivity {
     private MarkerOptions markerOptions;
     private LatLng latLng;
     public static final int SEARCH_RADIUS = 8000;
+    private String url = "http://i.imgur.com/DvpvklR.png";
 
     private ViewPager viewPager;
     private Button btn_find;
@@ -98,7 +99,7 @@ public class Activity_roomInfo extends FragmentActivity {
             tvCount.setText("");
         }
 
-        listAdapter = new GlideFragmentAdapter( getSupportFragmentManager(), facillitiesList);
+        //listAdapter = new GlideFragmentAdapter( getSupportFragmentManager(), facillitiesList);
         adapter = new ImageAdapter(this);
         viewPager.setAdapter(adapter);
         viewPager.setCurrentItem(0);
@@ -235,8 +236,8 @@ public class Activity_roomInfo extends FragmentActivity {
             ImageView imageView = new ImageView(context);
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
 
-            imageView.setImageBitmap((decodeSampledBitmapFromResource(getResources(), imgList[p], 100, 100)));
-
+            //imageView.setImageBitmap((decodeSampledBitmapFromResource(getResources(), imgList[p], 100, 100)));
+            Glide.with(context).load(url).into(imageView);
 
 
             ((ViewPager) container).addView(imageView, 0);

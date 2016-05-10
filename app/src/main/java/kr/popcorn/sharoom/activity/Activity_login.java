@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -66,7 +67,8 @@ public class Activity_login extends Activity {
         //loginButton.setPublishPermissions(Arrays.asList("public_profile", "user_friends", "email"));
         //LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile","user_friends","email"));
         loginButton.setReadPermissions(Arrays.asList("public_profile", "user_friends","email"));
-
+        loginButton.setBackgroundResource(R.drawable.facebookbtn);
+        loginButton.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(final LoginResult loginResult) {
@@ -222,8 +224,8 @@ public class Activity_login extends Activity {
         );
 
         //login buton click
-        Button btn_login = (Button) findViewById(R.id.btn_login);
-        btn_login.setOnClickListener(new Button.OnClickListener()
+        ImageView btn_login = (ImageView) findViewById(R.id.btn_login);
+        btn_login.setOnClickListener(new ImageView.OnClickListener()
 
                                      {
                                          public void onClick(View v) {

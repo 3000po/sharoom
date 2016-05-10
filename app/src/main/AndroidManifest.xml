@@ -77,15 +77,16 @@
         <activity
             android:name=".activity.Activity_login"
             android:theme="@android:style/Theme.Holo.NoActionBar"
-            android:windowSoftInputMode="adjustResize|adjustPan" />
-        <activity
-            android:name=".activity.Activity_join"
-            android:theme="@android:style/Theme.Holo.NoActionBar">
+            android:windowSoftInputMode="adjustResize|adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.Activity_join"
+            android:theme="@android:style/Theme.Holo.NoActionBar">
         </activity>
         <activity android:name=".activity.Activity_FacillitiesInfo" />
         <activity android:name=".activity.Activity_Reservation" />

@@ -3,10 +3,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="kr.popcorn.sharoom.activity.Activity_mapMenu">
+
+    <RelativeLayout
+        android:id="@+id/reservationheader"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:background="#20c589"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/toptext"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="지도 보기"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF">
+        </TextView>
+        <ImageView
+            android:id="@+id/homeMenu"
+            android:layout_width="28dp"
+            android:layout_height="280dp"
+            android:src="@drawable/homemenu"
+            android:layout_alignParentRight="true"
+            android:layout_margin="4dp"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom"
+        android:clickable="true"
+        android:layout_below="@id/reservationheader"
+        class="com.google.android.gms.maps.SupportMapFragment" />
 
 </RelativeLayout>

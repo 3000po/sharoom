@@ -48,7 +48,11 @@
         <activity
             android:name=".activity.Activity_intro"
             android:label="@string/app_name">
-            
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".activity.Activity_calendar"
@@ -65,11 +69,6 @@
             android:name=".activity.Activity_emailCertification"
             android:theme="@android:style/Theme.Holo.NoActionBar" />
         <activity android:name=".activity.Activity_editRoom">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".activity.Activity_editRoom_roomPic"
@@ -96,7 +95,8 @@
             android:name=".activity.Activity_imageUpload"
             android:theme="@android:style/Theme.Holo.NoActionBar" />
         <activity android:name=".activity.TabView.Activity_Host_to_User_animation" />
-        <activity android:name=".activity.Activity_mapMenu"></activity>
+        <activity android:name=".activity.Activity_mapMenu" />
+        <activity android:name=".activity.Activity_finishJoin"></activity>
     </application>
 
 </manifest>

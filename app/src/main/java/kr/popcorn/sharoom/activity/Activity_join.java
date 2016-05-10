@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.facebook.appevents.AppEventsLogger;
@@ -259,7 +258,7 @@ public class Activity_join extends Activity {
         alert.setMessage("가입이 완료되셨습니다.");
         alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
-                Intent intent = new Intent(Activity_join.this, Activity_login.class);
+                Intent intent = new Intent(Activity_join.this, Activity_finishJoin.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
                 finish();

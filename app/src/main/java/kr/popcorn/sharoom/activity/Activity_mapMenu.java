@@ -1,9 +1,12 @@
 package kr.popcorn.sharoom.activity;
 
+import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -14,11 +17,13 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import kr.popcorn.sharoom.R;
+import kr.popcorn.sharoom.activity.Fragment.User.Activity_group_view;
 import kr.popcorn.sharoom.helper.GpsInfo;
 
 public class Activity_mapMenu extends FragmentActivity implements GoogleMap.OnMapClickListener {
 
     private GoogleMap mGoogleMap;
+    private ImageView homeBtn;
     //private ArrayList<MyMarker> mMyMarkersArray = new ArrayList<MyMarker>();
     //private HashMap<Marker, MyMarker> mMarkersHashMap;
 
@@ -27,6 +32,16 @@ public class Activity_mapMenu extends FragmentActivity implements GoogleMap.OnMa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_menu);
+
+        homeBtn = (ImageView) findViewById(R.id.homeMenu);
+        homeBtn.setOnClickListener(new ImageView.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Activity_mapMenu.this, Activity_group_view.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         init();
     }
@@ -87,6 +102,7 @@ public class Activity_mapMenu extends FragmentActivity implements GoogleMap.OnMa
             optFirst.snippet("Snippet");
             optFirst.icon(BitmapDescriptorFactory.fromResource(R.drawable.mapmaker));
             mGoogleMap.addMarker(optFirst).showInfoWindow();
+
         }
     }
 

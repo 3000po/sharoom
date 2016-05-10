@@ -1,8 +1,6 @@
 package kr.popcorn.sharoom.activity;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -253,7 +251,7 @@ public class Activity_join extends Activity {
     } //onCreate 종료
 
     public void joinAlert() {
-        AlertDialog.Builder alert = new AlertDialog.Builder(Activity_join.this);
+        /*AlertDialog.Builder alert = new AlertDialog.Builder(Activity_join.this);
         alert.setTitle("성공");
         alert.setMessage("가입이 완료되셨습니다.");
         alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
@@ -264,7 +262,12 @@ public class Activity_join extends Activity {
                 finish();
             }
         });
-        alert.show();
+        alert.show();*/
+        Intent intent = new Intent(Activity_join.this, Activity_finishJoin.class);
+        //intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivity(intent);
+        finish();
+
     }
 
     public static String urlEncodeUTF8(String url) {

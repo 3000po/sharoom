@@ -21,6 +21,8 @@ public class Activity_intro extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
 
+        // 주 쓰레드를 실행
+        start_thread();
         init(); // 디자인초기화
 
     }
@@ -28,22 +30,16 @@ public class Activity_intro extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
-
         // Logs 'app deactivate' App Event.
-        AppEventsLogger.deactivateApp(this);
+        //AppEventsLogger.deactivateApp(this);
     }
 
     @Override
     protected void onResume() {
 
         super.onResume();
-
         // Logs 'install' and 'app activate' App Events.
-        AppEventsLogger.activateApp(this);
-
-        // 주 쓰레드를 실행
-        start_thread();
-
+        //AppEventsLogger.activateApp(this);
     }
 
     @Override
@@ -80,17 +76,16 @@ public class Activity_intro extends Activity {
 
     private void start_thread() {
 
-        Toast.makeText(this, "onresume 에서 쓰레드 실행", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "방풀에 오신 것을 환영합니다.", Toast.LENGTH_SHORT).show();
 
         DisplayHandler.postDelayed(new Runnable() {
 
             public void run() {
 
-                    Intent intent = new Intent(Activity_intro.this, Activity_login.class);
+                    Intent intent = new Intent(Activity_intro.this, Activity_user_view.class);
                     //intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                     startActivity(intent);
-
-
+                    finish();
             }
         }, 3000); // 시간지정
 

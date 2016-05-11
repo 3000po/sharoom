@@ -3,6 +3,7 @@ package kr.popcorn.sharoom.activity.Fragment.Host;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -16,6 +17,8 @@ public class Activity_host_view extends FragmentActivity {
     ViewPager mPager;
     H_PageIndicator mIndicator;
     TextView mToptext;
+
+    private ImageView mapMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

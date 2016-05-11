@@ -17,10 +17,10 @@ import kr.popcorn.sharoom.helper.Helper_server;
 
 public class Activity_user_view extends FragmentActivity {
 
-    TestFragmentAdapter mAdapter;
-    ViewPager mPager;
-    PageIndicator mIndicator;
-    TextView mToptext;
+    private TestFragmentAdapter mAdapter;
+    private ViewPager mPager;
+    private PageIndicator mIndicator;
+    private TextView mToptext;
     private ImageView mapMenu;
 
     public static Activity AActivty;
@@ -75,10 +75,13 @@ public class Activity_user_view extends FragmentActivity {
             public void onPageScrollStateChanged(int state) {
                 switch (mPager.getCurrentItem()){
                     case 0 : mToptext.setText("방 리스트");
+                        mapMenu.setVisibility(View.VISIBLE);
                         break;
                     case 1 : mToptext.setText("예약 확인");
+                        mapMenu.setVisibility(View.GONE);
                         break;
                     case 2 : mToptext.setText("내 정보");
+                        mapMenu.setVisibility(View.GONE);
                         break;
                 }
             }

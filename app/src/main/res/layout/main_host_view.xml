@@ -27,15 +27,7 @@
                 android:textColor="#FFFFFF">
             </TextView>
         </LinearLayout>
-        <ImageView
-            android:id="@+id/mapMenu"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:src="@drawable/mapmenu"
-            android:layout_alignParentRight="true"
-            android:layout_margin="4dp"
-            android:layout_centerVertical="true"/>
-    </RelativeLayout>
+     </RelativeLayout>
 
     <!--  android:padding="@color/activity_layout_header_background" -->
 

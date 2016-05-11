@@ -100,6 +100,7 @@
             android:theme="@android:style/Theme.Holo.NoActionBar">
         </activity>
         <activity android:name=".activity.Activity_Reservation" />
+        <activity android:name=".activity.Activity_FinishReserv" />
         <activity
             android:name=".activity.Acitivity_test"
             android:theme="@android:style/Theme.Holo.NoActionBar" />

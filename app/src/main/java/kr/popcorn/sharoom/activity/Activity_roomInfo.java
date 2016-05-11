@@ -193,6 +193,7 @@ public class Activity_roomInfo extends FragmentActivity {
                         //Toast.makeText(MainActivity.this, "예약버튼이 눌렸습니다.", Toast.LENGTH_SHORT).show();
                         Intent reservationIntent = new Intent(Activity_roomInfo.this, Activity_Reservation.class);
                         startActivity(reservationIntent);
+                        finish();
                 }
             }
         });

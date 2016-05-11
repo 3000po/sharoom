@@ -12,15 +12,14 @@ public class Activity_FinishReserv extends Activity {
     private TextView checkReserv;
 
 
-    Activity_Reservation activity = (Activity_Reservation) Activity_Reservation.rActivity;
-    Activity_roomInfo rActivity = (Activity_roomInfo) Activity_roomInfo.rActivity;
+    Activity_Reservation activity = (kr.popcorn.sharoom.activity.Activity_Reservation) Activity_Reservation.rActivity;
+    Activity_roomInfo rActivity = (kr.popcorn.sharoom.activity.Activity_roomInfo) Activity_roomInfo.rActivity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_finish_reserv);
 
         activity.finish();
-        rActivity.finish();
         checkReserv = (TextView)findViewById(R.id.CheckReservation);
         checkReserv.setOnClickListener(new TextView.OnClickListener() {
             @Override

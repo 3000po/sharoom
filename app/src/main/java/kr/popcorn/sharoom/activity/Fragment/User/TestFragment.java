@@ -195,8 +195,6 @@ public final class TestFragment extends Fragment {
             return view;
         }
         else if(mContent.equalsIgnoreCase("c")){
-            setAdapterView(inflater, container, MyInformation);
-            //return info;
             TabView_myself tabView_myself = new TabView_myself(getContext());
             return tabView_myself;
 

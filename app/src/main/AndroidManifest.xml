@@ -49,7 +49,10 @@
         <activity
             android:name=".activity.Activity_intro"
             android:label="@string/app_name">
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".activity.Activity_calendar"
@@ -60,18 +63,15 @@
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
-            android:name=".activity.Fragment.User.Activity_group_view"
+            android:name=".activity.Fragment.User.Activity_user_view"
             android:theme="@android:style/Theme.Holo.NoActionBar" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
+        <activity android:name=".activity.TabView.Activity_Host_to_User_animation"/>
+        <activity android:name=".activity.TabView.Activity_User_to_Host_animation"/>
         <activity
             android:name=".activity.Fragment.Host.Activity_host_view"
             android:theme="@android:style/Theme.Holo.NoActionBar" >
-
         </activity>
         <activity
             android:name=".activity.Activity_emailCertification"
@@ -104,7 +104,6 @@
         <activity
             android:name=".activity.Activity_imageUpload"
             android:theme="@android:style/Theme.Holo.NoActionBar" />
-        <activity android:name=".activity.TabView.Activity_Host_to_User_animation" />
         <activity android:name=".activity.Activity_mapMenu" />
         <activity android:name=".activity.Activity_finishJoin"></activity>
     </application>

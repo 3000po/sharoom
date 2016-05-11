@@ -65,11 +65,21 @@
 
                 <ImageView
                     android:id="@+id/iv_logo"
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
                     android:layout_gravity="center_vertical|center_horizontal|center"
                     android:src="@drawable/app_logo" >
                 </ImageView>
+
+                <TextView
+                    android:id="@+id/maintext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="50dp"
+                    android:text="사용자 전환 중 입니다."
+                    android:textSize="25dp"
+                    android:layout_gravity="center"/>
 
             </LinearLayout>
 

@@ -22,9 +22,8 @@ import com.loopj.android.http.PersistentCookieStore;
 
 import kr.popcorn.sharoom.R;
 import kr.popcorn.sharoom.activity.Activity_intro;
-import kr.popcorn.sharoom.activity.Activity_login;
 import kr.popcorn.sharoom.activity.Fragment.Host.Activity_host_view;
-import kr.popcorn.sharoom.activity.Fragment.User.Activity_group_view;
+import kr.popcorn.sharoom.activity.Fragment.User.Activity_user_view;
 import kr.popcorn.sharoom.helper.Helper_server;
 
 /**
@@ -35,6 +34,7 @@ public class TabView_myself extends LinearLayout {
     ImageView myFace;
     ImageView logout_btn;
     Button chage_btn;
+    int check_host_user = 0;
 
     public TabView_myself(Context context) {
         super(context);
@@ -44,7 +44,7 @@ public class TabView_myself extends LinearLayout {
 
     private void init(){
 
-        final Activity_group_view aActivity = (Activity_group_view)Activity_group_view.AActivty;
+        final Activity_user_view aActivity = (Activity_user_view) Activity_user_view.AActivty;
 
         Bitmap face = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.myself_50x50);
 
@@ -72,13 +72,22 @@ public class TabView_myself extends LinearLayout {
             public void onClick(View v) {
                 if (v.getId() == R.id.chage_btn) {
 
-                    Log.e("check :", "" + getContext().getClass());
-                    Intent intent = new Intent(getContext(), Activity_host_view.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    getContext().startActivity(intent);
-                    //aActivity.finish();
+                   // Log.e("check :", "0=" + getContext().getClass());
+                    String str = ""+getContext().getClass();
+                    if(str.contains("Activity_user_view")) {
+                        Intent intent = new Intent(getContext(), Activity_User_to_Host_animation.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        getContext().startActivity(intent);
+                    }
+                    else if(str.contains("Activity_host_view")) {
+                        Intent intent = new Intent(getContext(), Activity_Host_to_User_animation.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        getContext().startActivity(intent);
+                    }
 
                 }
             }
@@ -123,5 +132,11 @@ public class TabView_myself extends LinearLayout {
             }
         });
         alert.show();
+
     }
+
+    public void setCheck_host_user(int n){
+        check_host_user = n;
+    }
+
 }

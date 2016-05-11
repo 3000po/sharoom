@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import kr.popcorn.sharoom.R;
 
+import kr.popcorn.sharoom.activity.TabView.TabView_myself;
 import kr.popcorn.sharoom.activity.TabView.TabView_registerAdapter;
 import kr.popcorn.sharoom.activity.TabView.TabView_rentListAdapter;
 import kr.popcorn.sharoom.activity.TabView.TabView_reservationAdapter;
@@ -130,12 +131,9 @@ public final class H_TestFragment extends Fragment {
             setAdapterView(inflater, container, RESERVATONROOM);
             return view;
         }
-       // else if(mContent.equalsIgnoreCase("c")){
-          //  setAdapterView(inflater, container, MyInformation);
-            //return info;
-          //  return view;
-
-        //}
+        else if(mContent.equalsIgnoreCase("c")){
+            TabView_myself tabView_myself = new TabView_myself(getContext());
+            return tabView_myself;}
         else {
 
             TextView text = new TextView(getActivity());

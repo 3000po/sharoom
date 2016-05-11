@@ -37,7 +37,7 @@ import java.util.Arrays;
 import cz.msebera.android.httpclient.Header;
 import cz.msebera.android.httpclient.impl.cookie.BasicClientCookie;
 import kr.popcorn.sharoom.R;
-import kr.popcorn.sharoom.activity.Fragment.User.Activity_group_view;
+import kr.popcorn.sharoom.activity.Fragment.User.Activity_user_view;
 import kr.popcorn.sharoom.helper.Helper_server;
 import kr.popcorn.sharoom.helper.Helper_userData;
 
@@ -121,7 +121,7 @@ public class Activity_login extends Activity {
                                                     @Override
 
                                                     public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                                                        Intent intent = new Intent(Activity_login.this, Activity_group_view.class);
+                                                        Intent intent = new Intent(Activity_login.this, Activity_user_view.class);
 
                                                         Helper_server.userData = Helper_userData.getInstance(getApplicationContext());
 
@@ -144,7 +144,7 @@ public class Activity_login extends Activity {
 
                             return;
                         } else {
-                            Intent intent = new Intent(Activity_login.this, Activity_group_view.class);
+                            Intent intent = new Intent(Activity_login.this, Activity_user_view.class);
 
                             Helper_server.userData = Helper_userData.getInstance(getApplicationContext());
 
@@ -185,7 +185,7 @@ public class Activity_login extends Activity {
         //자동 로그인 파트.
         if (Helper_server.login(myCookieStore)) {
             Log.i("abde", "what the!! ");
-            Intent intent = new Intent(Activity_login.this, Activity_group_view.class);
+            Intent intent = new Intent(Activity_login.this, Activity_user_view.class);
 
             Helper_userData user = Helper_userData.getInstance();
             user.getInstance("111");
@@ -198,7 +198,7 @@ public class Activity_login extends Activity {
                 Log.d("abde", ">>>" + "Signed Out");
             } else {
                 Log.d("abde", ">>>" + "Signed In");
-                Intent intent = new Intent(Activity_login.this, Activity_group_view.class);
+                Intent intent = new Intent(Activity_login.this, Activity_user_view.class);
 
                 Helper_server.userData = Helper_userData.getInstance(getApplicationContext());
 
@@ -257,7 +257,7 @@ public class Activity_login extends Activity {
                                                          newCookie.setPath("/");
                                                          myCookieStore.addCookie(newCookie);
 
-                                                         Intent intent = new Intent(Activity_login.this, Activity_group_view.class);
+                                                         Intent intent = new Intent(Activity_login.this, Activity_user_view.class);
                                                          Helper_userData user = new Helper_userData();
                                                          user.getInstance(id);
 

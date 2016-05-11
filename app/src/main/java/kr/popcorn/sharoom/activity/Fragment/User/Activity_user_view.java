@@ -15,7 +15,7 @@ import kr.popcorn.sharoom.R;
 import kr.popcorn.sharoom.activity.Activity_mapMenu;
 import kr.popcorn.sharoom.helper.Helper_server;
 
-public class Activity_group_view extends FragmentActivity {
+public class Activity_user_view extends FragmentActivity {
 
     TestFragmentAdapter mAdapter;
     ViewPager mPager;
@@ -32,7 +32,7 @@ public class Activity_group_view extends FragmentActivity {
 
         AsyncHttpClient client = Helper_server.getInstance();
 
-        AActivty = Activity_group_view.this;
+        AActivty = Activity_user_view.this;
 
         mAdapter = new TestFragmentAdapter(getSupportFragmentManager());
         mapMenu = (ImageView)findViewById(R.id.mapMenu);
@@ -42,7 +42,7 @@ public class Activity_group_view extends FragmentActivity {
             public void onClick(View v) {
                 switch (v.getId()){
                     case R.id.mapMenu:
-                        Intent mapIntent = new Intent(Activity_group_view.this, Activity_mapMenu.class);
+                        Intent mapIntent = new Intent(Activity_user_view.this, Activity_mapMenu.class);
                         startActivity(mapIntent);
                 }
             }

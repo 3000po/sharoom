@@ -17,7 +17,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import kr.popcorn.sharoom.R;
-import kr.popcorn.sharoom.activity.Fragment.User.Activity_group_view;
+import kr.popcorn.sharoom.activity.Fragment.User.Activity_user_view;
 import kr.popcorn.sharoom.helper.GpsInfo;
 
 public class Activity_mapMenu extends FragmentActivity implements GoogleMap.OnMapClickListener {
@@ -37,7 +37,7 @@ public class Activity_mapMenu extends FragmentActivity implements GoogleMap.OnMa
         homeBtn.setOnClickListener(new ImageView.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Activity_mapMenu.this, Activity_group_view.class);
+                Intent intent = new Intent(Activity_mapMenu.this, Activity_user_view.class);
                 startActivity(intent);
                 finish();
             }

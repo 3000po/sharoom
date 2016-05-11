@@ -58,8 +58,10 @@ public class Helper_server {
                         + cookieList.get(i).getValue();
                 Log.e("surosuro", cookieString);
 
-                if(cookieList.get(i).getName().equals("login_cookie")){
-                     return true;
+                if(cookieList.get(i).getName().equals("isLogin")){
+                    if(cookieList.get(i).getValue().equals("true")){
+                        return true;
+                    }
                 }
             }
         }

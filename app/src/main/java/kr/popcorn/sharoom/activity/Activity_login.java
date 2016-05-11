@@ -10,6 +10,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -67,7 +68,7 @@ public class Activity_login extends Activity {
 
         //loginButton.setPublishPermissions(Arrays.asList("public_profile", "user_friends", "email"));
         //LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile","user_friends","email"));
-        loginButton.setReadPermissions(Arrays.asList("public_profile", "user_friends","email"));
+        loginButton.setReadPermissions(Arrays.asList("public_profile", "user_friends", "email"));
         loginButton.setBackgroundResource(R.drawable.facebookbtn);
         loginButton.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
         loginButton.setText("");
@@ -180,6 +181,7 @@ public class Activity_login extends Activity {
         et_id = (EditText)findViewById(R.id.et_login_id);
         et_password = (EditText)findViewById(R.id.et_login_password);
 
+
         AsyncHttpClient client = Helper_server.getInstance();
         final PersistentCookieStore myCookieStore = new PersistentCookieStore(this);
         client.setCookieStore(myCookieStore);
@@ -225,14 +227,16 @@ public class Activity_login extends Activity {
 
         );
 
+        final CheckBox check = (CheckBox)findViewById(R.id.ck_autoLogin);
+
         //login buton click
+
         ImageView btn_login = (ImageView) findViewById(R.id.btn_login);
         btn_login.setOnClickListener(new ImageView.OnClickListener()
 
                                      {
                                          public void onClick(View v) {
                                              Toast.makeText(Activity_login.this, "로그인버튼 클릭.", Toast.LENGTH_LONG).show();
-
                                              RequestParams params = new RequestParams();
                                              final String id = et_id.getText().toString();
                                              String password = et_password.getText().toString();
@@ -248,18 +252,25 @@ public class Activity_login extends Activity {
                                                      Log.i("abde", "success");
                                                      String data="";
                                                      try{
-                                                         data = response.get("ok").toString();
+                                                         data = response.get("phpsession").toString();
                                                      } catch(JSONException e){
                                                          e.printStackTrace();
                                                      }
-                                                     Log.d("ok", "" + data);
-                                                     if(data.equals("true")){
+                                                     Log.d("phpsession", "" + data);
+                                                     if(!data.equals("no")){
 
-                                                         BasicClientCookie newCookie = new BasicClientCookie("login_cookie", "id");
+                                                         BasicClientCookie newCookie = new BasicClientCookie("login_session", data);
                                                          newCookie.setVersion(1);
                                                          newCookie.setDomain("14.63.227.200");
                                                          newCookie.setPath("/");
                                                          myCookieStore.addCookie(newCookie);
+                                                         if(check.isChecked()){
+                                                             newCookie = new BasicClientCookie("isLogin", "true");
+                                                             newCookie.setVersion(1);
+                                                             newCookie.setDomain("14.63.227.200");
+                                                             newCookie.setPath("/");
+                                                             myCookieStore.addCookie(newCookie);
+                                                         }
 
                                                          Intent intent = new Intent(Activity_login.this, Activity_user_view.class);
                                                          Helper_userData user = new Helper_userData();

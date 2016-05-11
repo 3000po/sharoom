@@ -106,6 +106,17 @@
             android:layout_centerHorizontal="true">
         </ImageView>
 
+        <CheckBox
+            android:id="@+id/ck_autoLogin"
+            android:layout_width="40dp"
+            android:layout_height="50dp"
+            android:text = "Login Auto"
+            android:background="@null"
+            android:gravity="center"
+            android:textColor="#949494"
+            android:layout_above="@+id/btn_join"
+            android:layout_alignEnd="@+id/login_button" />
+
         <Button
             android:id="@+id/btn_join"
             android:layout_centerHorizontal="true"

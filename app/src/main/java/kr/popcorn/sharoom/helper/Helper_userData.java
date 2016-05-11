@@ -227,5 +227,4 @@ public class Helper_userData {
         this.facebook = facebook;
     }
 
-
 }

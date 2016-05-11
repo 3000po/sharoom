@@ -22,6 +22,7 @@ import com.loopj.android.http.PersistentCookieStore;
 
 import kr.popcorn.sharoom.R;
 import kr.popcorn.sharoom.activity.Activity_intro;
+import kr.popcorn.sharoom.activity.Activity_login;
 import kr.popcorn.sharoom.activity.Fragment.Host.Activity_host_view;
 import kr.popcorn.sharoom.activity.Fragment.User.Activity_user_view;
 import kr.popcorn.sharoom.helper.Helper_server;
@@ -124,7 +125,7 @@ public class TabView_myself extends LinearLayout {
                 Helper_server.logout(myCookieStore, getContext());
                 client.setCookieStore(myCookieStore);
 
-                Intent intent = new Intent(getContext(), Activity_intro.class);
+                Intent intent = new Intent(getContext(), Activity_login.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 

@@ -208,7 +208,7 @@ public final class TestFragment extends Fragment {
         else if(mContent.equalsIgnoreCase("c")){
             setAdapterView(inflater, container, MyInformation);
             //return info;
-            return view;
+            return inflater.inflate(R.layout.activity_myself_adapter,null);
 
         }else {
 
@@ -222,6 +222,9 @@ public final class TestFragment extends Fragment {
             layout.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
             layout.setGravity(Gravity.CENTER);
             layout.addView(text);
+
+            inflater.inflate(R.layout.activity_myself_adapter,null);
+
             return layout;
         }
     }

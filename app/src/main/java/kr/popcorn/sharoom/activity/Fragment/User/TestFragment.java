@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 import kr.popcorn.sharoom.R;
 
-import kr.popcorn.sharoom.activity.TabView.TabView_myselfAdapter;
+import kr.popcorn.sharoom.activity.TabView.TabView_myself;
 import kr.popcorn.sharoom.activity.TabView.TabView_registerAdapter;
 import kr.popcorn.sharoom.activity.TabView.TabView_rentListAdapter;
 import kr.popcorn.sharoom.activity.TabView.TabView_reservationAdapter;
@@ -39,7 +39,6 @@ public final class TestFragment extends Fragment {
     public RecyclerView recyclerView_register;
 
     private TabView_rentListAdapter rentListAdapter;
-    private TabView_myselfAdapter myselfAdapter;
     private TabView_reservationAdapter reservationAdapter;
     private TabView_registerAdapter registerAdapter;
 
@@ -61,7 +60,7 @@ public final class TestFragment extends Fragment {
     private void setAdapterView(LayoutInflater inflater, ViewGroup container, int cases){
         view = inflater.inflate(R.layout.activity_list, container, false);
         view_register = inflater.inflate(R.layout.activity_list2, container, false);
-        info = inflater.inflate(R.layout.activity_myself_adapter,container,false);
+        info = inflater.inflate(R.layout.activity_myself,container,false);
 
         recyclerView = (RecyclerView) view.findViewById(R.id.list);
         recyclerView_register = (RecyclerView) view_register.findViewById(R.id.list_register);
@@ -152,16 +151,6 @@ public final class TestFragment extends Fragment {
 
                 break;
 
-            case MyInformation:
-                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-                recyclerView.setItemAnimator(new DefaultItemAnimator());
-
-                myselfAdapter = new TabView_myselfAdapter(getActivity(),
-                        user,
-                        (LinearLayoutManager) recyclerView.getLayoutManager());
-                recyclerView.setAdapter(myselfAdapter);
-                break;
-
             case RESERVATONROOM:
                 recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
                 recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -208,7 +197,8 @@ public final class TestFragment extends Fragment {
         else if(mContent.equalsIgnoreCase("c")){
             setAdapterView(inflater, container, MyInformation);
             //return info;
-            return inflater.inflate(R.layout.activity_myself_adapter,null);
+            TabView_myself tabView_myself = new TabView_myself(getContext());
+            return tabView_myself;
 
         }else {
 
@@ -222,8 +212,6 @@ public final class TestFragment extends Fragment {
             layout.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
             layout.setGravity(Gravity.CENTER);
             layout.addView(text);
-
-            inflater.inflate(R.layout.activity_myself_adapter,null);
 
             return layout;
         }

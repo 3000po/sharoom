@@ -90,11 +90,11 @@
                     android:layout_weight="1"
                     />
 
-                <kr.popcorn.sharoom.activity.Fragment.User.IconPageIndicator
+                <kr.popcorn.sharoom.activity.Fragment.Host.H_IconPageIndicator
                     android:layout_width="fill_parent"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
-                    android:id="@+id/indicator"
+                    android:id="@+id/h_indicator"
                     android:background="#FFFFFFFF"
                     />
 

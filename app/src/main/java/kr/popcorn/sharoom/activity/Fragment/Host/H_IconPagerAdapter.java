@@ -1,6 +1,6 @@
 package kr.popcorn.sharoom.activity.Fragment.Host;
 
-public interface IconPagerAdapter {
+public interface H_IconPagerAdapter {
     /**
      * Get icon representing the page at {@code index} in the adapter.
      */

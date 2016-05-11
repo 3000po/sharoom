@@ -26,11 +26,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import kr.popcorn.sharoom.R;
-import kr.popcorn.sharoom.activity.Fragment.User.*;
-import kr.popcorn.sharoom.activity.Fragment.User.IconPagerAdapter;
 
 import static android.view.ViewGroup.LayoutParams.FILL_PARENT;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
@@ -39,23 +36,23 @@ import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
  * This widget implements the dynamic action bar tab behavior that can change
  * across different configurations or circumstances.
  */
-public class IconPageIndicator extends HorizontalScrollView implements PageIndicator {
-    private final IcsLinearLayout mIconsLayout;
+public class H_IconPageIndicator extends HorizontalScrollView implements H_PageIndicator {
+    private final H_IcsLinearLayout mIconsLayout;
 
     private ViewPager mViewPager;
     private OnPageChangeListener mListener;
     private Runnable mIconSelector;
     private int mSelectedIndex;
 
-    public IconPageIndicator(Context context) {
+    public H_IconPageIndicator(Context context) {
         this(context, null);
 
     }
 
-    public IconPageIndicator(Context context, AttributeSet attrs) {
+    public H_IconPageIndicator(Context context, AttributeSet attrs) {
         super(context, attrs);
         setHorizontalScrollBarEnabled(false);
-        mIconsLayout = new IcsLinearLayout(context, R.attr.vpiIconPageIndicatorStyle);
+        mIconsLayout = new H_IcsLinearLayout(context, R.attr.vpiIconPageIndicatorStyle);
         addView(mIconsLayout, new LayoutParams(WRAP_CONTENT, FILL_PARENT, Gravity.CENTER));
 
     }
@@ -133,7 +130,7 @@ public class IconPageIndicator extends HorizontalScrollView implements PageIndic
 
     public void notifyDataSetChanged() {
         mIconsLayout.removeAllViews();
-        kr.popcorn.sharoom.activity.Fragment.User.IconPagerAdapter iconAdapter = (IconPagerAdapter) mViewPager.getAdapter();
+        H_IconPagerAdapter iconAdapter = (H_IconPagerAdapter) mViewPager.getAdapter();
         int count = iconAdapter.getCount();
         for (int i = 0; i < count; i++) {
             ImageView view = new ImageView(getContext(), null, R.attr.vpiIconPageIndicatorStyle);

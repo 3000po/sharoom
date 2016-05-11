@@ -1,5 +1,6 @@
 package kr.popcorn.sharoom.activity.Fragment.User;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -22,12 +23,16 @@ public class Activity_group_view extends FragmentActivity {
     TextView mToptext;
     private ImageView mapMenu;
 
+    public static Activity AActivty;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_group_view);
+        setContentView(R.layout.main_user_view);
 
         AsyncHttpClient client = Helper_server.getInstance();
+
+        AActivty = Activity_group_view.this;
 
         mAdapter = new TestFragmentAdapter(getSupportFragmentManager());
         mapMenu = (ImageView)findViewById(R.id.mapMenu);
@@ -51,7 +56,7 @@ public class Activity_group_view extends FragmentActivity {
 
         mPager.setOffscreenPageLimit(3);
 
-        mIndicator = (IconPageIndicator) findViewById(R.id.indicator);
+        mIndicator = (IconPageIndicator) findViewById(R.id.u_indicator);
 
         mIndicator.setViewPager(mPager);
 

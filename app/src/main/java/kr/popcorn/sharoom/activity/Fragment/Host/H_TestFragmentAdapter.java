@@ -5,11 +5,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import kr.popcorn.sharoom.R;
-import kr.popcorn.sharoom.activity.Fragment.User.*;
-import kr.popcorn.sharoom.activity.Fragment.User.IconPagerAdapter;
-import kr.popcorn.sharoom.activity.Fragment.User.TestFragment;
 
-public class TestFragmentAdapter extends FragmentPagerAdapter implements IconPagerAdapter {
+public class H_TestFragmentAdapter extends FragmentPagerAdapter implements H_IconPagerAdapter {
     protected static final String[] CONTENT = new String[] { "a", "b", "c" };
     protected static final int[] ICONS = new int[] {
             R.drawable.perm_group_register,
@@ -20,13 +17,13 @@ public class TestFragmentAdapter extends FragmentPagerAdapter implements IconPag
 
     private int mCount = CONTENT.length;
 
-    public TestFragmentAdapter(FragmentManager fm) {
+    public H_TestFragmentAdapter(FragmentManager fm) {
         super(fm);
     }
 
     @Override
     public Fragment getItem(int position) {
-        return kr.popcorn.sharoom.activity.Fragment.Host.TestFragment.newInstance(CONTENT[position % CONTENT.length]);
+        return H_TestFragment.newInstance(CONTENT[position % CONTENT.length]);
     }
 
     @Override
@@ -36,7 +33,7 @@ public class TestFragmentAdapter extends FragmentPagerAdapter implements IconPag
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return TestFragmentAdapter.CONTENT[position % CONTENT.length];
+        return H_TestFragmentAdapter.CONTENT[position % CONTENT.length];
     }
 
     @Override

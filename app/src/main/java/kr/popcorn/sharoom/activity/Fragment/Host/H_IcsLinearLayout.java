@@ -14,7 +14,7 @@ import android.widget.LinearLayout;
  * same orientation as the layout you should wrap the child in a simple
  * {@link android.widget.FrameLayout} so it can receive the margin.
  */
-class IcsLinearLayout extends LinearLayout {
+class H_IcsLinearLayout extends LinearLayout {
     private static final int[] LL = new int[] {
         /* 0 */ android.R.attr.divider,
         /* 1 */ android.R.attr.showDividers,
@@ -32,11 +32,11 @@ class IcsLinearLayout extends LinearLayout {
 
 
     @SuppressWarnings("ResourceType")
-    public IcsLinearLayout(Context context, int themeAttr) {
+    public H_IcsLinearLayout(Context context, int themeAttr) {
         super(context);
 
         TypedArray a = context.obtainStyledAttributes(null, LL, themeAttr, 0);
-        setDividerDrawable(a.getDrawable(IcsLinearLayout.LL_DIVIDER));
+        setDividerDrawable(a.getDrawable(H_IcsLinearLayout.LL_DIVIDER));
         mDividerPadding = a.getDimensionPixelSize(LL_DIVIDER_PADDING, 0);
         mShowDividers = a.getInteger(LL_SHOW_DIVIDER, SHOW_DIVIDER_NONE);
         a.recycle();

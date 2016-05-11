@@ -1,32 +1,30 @@
 package kr.popcorn.sharoom.activity.Fragment.Host;
-        import android.os.Bundle;
-        import android.support.v4.app.FragmentActivity;
-        import android.support.v4.view.ViewPager;
-        import android.widget.TextView;
 
-        import com.loopj.android.http.AsyncHttpClient;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.ViewPager;
+import android.widget.TextView;
 
-        import kr.popcorn.sharoom.R;
-        import kr.popcorn.sharoom.activity.Fragment.User.IconPageIndicator;
-        import kr.popcorn.sharoom.activity.Fragment.User.PageIndicator;
-        import kr.popcorn.sharoom.activity.Fragment.User.TestFragmentAdapter;
-        import kr.popcorn.sharoom.helper.Helper_server;
+import com.loopj.android.http.AsyncHttpClient;
+
+import kr.popcorn.sharoom.R;
+import kr.popcorn.sharoom.helper.Helper_server;
 
 public class Activity_host_view extends FragmentActivity {
 
-    TestFragmentAdapter mAdapter;
+    H_TestFragmentAdapter mAdapter;
     ViewPager mPager;
-    PageIndicator mIndicator;
+    H_PageIndicator mIndicator;
     TextView mToptext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_group_view);
+        setContentView(R.layout.main_host_view);
 
         AsyncHttpClient client = Helper_server.getInstance();
 
-        mAdapter = new TestFragmentAdapter(getSupportFragmentManager());
+        mAdapter = new H_TestFragmentAdapter(getSupportFragmentManager());
 
         mToptext = (TextView) findViewById(R.id.toptext);
 
@@ -35,7 +33,7 @@ public class Activity_host_view extends FragmentActivity {
 
         mPager.setOffscreenPageLimit(3);
 
-        mIndicator = (IconPageIndicator) findViewById(R.id.indicator);
+        mIndicator = (H_IconPageIndicator) findViewById(R.id.h_indicator);
 
         mIndicator.setViewPager(mPager);
 

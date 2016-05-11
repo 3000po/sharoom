@@ -53,7 +53,11 @@ public class GpsInfo extends Service implements LocationListener {
             isNetworkEnabled = locationManager
                     .isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 
-            if (!isGPSEnabled && !isNetworkEnabled) {
+            if (!isGPSEnabled) {
+                showSettingsAlert();
+            }
+            else if(!isNetworkEnabled) {
+
             } else {
                 this.isGetLocation = true;
                 if (isNetworkEnabled) {
@@ -76,8 +80,7 @@ public class GpsInfo extends Service implements LocationListener {
                 if (isGPSEnabled) {
                     if (location == null) {
                         locationManager
-                                .requestLocationUpdates(
-                                        LocationManager.GPS_PROVIDER,
+                                .requestLocationUpdates(LocationManager.GPS_PROVIDER,
                                         MIN_TIME_UPDATES,
                                         MIN_DISTANCE_UPDATES,
                                         this);

@@ -17,6 +17,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -27,6 +28,7 @@ import com.bumptech.glide.Glide;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -128,6 +130,9 @@ public class Activity_roomInfo extends FragmentActivity {
             public void onClick(View v) {
                 // Getting reference to EditText to get the user input location
                 EditText etLocation = (EditText) findViewById(R.id.et_location);
+                etLocation.requestFocus();
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.showSoftInput(etLocation, InputMethodManager.SHOW_FORCED);
 
                 // Getting user input location
                 String location = etLocation.getText().toString();
@@ -295,6 +300,7 @@ public class Activity_roomInfo extends FragmentActivity {
                 markerOptions = new MarkerOptions();
                 markerOptions.position(latLng);
                 markerOptions.title(addressText);
+                markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.mapmaker));
 
                 googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
                 googleMap.addMarker(markerOptions);

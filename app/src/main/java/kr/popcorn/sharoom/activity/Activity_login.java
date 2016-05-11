@@ -12,6 +12,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -230,6 +231,8 @@ public class Activity_login extends Activity {
 
                                      {
                                          public void onClick(View v) {
+                                             Toast.makeText(Activity_login.this, "로그인버튼 클릭.", Toast.LENGTH_LONG).show();
+
                                              RequestParams params = new RequestParams();
                                              final String id = et_id.getText().toString();
                                              String password = et_password.getText().toString();

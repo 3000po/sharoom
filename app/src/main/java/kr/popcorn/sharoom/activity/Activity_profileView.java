@@ -20,8 +20,6 @@ public class Activity_profileView extends Dialog {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
 
-
-
         WindowManager.LayoutParams mParams = new WindowManager.LayoutParams(
                 WindowManager.LayoutParams.WRAP_CONTENT,
                 WindowManager.LayoutParams.WRAP_CONTENT,
@@ -29,11 +27,10 @@ public class Activity_profileView extends Dialog {
                 WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH,
                 PixelFormat.TRANSLUCENT);
 
-
         getWindow().setAttributes(mParams);
         setContentView(R.layout.activity_profileview);
-
     }
+
     public Activity_profileView(Context context) {
         super(context, android.R.style.Theme_Translucent_NoTitleBar);
     }

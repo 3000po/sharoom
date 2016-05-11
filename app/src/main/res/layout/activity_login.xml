@@ -127,6 +127,8 @@
             android:layout_width="180dp"
             android:layout_height="60dp"
             android:layout_centerHorizontal="true"
+            fb:com_facebook_login_text=""
+            fb:com_facebook_logout_text=""
             />
 
 

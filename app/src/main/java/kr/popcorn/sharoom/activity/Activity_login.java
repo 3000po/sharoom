@@ -68,7 +68,8 @@ public class Activity_login extends Activity {
         //LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile","user_friends","email"));
         loginButton.setReadPermissions(Arrays.asList("public_profile", "user_friends","email"));
         loginButton.setBackgroundResource(R.drawable.facebookbtn);
-        loginButton.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+        loginButton.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+        loginButton.setText("");
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(final LoginResult loginResult) {

@@ -125,78 +125,22 @@
                             android:clickable="false"/>
                     </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="bottom"
-                    android:layout_marginBottom="40dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/comfirm"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="인증"
-                        android:layout_marginBottom="20dp"
-                        android:textColor="@color/activity_main_app_name"
-                        android:textSize="20sp"
-                        android:textStyle="bold" >
-                    </TextView>
+                        android:layout_height="match_parent"
+                        android:gravity="top"
+                        android:layout_marginBottom="40dp"
+                        android:orientation="vertical">
 
-                    <LinearLayout
-                        android:layout_width = "match_parent"
-                        android:layout_height = "wrap_content"
-                        android:gravity="center_horizontal"
-                        android:orientation="horizontal">
+                        <Button
+                            android:layout_height="50dp"
+                            android:layout_width="150dp"
+                            android:layout_gravity="center"
+                            android:text="사용자 모드 변환">
 
-                        <ImageView
-                            android:id="@+id/confirm1"
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:src="@drawable/app_logo">
-                        </ImageView>
-                        <ImageView
-                            android:id="@+id/confirm2"
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:src="@drawable/app_logo">
-                        </ImageView>
-                        <ImageView
-                            android:id="@+id/confirm3"
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:src="@drawable/app_logo">
-                        </ImageView>
+                        </Button>
+
                     </LinearLayout>
-                    <LinearLayout
-                        android:layout_width = "match_parent"
-                        android:layout_height = "wrap_content"
-                        android:gravity="center_horizontal"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:id="@+id/confirm4"
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:src="@drawable/app_logo">
-                        </ImageView>
-                        <ImageView
-                            android:id="@+id/confirm5"
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:src="@drawable/app_logo">
-                        </ImageView>
-                        <ImageView
-                            android:id="@+id/confirm6"
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:src="@drawable/app_logo">
-                        </ImageView>
-                    </LinearLayout>
-
-
-                </LinearLayout>
 
                 </LinearLayout>
 

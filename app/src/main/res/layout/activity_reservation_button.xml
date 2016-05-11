@@ -11,7 +11,7 @@
         android:id="@+id/reservationBtn"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:background="@drawable/selector_facillitiesbtn"
+        android:background="@drawable/selector_facilitiesbtn"
         android:layout_gravity="bottom|center"
         />
 

@@ -160,7 +160,7 @@ public class Activity_roomInfo extends FragmentActivity {
         });
 
         cFacillities = (Button)findViewById(R.id.facillitiesIcon);
-        cFacillities.setBackgroundResource(R.drawable.selector_facillitiesbtn);
+        cFacillities.setBackgroundResource(R.drawable.selector_facilitiesbtn);
         cFacillities.setOnClickListener(new Button.OnClickListener() {
 
             @Override

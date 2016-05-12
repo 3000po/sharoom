@@ -16,7 +16,7 @@
     <LinearLayout
         android:layout_width="180dp"
         android:layout_height="200dp"
-        android:background="#80000000"
+        android:background="#80FFFFFF"
         android:orientation="vertical"
         android:layout_alignParentRight="true"
         >
@@ -28,7 +28,7 @@
             android:layout_width="170dp"
             android:layout_height="80dp"
             android:text="원룸 비어요. 국민대 정문 근처"
-            android:textColor="#ffffff"
+            android:textColor="#000000"
             android:textSize="18sp"/>
         <View
             android:layout_marginLeft="10dp"
@@ -42,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:text="일정"
-            android:textColor="#ffffff"
+            android:textColor="#000000"
             android:textSize="16sp"/>
         <TextView
             android:gravity="center"
@@ -50,7 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:text="16/03/01 ~ 16/03/22 "
-            android:textColor="#ffffff"
+            android:textColor="#000000"
             android:textSize="16sp"/>
 
     </LinearLayout>

@@ -25,6 +25,7 @@ public class Activity_intro extends Activity {
         start_thread();
         init(); // 디자인초기화
 
+        keytool -exportcert -alias <release_key_alias> -keystore <release_keystore_path> | openssl sha1 -binary | openssl base64
     }
 
     @Override

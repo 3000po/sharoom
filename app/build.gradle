@@ -32,6 +32,18 @@ android {
     }
 }
 
+subprojects {
+    repositories {
+        mavenCentral()
+        maven { url 'http://devrepo.kakao.com:8088/nexus/content/groups/public/' }
+    }
+
+    // 카카오톡 sdk를 사용하기 위해 필요.
+    compile group: 'com.kakao.sdk', name: 'kakaotalk', version: project.KAKAO_SDK_VERSION
+    // push sdk를 사용하기 위해 필요.
+    compile group: 'com.kakao.sdk', name: 'push', version: project.KAKAO_SDK_VERSION
+
+}
 
 dependencies {
     repositories {
@@ -57,5 +69,5 @@ dependencies {
     compile 'com.loopj.android:android-async-http:1.4.9'
     compile 'com.google.android.gms:play-services-maps:8.3.0'
 
-   // compile 'com.facebook.android:audience-network-sdk:4.+'
+    // compile 'com.facebook.android:audience-network-sdk:4.+'
 }

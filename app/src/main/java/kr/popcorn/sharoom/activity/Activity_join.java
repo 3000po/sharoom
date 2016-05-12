@@ -296,9 +296,6 @@ public class Activity_join extends Activity {
     }
 
     public void onBackPressed(){
-        Intent intent = new Intent(Activity_join.this, Activity_login.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-        startActivity(intent);
         finish();
     }
 

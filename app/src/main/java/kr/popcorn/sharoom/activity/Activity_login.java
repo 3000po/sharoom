@@ -9,11 +9,9 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -125,11 +123,14 @@ public class Activity_login extends Activity {
 
                                                     public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                                                         Intent intent = new Intent(Activity_login.this, Activity_user_view.class);
+                                                        Activity_mainIntro activity = (Activity_mainIntro) Activity_mainIntro.mActivity;
 
                                                         Helper_server.userData = Helper_userData.getInstance(getApplicationContext());
 
+
                                                         startActivity(intent);
                                                         finish();
+                                                        activity.finish();
                                                     }
 
                                                     @Override
@@ -236,7 +237,6 @@ public class Activity_login extends Activity {
 
                                      {
                                          public void onClick(View v) {
-                                             Toast.makeText(Activity_login.this, "로그인버튼 클릭.", Toast.LENGTH_LONG).show();
                                              RequestParams params = new RequestParams();
                                              final String id = et_id.getText().toString();
                                              String password = et_password.getText().toString();
@@ -272,12 +272,14 @@ public class Activity_login extends Activity {
                                                              myCookieStore.addCookie(newCookie);
                                                          }
 
+                                                         Activity_mainIntro activity = (Activity_mainIntro) Activity_mainIntro.mActivity;
                                                          Intent intent = new Intent(Activity_login.this, Activity_user_view.class);
                                                          Helper_userData user = new Helper_userData();
                                                          user.getInstance(id);
 
                                                          startActivity(intent);
                                                          finish();
+                                                         activity.finish();
 
                                                      }
                                                      else{
@@ -298,7 +300,7 @@ public class Activity_login extends Activity {
                                      }
         );
 
-        Button btn_join = (Button) findViewById(R.id.btn_join);
+      /*  Button btn_join = (Button) findViewById(R.id.btn_join);
         btn_join.setOnClickListener(new Button.OnClickListener(){
                                         public void onClick(View v) {
 
@@ -309,7 +311,7 @@ public class Activity_login extends Activity {
                                         }
                                     }
 
-        );
+        );*/
     }//onCreateEnd
 
     public void loginAlert() {

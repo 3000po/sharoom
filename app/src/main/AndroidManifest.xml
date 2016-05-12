@@ -14,7 +14,7 @@
         android:name="android.hardware.camera"
         android:required="true" />
 
-    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
@@ -53,6 +53,7 @@
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -66,20 +67,18 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name=".activity.Fragment.User.Activity_user_view"
-            android:theme="@android:style/Theme.Holo.NoActionBar" >
+            android:theme="@android:style/Theme.Holo.NoActionBar">
 
         </activity>
-        <activity android:name=".activity.TabView.Activity_Host_to_User_animation"/>
-        <activity android:name=".activity.TabView.Activity_User_to_Host_animation"/>
+        <activity android:name=".activity.TabView.Activity_Host_to_User_animation" />
+        <activity android:name=".activity.TabView.Activity_User_to_Host_animation" />
         <activity
             android:name=".activity.Fragment.Host.Activity_host_view"
-            android:theme="@android:style/Theme.Holo.NoActionBar" >
-        </activity>
+            android:theme="@android:style/Theme.Holo.NoActionBar"></activity>
         <activity
             android:name=".activity.Activity_emailCertification"
             android:theme="@android:style/Theme.Holo.NoActionBar" />
-        <activity android:name=".activity.Activity_editRoom">
-        </activity>
+        <activity android:name=".activity.Activity_editRoom"></activity>
         <activity
             android:name=".activity.Activity_editRoom_roomPic"
             android:theme="@style/EditRoomPicTheme" />
@@ -92,13 +91,10 @@
         <activity
             android:name=".activity.Activity_login"
             android:theme="@android:style/Theme.Holo.NoActionBar"
-            android:windowSoftInputMode="adjustResize|adjustPan">
-
-        </activity>
+            android:windowSoftInputMode="adjustResize|adjustPan"></activity>
         <activity
             android:name=".activity.Activity_join"
-            android:theme="@android:style/Theme.Holo.NoActionBar">
-        </activity>
+            android:theme="@android:style/Theme.Holo.NoActionBar"></activity>
         <activity android:name=".activity.Activity_Reservation" />
         <activity android:name=".activity.Activity_FinishReserv" />
         <activity
@@ -108,7 +104,9 @@
             android:name=".activity.Activity_imageUpload"
             android:theme="@android:style/Theme.Holo.NoActionBar" />
         <activity android:name=".activity.Activity_mapMenu" />
-        <activity android:name=".activity.Activity_finishJoin"></activity>
+        <activity android:name=".activity.Activity_finishJoin" />
+        <activity android:name=".activity.Activity_mainIntro">
+        </activity>
     </application>
 
 </manifest>

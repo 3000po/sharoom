@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context="kr.popcorn.sharoom.activity.Activity_mainIntro">
+
+    <RelativeLayout
+        android:id="@+id/ll_header"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:background="#20c589"
+        android:gravity="top"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/toptext"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="환영합니다!"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF">
+        </TextView>
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitStart"
+        android:src="@drawable/ivmainintro"
+        android:layout_below="@id/ll_header" />
+    <ImageView
+        android:id="@+id/iv_join"
+        android:layout_width="180dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="40dp"
+        android:src="@drawable/ivjoin"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true">
+    </ImageView>
+    <ImageView
+        android:id="@+id/iv_login"
+        android:layout_width="135dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ivlogin"
+        android:layout_margin="10dp"
+        android:layout_above="@+id/iv_join"
+        android:layout_centerHorizontal="true">
+    </ImageView>
+
+
+
+
+
+
+</RelativeLayout>

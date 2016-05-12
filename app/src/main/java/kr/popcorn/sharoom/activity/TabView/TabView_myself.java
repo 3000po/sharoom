@@ -33,7 +33,7 @@ import kr.popcorn.sharoom.helper.Helper_server;
 public class TabView_myself extends LinearLayout {
 
     ImageView myFace;
-    ImageView logout_btn;
+    Button logout_btn;
     Button chage_btn;
     int check_host_user = 0;
 
@@ -51,7 +51,7 @@ public class TabView_myself extends LinearLayout {
         view.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
 
         myFace = (ImageView) view.findViewById(R.id.myface);
-        logout_btn = (ImageView) view.findViewById(R.id.logout);
+        logout_btn = (Button) view.findViewById(R.id.logout);
         chage_btn = (Button) view.findViewById(R.id.chage_btn);
 
         myFace.setImageBitmap(getCircleBitmap(face));

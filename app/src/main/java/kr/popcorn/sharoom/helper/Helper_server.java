@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.facebook.AccessToken;
+import com.facebook.FacebookSdk;
 import com.facebook.login.LoginManager;
 import com.loopj.android.http.*;
 
@@ -72,6 +73,7 @@ public class Helper_server {
         myCookieStore.clear();
         client.setCookieStore(myCookieStore);
 
+        FacebookSdk.sdkInitialize(mContext);
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
         if (accessToken == null) {
             Log.d("abde", ">>>" + "Signed Out");

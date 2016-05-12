@@ -1,19 +1,15 @@
 package kr.popcorn.sharoom.activity;
 
-import android.os.Bundle;
-import android.os.Handler;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Toast;
 
-import com.facebook.appevents.AppEventsLogger;
-
 import kr.popcorn.sharoom.R;
-import kr.popcorn.sharoom.activity.Fragment.Host.Activity_host_view;
-import kr.popcorn.sharoom.activity.Fragment.User.Activity_user_view;
 
 public class Activity_intro extends Activity {
     @Override
@@ -82,7 +78,7 @@ public class Activity_intro extends Activity {
 
             public void run() {
 
-                    Intent intent = new Intent(Activity_intro.this, Activity_user_view.class);
+                    Intent intent = new Intent(Activity_intro.this, Activity_login.class);
                     //intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                     startActivity(intent);
                     finish();

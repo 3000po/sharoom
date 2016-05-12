@@ -69,79 +69,157 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_gravity="top|center_horizontal"
-                    android:src="@drawable/myself_50x50" >
+                    android:src="@drawable/myself_50x50"
+                    android:visibility="gone"
+                    >
+
                 </ImageView>
+
+
+                <LinearLayout
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_width = "match_parent"
+                    android:layout_height = "50dp"
+                    android:orientation="vertical"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="left"
+                        android:text="아이디"
+                        android:textColor="@color/activity_main_app_name"
+                        android:textSize="23sp"
+                        android:textStyle="bold" >
+                    </TextView>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="3dp"
+                        android:background="#20c589"/>
+
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/myname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="10dp"
                     android:gravity="center"
                     android:text="my name"
-                    android:textColor="@color/activity_main_app_name"
+                    android:textColor="#000000"
                     android:textSize="25sp"
                     android:textStyle="bold" >
                 </TextView>
+                <LinearLayout
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_width = "match_parent"
+                    android:layout_height = "50dp"
+                    android:orientation="vertical"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_login_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:visibility="gone"
+
+                        android:layout_marginTop="5dp"
+                        android:gravity="center_horizontal"
+                        android:text="평점"
+                        android:textColor="@color/activity_main_app_name"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                    <RatingBar
+                        android:visibility="gone"
+                        style="@style/heartRatingBar"
+                        android:id="@+id/myrating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:layout_margin="5dp"
+                        android:numStars="5"
+                        android:stepSize="0.5"
+                        android:rating="0.0"
+                        android:clickable="false"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="left"
+                        android:text="연락처"
+                        android:textColor="@color/activity_main_app_name"
+                        android:textSize="23sp"
+                        android:textStyle="bold" >
+                    </TextView>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="3dp"
+                        android:background="#20c589"/>
+                </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/officemain"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:orientation="vertical" >
 
                     <LinearLayout
-                        android:layout_width = "match_parent"
-                        android:layout_height = "50dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_gravity="center_vertical"
-                        android:gravity="center_horizontal"
                         android:layout_marginTop="10dp">
 
                         <TextView
-                            android:id="@+id/tv_login_id"
+                            android:layout_marginLeft="20dp"
                             android:layout_width="wrap_content"
-                            android:layout_height="40dp"
-
-                            android:layout_marginTop="5dp"
-                            android:gravity="center_horizontal"
-                            android:text="평점"
-                            android:textColor="@color/activity_main_app_name"
-                            android:textSize="20sp"
+                            android:layout_height="wrap_content"
+                            android:text="휴대폰 : "
+                            android:textColor="#000000"
+                            android:textSize="25sp"
+                            android:textStyle="bold" >
+                        </TextView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" 010 0000 0000"
+                            android:textColor="#000000"
+                            android:textSize="25sp"
                             android:textStyle="bold" >
                         </TextView>
 
-                        <RatingBar
-                            style="@style/heartRatingBar"
-                            android:id="@+id/myrating"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_horizontal"
-                            android:layout_margin="5dp"
-                            android:numStars="5"
-                            android:stepSize="0.5"
-                            android:rating="0.0"
-                            android:clickable="false"/>
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="top"
-                        android:layout_marginBottom="40dp"
-                        android:orientation="vertical">
 
-                        <Button
-                            android:id="@+id/chage_btn"
-                            android:layout_height="50dp"
-                            android:layout_width="150dp"
-                            android:layout_gravity="center"
-                            android:text="사용자 모드 변환">
 
-                        </Button>
+                </LinearLayout>
 
-                    </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="top"
+                    android:layout_marginBottom="40dp"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/chage_btn"
+                        android:layout_height="50dp"
+                        android:layout_width="150dp"
+                        android:layout_gravity="center"
+                        android:text="사용자 모드 변환">
+
+                    </Button>
 
                 </LinearLayout>
 

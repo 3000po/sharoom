@@ -106,9 +106,9 @@ public final class TestFragment extends Fragment {
         second2.roomimage = R.drawable.room3;
         third2.roomimage = R.drawable.room1;
 
-        first2.roomname = "일정 : 03/01 ~ 03/22 인원 : 1명 예시입니다";
-        second2.roomname = "일정 : 03/05 ~ 03/08 인원 : 3명 예시입니다";
-        third2.roomname = "일정 : 03/25 ~ 03/29 인원 : 2명 예시입니다";
+        first2.roomname = "우리집에서 라면먹고 갈래?";
+        second2.roomname = "소주한잔 어때요";
+        third2.roomname = " 오늘밤은 혼자있기가 무서워요";
 
         Helper_roomData first3 = new Helper_roomData();
         Helper_roomData second3 = new Helper_roomData();

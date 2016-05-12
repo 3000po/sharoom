@@ -57,11 +57,10 @@ public class TabView_reservationAdapter extends RecyclerView.Adapter<TabView_res
         //myface.setImageBitmap(getCircleBitmap(face));
 
         //holder.myface.setImageResource(R.drawable.ic_action_mapview_m);
-        holder.roomface.setImageBitmap(getCircleBitmap(face));
         //holder.myname.setText((CharSequence) list.get(position));
         //holder.text.setText(tmp.substring(0,4));
         holder.roomimage.setImageResource(list.get(position).roomimage);
-        holder.rating.setText(list.get(position).roomname);
+        holder.roomname.setText(list.get(position).roomname);
     }
 
     @Override
@@ -70,8 +69,8 @@ public class TabView_reservationAdapter extends RecyclerView.Adapter<TabView_res
         return list.size();
     }
 
-    public void add(Helper_roomData song, int position) {
-        list.add(position, song);
+    public void add(Helper_roomData data, int position) {
+        list.add(position, data);
         notifyItemInserted(position);
     }
 
@@ -81,9 +80,9 @@ public class TabView_reservationAdapter extends RecyclerView.Adapter<TabView_res
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public ImageView roomface;
         public ImageView roomimage;
-        public TextView rating;
+        public TextView roomname;
+        public TextView roomschedule;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -91,8 +90,8 @@ public class TabView_reservationAdapter extends RecyclerView.Adapter<TabView_res
             //text = (TextView) itemView.findViewById(R.id.year);
 
             roomimage = (ImageView) itemView.findViewById(R.id.roomimage);
-            roomface = (ImageView) itemView.findViewById(R.id.roomface);
-            rating = (TextView) itemView.findViewById(R.id.roomrating);
+            roomname = (TextView) itemView.findViewById(R.id.r_roomname);
+            roomschedule  = (TextView) itemView.findViewById(R.id.r_roomschedule);
 
             itemView.setClickable(true);
             itemView.setOnClickListener(this);
@@ -120,21 +119,5 @@ public class TabView_reservationAdapter extends RecyclerView.Adapter<TabView_res
 
         //myface.setImageBitmap(getCircleBitmap(face));
 
-    }
-
-    public Bitmap getCircleBitmap(Bitmap bitmap) {
-        Bitmap output = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(output);
-        final int color = 0xff424242;
-        final Paint paint = new Paint();
-        final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
-        paint.setAntiAlias(true);
-        canvas.drawARGB(0, 0, 0, 0);
-        paint.setColor(color);
-        int size = (bitmap.getWidth()/2);
-        canvas.drawCircle(size, size, size, paint);
-        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
-        canvas.drawBitmap(bitmap, rect, rect, paint);
-        return output;
     }
 }

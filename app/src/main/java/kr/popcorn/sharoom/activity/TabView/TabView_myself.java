@@ -40,13 +40,11 @@ public class TabView_myself extends LinearLayout {
     public TabView_myself(Context context) {
         super(context);
         init();
-
     }
 
     private void init(){
 
         final Activity_user_view aActivity = (Activity_user_view) Activity_user_view.AActivty;
-
         Bitmap face = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.myself_50x50);
 
         final View view = LayoutInflater.from(getContext()).inflate(R.layout.activity_myself,null);

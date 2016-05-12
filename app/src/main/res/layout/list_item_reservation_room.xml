@@ -13,24 +13,46 @@
         android:src="@drawable/ic_action_mapview_g"
         android:scaleType="fitXY"/>
 
-    <ImageView
-        android:id="@+id/roomface"
-        android:layout_width="60dp"
-        android:layout_height= "60dp"
-        android:layout_marginTop="130dp"
-        android:layout_marginLeft="20dp"
-        android:layout_alignParentLeft="true"
-        android:src="@drawable/facebook_gray"/>
-
-    <TextView
-        android:id="@+id/roomrating"
-        android:layout_width="150dp"
+    <LinearLayout
+        android:layout_width="180dp"
         android:layout_height="200dp"
         android:background="#80000000"
-        android:text="일정 : 03/01 ~ 03/22 인원 : 1명 예시입니다."
+        android:orientation="vertical"
         android:layout_alignParentRight="true"
+        >
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:id="@+id/r_roomname"
+            android:layout_width="170dp"
+            android:layout_height="80dp"
+            android:text="원룸 비어요. 국민대 정문 근처"
+            android:textColor="#ffffff"
+            android:textSize="18sp"/>
+        <View
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="160dp"
+            android:layout_height="5dp"
+            android:background="#20c589">
+        </View>
+        <TextView
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="일정"
+            android:textColor="#ffffff"
+            android:textSize="16sp"/>
+        <TextView
+            android:gravity="center"
+            android:id="@+id/r_roomschedule"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="16/03/01 ~ 16/03/22 "
+            android:textColor="#ffffff"
+            android:textSize="16sp"/>
 
-        android:textColor="#ffffff"
-        android:textSize="20sp"/>
+    </LinearLayout>
 
 </RelativeLayout>

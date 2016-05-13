@@ -30,19 +30,20 @@ android {
         // 앱 구동 시 자바 할당 힙을 지정
         //javaMaxHeapSize "16g"
     }
-}
 
-subprojects {
-    repositories {
-        mavenCentral()
-        maven { url 'http://devrepo.kakao.com:8088/nexus/content/groups/public/' }
+    packagingOptions {
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/DEPENDENCIES'
     }
 
-    // 카카오톡 sdk를 사용하기 위해 필요.
-    compile group: 'com.kakao.sdk', name: 'kakaotalk', version: project.KAKAO_SDK_VERSION
-    // push sdk를 사용하기 위해 필요.
-    compile group: 'com.kakao.sdk', name: 'push', version: project.KAKAO_SDK_VERSION
-
+    repositories {
+        jcenter()
+        maven { url 'http://devrepo.kakao.com:8088/nexus/content/groups/public/' }
+    }
 }
 
 dependencies {
@@ -68,6 +69,10 @@ dependencies {
     compile 'me.yokeyword:imagepicker:0.2.1'
     compile 'com.loopj.android:android-async-http:1.4.9'
     compile 'com.google.android.gms:play-services-maps:8.3.0'
+
+    compile group: project.KAKAO_SDK_GROUP, name: 'kakaolink', version: project.KAKAO_SDK_VERSION
+    compile group: project.KAKAO_SDK_GROUP, name: 'kakaotalk', version: project.KAKAO_SDK_VERSION
+    compile group: project.KAKAO_SDK_GROUP, name: 'usermgmt', version: project.KAKAO_SDK_VERSION
 
     // compile 'com.facebook.android:audience-network-sdk:4.+'
 }

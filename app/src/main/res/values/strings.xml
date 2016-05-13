@@ -2,6 +2,7 @@
     <string name="app_name">방풀</string>
 
     <string name="facebook_app_id">1073682272682418</string>
+    <string name="kakao_app_key">81a4f95165067ea0e20430805dd4af1f</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>

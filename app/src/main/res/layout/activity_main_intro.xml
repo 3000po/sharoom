@@ -27,7 +27,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="80dp"
-        android:src="@drawable/iv_text"
+        android:src="@drawable/ivtext"
         android:layout_marginBottom="90dp"
         android:layout_above="@id/iv_start" />
     <!--

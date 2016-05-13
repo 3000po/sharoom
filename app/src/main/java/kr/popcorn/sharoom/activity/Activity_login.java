@@ -2,7 +2,6 @@ package kr.popcorn.sharoom.activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,26 +24,18 @@ import com.facebook.GraphResponse;
 import com.facebook.HttpMethod;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
-import com.kakao.auth.ApprovalType;
 import com.kakao.auth.AuthType;
-import com.kakao.auth.IApplicationConfig;
 import com.kakao.auth.ISessionCallback;
-import com.kakao.auth.ISessionConfig;
-import com.kakao.auth.KakaoAdapter;
-import com.kakao.auth.KakaoSDK;
-import com.kakao.auth.Session;
 import com.kakao.network.ErrorResult;
 import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.MeResponseCallback;
 import com.kakao.usermgmt.response.model.UserProfile;
 import com.kakao.util.exception.KakaoException;
-import com.kakao.util.helper.log.Logger;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.PersistentCookieStore;
 import com.loopj.android.http.RequestParams;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -55,10 +46,8 @@ import cz.msebera.android.httpclient.Header;
 import cz.msebera.android.httpclient.impl.cookie.BasicClientCookie;
 import kr.popcorn.sharoom.R;
 import kr.popcorn.sharoom.activity.Fragment.User.Activity_user_view;
-import kr.popcorn.sharoom.helper.GlobalApplication;
 import kr.popcorn.sharoom.helper.Helper_server;
 import kr.popcorn.sharoom.helper.Helper_userData;
-import kr.popcorn.sharoom.helper.KakaoSDKAdapter;
 
 
 /**
@@ -75,7 +64,7 @@ public class Activity_login extends Activity {
     private CallbackManager callbackManager;
 
     //카카오톡 관련
-    private com.kakao.usermgmt.LoginButton kakaoButton;
+    private ImageView kakaoButton;
     private SessionCallback mKakaocallback; //카카오톡 로그인 콜백
     private String userName;
     private String userId;
@@ -158,7 +147,7 @@ public class Activity_login extends Activity {
         // activity_layout.xml을
 
         loginButton = (LoginButton)findViewById(R.id.login_button);
-        kakaoButton = (com.kakao.usermgmt.LoginButton)findViewById(R.id.kakao_login);
+        kakaoButton = (ImageView)findViewById(R.id.kakao_login);
         kakaoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

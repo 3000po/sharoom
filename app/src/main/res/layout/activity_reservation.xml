@@ -14,9 +14,9 @@
         android:id="@+id/reservationheader">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="50dp"
             android:layout_gravity="center_vertical"
-            android:background="#20c589"
+            android:background="@color/bangpoolColor"
             android:orientation="vertical">
             <TextView
                 android:id="@+id/toptext"
@@ -24,7 +24,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="예약하기"
-                android:textSize="20sp"
+                android:textSize="23sp"
                 android:textStyle="bold"
                 android:textColor="#FFFFFF">
             </TextView>
@@ -219,18 +219,19 @@
     <RelativeLayout
         android:id="@+id/reservationBtn"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
-        android:background="#20c589"
+        android:background="@color/bangpoolColor"
         android:gravity="bottom"
         android:clickable="true">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:gravity="center"
+            android:layout_centerVertical="true"
             android:text="예약완료"
-            android:textSize="18sp"
+            android:textSize="23sp"
             android:textStyle="bold"
             android:textColor="#FFFFFF">
         </TextView>

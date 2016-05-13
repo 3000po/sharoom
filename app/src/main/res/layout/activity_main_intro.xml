@@ -6,53 +6,49 @@
     android:background="#ffffff"
     tools:context="kr.popcorn.sharoom.activity.Activity_mainIntro">
 
-    <RelativeLayout
-        android:id="@+id/ll_header"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_alignParentTop="true"
-        android:background="#20c589"
-        android:gravity="top"
-        android:orientation="vertical">
-        <TextView
-            android:id="@+id/toptext"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="환영합니다!"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="#FFFFFF">
-        </TextView>
-    </RelativeLayout>
-
     <ImageView
+        android:id="@+id/iv_background"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scaleType="fitStart"
-        android:src="@drawable/ivmainintro"
+        android:src="@drawable/background"
         android:layout_below="@id/ll_header" />
+
     <ImageView
-        android:id="@+id/iv_join"
-        android:layout_width="180dp"
-        android:layout_height="55dp"
+        android:id="@+id/iv_start"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
         android:layout_marginBottom="40dp"
-        android:src="@drawable/ivjoin"
+        android:src="@drawable/startbtn"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true">
     </ImageView>
+
     <ImageView
-        android:id="@+id/iv_login"
-        android:layout_width="135dp"
-        android:layout_height="40dp"
-        android:src="@drawable/ivlogin"
-        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:src="@drawable/iv_text"
+        android:layout_marginBottom="90dp"
+        android:layout_above="@id/iv_start" />
+    <!--
+    <ImageView
+        android:id="@+id/iv_kakaotalk"
+        android:layout_width="180dp"
+        android:layout_height="55dp"
+        android:src="@drawable/kakaobtn"
         android:layout_above="@+id/iv_join"
         android:layout_centerHorizontal="true">
     </ImageView>
 
-
-
+    <ImageView
+        android:id="@+id/iv_facebook"
+        android:layout_width="180dp"
+        android:layout_height="55dp"
+        android:src="@drawable/facebookbtn"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/iv_kakaotalk">
+    </ImageView>
+    -->
 
 
 

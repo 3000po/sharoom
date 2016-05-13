@@ -54,8 +54,8 @@
 
 
     <!-- FloatingActionButton -->
-    <dimen name="fab_size_normal">50dp</dimen>
-    <dimen name="fab_size_mini">50dp</dimen>
+    <dimen name="fab_size_normal">60dp</dimen>
+    <dimen name="fab_size_mini">60dp</dimen>
     <dimen name="fab_shadow_size">0dp</dimen>
     <dimen name="fab_mini_shadow_size">0dp</dimen>
 </resources>

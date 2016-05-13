@@ -63,7 +63,7 @@ public class TabView_myself extends LinearLayout {
 
     private void init(){
 
-        final Activity_user_view aActivity = (Activity_user_view) Activity_user_view.AActivty;
+  //      final Activity_user_view aActivity = (Activity_user_view) Activity_user_view.AActivty;
         Bitmap face = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.myself_50x50);
 
         final View view = LayoutInflater.from(getContext()).inflate(R.layout.activity_myself,null);
@@ -149,10 +149,14 @@ public class TabView_myself extends LinearLayout {
                                 public void onClick(DialogInterface dialog, int which) {
                                     // 'YES'
                                     //Log.e("edit_phone.getText()",""+edit_phone.getText().toString());
-                                    text_phone.setText(edit_phone.getText());
-                                    text_email.setText(edit_email.getText());
-                                    text_facebook.setText(edit_facebook.getText());
-                                    text_kakaotalk.setText(edit_kakaotalk.getText());
+                                    if(!edit_phone.getText().toString().equals(""))
+                                        text_phone.setText(edit_phone.getText());
+                                    if(!edit_email.getText().toString().equals(""))
+                                        text_email.setText(edit_email.getText());
+                                    if(!edit_facebook.getText().toString().equals(""))
+                                        text_facebook.setText(edit_facebook.getText());
+                                    if(!edit_kakaotalk.getText().toString().equals(""))
+                                        text_kakaotalk.setText(edit_kakaotalk.getText());
 
                                 }
                             }).setNegativeButton("취소",

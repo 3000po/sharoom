@@ -3,33 +3,25 @@ package kr.popcorn.sharoom.activity;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -83,7 +75,7 @@ public class Activity_editRoom extends Activity  implements View.OnClickListener
         mImagePicker = new ImagePicker(this);
         loadData();
 
-        tv_register = (TextView) findViewById(R.id.tv_register);
+        tv_register = (TextView) findViewById(R.id.bottomtext);
         tv_register.setOnClickListener(new TextView.OnClickListener(){
             public void onClick(View v) {
                 Log.d("buttonClick", "okokokokok");

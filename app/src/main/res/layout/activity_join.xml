@@ -58,7 +58,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="@string/join_id"
-                    android:textColor="#20c589"
+                    android:textColor="@color/bangpoolColor"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:layout_toStartOf="@id/iv_id"
@@ -105,7 +105,7 @@
                     android:id="@+id/tv_join_password"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:textColor="#20c589"
+                    android:textColor="@color/bangpoolColor"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:layout_marginTop="5dp"
@@ -146,7 +146,7 @@
                     android:layout_height="40dp"
                     android:layout_marginTop="5dp"
                     android:text="@string/join_name"
-                    android:textColor="#20c589"
+                    android:textColor="@color/bangpoolColor"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:paddingRight="5dp"
@@ -182,7 +182,7 @@
                     android:id="@+id/tv_join_phoneNumber"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:textColor="#20c589"
+                    android:textColor="@color/bangpoolColor"
                     android:layout_marginTop="5dp"
                     android:text="@string/join_phoneNumber"
                     android:textSize="20sp"
@@ -198,7 +198,7 @@
                     android:layout_alignLeft="@id/iv_phoneNumber"
                     android:layout_alignBottom="@id/iv_phoneNumber"
                     android:background="@null"
-                    android:textColor="@color/activity_login_edit"
+                    android:textColor="@color/bangpoolColor"
                     android:hint="input data"
                     android:inputType = "phone"
                     android:phoneNumber = "true"
@@ -210,6 +210,7 @@
 
             <!--이메일-->
             <RelativeLayout
+                android:id="@+id/layout_email"
                 android:layout_width = "match_parent"
                 android:layout_height = "wrap_content">
                 <ImageView
@@ -225,7 +226,7 @@
                     android:layout_height="40dp"
                     android:layout_marginTop="5dp"
                     android:text="@string/join_email"
-                    android:textColor="#20c589"
+                    android:textColor="@color/bangpoolColor"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:paddingRight="5dp"
@@ -246,28 +247,35 @@
                     android:lines = "1"
                     />
             </RelativeLayout>
+            <RelativeLayout
+                android:layout_below="@id/layout_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-            <CheckBox
-                android:id="@+id/ck_service"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:scaleX="0.45"
-                android:scaleY="0.45"
-                android:checked="false"
-                android:button="@null"
-                android:drawableLeft="@drawable/selector_service"
-                android:layout_below="@id/iv_email"
-                android:layout_marginLeft="50dp" />
-            <CheckBox
-                android:id="@+id/ck_agreeinfo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:scaleX="0.6"
-                android:scaleY="0.6"
-                android:checked="false"
-                android:button="@null"
-                android:drawableLeft="@drawable/selector_agreeinfo"
-                android:layout_below="@id/ck_service"/>
+                <CheckBox
+                    android:id="@+id/ck_agreeinfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleX="0.65"
+                    android:scaleY="0.65"
+                    android:checked="false"
+                    android:button="@null"
+                    android:layout_marginRight="10dp"
+                    android:drawableLeft="@drawable/selector_agreeinfo"
+                    android:layout_below="@+id/ck_service"/>
+
+                <CheckBox
+                    android:id="@id/ck_service"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleX="0.45"
+                    android:scaleY="0.45"
+                    android:checked="false"
+                    android:button="@null"
+                    android:layout_alignRight="@id/ck_agreeinfo"
+                    android:drawableLeft="@drawable/selector_service" />
+
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/tv_show"

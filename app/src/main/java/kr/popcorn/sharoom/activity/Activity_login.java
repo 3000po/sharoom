@@ -23,8 +23,10 @@ import com.facebook.GraphResponse;
 import com.facebook.HttpMethod;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
-import com.kakao.Session;
-import com.kakao.SessionCallback;
+import com.kakao.auth.ISessionCallback;
+import com.kakao.auth.Session;
+import com.kakao.util.exception.KakaoException;
+import com.kakao.util.helper.log.Logger;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -55,8 +57,31 @@ public class Activity_login extends Activity {
     EditText et_id;
     EditText et_password;
 
+    //페이스북 로그인, 콜백
     private LoginButton loginButton;
     private CallbackManager callbackManager;
+    private SessionCallback callback; //카카오톡 로그인 콜백
+
+    //카카오톡 세션콜
+    private class SessionCallback implements ISessionCallback {
+        @Override
+        public void onSessionOpened() {
+            redirectSignupActivity();
+        }
+
+        @Override
+        public void onSessionOpenFailed(KakaoException exception) {
+            if(exception != null) {
+                Logger.e(exception);
+            }
+        }
+    }
+    //카카오톡 사인업액티비티
+    protected void redirectSignupActivity() {
+        final Intent intent = new Intent(this, SampleSignupActivity.class);
+        startActivity(intent);
+        finish();
+    }
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +93,11 @@ public class Activity_login extends Activity {
 
         setContentView(R.layout.activity_login); // 항상 제공되는
         // activity_layout.xml을
+
+
+        callback = new SessionCallback();
+        Session.getCurrentSession().addCallback(callback);
+        Session.getCurrentSession().checkAndImplicitOpen();
 
         loginButton = (LoginButton)findViewById(R.id.login_button);
 
@@ -342,8 +372,22 @@ public class Activity_login extends Activity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        //페이스북 로그인
         callbackManager.onActivityResult(requestCode, resultCode, data);
 
+        //카카오톡 로그인
+        if (Session.getCurrentSession().handleActivityResult(requestCode, resultCode, data)) {
+            return;
+        }
+
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        //카카오톡
+        Session.getCurrentSession().removeCallback(callback);
     }
 }

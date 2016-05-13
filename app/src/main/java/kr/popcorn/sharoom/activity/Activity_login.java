@@ -109,9 +109,63 @@ public class Activity_login extends Activity {
 
             @Override
             public void onSuccess(UserProfile userProfile) {
-                profileUrl = userProfile.getProfileImagePath();
                 userId = String.valueOf(userProfile.getId());
                 userName = userProfile.getNickname();
+
+                final RequestParams idParams = new RequestParams("fbid", userId);
+                idParams.put("name", userName);
+                Helper_server.post("ktCheck.php", idParams, new JsonHttpResponseHandler() {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                        Log.i("abde", "success");
+                        String data = "";
+                        try {
+                            data = response.get("ok").toString();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        Log.d("ok", "" + data);
+                        if (data.equals("true")) {  //카카오톡 가입이 안되있을경우
+                            Helper_server.post("kakaotalk.php", idParams, new AsyncHttpResponseHandler() {
+                                @Override
+
+                                public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                                    Intent intent = new Intent(Activity_login.this, Activity_user_view.class);
+                                    Activity_mainIntro activity = (Activity_mainIntro) Activity_mainIntro.mActivity;
+
+                                    Helper_server.userData = Helper_userData.getInstance(getApplicationContext());
+
+                                    startActivity(intent);
+                                    finish();
+                                    activity.finish();
+                                }
+
+                                @Override
+                                public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                                    Log.i("abde", "fail");
+                                }
+                            });
+                            return;
+
+                        } else {
+                            Intent intent = new Intent(Activity_login.this, Activity_user_view.class);
+
+                            Helper_server.userData = Helper_userData.getInstance(getApplicationContext());
+
+                            startActivity(intent);
+                            finish();
+                            return;
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                        super.onFailure(statusCode, headers, responseString, throwable);
+                        Log.d("Failed: ", "" + statusCode);
+                        Log.d("Error : ", "" + throwable);
+                    }
+                });
+
             }
 
             @Override

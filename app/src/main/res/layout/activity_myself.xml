@@ -186,6 +186,7 @@
 
 
                         <Button
+                            android:id="@+id/editbutton"
                             android:layout_marginTop="5dp"
                             android:layout_marginRight="5dp"
                             android:layout_alignParentRight="true"
@@ -230,6 +231,7 @@
                             android:textStyle="bold" >
                         </TextView>
                         <TextView
+                            android:id="@+id/text_phone"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="010 0000 0000"
@@ -256,6 +258,7 @@
                             android:textStyle="bold" >
                         </TextView>
                         <TextView
+                            android:id="@+id/text_email"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="cwaw@naver.com"
@@ -283,6 +286,7 @@
                             android:textStyle="bold" >
                         </TextView>
                         <TextView
+                            android:id="@+id/text_facebook"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="cwaw@naver.com"
@@ -309,6 +313,7 @@
                             android:textStyle="bold" >
                         </TextView>
                         <TextView
+                            android:id="@+id/text_kakao"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="cwaw"

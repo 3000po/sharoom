@@ -12,7 +12,6 @@ public class Activity_mainIntro extends Activity {
 
     public static Activity_mainIntro mActivity;
     private ImageView loginBtn;
-    private ImageView joinBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +20,24 @@ public class Activity_mainIntro extends Activity {
 
         mActivity = Activity_mainIntro.this;
 
-        loginBtn = (ImageView)findViewById(R.id.iv_login);
-        joinBtn = (ImageView)findViewById(R.id.iv_join);
+        //facebookBtn = (ImageView)findViewById(R.id.iv_facebook);
+        //kakaoBtn = (ImageView)findViewById(R.id.iv_kakaotalk);
+        loginBtn = (ImageView)findViewById(R.id.iv_start);
+
+        /*facebookBtn.setOnClickListener(new ImageView.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        kakaoBtn.setOnClickListener(new ImageView.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        */
 
         loginBtn.setOnClickListener(new ImageView.OnClickListener() {
             @Override
@@ -33,13 +48,5 @@ public class Activity_mainIntro extends Activity {
             }
         });
 
-        joinBtn.setOnClickListener(new ImageView.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent joinIntent = new Intent(Activity_mainIntro.this, Activity_join.class);
-                startActivity(joinIntent);
-
-            }
-        });
     }
 }

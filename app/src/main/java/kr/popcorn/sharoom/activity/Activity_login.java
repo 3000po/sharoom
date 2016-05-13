@@ -70,82 +70,8 @@ public class Activity_login extends Activity {
     EditText et_id;
     EditText et_password;
 
-    //페이스북 로그인, 콜백
     private LoginButton loginButton;
     private CallbackManager callbackManager;
-
-    //카카오톡 관련
-    private com.kakao.usermgmt.LoginButton kakaoButton;
-    private SessionCallback mKakaocallback; //카카오톡 로그인 콜백
-    private String userName;
-    private String userId;
-    private String profileUrl;
-
-
-    //카카오톡 세션콜백
-    private class SessionCallback implements ISessionCallback {
-        @Override
-        public void onSessionOpened() {
-            Log.d("TAG" , "세션 오픈됨");
-            // 사용자 정보를 가져옴, 회원가입 미가입시 자동가입 시킴
-            KakaorequestMe();
-        }
-
-        @Override
-        public void onSessionOpenFailed(KakaoException exception) {
-            if(exception != null) {
-                Log.d("TAG" , exception.getMessage());
-            }
-        }
-    }
-
-    protected void KakaorequestMe() {
-        UserManagement.requestMe(new MeResponseCallback() {
-            @Override
-            public void onFailure(ErrorResult errorResult) {
-                int ErrorCode = errorResult.getErrorCode();
-                int ClientErrorCode = -777;
-
-                if (ErrorCode == ClientErrorCode) {
-                    Toast.makeText(getApplicationContext(), "카카오톡 서버의 네트워크가 불안정합니다. 잠시 후 다시 시도해주세요.", Toast.LENGTH_SHORT).show();
-                } else {
-                    Log.d("TAG" , "오류로 카카오로그인 실패 ");
-                }
-            }
-
-            @Override
-            public void onSessionClosed(ErrorResult errorResult) {
-                Log.d("TAG" , "오류로 카카오로그인 실패 ");
-            }
-
-            @Override
-            public void onSuccess(UserProfile userProfile) {
-                profileUrl = userProfile.getProfileImagePath();
-                userId = String.valueOf(userProfile.getId());
-                userName = userProfile.getNickname();
-            }
-
-            @Override
-            public void onNotSignedUp() {
-                // 자동가입이 아닐경우 동의창
-            }
-        });
-    }
-
-    //카카오톡 사인업액티비티
-    protected void redirectSignupActivity() {
-        final Intent intent = new Intent(this, Activity_user_view.class);
-        startActivity(intent);
-        finish();
-    }
-    //카카오톡 로그인
-    private void isKakaoLogin() {
-        // 카카오 세션을 오픈한다
-        mKakaocallback = new SessionCallback();
-        com.kakao.auth.Session.getCurrentSession().addCallback(mKakaocallback);
-        com.kakao.auth.Session.getCurrentSession().checkAndImplicitOpen();
-        com.kakao.auth.Session.getCurrentSession().open(AuthType.KAKAO_TALK_EXCLUDE_NATIVE_LOGIN, Activity_login.this);
-    }
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -158,17 +84,7 @@ public class Activity_login extends Activity {
         setContentView(R.layout.activity_login); // 항상 제공되는
         // activity_layout.xml을
 
-
-
         loginButton = (LoginButton)findViewById(R.id.login_button);
-        kakaoButton = (com.kakao.usermgmt.LoginButton)findViewById(R.id.kakao_login);
-        kakaoButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // 카카오 로그인 요청
-                isKakaoLogin();
-            }
-        });
 
 
         //
@@ -420,6 +336,16 @@ public class Activity_login extends Activity {
                                     }
 
         );*/
+
+        ImageView joinBtn = (ImageView)findViewById(R.id.iv_join);
+        joinBtn.setOnClickListener(new ImageView.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent joinIntent = new Intent(Activity_login.this, Activity_join.class);
+                startActivity(joinIntent);
+
+            }
+        });
     }//onCreateEnd
 
     public void loginAlert() {
@@ -441,14 +367,8 @@ public class Activity_login extends Activity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        //페이스북 로그인
         callbackManager.onActivityResult(requestCode, resultCode, data);
 
         super.onActivityResult(requestCode, resultCode, data);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
     }
 }

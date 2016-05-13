@@ -9,9 +9,9 @@
     <RelativeLayout
         android:id="@+id/ll_header"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_alignParentTop="true"
-        android:background="#20c589"
+        android:background="@color/bangpoolColor"
         android:gravity="top"
         android:orientation="vertical">
         <TextView
@@ -20,7 +20,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="로그인"
-            android:textSize="20sp"
+            android:textSize="23sp"
             android:textStyle="bold"
             android:textColor="#FFFFFF">
         </TextView>
@@ -131,16 +131,19 @@
             fb:com_facebook_login_text=""
             fb:com_facebook_logout_text=""
             />
-        <com.kakao.usermgmt.LoginButton
-            android:id="@+id/kakao_login"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginBottom="30dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"/>
 
     </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv_join"
+        android:layout_width="180dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="50dp"
+        android:src="@drawable/ivjoin"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true">
+    </ImageView>
+
     <!-- content end -->
 
 

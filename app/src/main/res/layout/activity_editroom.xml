@@ -7,9 +7,9 @@
     <LinearLayout
         android:id="@+id/ll_header"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_gravity="center_vertical"
-        android:background="#20c589"
+        android:background="@color/bangpoolColor"
         android:gravity="center_vertical"
         android:orientation="vertical">
         <TextView
@@ -18,7 +18,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="방 등록하기"
-            android:textSize="20sp"
+            android:textSize="23sp"
             android:textStyle="bold"
             android:textColor="#FFFFFF">
         </TextView>
@@ -269,20 +269,19 @@
     <LinearLayout
         android:id="@+id/ll_footer"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_gravity="center_vertical"
         android:layout_margin="@dimen/activity_layout_footer_margin"
-        android:background="#20c589"
+        android:background="@color/bangpoolColor"
         android:gravity="center_vertical"
         android:orientation="vertical" >
         <TextView
-            android:id="@+id/tv_register"
+            android:id="@+id/bottomtext"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="등록하기"
-            android:clickable = "true"
-            android:textSize="20sp"
+            android:textSize="23sp"
             android:textStyle="bold"
             android:textColor="#FFFFFF">
         </TextView>

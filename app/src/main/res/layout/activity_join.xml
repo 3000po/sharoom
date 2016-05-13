@@ -7,9 +7,9 @@
     <RelativeLayout
         android:id="@+id/ll_header"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_alignParentTop="true"
-        android:background="#20c589"
+        android:background="@color/bangpoolColor"
         android:gravity="top"
         android:orientation="vertical">
         <TextView
@@ -18,7 +18,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="회원가입"
-            android:textSize="20sp"
+            android:textSize="23sp"
             android:textStyle="bold"
             android:textColor="#FFFFFF">
         </TextView>

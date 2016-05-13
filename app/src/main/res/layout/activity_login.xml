@@ -132,7 +132,7 @@
             fb:com_facebook_logout_text=""
             />
         <com.kakao.usermgmt.LoginButton
-            android:id="@+id/com_kakao_login"
+            android:id="@+id/kakao_login"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

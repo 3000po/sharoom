@@ -2,6 +2,7 @@ package kr.popcorn.sharoom.activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -23,8 +25,18 @@ import com.facebook.GraphResponse;
 import com.facebook.HttpMethod;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.kakao.auth.ApprovalType;
+import com.kakao.auth.AuthType;
+import com.kakao.auth.IApplicationConfig;
 import com.kakao.auth.ISessionCallback;
+import com.kakao.auth.ISessionConfig;
+import com.kakao.auth.KakaoAdapter;
+import com.kakao.auth.KakaoSDK;
 import com.kakao.auth.Session;
+import com.kakao.network.ErrorResult;
+import com.kakao.usermgmt.UserManagement;
+import com.kakao.usermgmt.callback.MeResponseCallback;
+import com.kakao.usermgmt.response.model.UserProfile;
 import com.kakao.util.exception.KakaoException;
 import com.kakao.util.helper.log.Logger;
 import com.loopj.android.http.AsyncHttpClient;
@@ -32,6 +44,7 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.PersistentCookieStore;
 import com.loopj.android.http.RequestParams;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -42,10 +55,10 @@ import cz.msebera.android.httpclient.Header;
 import cz.msebera.android.httpclient.impl.cookie.BasicClientCookie;
 import kr.popcorn.sharoom.R;
 import kr.popcorn.sharoom.activity.Fragment.User.Activity_user_view;
+import kr.popcorn.sharoom.helper.GlobalApplication;
 import kr.popcorn.sharoom.helper.Helper_server;
 import kr.popcorn.sharoom.helper.Helper_userData;
-
-
+import kr.popcorn.sharoom.helper.KakaoSDKAdapter;
 
 
 /**
@@ -60,27 +73,78 @@ public class Activity_login extends Activity {
     //페이스북 로그인, 콜백
     private LoginButton loginButton;
     private CallbackManager callbackManager;
-    private SessionCallback callback; //카카오톡 로그인 콜백
 
-    //카카오톡 세션콜
+    //카카오톡 관련
+    private com.kakao.usermgmt.LoginButton kakaoButton;
+    private SessionCallback mKakaocallback; //카카오톡 로그인 콜백
+    private String userName;
+    private String userId;
+    private String profileUrl;
+
+
+    //카카오톡 세션콜백
     private class SessionCallback implements ISessionCallback {
         @Override
         public void onSessionOpened() {
-            redirectSignupActivity();
+            Log.d("TAG" , "세션 오픈됨");
+            // 사용자 정보를 가져옴, 회원가입 미가입시 자동가입 시킴
+            KakaorequestMe();
         }
 
         @Override
         public void onSessionOpenFailed(KakaoException exception) {
             if(exception != null) {
-                Logger.e(exception);
+                Log.d("TAG" , exception.getMessage());
             }
         }
     }
+
+    protected void KakaorequestMe() {
+        UserManagement.requestMe(new MeResponseCallback() {
+            @Override
+            public void onFailure(ErrorResult errorResult) {
+                int ErrorCode = errorResult.getErrorCode();
+                int ClientErrorCode = -777;
+
+                if (ErrorCode == ClientErrorCode) {
+                    Toast.makeText(getApplicationContext(), "카카오톡 서버의 네트워크가 불안정합니다. 잠시 후 다시 시도해주세요.", Toast.LENGTH_SHORT).show();
+                } else {
+                    Log.d("TAG" , "오류로 카카오로그인 실패 ");
+                }
+            }
+
+            @Override
+            public void onSessionClosed(ErrorResult errorResult) {
+                Log.d("TAG" , "오류로 카카오로그인 실패 ");
+            }
+
+            @Override
+            public void onSuccess(UserProfile userProfile) {
+                profileUrl = userProfile.getProfileImagePath();
+                userId = String.valueOf(userProfile.getId());
+                userName = userProfile.getNickname();
+            }
+
+            @Override
+            public void onNotSignedUp() {
+                // 자동가입이 아닐경우 동의창
+            }
+        });
+    }
+
     //카카오톡 사인업액티비티
     protected void redirectSignupActivity() {
-        final Intent intent = new Intent(this, SampleSignupActivity.class);
+        final Intent intent = new Intent(this, Activity_user_view.class);
         startActivity(intent);
         finish();
+    }
+    //카카오톡 로그인
+    private void isKakaoLogin() {
+        // 카카오 세션을 오픈한다
+        mKakaocallback = new SessionCallback();
+        com.kakao.auth.Session.getCurrentSession().addCallback(mKakaocallback);
+        com.kakao.auth.Session.getCurrentSession().checkAndImplicitOpen();
+        com.kakao.auth.Session.getCurrentSession().open(AuthType.KAKAO_TALK_EXCLUDE_NATIVE_LOGIN, Activity_login.this);
     }
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,11 +159,16 @@ public class Activity_login extends Activity {
         // activity_layout.xml을
 
 
-        callback = new SessionCallback();
-        Session.getCurrentSession().addCallback(callback);
-        Session.getCurrentSession().checkAndImplicitOpen();
 
         loginButton = (LoginButton)findViewById(R.id.login_button);
+        kakaoButton = (com.kakao.usermgmt.LoginButton)findViewById(R.id.kakao_login);
+        kakaoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 카카오 로그인 요청
+                isKakaoLogin();
+            }
+        });
 
 
         //
@@ -375,19 +444,11 @@ public class Activity_login extends Activity {
         //페이스북 로그인
         callbackManager.onActivityResult(requestCode, resultCode, data);
 
-        //카카오톡 로그인
-        if (Session.getCurrentSession().handleActivityResult(requestCode, resultCode, data)) {
-            return;
-        }
-
         super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
-        //카카오톡
-        Session.getCurrentSession().removeCallback(callback);
     }
 }

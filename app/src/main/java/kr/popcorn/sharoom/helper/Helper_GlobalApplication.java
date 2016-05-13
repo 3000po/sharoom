@@ -5,7 +5,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.util.Log;
 
-import com.kakao.auth.KakaoSDK;
+//import com.kakao.auth.KakaoSDK;
 
 public class Helper_GlobalApplication extends Application {
     private static Helper_GlobalApplication mInstance;
@@ -34,6 +34,6 @@ public class Helper_GlobalApplication extends Application {
     public void onCreate() {
         super.onCreate();
         mInstance = this;
-        KakaoSDK.init(new KakaoSDKAdapter());
+        //KakaoSDK.init(new KakaoSDKAdapter());
     }
 }

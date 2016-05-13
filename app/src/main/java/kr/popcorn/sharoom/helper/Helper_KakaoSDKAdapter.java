@@ -3,7 +3,7 @@ package kr.popcorn.sharoom.helper;
 
 import android.app.Activity;
 import android.content.Context;
-
+/*
 import com.kakao.auth.ApprovalType;
 import com.kakao.auth.AuthType;
 import com.kakao.auth.IApplicationConfig;
@@ -51,4 +51,4 @@ public class Helper_KakaoSDKAdapter extends KakaoAdapter {
             }
         };
     }
-}
+}*/

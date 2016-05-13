@@ -98,7 +98,7 @@ public class Activity_login extends Activity {
             }
         }
     }
-
+    //카카오톡 요청
     protected void KakaorequestMe() {
         UserManagement.requestMe(new MeResponseCallback() {
             @Override
@@ -131,7 +131,6 @@ public class Activity_login extends Activity {
             }
         });
     }
-
     //카카오톡 사인업액티비티
     protected void redirectSignupActivity() {
         final Intent intent = new Intent(this, Activity_user_view.class);
@@ -157,8 +156,6 @@ public class Activity_login extends Activity {
 
         setContentView(R.layout.activity_login); // 항상 제공되는
         // activity_layout.xml을
-
-
 
         loginButton = (LoginButton)findViewById(R.id.login_button);
         kakaoButton = (com.kakao.usermgmt.LoginButton)findViewById(R.id.kakao_login);

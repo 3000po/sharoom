@@ -100,7 +100,7 @@ public class Activity_mapMenu extends FragmentActivity implements GoogleMap.OnMa
             optFirst.position(latLng);// 위도 • 경도
             optFirst.title("Current Position");// 제목 미리보기
             optFirst.snippet("Snippet");
-            optFirst.icon(BitmapDescriptorFactory.fromResource(R.drawable.mapmaker));
+            optFirst.icon(BitmapDescriptorFactory.fromResource(R.drawable.mapmarker));
             mGoogleMap.addMarker(optFirst).showInfoWindow();
 
         }

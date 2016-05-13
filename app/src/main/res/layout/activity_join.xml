@@ -260,7 +260,7 @@
                     android:scaleY="0.5"
                     android:checked="false"
                     android:button="@null"
-                    android:layout_marginLeft="100dp"
+                    android:layout_marginLeft="103dp"
                     android:drawableLeft="@drawable/selector_service" />
 
                 <CheckBox
@@ -271,7 +271,6 @@
                     android:scaleY="0.65"
                     android:checked="false"
                     android:button="@null"
-                    android:layout_marginRight="10dp"
                     android:drawableLeft="@drawable/selector_agreeinfo"
                     android:layout_below="@id/ck_service"/>
 

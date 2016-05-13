@@ -2,14 +2,8 @@ package kr.popcorn.sharoom.helper;
 
 import android.app.Activity;
 import android.app.Application;
-import android.content.Context;
 import android.util.Log;
 
-import com.kakao.auth.ApprovalType;
-import com.kakao.auth.AuthType;
-import com.kakao.auth.IApplicationConfig;
-import com.kakao.auth.ISessionConfig;
-import com.kakao.auth.KakaoAdapter;
 import com.kakao.auth.KakaoSDK;
 
 /**
@@ -46,4 +40,18 @@ public class GlobalApplication extends Application {
         mInstance = this;
         KakaoSDK.init(new KakaoSDKAdapter());
     }
+
+    private String mGlobalString;
+
+    public String getGlobalString()
+    {
+        return mGlobalString;
+    }
+
+    public void setGlobalString(String globalString)
+    {
+        this.mGlobalString = globalString;
+    }
+
+
 }

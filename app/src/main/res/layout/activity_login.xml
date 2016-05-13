@@ -75,7 +75,7 @@
             android:paddingRight="70dp">
             <ImageView
                 android:id="@+id/iv_password"
-                android:layout_width="200dp"
+                android:layout_width="195dp"
                 android:layout_height="30dp"
                 android:src="@drawable/password"
                 android:layout_centerVertical="true"

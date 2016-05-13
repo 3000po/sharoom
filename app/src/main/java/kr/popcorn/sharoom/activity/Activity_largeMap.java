@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.util.List;
 
 import kr.popcorn.sharoom.R;
+import kr.popcorn.sharoom.helper.GlobalApplication;
 
 public class Activity_largeMap extends FragmentActivity {
 
@@ -41,7 +42,7 @@ public class Activity_largeMap extends FragmentActivity {
         // Getting a reference to the map
         googleMap = supportMapFragment.getMap();
 
-        String location = ((MyApplication)this.getApplicationContext()).getGlobalString();
+        String location = ((GlobalApplication)this.getApplicationContext()).getGlobalString();
         if(location!=null && !location.equals("")){
             new GeocoderTask().execute(location);
         }
@@ -89,7 +90,7 @@ public class Activity_largeMap extends FragmentActivity {
                 markerOptions = new MarkerOptions();
                 markerOptions.position(latLng);
                 markerOptions.title(addressText);
-                markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.mapmaker));
+                markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.mapmarker));
 
 
                 googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));

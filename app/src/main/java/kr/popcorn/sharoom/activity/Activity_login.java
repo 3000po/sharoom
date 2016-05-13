@@ -23,6 +23,8 @@ import com.facebook.GraphResponse;
 import com.facebook.HttpMethod;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.kakao.Session;
+import com.kakao.SessionCallback;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -41,6 +43,9 @@ import kr.popcorn.sharoom.activity.Fragment.User.Activity_user_view;
 import kr.popcorn.sharoom.helper.Helper_server;
 import kr.popcorn.sharoom.helper.Helper_userData;
 
+
+
+
 /**
  * Created by Administrator on 2016-03-11.
  */
@@ -56,6 +61,8 @@ public class Activity_login extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //페이스북 로그인 SDK초기화 SetContentView전에 해줘야한다.
+        //더불어 콜백 매니저도 생성한다.
         FacebookSdk.sdkInitialize(getApplicationContext());
         callbackManager = CallbackManager.Factory.create();
 
@@ -64,6 +71,8 @@ public class Activity_login extends Activity {
 
         loginButton = (LoginButton)findViewById(R.id.login_button);
 
+
+        //
         //loginButton.setPublishPermissions(Arrays.asList("public_profile", "user_friends", "email"));
         //LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile","user_friends","email"));
         loginButton.setReadPermissions(Arrays.asList("public_profile", "user_friends", "email"));

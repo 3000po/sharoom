@@ -134,10 +134,8 @@
         <com.kakao.usermgmt.LoginButton
             android:id="@+id/kakao_login"
             android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"/>
+            android:layout_height="70dp"
+            android:layout_centerHorizontal="true" />
 
     </RelativeLayout>
     <!-- content end -->

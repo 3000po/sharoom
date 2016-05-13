@@ -39,11 +39,11 @@
         <RelativeLayout
             android:id="@+id/layout_id"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:gravity="center_vertical">
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingRight="70dp">
             <ImageView
                 android:id="@+id/iv_id"
-                android:layout_marginRight="70dp"
                 android:layout_width="280dp"
                 android:layout_height="75dp"
                 android:layout_centerHorizontal="true"
@@ -67,14 +67,15 @@
         <RelativeLayout
             android:id="@+id/layout_password"
             android:layout_width="wrap_content"
-            android:layout_height="80dp"
+            android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:layout_below="@+id/layout_id"
-            android:layout_centerHorizontal="true">
+            android:layout_centerHorizontal="true"
+            android:layout_alignEnd="@id/layout_id"
+            android:paddingRight="70dp">
             <ImageView
                 android:id="@+id/iv_password"
-                android:layout_marginRight="55dp"
-                android:layout_width="215dp"
+                android:layout_width="185dp"
                 android:layout_height="30dp"
                 android:src="@drawable/password"
                 android:layout_centerVertical="true"
@@ -97,46 +98,35 @@
 
         </RelativeLayout>
 
+        <CheckBox
+            android:id="@+id/ck_autoLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleX="0.6"
+            android:scaleY="0.6"
+            android:checked="true"
+            android:button="@null"
+            android:drawableLeft="@drawable/selector_checkbox"
+            android:layout_below="@+id/layout_password"
+            android:layout_alignEnd="@id/layout_id"
+            android:paddingRight="28dp"/>
+
         <ImageView
             android:id="@+id/btn_login"
-            android:layout_below="@+id/layout_password"
-            android:layout_width="80dp"
-            android:layout_height="50dp"
+            android:layout_below="@+id/ck_autoLogin"
+            android:layout_width="75dp"
+            android:layout_height="40dp"
+            android:layout_margin="20dp"
             android:src="@drawable/loginbtn"
             android:layout_centerHorizontal="true">
         </ImageView>
 
-        <CheckBox
-            android:id="@+id/ck_autoLogin"
-            android:layout_width="40dp"
-            android:layout_height="50dp"
-            android:text = "Login Auto"
-            android:background="@null"
-            android:gravity="center"
-            android:textColor="#949494"
-            android:layout_above="@+id/btn_join"
-            android:layout_alignEnd="@+id/login_button" />
-
-        <Button
-            android:id="@+id/btn_join"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/btn_login"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="5dp"
-            android:gravity="center"
-            android:text="@string/login_join"
-            android:textColor="@color/activity_main_app_name"
-            android:textSize="20sp"
-            android:textStyle="bold" >
-        </Button>
-
         <com.facebook.login.widget.LoginButton
             xmlns:fb="http://schemas.android.com/apk/res-auto"
             android:id="@+id/login_button"
-            android:layout_below="@+id/btn_join"
+            android:layout_below="@id/btn_login"
             android:layout_width="180dp"
-            android:layout_height="60dp"
+            android:layout_height="70dp"
             android:layout_centerHorizontal="true"
             fb:com_facebook_login_text=""
             fb:com_facebook_logout_text=""

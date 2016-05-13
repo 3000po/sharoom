@@ -1,5 +1,6 @@
 package kr.popcorn.sharoom.activity.TabView;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -10,12 +11,17 @@ import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
+import android.graphics.drawable.ColorDrawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.PersistentCookieStore;
@@ -33,28 +39,46 @@ import kr.popcorn.sharoom.helper.Helper_server;
 public class TabView_myself extends LinearLayout {
 
     ImageView myFace;
-    ImageView logout_btn;
+    Button logout_btn;
     Button chage_btn;
+    Button edit_btn;
+
+    EditText edit_phone;
+    EditText edit_email;
+    EditText edit_facebook;
+    EditText edit_kakaotalk;
+
+    TextView text_phone;
+    TextView text_email;
+    TextView text_facebook;
+    TextView text_kakaotalk;
+
+
     int check_host_user = 0;
 
     public TabView_myself(Context context) {
         super(context);
         init();
-
     }
 
     private void init(){
 
         final Activity_user_view aActivity = (Activity_user_view) Activity_user_view.AActivty;
-
         Bitmap face = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.myself_50x50);
 
         final View view = LayoutInflater.from(getContext()).inflate(R.layout.activity_myself,null);
         view.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
 
         myFace = (ImageView) view.findViewById(R.id.myface);
-        logout_btn = (ImageView) view.findViewById(R.id.logout);
+
+        logout_btn = (Button) view.findViewById(R.id.logout);
         chage_btn = (Button) view.findViewById(R.id.chage_btn);
+        edit_btn = (Button) view.findViewById(R.id.editbutton);
+
+        text_phone = (TextView) view.findViewById(R.id.text_phone);
+        text_email = (TextView) view.findViewById(R.id.text_email);
+        text_facebook = (TextView) view.findViewById(R.id.text_facebook);
+        text_kakaotalk = (TextView) view.findViewById(R.id.text_kakao);
 
         myFace.setImageBitmap(getCircleBitmap(face));
 
@@ -73,22 +97,77 @@ public class TabView_myself extends LinearLayout {
             public void onClick(View v) {
                 if (v.getId() == R.id.chage_btn) {
 
-                   // Log.e("check :", "0=" + getContext().getClass());
-                    String str = ""+getContext().getClass();
-                    if(str.contains("Activity_user_view")) {
+                    // Log.e("check :", "0=" + getContext().getClass());
+                    String str = "" + getContext().getClass();
+                    if (str.contains("Activity_user_view")) {
                         Intent intent = new Intent(getContext(), Activity_User_to_Host_animation.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         getContext().startActivity(intent);
-                    }
-                    else if(str.contains("Activity_host_view")) {
+                    } else if (str.contains("Activity_host_view")) {
                         Intent intent = new Intent(getContext(), Activity_Host_to_User_animation.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         getContext().startActivity(intent);
                     }
+
+                }
+            }
+        });
+
+        edit_btn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (v.getId() == R.id.editbutton) {
+
+
+
+                    Context mContext = getContext().getApplicationContext();
+                    LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(getContext().LAYOUT_INFLATER_SERVICE);
+
+                    //R.layout.dialog는 xml 파일명이고  R.id.popup은 보여줄 레이아웃 아이디
+                    View layout = inflater.inflate(R.layout.dialog_edit,(ViewGroup) findViewById(R.id.popup));
+                    AlertDialog.Builder aDialog = new AlertDialog.Builder(getContext());
+
+                    aDialog.setTitle("내 정보 수정하기"); //타이틀바 제목
+                    aDialog.setView(layout); //dialog.xml 파일을 뷰로 셋팅
+
+                    edit_phone = (EditText) layout.findViewById(R.id.edit_phone);
+                    edit_email = (EditText) layout.findViewById(R.id.edit_email);
+                    edit_facebook = (EditText) layout.findViewById(R.id.edit_facebook);
+                    edit_kakaotalk = (EditText) layout.findViewById(R.id.edit_kakao);
+
+                    edit_phone.setText(text_phone.getText());
+                    edit_email.setText(text_email.getText());
+                    edit_facebook.setText(text_facebook.getText());
+                    edit_kakaotalk.setText(text_kakaotalk.getText());
+
+                    aDialog.setPositiveButton("확인",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // 'YES'
+                                    //Log.e("edit_phone.getText()",""+edit_phone.getText().toString());
+                                    text_phone.setText(edit_phone.getText());
+                                    text_email.setText(text_email.getText());
+                                    text_facebook.setText(text_facebook.getText());
+                                    text_kakaotalk.setText(text_kakaotalk.getText());
+
+                                }
+                            }).setNegativeButton("취소",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // 'No'
+                                    return;
+                                }
+                            });
+                    AlertDialog ad = aDialog.create();
+                    ad.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+                    ad.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                    ad.show();//보여줌!
+
 
                 }
             }

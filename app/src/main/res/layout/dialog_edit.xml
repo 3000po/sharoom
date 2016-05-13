@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/popup"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/officemain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="휴대폰 : "
+                android:textColor="#000000"
+                android:textSize="15sp"
+                android:textStyle="bold" >
+            </TextView>
+            <EditText
+                android:id="@+id/edit_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="010 0000 0000"
+                android:textColor="#000000"
+                android:textSize="15sp"
+                android:textStyle="bold" >
+            </EditText>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="e-mail  : "
+                android:textColor="#000000"
+                android:textSize="15sp"
+                android:textStyle="bold" >
+            </TextView>
+            <EditText
+                android:id="@+id/edit_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="cwaw@naver.com"
+                android:textColor="#000000"
+                android:textSize="15sp"
+                android:textStyle="bold" >
+            </EditText>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="facebook : "
+                android:textColor="#000000"
+                android:textSize="15sp"
+                android:textStyle="bold" >
+            </TextView>
+            <EditText
+                android:id="@+id/edit_facebook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="cwaw@naver.com"
+                android:textColor="#000000"
+                android:textSize="15sp"
+                android:textStyle="bold" >
+            </EditText>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="KakaoTalk : "
+                android:textColor="#000000"
+                android:textSize="15sp"
+                android:textStyle="bold" >
+            </TextView>
+            <EditText
+                android:id="@+id/edit_kakao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="cwaw"
+                android:textColor="#000000"
+                android:textSize="15sp"
+                android:textStyle="bold" >
+            </EditText>
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

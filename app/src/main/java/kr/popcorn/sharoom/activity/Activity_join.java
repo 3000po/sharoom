@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.facebook.appevents.AppEventsLogger;
@@ -47,7 +48,7 @@ public class Activity_join extends Activity {
         EditText et_phoneNumber;
         EditText et_email;
 
-        Button btn_submit;
+        ImageView btn_submit;
         Button btn_idcheck;
 
         TextView tv_idCheck;
@@ -69,7 +70,7 @@ public class Activity_join extends Activity {
         form_basic.et_phoneNumber = (EditText) findViewById(R.id.et_join_phoneNumber);
         form_basic.et_email = (EditText) findViewById(R.id.et_join_email);
 
-        form_basic.btn_submit = (Button) findViewById(R.id.btn_join_submit);
+        form_basic.btn_submit = (ImageView) findViewById(R.id.btn_join_submit);
         //this.overridePendingTransition( R.anim.anim_slide_in_left, R.anim.anim_slide_in_right);
 
         form_basic.tv_idCheck = (TextView) findViewById(R.id.tv_idcheck);
@@ -296,9 +297,6 @@ public class Activity_join extends Activity {
     }
 
     public void onBackPressed(){
-        Intent intent = new Intent(Activity_join.this, Activity_login.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-        startActivity(intent);
         finish();
     }
 

@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.loopj.android.http.AsyncHttpClient;
 
 import kr.popcorn.sharoom.R;
+import kr.popcorn.sharoom.activity.Activity_mainIntro;
 import kr.popcorn.sharoom.activity.Activity_mapMenu;
 import kr.popcorn.sharoom.helper.Helper_server;
 
@@ -30,9 +31,13 @@ public class Activity_user_view extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_user_view);
 
+
         AsyncHttpClient client = Helper_server.getInstance();
 
         AActivty = Activity_user_view.this;
+
+        Activity_mainIntro activity = (Activity_mainIntro) Activity_mainIntro.mActivity;
+        activity.finish();
 
         mAdapter = new TestFragmentAdapter(getSupportFragmentManager());
         mapMenu = (ImageView)findViewById(R.id.mapMenu);

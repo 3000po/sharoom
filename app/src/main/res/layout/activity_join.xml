@@ -1,282 +1,291 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@color/activity_layout_background"
     android:orientation="vertical" >
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/ll_header"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/activity_layout_header_height"
-        android:layout_gravity="center_vertical"
-        android:layout_margin="@dimen/activity_layout_header_margin"
-        android:background="@color/activity_layout_header_background"
-        android:gravity="center_vertical"
-        android:orientation="vertical"
-        android:padding="@dimen/activity_layout_header_padding"
-        android:visibility="gone" >
-    </LinearLayout>
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:background="#20c589"
+        android:gravity="top"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/toptext"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="회원가입"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF">
+        </TextView>
+    </RelativeLayout>
 
-    <!-- android:padding="@color/activity_layout_header_background" -->
-
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/ll_body"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_margin="@dimen/activity_layout_body_margin"
-        android:layout_weight="1"
-        android:background="@color/activity_layout_left_background"
-        android:orientation="horizontal"
-        android:padding="@dimen/activity_layout_body_padding" >
+        android:layout_centerInParent="true">
+        <!-- content start -->
 
         <LinearLayout
-            android:id="@+id/ll_left"
-            android:layout_width="0dip"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="top"
-            android:layout_margin="@dimen/activity_layout_left_margin"
-            android:layout_weight="1"
-            android:background="@color/activity_layout_left_background"
-            android:orientation="vertical"
-            android:padding="@dimen/activity_layout_left_padding"
-            android:visibility="gone" >
-        </LinearLayout>
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical" >
 
-        <LinearLayout
-            android:id="@+id/ll_center"
-            android:layout_width="0dip"
-            android:layout_height="match_parent"
-            android:layout_gravity="top"
-            android:layout_margin="@dimen/activity_layout_center_margin"
-            android:layout_weight="2"
-            android:background="@color/activity_layout_center_background"
-            android:orientation="vertical"
-            android:padding="@dimen/activity_layout_center_padding" >
+            <!--아이디-->
+            <RelativeLayout
+                android:id="@+id/layout_id"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content">
 
-            <!-- content start -->
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:orientation="vertical" >
-
+                <ImageView
+                    android:id="@+id/iv_id"
+                    android:layout_width="150dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/password"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"/>
                 <TextView
-                    android:id="@+id/tv_join_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:gravity="center_vertical|center_horizontal|center"
-                    android:textColor="@color/activity_main_app_name"
-                    android:textSize="35dp"
+                    android:id="@+id/tv_join_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/join_id"
+                    android:textColor="#20c589"
+                    android:textSize="20sp"
                     android:textStyle="bold"
-                    android:layout_marginBottom="50dp"
-                    android:text="@string/join_title"
+                    android:layout_toStartOf="@id/iv_id"
+                    android:layout_centerVertical="true"
+                    android:paddingRight="5dp">
+                </TextView>
+                <EditText
+                    android:id="@+id/et_join_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_alignLeft="@id/iv_id"
+                    android:layout_alignBottom="@id/iv_id"
+                    android:textColor="@color/activity_login_edit"
+                    android:hint="5~20문자"
+                    android:background="@null"
+                    android:imeOptions="actionNext"
+                    android:singleLine = "true"
+                    android:lines = "1"
                     />
 
-                <LinearLayout
-                    android:layout_width = "match_parent"
-                    android:layout_height = "50dp"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:id="@+id/tv_join_id"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_weight = "1"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center"
-                        android:text="@string/join_id"
-                        android:textColor="@color/activity_main_app_name"
-                        android:textSize="25sp"
-                        android:textStyle="bold" >
-                    </TextView>
-                    <EditText
-                        android:id="@+id/et_join_id"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_weight ="1"
-                        android:layout_gravity="center"
-                        android:textColor="@color/activity_login_edit"
-                        android:hint="5~20문자"
-                        android:imeOptions="actionNext"
-                        android:singleLine = "true"
-                        android:lines = "1"
-                        />
-                    <TextView
-                        android:id="@+id/tv_idcheck"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_weight ="1"
-                        android:gravity="center"
-                        android:textColor="@color/activity_main_app_name"
-                        android:textSize="25sp" >
-                    </TextView>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width = "match_parent"
-                    android:layout_height = "50dp"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:id="@+id/tv_join_password"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_weight = "1"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center"
-                        android:text="@string/join_password"
-                        android:textColor="@color/activity_main_app_name"
-                        android:textSize="25sp"
-                        android:textStyle="bold" >
-                    </TextView>
-                    <EditText
-                        android:id="@+id/et_join_password"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_weight ="1"
-                        android:layout_gravity="center"
-                        android:textColor="@color/activity_login_edit"
-                        android:hint="input data"
-                        android:password = "true"
-                        android:imeOptions="actionNext"
-                        android:singleLine = "true"
-                        android:lines = "1"
-                        />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width = "match_parent"
-                    android:layout_height = "50dp"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:id="@+id/tv_join_name"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_weight = "1"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center"
-                        android:text="@string/join_name"
-                        android:textColor="@color/activity_main_app_name"
-                        android:textSize="25sp"
-                        android:textStyle="bold" >
-                    </TextView>
-                    <EditText
-                        android:id="@+id/et_join_name"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_weight ="1"
-                        android:layout_gravity="center"
-                        android:textColor="@color/activity_login_edit"
-                        android:hint="input data"
-                        android:imeOptions="actionNext"
-                        android:singleLine = "true"
-                        android:lines = "1"
-                        />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width = "match_parent"
-                    android:layout_height = "50dp"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:id="@+id/tv_join_phoneNumber"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_weight = "1"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center"
-                        android:text="@string/join_phoneNumber"
-                        android:textColor="@color/activity_main_app_name"
-                        android:textSize="25sp"
-                        android:textStyle="bold" >
-                    </TextView>
-                    <EditText
-                        android:id="@+id/et_join_phoneNumber"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_weight ="1"
-                        android:layout_gravity="center"
-                        android:textColor="@color/activity_login_edit"
-                        android:hint="input data"
-                        android:inputType = "phone"
-                        android:phoneNumber = "true"
-                        android:imeOptions="actionNext"
-                        android:singleLine = "true"
-                        android:lines = "1"
-                        />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width = "match_parent"
-                    android:layout_height = "50dp"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:id="@+id/tv_join_email"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_weight = "1"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center"
-                        android:text="@string/join_email"
-                        android:textColor="@color/activity_main_app_name"
-                        android:textSize="25sp"
-                        android:textStyle="bold" >
-                    </TextView>
-                    <EditText
-                        android:id="@+id/et_join_email"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_weight ="1"
-                        android:layout_gravity="center"
-                        android:textColor="@color/activity_login_edit"
-                        android:hint="input data"
-                        android:inputType = "textEmailAddress"
-                        android:singleLine = "true"
-                        android:lines = "1"
-                        />
-                </LinearLayout>
-
-                <Button
-                    android:id="@+id/btn_join_submit"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:gravity="center"
-                    android:text="@string/join_submit"
-                    android:textColor="@color/activity_main_app_comment"
-                    android:textSize="20sp"
-                    >
-                </Button>
-
+                <!--사용가능여부-->
                 <TextView
-                    android:id="@+id/tv_show"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:gravity="center"
-                    android:textColor="@color/activity_main_app_comment"
-                    android:textSize="30sp"
-                    >
+                    android:id="@+id/tv_idcheck"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:textColor="@color/activity_main_app_name"
+                    android:layout_toEndOf="@id/iv_id"
+                    android:textSize="20sp" >
                 </TextView>
-            </LinearLayout>
+            </RelativeLayout>
 
-            <!-- content end -->
+            <!--비밀번호-->
+            <RelativeLayout
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content">
+                <ImageView
+                    android:id="@+id/iv_password"
+                    android:layout_width="150dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/password"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"/>
+                <TextView
+                    android:id="@+id/tv_join_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:textColor="#20c589"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="5dp"
+                    android:paddingRight="5dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@id/iv_password"
+                    android:text="@string/join_password">
+                </TextView>
+                <EditText
+                    android:id="@+id/et_join_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_alignLeft="@id/iv_password"
+                    android:layout_alignBottom="@id/iv_password"
+                    android:background="@null"
+                    android:textColor="@color/activity_login_edit"
+                    android:hint="input data"
+                    android:password = "true"
+                    android:imeOptions="actionNext"
+                    android:singleLine = "true"
+                    android:lines = "1" />
+            </RelativeLayout>
 
+            <!--이름-->
+            <RelativeLayout
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content">
+                <ImageView
+                    android:id="@+id/iv_name"
+                    android:layout_width="150dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/password"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"/>
+                <TextView
+                    android:id="@+id/tv_join_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/join_name"
+                    android:textColor="#20c589"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:paddingRight="5dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@id/iv_name">
+                </TextView>
+                <EditText
+                    android:id="@+id/et_join_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_alignLeft="@id/iv_name"
+                    android:layout_alignBottom="@id/iv_name"
+                    android:background="@null"
+                    android:hint="input data"
+                    android:imeOptions="actionNext"
+                    android:singleLine = "true"
+                    android:lines = "1"
+                    />
+            </RelativeLayout>
+
+            <!--전화번호-->
+            <RelativeLayout
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content">
+                <ImageView
+                    android:id="@+id/iv_phoneNumber"
+                    android:layout_width="150dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/password"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"/>
+                <TextView
+                    android:id="@+id/tv_join_phoneNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:textColor="#20c589"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/join_phoneNumber"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:paddingRight="5dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@id/iv_phoneNumber">
+                </TextView>
+                <EditText
+                    android:id="@+id/et_join_phoneNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_alignLeft="@id/iv_phoneNumber"
+                    android:layout_alignBottom="@id/iv_phoneNumber"
+                    android:background="@null"
+                    android:textColor="@color/activity_login_edit"
+                    android:hint="input data"
+                    android:inputType = "phone"
+                    android:phoneNumber = "true"
+                    android:imeOptions="actionNext"
+                    android:singleLine = "true"
+                    android:lines = "1"
+                    />
+            </RelativeLayout>
+
+            <!--이메일-->
+            <RelativeLayout
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content">
+                <ImageView
+                    android:id="@+id/iv_email"
+                    android:layout_width="150dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/password"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"/>
+                <TextView
+                    android:id="@+id/tv_join_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/join_email"
+                    android:textColor="#20c589"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:paddingRight="5dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@id/iv_email">
+                </TextView>
+                <EditText
+                    android:id="@+id/et_join_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_alignLeft="@id/iv_email"
+                    android:layout_alignBottom="@id/iv_email"
+                    android:background="@null"
+                    android:textColor="@color/activity_login_edit"
+                    android:hint="input data"
+                    android:inputType = "textEmailAddress"
+                    android:singleLine = "true"
+                    android:lines = "1"
+                    />
+            </RelativeLayout>
+
+            <CheckBox
+                android:id="@+id/ck_service"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleX="0.45"
+                android:scaleY="0.45"
+                android:checked="false"
+                android:button="@null"
+                android:drawableLeft="@drawable/selector_service"
+                android:layout_below="@id/iv_email"
+                android:layout_marginLeft="50dp" />
+            <CheckBox
+                android:id="@+id/ck_agreeinfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleX="0.6"
+                android:scaleY="0.6"
+                android:checked="false"
+                android:button="@null"
+                android:drawableLeft="@drawable/selector_agreeinfo"
+                android:layout_below="@id/ck_service"/>
+
+            <TextView
+                android:id="@+id/tv_show"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:textColor="@color/activity_main_app_comment"
+                android:textSize="30sp"
+                >
+            </TextView>
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/ll_right"
-            android:layout_width="0dip"
-            android:layout_height="match_parent"
-            android:layout_gravity="top"
-            android:layout_margin="@dimen/activity_layout_right_margin"
-            android:layout_weight="1"
-            android:background="@color/activity_layout_right_background"
-            android:orientation="vertical"
-            android:padding="@dimen/activity_layout_right_padding"
-            android:visibility="gone" >
-        </LinearLayout>
-    </LinearLayout>
+        <!-- content end -->
+
+    </RelativeLayout>
+
+
 
     <RelativeLayout
         android:id="@+id/rl_body"
@@ -287,25 +296,26 @@
         android:visibility="gone" >
     </RelativeLayout>
 
-    <LinearLayout
-        android:id="@+id/ll_footer"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/activity_layout_footer_height"
-        android:layout_gravity="center_vertical"
-        android:layout_margin="@dimen/activity_layout_footer_margin"
-        android:background="@color/activity_layout_footer_background"
-        android:gravity="center_vertical"
-        android:orientation="vertical"
-        android:padding="@dimen/activity_layout_footer_padding" >
+    <ImageView
+        android:id="@+id/iv_logo"
+        android:layout_width="60dp"
+        android:layout_height="80dp"
+        android:src="@drawable/bangpool"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/app_company"
-            android:textColor="@color/activity_main_company"
-            android:textSize="15sp" >
-        </TextView>
-    </LinearLayout>
+    <ImageView
+        android:id="@+id/btn_join_submit"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_above="@id/iv_logo"
+        android:src="@drawable/ivsubmit"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp">
+    </ImageView>
 
-</LinearLayout>
+
+
+
+</RelativeLayout>
+

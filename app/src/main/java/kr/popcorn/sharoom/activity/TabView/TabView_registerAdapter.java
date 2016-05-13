@@ -3,6 +3,7 @@ package kr.popcorn.sharoom.activity.TabView;
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +23,6 @@ public class TabView_registerAdapter extends RecyclerView.Adapter<TabView_regist
     private Context mContext;
     public ArrayList<Helper_roomData> list;
     private LinearLayoutManager linearLayoutManager;
-
     public ArrayList<Helper_roomData> getContactsList() {
         return list;
     }
@@ -94,6 +94,7 @@ public class TabView_registerAdapter extends RecyclerView.Adapter<TabView_regist
 
         @Override
         public void onClick(View v) {
+            Log.e("check the view", "" + v.getId());
         }
 
     }

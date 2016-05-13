@@ -138,10 +138,10 @@ public class TabView_myself extends LinearLayout {
                     edit_facebook = (EditText) layout.findViewById(R.id.edit_facebook);
                     edit_kakaotalk = (EditText) layout.findViewById(R.id.edit_kakao);
 
-                    edit_phone.setText(text_phone.getText());
-                    edit_email.setText(text_email.getText());
-                    edit_facebook.setText(text_facebook.getText());
-                    edit_kakaotalk.setText(text_kakaotalk.getText());
+                    edit_phone.setHint(text_phone.getText());
+                    edit_email.setHint(text_email.getText());
+                    edit_facebook.setHint(text_facebook.getText());
+                    edit_kakaotalk.setHint(text_kakaotalk.getText());
 
                     aDialog.setPositiveButton("확인",
                             new DialogInterface.OnClickListener() {
@@ -150,9 +150,9 @@ public class TabView_myself extends LinearLayout {
                                     // 'YES'
                                     //Log.e("edit_phone.getText()",""+edit_phone.getText().toString());
                                     text_phone.setText(edit_phone.getText());
-                                    text_email.setText(text_email.getText());
-                                    text_facebook.setText(text_facebook.getText());
-                                    text_kakaotalk.setText(text_kakaotalk.getText());
+                                    text_email.setText(edit_email.getText());
+                                    text_facebook.setText(edit_facebook.getText());
+                                    text_kakaotalk.setText(edit_kakaotalk.getText());
 
                                 }
                             }).setNegativeButton("취소",

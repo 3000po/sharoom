@@ -11,6 +11,7 @@ package kr.popcorn.sharoom.activity;
         import android.os.Bundle;
         import android.os.Environment;
         import android.provider.MediaStore;
+        import android.util.Log;
         import android.view.View;
         import android.widget.ImageView;
 
@@ -54,11 +55,14 @@ public class Activity_imageUpload extends Activity {
 
                 startActivityForResult(intent, REQ_CODE_PICK_IMAGE);
                 // REQ_CODE_PICK_IMAGE == requestCode
+                Log.d("kisang1", ""+android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             }
         });
 
     }
     private Uri getTempUri() {
+        Log.d("kisang2", ""+Uri.fromFile(getTempFile()));
+
         return Uri.fromFile(getTempFile());
     }
 
@@ -68,7 +72,7 @@ public class Activity_imageUpload extends Activity {
             params.put("id","111");
             params.put("file", new File(ImageLink));
             params.put("path", "aaa");
-            System.out.println("sibalbalblabl_imageLink : " + ImageLink );
+            System.out.println("kisang10 : " + ImageLink );
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             System.out.println("sibalbalblabl_file");
@@ -92,6 +96,8 @@ public class Activity_imageUpload extends Activity {
         if (isSDCARDMOUNTED()) {
             File f = new File(Environment.getExternalStorageDirectory(), // 외장메모리 경로
                     TEMP_PHOTO_FILE);
+            Log.d("kisang3", ""+Environment.getExternalStorageDirectory()+","+TEMP_PHOTO_FILE);
+
             try {
                 f.createNewFile();      // 외장메모리에 temp.jpg 파일 생성
             } catch (IOException e) {
@@ -121,6 +127,7 @@ public class Activity_imageUpload extends Activity {
                 if (resultCode == RESULT_OK) {
                     if (imageData != null) {
                         String filePath = ""+Environment.getExternalStorageDirectory();
+                        Log.d("kisang4", ""+Environment.getExternalStorageDirectory());
 
                         filePath += "/temp.jpg";
                         postImage(filePath);

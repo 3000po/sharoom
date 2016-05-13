@@ -45,15 +45,15 @@ import me.yokeyword.imagepicker.callback.CallbackForImagePicker;
 //Acitivity_editRoom에서 방사진목록을 따로 편집하기위한 액티비티
 public class Activity_editRoom_roomPic extends Activity {
 
-    public final int MAX_SIZE=7;
+        public final int MAX_SIZE=7;
 
-    private RecyclerView recyclerView;
-    private Helper_roomPicListAdapter listAdapter;
+        private RecyclerView recyclerView;
+        private Helper_roomPicListAdapter listAdapter;
 
-    private  ArrayList<String> list;
-    private ImagePicker mImagePicker;
+        private  ArrayList<String> list;
+        private ImagePicker mImagePicker;
 
-    //방 사진 개수에 변동사항이있을떄 호출되서 현재 방사진이 몇개 올라왔는지 수정해준다.
+        //방 사진 개수에 변동사항이있을떄 호출되서 현재 방사진이 몇개 올라왔는지 수정해준다.
     public void updateTitle(){
         getActionBar().setTitle("사진 "+list.size()+"장");
     }

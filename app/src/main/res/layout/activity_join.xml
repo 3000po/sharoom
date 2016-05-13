@@ -268,10 +268,11 @@
                     android:id="@id/ck_service"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:scaleX="0.45"
-                    android:scaleY="0.45"
+                    android:scaleX="0.5"
+                    android:scaleY="0.5"
                     android:checked="false"
                     android:button="@null"
+                    android:layout_marginLeft="40dp"
                     android:layout_alignRight="@id/ck_agreeinfo"
                     android:drawableLeft="@drawable/selector_service" />
 

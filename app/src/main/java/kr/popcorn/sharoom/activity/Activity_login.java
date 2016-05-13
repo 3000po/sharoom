@@ -406,6 +406,16 @@ public class Activity_login extends Activity {
                                     }
 
         );*/
+        ImageView joinBtn = (ImageView)findViewById(R.id.iv_join);
+        joinBtn.setOnClickListener(new ImageView.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent joinIntent = new Intent(Activity_login.this, Activity_join.class);
+                startActivity(joinIntent);
+
+            }
+        });
+
     }//onCreateEnd
 
     public void loginAlert() {

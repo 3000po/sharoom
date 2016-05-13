@@ -59,6 +59,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.Activity_mainIntro">
+
+        </activity>
         <activity
             android:name=".activity.Activity_calendar"
             android:label="@string/title_activity_activity_calendar" />

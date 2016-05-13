@@ -4,14 +4,17 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
@@ -24,8 +27,12 @@ import com.facebook.GraphResponse;
 import com.facebook.HttpMethod;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.kakao.auth.AuthType;
 import com.kakao.auth.ISessionCallback;
+import com.kakao.auth.Session;
 import com.kakao.network.ErrorResult;
 import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.MeResponseCallback;
@@ -69,24 +76,70 @@ public class Activity_login extends Activity {
     private String userName;
     private String userId;
     private String profileUrl;
+    private RelativeLayout layoutIdPassword;
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client2;
 
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client2.connect();
+        Action viewAction = Action.newAction(
+                Action.TYPE_VIEW, // TODO: choose an action type.
+                "Activity_login Page", // TODO: Define a title for the content shown.
+                // TODO: If you have web page content that matches this app activity's content,
+                // make sure this auto-generated web page URL is correct.
+                // Otherwise, set the URL to null.
+                Uri.parse("http://host/path"),
+                // TODO: Make sure this auto-generated app deep link URI is correct.
+                Uri.parse("android-app://kr.popcorn.sharoom.activity/http/host/path")
+        );
+        AppIndex.AppIndexApi.start(client2, viewAction);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        Action viewAction = Action.newAction(
+                Action.TYPE_VIEW, // TODO: choose an action type.
+                "Activity_login Page", // TODO: Define a title for the content shown.
+                // TODO: If you have web page content that matches this app activity's content,
+                // make sure this auto-generated web page URL is correct.
+                // Otherwise, set the URL to null.
+                Uri.parse("http://host/path"),
+                // TODO: Make sure this auto-generated app deep link URI is correct.
+                Uri.parse("android-app://kr.popcorn.sharoom.activity/http/host/path")
+        );
+        AppIndex.AppIndexApi.end(client2, viewAction);
+        client2.disconnect();
+    }
 
     //카카오톡 세션콜백
     private class SessionCallback implements ISessionCallback {
         @Override
         public void onSessionOpened() {
-            Log.d("TAG" , "세션 오픈됨");
+            Log.d("TAG", "세션 오픈됨");
             // 사용자 정보를 가져옴, 회원가입 미가입시 자동가입 시킴
             KakaorequestMe();
         }
 
         @Override
         public void onSessionOpenFailed(KakaoException exception) {
-            if(exception != null) {
-                Log.d("TAG" , exception.getMessage());
+            if (exception != null) {
+                Log.d("TAG", exception.getMessage());
             }
         }
     }
+
     //카카오톡 요청
     protected void KakaorequestMe() {
         UserManagement.requestMe(new MeResponseCallback() {
@@ -98,13 +151,13 @@ public class Activity_login extends Activity {
                 if (ErrorCode == ClientErrorCode) {
                     Toast.makeText(getApplicationContext(), "카카오톡 서버의 네트워크가 불안정합니다. 잠시 후 다시 시도해주세요.", Toast.LENGTH_SHORT).show();
                 } else {
-                    Log.d("TAG" , "오류로 카카오로그인 실패 ");
+                    Log.d("TAG", "오류로 카카오로그인 실패 ");
                 }
             }
 
             @Override
             public void onSessionClosed(ErrorResult errorResult) {
-                Log.d("TAG" , "오류로 카카오로그인 실패 ");
+                Log.d("TAG", "오류로 카카오로그인 실패 ");
             }
 
             @Override
@@ -174,19 +227,21 @@ public class Activity_login extends Activity {
             }
         });
     }
+
     //카카오톡 사인업액티비티
     protected void redirectSignupActivity() {
         final Intent intent = new Intent(this, Activity_user_view.class);
         startActivity(intent);
         finish();
     }
+
     //카카오톡 로그인
     private void isKakaoLogin() {
         // 카카오 세션을 오픈한다
         mKakaocallback = new SessionCallback();
-        com.kakao.auth.Session.getCurrentSession().addCallback(mKakaocallback);
-        com.kakao.auth.Session.getCurrentSession().checkAndImplicitOpen();
-        com.kakao.auth.Session.getCurrentSession().open(AuthType.KAKAO_TALK_EXCLUDE_NATIVE_LOGIN, Activity_login.this);
+        Session.getCurrentSession().addCallback(mKakaocallback);
+        Session.getCurrentSession().checkAndImplicitOpen();
+        Session.getCurrentSession().open(AuthType.KAKAO_TALK_EXCLUDE_NATIVE_LOGIN, Activity_login.this);
     }
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -200,8 +255,8 @@ public class Activity_login extends Activity {
         setContentView(R.layout.activity_login); // 항상 제공되는
         // activity_layout.xml을
 
-        loginButton = (LoginButton)findViewById(R.id.login_button);
-        kakaoButton = (ImageView)findViewById(R.id.kakao_login);
+        loginButton = (LoginButton) findViewById(R.id.login_button);
+        kakaoButton = (ImageView) findViewById(R.id.kakao_login);
         kakaoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -248,7 +303,7 @@ public class Activity_login extends Activity {
                                     new GraphRequest.Callback() {
                                         public void onCompleted(GraphResponse response) {
                                             try {
-                                                Log.e("JSON",response.toString());
+                                                Log.e("JSON", response.toString());
                                                 JSONObject data = response.getJSONObject();
 
                                                 String id = data.getString("id");
@@ -260,9 +315,9 @@ public class Activity_login extends Activity {
                                                 params.put("id", id);
                                                 params.put("name", name);
                                                 params.put("email", email);
-                                                if( gender.equals("male") == true ){
+                                                if (gender.equals("male") == true) {
                                                     params.put("gender", 1);
-                                                }else{
+                                                } else {
                                                     params.put("gender", 2);
                                                 }
 
@@ -287,7 +342,7 @@ public class Activity_login extends Activity {
                                                     }
                                                 });
 
-                                            } catch (Exception e){
+                                            } catch (Exception e) {
                                                 e.printStackTrace();
                                             }
                                         }
@@ -317,7 +372,7 @@ public class Activity_login extends Activity {
 
             @Override
             public void onCancel() {
-                Log.i("bhc :","Login attempt canceled.");
+                Log.i("bhc :", "Login attempt canceled.");
             }
 
             @Override
@@ -327,8 +382,9 @@ public class Activity_login extends Activity {
         });
 
         // 만듦
-        et_id = (EditText)findViewById(R.id.et_login_id);
-        et_password = (EditText)findViewById(R.id.et_login_password);
+        et_id = (EditText) findViewById(R.id.et_login_id);
+        et_password = (EditText) findViewById(R.id.et_login_password);
+        layoutIdPassword = (RelativeLayout) findViewById(R.id.layout_idpassword);
 
 
         AsyncHttpClient client = Helper_server.getInstance();
@@ -345,7 +401,7 @@ public class Activity_login extends Activity {
 
             startActivity(intent);
             finish();
-        }else{ //페이스북 자동로그인 파트
+        } else { //페이스북 자동로그인 파트
             AccessToken accessToken = AccessToken.getCurrentAccessToken();
             if (accessToken == null) {
                 Log.d("abde", ">>>" + "Signed Out");
@@ -360,8 +416,44 @@ public class Activity_login extends Activity {
             }
         }
 
-        et_password.setOnKeyListener(new View.OnKeyListener() {
+        et_id.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                                           @Override
+                                           public void onFocusChange(View v, boolean hasFocus) {
+                                               if (hasFocus) {
+                                                   et_id.setHint("");
+                                                   InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+                                                   imm.showSoftInput(et_id, InputMethodManager.SHOW_IMPLICIT);
+                                               } else
+                                                   et_id.setHint("ID 혹은 이메일 입력");
+                                           }
+                                       }
+        );
 
+        et_password.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    et_password.setHint("");
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+                    imm.showSoftInput(et_password, InputMethodManager.SHOW_IMPLICIT);
+
+                } else
+                    et_password.setHint("비밀번호 입력");
+            }
+        });
+        et_id.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(et_id.getWindowToken(), 0);    //hide keyboard
+                    return true;
+                }
+                return false;
+            }
+        });
+
+        et_password.setOnKeyListener(new View.OnKeyListener() {
                                          @Override
                                          public boolean onKey(View v, int keyCode, KeyEvent event) {
                                              //Enter key Action
@@ -376,7 +468,20 @@ public class Activity_login extends Activity {
 
         );
 
-        final CheckBox check = (CheckBox)findViewById(R.id.ck_autoLogin);
+        layoutIdPassword.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(et_password.getWindowToken(), 0);    //hide keyboard
+                    return true;
+                }
+                return false;
+            }
+        });
+
+        final CheckBox check = (CheckBox) findViewById(R.id.ck_autoLogin);
 
         //login buton click
 
@@ -393,26 +498,26 @@ public class Activity_login extends Activity {
                                              params.put("id", id);
                                              params.put("password", password);
                                              //server connect
-                                             Helper_server.post("login.php", params,  new JsonHttpResponseHandler() {
+                                             Helper_server.post("login.php", params, new JsonHttpResponseHandler() {
                                                  @Override
 
                                                  public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                                                      Log.i("abde", "success");
-                                                     String data="";
-                                                     try{
+                                                     String data = "";
+                                                     try {
                                                          data = response.get("phpsession").toString();
-                                                     } catch(JSONException e){
+                                                     } catch (JSONException e) {
                                                          e.printStackTrace();
                                                      }
                                                      Log.d("phpsession", "" + data);
-                                                     if(!data.equals("no")){
+                                                     if (!data.equals("no")) {
 
                                                          BasicClientCookie newCookie = new BasicClientCookie("login_session", data);
                                                          newCookie.setVersion(1);
                                                          newCookie.setDomain("14.63.227.200");
                                                          newCookie.setPath("/");
                                                          myCookieStore.addCookie(newCookie);
-                                                         if(check.isChecked()){
+                                                         if (check.isChecked()) {
                                                              newCookie = new BasicClientCookie("isLogin", "true");
                                                              newCookie.setVersion(1);
                                                              newCookie.setDomain("14.63.227.200");
@@ -429,8 +534,7 @@ public class Activity_login extends Activity {
                                                          finish();
                                                          activity.finish();
 
-                                                     }
-                                                     else{
+                                                     } else {
                                                          loginAlert();
                                                      }
                                                  }
@@ -438,7 +542,7 @@ public class Activity_login extends Activity {
                                                  @Override
                                                  public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                                                      super.onFailure(statusCode, headers, responseString, throwable);
-                                                     Log.d("Failed: ", ""+statusCode);
+                                                     Log.d("Failed: ", "" + statusCode);
                                                      Log.d("Error : ", "" + throwable);
                                                  }
                                              });
@@ -460,7 +564,7 @@ public class Activity_login extends Activity {
                                     }
 
         );*/
-        ImageView joinBtn = (ImageView)findViewById(R.id.iv_join);
+        ImageView joinBtn = (ImageView) findViewById(R.id.iv_join);
         joinBtn.setOnClickListener(new ImageView.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -470,6 +574,9 @@ public class Activity_login extends Activity {
             }
         });
 
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client2 = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }//onCreateEnd
 
     public void loginAlert() {
@@ -485,7 +592,7 @@ public class Activity_login extends Activity {
         alert.show();
     }
 
-    public void onBackPressed(){
+    public void onBackPressed() {
         finish();
     }
 

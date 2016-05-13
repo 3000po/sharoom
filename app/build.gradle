@@ -75,4 +75,5 @@ dependencies {
     compile group: project.KAKAO_SDK_GROUP, name: 'usermgmt', version: project.KAKAO_SDK_VERSION
 
     // compile 'com.facebook.android:audience-network-sdk:4.+'
+    compile 'com.google.android.gms:play-services-appindexing:8.3.0'
 }

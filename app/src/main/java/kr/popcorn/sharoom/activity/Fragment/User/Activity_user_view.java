@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -36,8 +37,9 @@ public class Activity_user_view extends FragmentActivity {
 
         AActivty = Activity_user_view.this;
 
-        Activity_mainIntro activity = (Activity_mainIntro) Activity_mainIntro.mActivity;
-        activity.finish();
+//        Activity_mainIntro activity = (Activity_mainIntro) Activity_mainIntro.mActivity;
+
+//        activity.finish();
 
         mAdapter = new TestFragmentAdapter(getSupportFragmentManager());
         mapMenu = (ImageView)findViewById(R.id.mapMenu);

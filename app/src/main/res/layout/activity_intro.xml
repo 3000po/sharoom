@@ -64,11 +64,11 @@
                 android:orientation="vertical" >
 
                 <ImageView
-                    android:id="@+id/iv_logo"
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
+                    android:id="@+id/loading_img"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
                     android:layout_gravity="center_vertical|center_horizontal|center"
-                    android:src="@drawable/app_logo" >
+                    >
                 </ImageView>
 
                 <TextView

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Base64;
@@ -12,6 +13,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.security.MessageDigest;
@@ -20,11 +22,14 @@ import java.security.NoSuchAlgorithmException;
 import kr.popcorn.sharoom.R;
 
 public class Activity_intro extends Activity {
+
+    ImageView loading_img;
+    AnimationDrawable mAnimationDrawable_1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
-
 
         try {
             PackageInfo info = getPackageManager().getPackageInfo("kr.popcorn.sharoom.activity", PackageManager.GET_SIGNATURES);
@@ -100,10 +105,10 @@ public class Activity_intro extends Activity {
 
             public void run() {
 
-                    Intent intent = new Intent(Activity_intro.this, Activity_mainIntro.class);
-                    //intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                    startActivity(intent);
-                    finish();
+                Intent intent = new Intent(Activity_intro.this, Activity_mainIntro.class);
+                //intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(intent);
+                finish();
             }
         }, 3000); // 시간지정
 
@@ -130,5 +135,17 @@ public class Activity_intro extends Activity {
         }
 
     }
+
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+
+        loading_img = (ImageView)findViewById(R.id.loading_img);
+        loading_img.setBackgroundResource(R.drawable.roading_animation);
+        mAnimationDrawable_1 = (AnimationDrawable)loading_img.getBackground();
+        mAnimationDrawable_1.run();
+    }
+
 
 }

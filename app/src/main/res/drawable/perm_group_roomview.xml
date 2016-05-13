@@ -3,5 +3,5 @@
     <item android:state_selected="true"
         android:drawable="@drawable/t1_select" />
 
-    <item android:drawable="@drawable/t1" />
+    <item android:drawable="@drawable/guest_roomlist" />
 </selector>

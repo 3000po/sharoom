@@ -43,6 +43,7 @@ android {
     repositories {
         jcenter()
         maven { url 'http://devrepo.kakao.com:8088/nexus/content/groups/public/' }
+        maven { url "https://jitpack.io" }
     }
 }
 
@@ -73,6 +74,8 @@ dependencies {
     compile group: project.KAKAO_SDK_GROUP, name: 'kakaolink', version: project.KAKAO_SDK_VERSION
     compile group: project.KAKAO_SDK_GROUP, name: 'kakaotalk', version: project.KAKAO_SDK_VERSION
     compile group: project.KAKAO_SDK_GROUP, name: 'usermgmt', version: project.KAKAO_SDK_VERSION
+
+    compile 'com.github.ParkSangGwon:TedPermission:v1.0.9'
 
     // compile 'com.facebook.android:audience-network-sdk:4.+'
     compile 'com.google.android.gms:play-services-appindexing:8.3.0'

@@ -58,7 +58,6 @@ public class Activity_login extends Activity {
     EditText et_id;
     EditText et_password;
 
-    public static Activity login_Activity; //Aacitivity_login class선언.
     //페이스북 로그인, 콜백
     private LoginButton loginButton;
     private CallbackManager callbackManager;
@@ -69,6 +68,29 @@ public class Activity_login extends Activity {
     private String userName;
     private String userId;
     private RelativeLayout layoutIdPassword;
+
+    public PermissionListener permissionlistener;
+    public TedPermission ted;
+    public String phoneNum;
+
+    public void openActivity(){
+        Intent intent = new Intent(Activity_login.this, Activity_user_view.class);
+        Activity_mainIntro activity = (Activity_mainIntro) Activity_mainIntro.mActivity;
+        Helper_server.userData = Helper_userData.getInstance(getApplicationContext());
+
+        startActivity(intent);
+        finish();
+        activity.finish();
+    }
+
+    public void getPermission(){
+        ted = new TedPermission(getApplication());
+
+        ted.setPermissionListener(permissionlistener)
+                .setDeniedMessage("If you reject permission,you can not use this service\n\nPlease turn on permissions at [Setting] > [Permission]")
+                .setPermissions(Manifest.permission.READ_PHONE_STATE)
+                .check();
+    }
 
     //카카오톡 세션콜백
     private class SessionCallback implements ISessionCallback {
@@ -81,7 +103,6 @@ public class Activity_login extends Activity {
 
         @Override
         public void onSessionOpenFailed(KakaoException exception) {
-            Log.i("didit","failed");
             if (exception != null) {
                 Log.d("TAG", exception.getMessage());
             }
@@ -110,13 +131,15 @@ public class Activity_login extends Activity {
 
             @Override
             public void onSuccess(UserProfile userProfile) {
+                getPermission();
                 userId = String.valueOf(userProfile.getId());
                 userName = userProfile.getNickname();
 
-                Log.i("didit", userId);
+                if( phoneNum == null ) return ;
 
                 final RequestParams idParams = new RequestParams("ktid", userId);
                 idParams.put("name", userName);
+                idParams.put("phone", phoneNum);
                 Helper_server.post("ktCheck.php", idParams, new JsonHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -127,20 +150,12 @@ public class Activity_login extends Activity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        Log.d("ok", "" + data);
                         if (data.equals("true")) {  //카카오톡 가입이 안되있을경우
                             Helper_server.post("kakaotalk.php", idParams, new AsyncHttpResponseHandler() {
                                 @Override
 
                                 public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                                    Intent intent = new Intent(Activity_login.this, Activity_user_view.class);
-                                    Activity_mainIntro activity = (Activity_mainIntro) Activity_mainIntro.mActivity;
-
-                                    Helper_server.userData = Helper_userData.getInstance(getApplicationContext());
-
-                                    startActivity(intent);
-                                    finish();
-                                    activity.finish();
+                                    openActivity();
                                 }
 
                                 @Override
@@ -151,12 +166,7 @@ public class Activity_login extends Activity {
                             return;
 
                         } else {
-                            Intent intent = new Intent(Activity_login.this, Activity_user_view.class);
-
-                            Helper_server.userData = Helper_userData.getInstance(getApplicationContext());
-
-                            startActivity(intent);
-                            finish();
+                            openActivity();
                             return;
                         }
                     }
@@ -208,6 +218,17 @@ public class Activity_login extends Activity {
             }
         });
 
+        permissionlistener = new PermissionListener() {
+            @Override
+            public void onPermissionGranted() {
+                TelephonyManager tMgr = (TelephonyManager)getApplicationContext().getSystemService(Context.TELEPHONY_SERVICE);
+                phoneNum = tMgr.getLine1Number();
+            }
+            @Override
+            public void onPermissionDenied(ArrayList<String> deniedPermissions) {
+                Toast.makeText(Activity_login.this, "Permission Denied\n" + deniedPermissions.toString(), Toast.LENGTH_SHORT).show();
+            }
+        };
 
         //
         //loginButton.setPublishPermissions(Arrays.asList("public_profile", "user_friends", "email"));
@@ -219,10 +240,12 @@ public class Activity_login extends Activity {
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(final LoginResult loginResult) {
-
+                getPermission();
                 //TODO 전화번호 인증모듈 띄우기
                 final String id = loginResult.getAccessToken().getUserId();
                 final RequestParams idParams = new RequestParams("fbid", id);
+
+                if( phoneNum == null ) return ;
 
                 Helper_server.post("fbCheck.php", idParams, new JsonHttpResponseHandler() {
                     @Override
@@ -234,7 +257,6 @@ public class Activity_login extends Activity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        Log.d("ok", "" + data);
                         if (data.equals("true")) {  //페북 가입이 안되있을경우
                             Bundle params = new Bundle();
                             params.putString("fields", "id,name,email,gender");
@@ -253,6 +275,7 @@ public class Activity_login extends Activity {
                                                 String name = data.getString("name");
                                                 String email = data.getString("email");
                                                 String gender = data.getString("gender");
+                                                String phone = phoneNum;
 
                                                 RequestParams params = new RequestParams();
                                                 params.put("id", id);
@@ -263,20 +286,13 @@ public class Activity_login extends Activity {
                                                 } else {
                                                     params.put("gender", 2);
                                                 }
+                                                params.put("phone",phone);
 
                                                 Helper_server.post("facebook.php", params, new AsyncHttpResponseHandler() {
                                                     @Override
 
                                                     public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                                                        Intent intent = new Intent(Activity_login.this, Activity_user_view.class);
-                                                        Activity_mainIntro activity = (Activity_mainIntro) Activity_mainIntro.mActivity;
-
-                                                        Helper_server.userData = Helper_userData.getInstance(getApplicationContext());
-
-
-                                                        startActivity(intent);
-                                                        finish();
-                                                        activity.finish();
+                                                        openActivity();
                                                     }
 
                                                     @Override
@@ -294,12 +310,7 @@ public class Activity_login extends Activity {
 
                             return;
                         } else {
-                            Intent intent = new Intent(Activity_login.this, Activity_user_view.class);
-
-                            Helper_server.userData = Helper_userData.getInstance(getApplicationContext());
-
-                            startActivity(intent);
-                            finish();
+                            openActivity();
                             return;
                         }
                     }
@@ -337,22 +348,17 @@ public class Activity_login extends Activity {
         //자동 로그인 파트.
         if (Helper_server.login(myCookieStore)) {
             Log.i("abde", "what the!! ");
-            if(Helper_server.login(myCookieStore)){
-                String id = Helper_server.getCookieValue(myCookieStore, "id");
-                Helper_userData.login_GetData(id, getApplicationContext());
-            }
-        } else { //페이스북 자동로그인 파트
+            openActivity();
+        }else if( Session.getCurrentSession().isOpened() ) {
+            openActivity();
+        }else
+        { //페이스북 자동로그인 파트
             AccessToken accessToken = AccessToken.getCurrentAccessToken();
             if (accessToken == null) {
                 Log.d("abde", ">>>" + "Signed Out");
             } else {
                 Log.d("abde", ">>>" + "Signed In");
-                Intent intent = new Intent(Activity_login.this, Activity_user_view.class);
-
-                Helper_server.userData = Helper_userData.getInstance(getApplicationContext());
-
-                startActivity(intent);
-                finish();
+                openActivity();
             }
         }
 
@@ -463,13 +469,13 @@ public class Activity_login extends Activity {
                                                              newCookie.setDomain("14.63.227.200");
                                                              newCookie.setPath("/");
                                                              myCookieStore.addCookie(newCookie);
-                                                             newCookie = new BasicClientCookie("id", id);
-                                                             newCookie.setVersion(1);
-                                                             newCookie.setDomain("14.63.227.200");
-                                                             newCookie.setPath("/");
-                                                             myCookieStore.addCookie(newCookie);
                                                          }
-                                                         Helper_userData.login_GetData(id, getApplicationContext());
+
+                                                         Activity_mainIntro activity = (Activity_mainIntro) Activity_mainIntro.mActivity;
+                                                         Intent intent = new Intent(Activity_login.this, Activity_user_view.class);
+                                                         Helper_userData user = new Helper_userData();
+                                                         user.getInstance(id, getApplicationContext());
+
                                                      }
                                                      else{
                                                          loginAlert();

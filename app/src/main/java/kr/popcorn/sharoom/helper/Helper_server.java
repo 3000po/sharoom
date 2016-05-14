@@ -6,6 +6,9 @@ import android.util.Log;
 import com.facebook.AccessToken;
 import com.facebook.FacebookSdk;
 import com.facebook.login.LoginManager;
+import com.kakao.auth.Session;
+import com.kakao.usermgmt.UserManagement;
+import com.kakao.usermgmt.callback.LogoutResponseCallback;
 import com.loopj.android.http.*;
 
 import org.json.JSONArray;
@@ -94,7 +97,14 @@ public class Helper_server {
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
         if (accessToken == null) {
             Log.d("abde", ">>>" + "Signed Out");
-        } else {
+        }else if(Session.getCurrentSession().isOpened()) {
+            UserManagement.requestLogout(new LogoutResponseCallback() {
+                @Override
+                public void onCompleteLogout() {
+                    //로그아웃 성공 후 하고싶은 내용 코딩 ~
+                }
+            });
+        }else {
             LoginManager loginManager = LoginManager.getInstance();
             loginManager.logOut();
         }

@@ -1,11 +1,14 @@
 package kr.popcorn.sharoom.activity.Fragment.User;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -13,6 +16,7 @@ import android.widget.TextView;
 import com.loopj.android.http.AsyncHttpClient;
 
 import kr.popcorn.sharoom.R;
+import kr.popcorn.sharoom.activity.Activity_login;
 import kr.popcorn.sharoom.activity.Activity_mainIntro;
 import kr.popcorn.sharoom.activity.Activity_mapMenu;
 import kr.popcorn.sharoom.helper.Helper_server;
@@ -35,8 +39,8 @@ public class Activity_user_view extends FragmentActivity {
 
         Helper_userData data = Helper_userData.getInstance();
 
-//        System.out.println("aaaaa1111 : " + data);
-//        System.out.println("aaaaa11111 : " + data.getId() + " +  " + data.getEmail());
+        Activity_login login = (Activity_login) Activity_login.login_Activity; //login_Activity_finish
+        login.finish();
 
         AsyncHttpClient client = Helper_server.getInstance();
 
@@ -146,5 +150,21 @@ public class Activity_user_view extends FragmentActivity {
     private void init() {
     }
 
-
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        switch(keyCode) {
+            case KeyEvent.KEYCODE_BACK:
+                new AlertDialog.Builder(this)
+                        .setTitle("종료")
+                        .setMessage("종료 하시겠어요?")
+                        .setPositiveButton("예", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                finish();
+                            }
+                        })
+                        .setNegativeButton("아니오", null).show();
+                return false;
+            default:
+                return false;
+        }
+    }
 }

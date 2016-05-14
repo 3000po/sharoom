@@ -67,7 +67,6 @@ public class Activity_login extends Activity {
     private SessionCallback mKakaocallback; //카카오톡 로그인 콜백
     private String userName;
     private String userId;
-    private String profileUrl;
     private RelativeLayout layoutIdPassword;
 
     //카카오톡 세션콜백
@@ -81,6 +80,7 @@ public class Activity_login extends Activity {
 
         @Override
         public void onSessionOpenFailed(KakaoException exception) {
+            Log.i("didit","failed");
             if (exception != null) {
                 Log.d("TAG", exception.getMessage());
             }
@@ -112,7 +112,9 @@ public class Activity_login extends Activity {
                 userId = String.valueOf(userProfile.getId());
                 userName = userProfile.getNickname();
 
-                final RequestParams idParams = new RequestParams("fbid", userId);
+                Log.i("didit", userId);
+
+                final RequestParams idParams = new RequestParams("ktid", userId);
                 idParams.put("name", userName);
                 Helper_server.post("ktCheck.php", idParams, new JsonHttpResponseHandler() {
                     @Override
@@ -173,13 +175,6 @@ public class Activity_login extends Activity {
                 // 자동가입이 아닐경우 동의창
             }
         });
-    }
-
-    //카카오톡 사인업액티비티
-    protected void redirectSignupActivity() {
-        final Intent intent = new Intent(this, Activity_user_view.class);
-        startActivity(intent);
-        finish();
     }
 
     //카카오톡 로그인
@@ -543,6 +538,11 @@ public class Activity_login extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         //페이스북 로그인
         callbackManager.onActivityResult(requestCode, resultCode, data);
+
+        //카카오톡 로그인
+        if (Session.getCurrentSession().handleActivityResult(requestCode, resultCode, data)) {
+            return;
+        }
 
         super.onActivityResult(requestCode, resultCode, data);
     }

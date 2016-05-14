@@ -35,8 +35,8 @@ public class Activity_user_view extends FragmentActivity {
 
         Helper_userData data = Helper_userData.getInstance();
 
-        System.out.println("aaaaa1111 : " + data);
-        System.out.println("aaaaa11111 : " + data.getId() + " +  " + data.getEmail());
+//        System.out.println("aaaaa1111 : " + data);
+//        System.out.println("aaaaa11111 : " + data.getId() + " +  " + data.getEmail());
 
         AsyncHttpClient client = Helper_server.getInstance();
 

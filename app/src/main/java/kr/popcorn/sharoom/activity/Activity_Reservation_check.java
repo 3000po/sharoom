@@ -33,8 +33,7 @@ public class Activity_Reservation_check extends Activity {
 
     private ViewPager viewPager;
     private ViewGroup requestBtn;
-    private RelativeLayout reservationBtn;
-    private GlideFragmentAdapter listAdapter;
+    private RelativeLayout sureBtn;
     private ImageAdapter adapter;
     private TextView tvCount, startDate, endDate;
     private int mYear, mMonth, mDay;
@@ -56,7 +55,7 @@ public class Activity_Reservation_check extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_reservation);
+        setContentView(R.layout.activity_reservation_check);
 
         //imageview(view pager)
         viewPager = (ViewPager)findViewById(R.id.pager);
@@ -150,18 +149,17 @@ public class Activity_Reservation_check extends Activity {
         mMyadapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         peopleNum.setAdapter(mMyadapter);
         */
-        reservationBtn = (RelativeLayout)findViewById(R.id.reservationBtn);
-        reservationBtn.setOnClickListener(new Button.OnClickListener() {
+        sureBtn = (RelativeLayout)findViewById(R.id.sure);
+
+        sureBtn.setOnClickListener(new Button.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
 
                 switch (arg0.getId()) {
-                    case R.id.reservationBtn:
-                        Intent finishReservIntent = new Intent(Activity_Reservation_check.this, Activity_FinishReserv.class);
-                        startActivity(finishReservIntent);
+                    case R.id.sure:
+                        finish();
                         break;
-
                 }
 
             }

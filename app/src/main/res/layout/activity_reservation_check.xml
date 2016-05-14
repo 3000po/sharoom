@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="예약하기"
+                android:text="예약 확인 하기"
                 android:textSize="23sp"
                 android:textStyle="bold"
                 android:textColor="#FFFFFF">
@@ -217,7 +217,7 @@
 
 
     <RelativeLayout
-        android:id="@+id/reservationBtn"
+        android:id="@+id/sure"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
@@ -225,12 +225,13 @@
         android:background="@color/bangpoolColor"
         android:gravity="bottom"
         android:clickable="true">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:gravity="center"
             android:layout_centerVertical="true"
-            android:text="예약완료"
+            android:text="확인"
             android:textSize="23sp"
             android:textStyle="bold"
             android:textColor="#FFFFFF">
@@ -242,15 +243,29 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_margin="3dp"
-        android:layout_above="@id/reservationBtn">
-        <TextView
+        android:layout_above="@id/sure">
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="예약할 준비가 다 되었나요?"
-            android:textColor="#000000"
-            android:textStyle="bold"
-            android:textSize="16sp" />
+            android:orientation="horizontal">
 
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="예약 상태 :"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" 정상 "
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:textSize="22sp" />
+        </LinearLayout>
     </RelativeLayout>
 
 </RelativeLayout>

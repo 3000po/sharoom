@@ -77,9 +77,7 @@
             android:name=".activity.Activity_calendar"
             android:label="@string/title_activity_activity_calendar" />
         <activity
-            android:name=".activity.Fragment.User.Activity_user_view"
-            android:theme="@android:style/Theme.Holo.NoActionBar" >
-
+            android:name=".activity.Fragment.User.Activity_user_view">
         </activity>
         <activity android:name=".activity.TabView.Activity_Host_to_User_animation"/>
         <activity android:name=".activity.TabView.Activity_User_to_Host_animation"/>
@@ -111,6 +109,7 @@
             android:theme="@android:style/Theme.Holo.NoActionBar">
         </activity>
         <activity android:name=".activity.Activity_Reservation" />
+        <activity android:name=".activity.Activity_Reservation_check"/>
         <activity android:name=".activity.Activity_FinishReserv" />
         <activity
             android:name=".activity.Acitivity_test"

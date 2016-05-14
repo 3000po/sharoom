@@ -1,6 +1,7 @@
 package kr.popcorn.sharoom.activity.TabView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -10,6 +11,7 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +21,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import kr.popcorn.sharoom.R;
+import kr.popcorn.sharoom.activity.Activity_Reservation_check;
+import kr.popcorn.sharoom.activity.Activity_roomInfo;
 import kr.popcorn.sharoom.helper.Helper_roomData;
 
 
@@ -107,6 +111,11 @@ public class TabView_reservationAdapter extends RecyclerView.Adapter<TabView_res
 
         @Override
         public void onClick(View v) {
+            Intent intent = new Intent(mContext, Activity_Reservation_check.class);
+            mContext.startActivity(intent);
+
+            Log.e("reservation_check", "roomname : " + list.get(0).roomname);
+            Log.e("reservation_check", "index : " + getAdapterPosition());
         }
 
     }

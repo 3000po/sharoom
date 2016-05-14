@@ -39,15 +39,14 @@ public class Activity_user_view extends FragmentActivity {
 
         Helper_userData data = Helper_userData.getInstance();
 
-        Activity_login login = (Activity_login) Activity_login.login_Activity; //login_Activity_finish
-        login.finish();
+        //Activity_login login = (Activity_login) Activity_login.login_Activity; //login_Activity_finish
+        //login.finish();
 
         AsyncHttpClient client = Helper_server.getInstance();
 
         AActivty = Activity_user_view.this;
 
 //        Activity_mainIntro activity = (Activity_mainIntro) Activity_mainIntro.mActivity;
-
 //        activity.finish();
 
         mAdapter = new TestFragmentAdapter(getSupportFragmentManager());

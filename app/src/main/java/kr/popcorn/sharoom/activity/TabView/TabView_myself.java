@@ -93,11 +93,11 @@ public class TabView_myself extends LinearLayout {
 
         //Log.e("check :", "0=" + Helper_server.userData.getName());
 
-        //myname.setText(Helper_server.userData.getName());
+        myname.setText(Helper_server.userData.getUserID() + "(" + Helper_server.userData.getName() + ")" );
 
-        //text_phone.setText(Helper_server.userData.getName());
-        //text_email.setText(Helper_server.userData.getEmail());
-        //text_facebook.setText(Helper_server.userData.getFacebook());
+        text_phone.setText(Helper_server.userData.getPhoneNumber());
+        text_email.setText(Helper_server.userData.getEmail());
+        text_facebook.setText(Helper_server.userData.getFacebook());
 
         String str = "" + getContext().getClass();
 

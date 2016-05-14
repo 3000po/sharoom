@@ -16,11 +16,11 @@ import cz.msebera.android.httpclient.Header;
 /**
  * Created by Administrator on 2016-03-26.
  */
-public class Helper_emailCertification {
+public class Helper_find {
 
     private int random_number;
 
-    public Helper_emailCertification(String email) {
+    public Helper_find(String email) {
 
         randomNumber_create();
 

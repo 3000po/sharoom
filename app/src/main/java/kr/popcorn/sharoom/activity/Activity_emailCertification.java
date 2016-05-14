@@ -3,13 +3,12 @@ package kr.popcorn.sharoom.activity;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 
 import com.facebook.appevents.AppEventsLogger;
 
 import kr.popcorn.sharoom.R;
-import kr.popcorn.sharoom.helper.Helper_emailCertification;
+import kr.popcorn.sharoom.helper.Helper_find;
 
 /**
  * Created by Administrator on 2016-03-26.
@@ -47,7 +46,7 @@ public class Activity_emailCertification extends Activity {
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Helper_emailCertification help= new Helper_emailCertification(email);
+                        Helper_find help= new Helper_find(email);
                     }
                 }).setNegativeButton("취소",
                 new DialogInterface.OnClickListener() {

@@ -68,7 +68,7 @@ public class TabView_myself extends LinearLayout {
 
   //      final Activity_user_view aActivity = (Activity_user_view) Activity_user_view.AActivty;
 
-        Helper_server.userData = Helper_userData.getInstance(getContext().getApplicationContext());
+       // Helper_server.userData = Helper_userData.getInstance(getContext().getApplicationContext());
 
         Bitmap face = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.myself_50x50);
 
@@ -93,11 +93,11 @@ public class TabView_myself extends LinearLayout {
 
         //Log.e("check :", "0=" + Helper_server.userData.getName());
 
-       // myname.setText(Helper_server.userData.getUserID() + "(" + Helper_server.userData.getName() + ")" );
+//        myname.setText(Helper_server.userData.getUserID() + "(" + Helper_server.userData.getName() + ")" );
 
-       // text_phone.setText(Helper_server.userData.getPhoneNumber());
+  //      text_phone.setText(Helper_server.userData.getPhoneNumber());
        // text_email.setText(Helper_server.userData.getEmail());
-       // text_facebook.setText(Helper_server.userData.getFacebook());
+      //  text_facebook.setText(Helper_server.userData.getFacebook());
 
         String str = "" + getContext().getClass();
 

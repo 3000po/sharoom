@@ -174,73 +174,45 @@
 
     <!--문의 요청-->
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/datelayout"
         android:id="@+id/requestInfo"
         android:layout_marginTop="10dp">
 
         <LinearLayout
-            android:gravity="center"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_gravity="center">
 
             <ImageView
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:src="@drawable/contact"/>
+                android:src="@drawable/contact"
+                android:layout_gravity="left"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="5dp"/>
             <!--이름-->
             <TextView
-                android:id="@+id/hostname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:text="유시진"
-                android:layout_marginLeft="6dp"
-                android:layout_marginRight="3dp"/>
+                android:layout_gravity="center_vertical"
+                android:layout_margin="3sp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
                 android:textColor="#000000"
                 android:textStyle="bold"
-                android:text="님의 연락처 : "/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:textColor="#000000"
-                android:textStyle="bold"
-                android:text="010-1234-4567"/>
+                android:text="님에게 문의하기"
+                android:layout_gravity="center_vertical"/>
 
         </LinearLayout>
-    </RelativeLayout>
-
-    <!--연락 버튼-->
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/requestInfo"
-        android:id="@+id/requestButtons"
-        android:layout_marginTop="10dp">
-        <Button
-            android:layout_width="120dp"
-            android:layout_height="100dp"
-            android:layout_alignParentLeft="true"
-            android:layout_gravity="left"
-            android:layout_marginLeft="35dp"
-            android:text="전화하기"/>
-
-        <Button
-            android:layout_width="120dp"
-            android:layout_height="100dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="35dp"
-            android:text="문자하기"/>
-
     </RelativeLayout>
 
 
@@ -258,7 +230,7 @@
             android:layout_height="45dp"
             android:gravity="center"
             android:layout_centerVertical="true"
-            android:text="예약 체크"
+            android:text="예약완료"
             android:textSize="23sp"
             android:textStyle="bold"
             android:textColor="#FFFFFF">
@@ -271,29 +243,14 @@
         android:layout_centerHorizontal="true"
         android:layout_margin="3dp"
         android:layout_above="@id/reservationBtn">
-
-        <LinearLayout
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="서로 연락이 닿았나요?"
-                android:textColor="#000000"
-                android:textStyle="bold"
-                android:textSize="16sp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+            android:text="예약할 준비가 다 되었나요?"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:textSize="16sp" />
 
-                android:text="예약이 완료될려면 상대방도 예약 확인을 체크해야합니다."
-                android:textColor="#000000"
-                android:textStyle="bold"
-                android:textSize="14sp" />
-        </LinearLayout>
     </RelativeLayout>
 
 </RelativeLayout>

@@ -140,11 +140,8 @@ public class Activity_login extends Activity {
                 userId = String.valueOf(userProfile.getId());
                 userName = userProfile.getNickname();
 
-                if( phoneNum == null ) return ;
-
                 final RequestParams idParams = new RequestParams("ktid", userId);
                 idParams.put("name", userName);
-                idParams.put("phone", phoneNum);
                 Helper_server.post("ktCheck.php", idParams, new JsonHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -156,6 +153,10 @@ public class Activity_login extends Activity {
                             e.printStackTrace();
                         }
                         if (data.equals("true")) {  //카카오톡 가입이 안되있을경우
+
+                            if( phoneNum == null ) return ;
+                            idParams.put("phone", phoneNum);
+
                             Helper_server.post("kakaotalk.php", idParams, new AsyncHttpResponseHandler() {
                                 @Override
 
@@ -250,8 +251,6 @@ public class Activity_login extends Activity {
                 final String id = loginResult.getAccessToken().getUserId();
                 final RequestParams idParams = new RequestParams("fbid", id);
 
-                if( phoneNum == null ) return ;
-
                 Helper_server.post("fbCheck.php", idParams, new JsonHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -265,6 +264,9 @@ public class Activity_login extends Activity {
                         if (data.equals("true")) {  //페북 가입이 안되있을경우
                             Bundle params = new Bundle();
                             params.putString("fields", "id,name,email,gender");
+
+                            if( phoneNum == null ) return ;
+
                             new GraphRequest(
                                     AccessToken.getCurrentAccessToken(), //loginResult.getAccessToken(),
                                     "/me",

@@ -1,10 +1,13 @@
 package kr.popcorn.sharoom.activity;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -26,6 +29,8 @@ import com.facebook.GraphResponse;
 import com.facebook.HttpMethod;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.gun0912.tedpermission.PermissionListener;
+import com.gun0912.tedpermission.TedPermission;
 import com.kakao.auth.AuthType;
 import com.kakao.auth.ISessionCallback;
 import com.kakao.auth.Session;
@@ -43,6 +48,7 @@ import com.loopj.android.http.RequestParams;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import cz.msebera.android.httpclient.Header;

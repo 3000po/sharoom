@@ -202,6 +202,7 @@ public class TabView_myself extends LinearLayout {
 
 
         this.addView(view);
+
     }
 
     public Bitmap getCircleBitmap(Bitmap bitmap) {
@@ -236,6 +237,8 @@ public class TabView_myself extends LinearLayout {
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
                 getContext().startActivity(intent);
+
+
             }
         });
         alert.show();

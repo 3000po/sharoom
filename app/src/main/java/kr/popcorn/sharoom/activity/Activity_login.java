@@ -74,7 +74,6 @@ public class Activity_login extends Activity {
     private String userName;
     private String userId;
     private RelativeLayout layoutIdPassword;
-
     public PermissionListener permissionlistener;
     public TedPermission ted;
     public String phoneNum;
@@ -86,7 +85,7 @@ public class Activity_login extends Activity {
 
         startActivity(intent);
         finish();
-        activity.finish();
+        //activity.finish();
     }
 
     public void getPermission(){

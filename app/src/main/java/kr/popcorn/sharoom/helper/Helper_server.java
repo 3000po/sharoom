@@ -90,23 +90,28 @@ public class Helper_server {
     }
 
     public static void logout(PersistentCookieStore myCookieStore, Context mContext){
+        //일반 로그인
         myCookieStore.clear();
         client.setCookieStore(myCookieStore);
 
+        //페이스북
         FacebookSdk.sdkInitialize(mContext);
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
         if (accessToken == null) {
             Log.d("abde", ">>>" + "Signed Out");
-        }else if(Session.getCurrentSession().isOpened()) {
+        }else {
+            LoginManager loginManager = LoginManager.getInstance();
+            loginManager.logOut();
+        }
+
+        //카카오톡
+        if(Session.getCurrentSession().isOpened()) {
             UserManagement.requestLogout(new LogoutResponseCallback() {
                 @Override
                 public void onCompleteLogout() {
                     //로그아웃 성공 후 하고싶은 내용 코딩 ~
                 }
             });
-        }else {
-            LoginManager loginManager = LoginManager.getInstance();
-            loginManager.logOut();
         }
     }
 

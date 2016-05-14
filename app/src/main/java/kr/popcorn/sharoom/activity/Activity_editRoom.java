@@ -27,6 +27,7 @@ import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
 import kr.popcorn.sharoom.R;
+import kr.popcorn.sharoom.helper.Helper_server;
 import me.yokeyword.imagepicker.ImagePicker;
 import me.yokeyword.imagepicker.callback.CallbackForCamera;
 import me.yokeyword.imagepicker.callback.CallbackForImagePicker;
@@ -82,8 +83,7 @@ public class Activity_editRoom extends Activity  implements View.OnClickListener
                 for(int i=0; i<list.size(); i++){
                     Log.d("buttonList", list.get(i));
                 }
-                postImage(list);
-
+                    postImage(list);
             }
         });
 
@@ -215,35 +215,23 @@ public class Activity_editRoom extends Activity  implements View.OnClickListener
 
     public static void postImage(ArrayList<String> list){
         RequestParams params = new RequestParams();
-        try {
             params.put("size", list.size());
             for (int i = 0; i < list.size(); i++) {
                 System.out.println("sibalbalblabl_imageLink : " + list.get(i));
-                System.out.println("sibalbalblabl_imageLi : " + Uri.fromFile(new File(list.get(i))));
-                System.out.println("sibalbalblabl_imageLi : " + Environment.getDataDirectory().getAbsolutePath());
+                String imagePath =list.get(i);
+                File f = new File(imagePath);
+                System.out.println("sibalbalImagePath : " + imagePath);
 
-                File f = new File(Environment.getExternalStorageDirectory(), // 외장메모리 경로
-                        "room" + i +".png");
-                String path = "" + Environment.getExternalStorageDirectory() + "/room" + i +".png";
-                System.out.println("sibalbalPath : " + path);
-
-                try {
-                    f.createNewFile();      // 외장메모리에 temp.jpg 파일 생성
-                } catch (IOException e) {
-                }
-
-                params.put("file"+i, new File(path));
+            try{
+                params.put("file" + i, f);
                 //params.put("path", "aaa");
-                System.out.println("sibalbalblabl_imageLink : " + list.get(i));
+               }
+                catch(FileNotFoundException e){
+                    System.out.println("sibalbal fileNotFound");
+                }
             }
-        }
-    catch (FileNotFoundException e) {
-        e.printStackTrace();
-        System.out.println("sibalbalblabl_file111   : "+ e);
 
-    }
-        AsyncHttpClient client = new AsyncHttpClient();
-        client.post("http://14.63.227.200/image/save1.php", params, new AsyncHttpResponseHandler() {
+        Helper_server.post("image/save1.php", params, new AsyncHttpResponseHandler() {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {

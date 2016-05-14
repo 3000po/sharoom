@@ -113,7 +113,9 @@
             android:theme="@android:style/Theme.Holo.NoActionBar" />
         <activity
             android:name=".activity.Activity_imageUpload"
-            android:theme="@android:style/Theme.Holo.NoActionBar" />
+            android:theme="@android:style/Theme.Holo.NoActionBar">
+
+        </activity>
         <activity android:name=".activity.Activity_mapMenu" />
         <activity android:name=".activity.Activity_finishJoin"></activity>
     </application>

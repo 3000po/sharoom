@@ -344,7 +344,7 @@ public class Activity_login extends Activity {
             Intent intent = new Intent(Activity_login.this, Activity_user_view.class);
 
             Helper_userData user = Helper_userData.getInstance();
-            user.getInstance("111");
+            user.getInstance("111", getApplicationContext());
 
             startActivity(intent);
             finish();
@@ -445,26 +445,26 @@ public class Activity_login extends Activity {
                                              params.put("id", id);
                                              params.put("password", password);
                                              //server connect
-                                             Helper_server.post("login.php", params, new JsonHttpResponseHandler() {
+                                             Helper_server.post("login.php", params,  new JsonHttpResponseHandler() {
                                                  @Override
 
                                                  public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                                                      Log.i("abde", "success");
-                                                     String data = "";
-                                                     try {
+                                                     String data="";
+                                                     try{
                                                          data = response.get("phpsession").toString();
-                                                     } catch (JSONException e) {
+                                                     } catch(JSONException e){
                                                          e.printStackTrace();
                                                      }
                                                      Log.d("phpsession", "" + data);
-                                                     if (!data.equals("no")) {
+                                                     if(!data.equals("no")){
 
                                                          BasicClientCookie newCookie = new BasicClientCookie("login_session", data);
                                                          newCookie.setVersion(1);
                                                          newCookie.setDomain("14.63.227.200");
                                                          newCookie.setPath("/");
                                                          myCookieStore.addCookie(newCookie);
-                                                         if (check.isChecked()) {
+                                                         if(check.isChecked()){
                                                              newCookie = new BasicClientCookie("isLogin", "true");
                                                              newCookie.setVersion(1);
                                                              newCookie.setDomain("14.63.227.200");
@@ -475,13 +475,10 @@ public class Activity_login extends Activity {
                                                          Activity_mainIntro activity = (Activity_mainIntro) Activity_mainIntro.mActivity;
                                                          Intent intent = new Intent(Activity_login.this, Activity_user_view.class);
                                                          Helper_userData user = new Helper_userData();
-                                                         user.getInstance(id);
+                                                         user.getInstance(id, getApplicationContext());
 
-                                                         startActivity(intent);
-                                                         finish();
-                                                         activity.finish();
-
-                                                     } else {
+                                                     }
+                                                     else{
                                                          loginAlert();
                                                      }
                                                  }
@@ -489,7 +486,7 @@ public class Activity_login extends Activity {
                                                  @Override
                                                  public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                                                      super.onFailure(statusCode, headers, responseString, throwable);
-                                                     Log.d("Failed: ", "" + statusCode);
+                                                     Log.d("Failed: ", ""+statusCode);
                                                      Log.d("Error : ", "" + throwable);
                                                  }
                                              });
@@ -498,6 +495,7 @@ public class Activity_login extends Activity {
 
                                      }
         );
+
 
       /*  Button btn_join = (Button) findViewById(R.id.btn_join);
         btn_join.setOnClickListener(new Button.OnClickListener(){

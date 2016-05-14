@@ -227,6 +227,7 @@
         android:id="@+id/requestButtons"
         android:layout_marginTop="10dp">
         <Button
+            android:id="@+id/callbutton"
             android:layout_width="120dp"
             android:layout_height="100dp"
             android:layout_alignParentLeft="true"
@@ -235,6 +236,7 @@
             android:text="전화하기"/>
 
         <Button
+            android:id="@+id/smsbutton"
             android:layout_width="120dp"
             android:layout_height="100dp"
             android:layout_alignParentRight="true"

@@ -3,7 +3,6 @@ package kr.popcorn.sharoom.activity;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;

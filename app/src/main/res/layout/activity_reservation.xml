@@ -229,18 +229,20 @@
         <Button
             android:id="@+id/callbutton"
             android:layout_width="120dp"
-            android:layout_height="100dp"
+            android:layout_height="50dp"
             android:layout_alignParentLeft="true"
             android:layout_gravity="left"
-            android:layout_marginLeft="35dp"
+            android:layout_marginLeft="50dp"
+            android:background="@drawable/btn_color_selector"
             android:text="전화하기"/>
 
         <Button
             android:id="@+id/smsbutton"
             android:layout_width="120dp"
-            android:layout_height="100dp"
+            android:layout_height="50dp"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="35dp"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/btn_color_selector"
             android:text="문자하기"/>
 
     </RelativeLayout>

@@ -4,20 +4,21 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import kr.popcorn.sharoom.R;
 
 public class Activity_finishJoin extends Activity {
 
-    private TextView loginBtn;
+    private ImageView loginBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_finish_join);
 
-        loginBtn = (TextView) findViewById(R.id.loginBtn);
+        loginBtn = (ImageView) findViewById(R.id.loginBtn);
         loginBtn.setOnClickListener(new TextView.OnClickListener() {
             @Override
             public void onClick(View v) {

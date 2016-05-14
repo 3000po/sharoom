@@ -59,7 +59,7 @@
                         android:src="@drawable/password"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true"
-                        android:paddingTop="16dp"
+                        android:paddingTop="18dp"
                         />
                     <TextView
                         android:id="@+id/tv_join_id"
@@ -78,12 +78,13 @@
 
                     <EditText
                         android:id="@+id/et_join_id"
-                        android:layout_width="wrap_content"
+                        android:layout_width="150dp"
                         android:layout_height="40dp"
                         android:paddingLeft="5dp"
                         android:layout_alignLeft="@id/iv_id"
                         android:layout_alignBottom="@id/iv_id"
                         android:textColor="@color/activity_login_edit"
+                        android:textSize="18sp"
                         android:hint="5~20문자"
                         android:background="@null"
                         android:imeOptions="actionNext"
@@ -133,16 +134,16 @@
                     </TextView>
                     <EditText
                         android:id="@+id/et_join_password"
-                        android:layout_width="wrap_content"
+                        android:layout_width="150dp"
                         android:layout_height="40dp"
                         android:paddingLeft="5dp"
                         android:layout_alignLeft="@id/iv_password"
                         android:layout_alignBottom="@id/iv_password"
                         android:background="@null"
                         android:textColor="@color/activity_login_edit"
-                        android:hint="input data"
+                        android:hint="5문자 이상"
                         android:password = "true"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         android:imeOptions="actionNext"
                         android:singleLine = "true"
                         android:lines = "1" />
@@ -178,14 +179,15 @@
                     </TextView>
                     <EditText
                         android:id="@+id/et_join_name"
-                        android:layout_width="wrap_content"
+                        android:layout_width="150dp"
                         android:layout_height="40dp"
                         android:paddingLeft="5dp"
                         android:layout_alignLeft="@id/iv_name"
                         android:layout_alignBottom="@id/iv_name"
                         android:background="@null"
+                        android:textColor="@color/activity_login_edit"
                         android:hint="input data"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         android:imeOptions="actionNext"
                         android:singleLine = "true"
                         android:lines = "1"
@@ -222,15 +224,15 @@
                     </TextView>
                     <EditText
                         android:id="@+id/et_join_phoneNumber"
-                        android:layout_width="wrap_content"
+                        android:layout_width="150dp"
                         android:layout_height="40dp"
                         android:paddingLeft="5dp"
                         android:layout_alignLeft="@id/iv_phoneNumber"
                         android:layout_alignBottom="@id/iv_phoneNumber"
                         android:background="@null"
-                        android:textColor="@color/bangpoolColor"
+                        android:textColor="@color/activity_login_edit"
                         android:hint="input data"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         android:inputType = "phone"
                         android:phoneNumber = "true"
                         android:imeOptions="actionNext"
@@ -269,7 +271,7 @@
                     </TextView>
                     <EditText
                         android:id="@+id/et_join_email"
-                        android:layout_width="match_parent"
+                        android:layout_width="150dp"
                         android:layout_height="40dp"
                         android:paddingLeft="5dp"
                         android:layout_alignLeft="@id/iv_email"
@@ -277,7 +279,7 @@
                         android:background="@null"
                         android:textColor="@color/activity_login_edit"
                         android:hint="input data"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         android:inputType = "textEmailAddress"
                         android:singleLine = "true"
                         android:lines = "1"

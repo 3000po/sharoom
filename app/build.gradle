@@ -65,6 +65,7 @@ dependencies {
     
     compile 'com.android.support:support-v4:22.+'
     compile 'com.android.support:recyclerview-v7:22.+'
+    compile 'com.android.support:cardview-v7:21.0.+'
     compile 'com.squareup.picasso:picasso:2.5.+'
     compile 'com.yqritc:recyclerview-flexibledivider:1.2.+'
     compile 'me.yokeyword:imagepicker:0.2.1'
@@ -79,4 +80,5 @@ dependencies {
 
     // compile 'com.facebook.android:audience-network-sdk:4.+'
     compile 'com.google.android.gms:play-services-appindexing:8.3.0'
+
 }

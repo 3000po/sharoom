@@ -29,7 +29,7 @@ public class Activity_FacillitiesInfo extends Dialog {
 
         getWindow().setAttributes(mParams);
 
-        setContentView(R.layout.activity_facillities_info);
+        setContentView(R.layout.activity_facilities_info);
     }
 
     public Activity_FacillitiesInfo(Context context, View.OnClickListener singleLisener) {

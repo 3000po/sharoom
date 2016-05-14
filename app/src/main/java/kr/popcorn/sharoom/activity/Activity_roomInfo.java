@@ -6,6 +6,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.StateListDrawable;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.AsyncTask;
@@ -21,6 +22,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -57,7 +59,7 @@ public class Activity_roomInfo extends FragmentActivity {
     private int[] imgList = new int[] {
             R.drawable.room1, R.drawable.room2, R.drawable.room3, R.drawable.roomimg
     };
-    private ArrayList<String> facillitiesList = new ArrayList<>();
+    private ArrayList<String> facilitiesList = new ArrayList<>();
 
     //private ArrayList<String> imgList = new ArrayList<>();
     //private ArrayList<Integer> imgList = new ArrayList<>();
@@ -72,7 +74,7 @@ public class Activity_roomInfo extends FragmentActivity {
     private TextView tvCount;
     private int position;
     //public ImageView cFacillities;
-    private Button cFacillities, reservationBtn;
+    private LinearLayout cFacilities;
     private Activity_FacillitiesInfo customDialog;
     private ViewGroup layout;
 
@@ -160,15 +162,19 @@ public class Activity_roomInfo extends FragmentActivity {
             }
         });
 
-        cFacillities = (Button)findViewById(R.id.facillitiesIcon);
-        cFacillities.setBackgroundResource(R.drawable.selector_facilitiesbtn);
-        cFacillities.setOnClickListener(new Button.OnClickListener() {
+        cFacilities = (LinearLayout)findViewById(R.id.ll_facilities);
+        //cFacilities.setBackgroundResource(R.drawable.selector_facilitiesbtn);
+        Button fbtn = (Button)findViewById(R.id.facilitiesIcon);
+        fbtn.setBackgroundResource(R.drawable.selector_facilitiesbtn);
+        cFacilities.setOnClickListener(new Button.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
 
                 switch (arg0.getId()) {
-                    case R.id.facillitiesIcon:
+                    case R.id.ll_facilities:
+                        StateListDrawable states = new StateListDrawable();
+                        states.addState(new int[]{android.R.attr.state_pressed}, getResources().getDrawable(R.drawable.facilitiesicon));
                         customDialog = new Activity_FacillitiesInfo(Activity_roomInfo.this, cancelListener);
                         customDialog.setCanceledOnTouchOutside(true);
                         customDialog.show();

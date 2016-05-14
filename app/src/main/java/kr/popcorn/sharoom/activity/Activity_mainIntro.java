@@ -44,6 +44,7 @@ public class Activity_mainIntro extends Activity {
             public void onClick(View v) {
                 Intent loginIntent = new Intent(Activity_mainIntro.this, Activity_login.class);
                 startActivity(loginIntent);
+                finish();
             }
         });
 

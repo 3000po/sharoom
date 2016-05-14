@@ -83,6 +83,7 @@ public class Activity_join extends Activity {
                     RequestParams idParams = new RequestParams();
                     String id = form_basic.et_id.getText().toString();
                     idParams.put("id", id);
+                    form_basic.et_id.setHint("5~20문자");
                     if (!Helper_checker.validId_context(Activity_join.this, id)) {
                         id_check_ok = false;
                         form_basic.tv_idCheck.setText("사용불가");
@@ -103,11 +104,11 @@ public class Activity_join extends Activity {
                                 Log.d("ok", "" + data);
                                 if (data.equals("true")) {
                                     form_basic.tv_idCheck.setText("사용가능");
-                                    form_basic.tv_idCheck.setTextColor(Color.rgb(0,11,0));
+                                    form_basic.tv_idCheck.setTextColor(Color.BLACK);
                                     id_check_ok = true;
                                     return;
                                 } else {
-                                    form_basic.tv_idCheck.setText("이미있는아이디");
+                                    form_basic.tv_idCheck.setText("중복아이디");
                                     id_check_ok = false;
                                     return;
                                 }
@@ -123,9 +124,63 @@ public class Activity_join extends Activity {
                     }
                 } else {
                     form_basic.tv_idCheck.setText("");
+                    form_basic.et_id.setHint("");
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+                    imm.showSoftInput(form_basic.et_id, InputMethodManager.SHOW_IMPLICIT);
                     id_check_ok = false;
 
                 }
+            }
+        });
+        form_basic.et_password.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    form_basic.et_password.setHint("");
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+                    imm.showSoftInput(form_basic.et_password, InputMethodManager.SHOW_IMPLICIT);
+
+                } else
+                    form_basic.et_password.setHint("5문자 이상");
+            }
+        });
+
+        form_basic.et_name.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    form_basic.et_name.setHint("");
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+                    imm.showSoftInput(form_basic.et_name, InputMethodManager.SHOW_IMPLICIT);
+
+                } else
+                    form_basic.et_name.setHint("input data");
+            }
+        });
+
+        form_basic.et_phoneNumber.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    form_basic.et_phoneNumber.setHint("");
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+                    imm.showSoftInput(form_basic.et_phoneNumber, InputMethodManager.SHOW_IMPLICIT);
+
+                } else
+                    form_basic.et_phoneNumber.setHint("input data");
+            }
+        });
+
+        form_basic.et_email.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    form_basic.et_email.setHint("");
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+                    imm.showSoftInput(form_basic.et_email, InputMethodManager.SHOW_IMPLICIT);
+
+                } else
+                    form_basic.et_email.setHint("input data");
             }
         });
 

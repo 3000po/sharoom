@@ -143,9 +143,6 @@ public class TabView_myself extends LinearLayout {
         edit_btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (v.getId() == R.id.editbutton) {
-
-
-
                     Context mContext = getContext().getApplicationContext();
                     LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(getContext().LAYOUT_INFLATER_SERVICE);
 

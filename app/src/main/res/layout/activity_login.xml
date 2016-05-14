@@ -37,17 +37,23 @@
         android:gravity="center_vertical">
 
         <RelativeLayout
-            android:id="@+id/layout_id"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:id="@+id/layout_idpassword"
+            android:layout_width="wrap_content"
+            android:layout_height="90dp"
             android:gravity="center_vertical"
+            android:layout_centerHorizontal="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:descendantFocusability="beforeDescendants"
             android:paddingRight="70dp">
             <ImageView
-                android:id="@+id/iv_id"
+                android:id="@+id/idpassword"
                 android:layout_width="280dp"
-                android:layout_height="75dp"
-                android:layout_centerHorizontal="true"
-                android:src="@drawable/loginid" />
+                android:layout_height="100dp"
+                android:src="@drawable/idpassword"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
+
             <EditText
                 android:id="@+id/et_login_id"
                 android:layout_width="wrap_content"
@@ -60,42 +66,24 @@
                 android:singleLine = "true"
                 android:lines = "1"
                 android:layout_centerVertical="true"
-                android:layout_alignLeft="@id/iv_id"
-                android:layout_marginLeft="65dp"/>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/layout_password"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:layout_below="@+id/layout_id"
-            android:layout_centerHorizontal="true"
-            android:layout_alignEnd="@id/layout_id"
-            android:paddingRight="70dp">
-            <ImageView
-                android:id="@+id/iv_password"
-                android:layout_width="200dp"
-                android:layout_height="30dp"
-                android:src="@drawable/password"
-                android:layout_centerVertical="true"
-                android:layout_alignParentEnd="true" />
+                android:paddingBottom="21dp"
+                android:layout_alignLeft="@id/idpassword"
+                android:layout_marginLeft="80dp" />
 
             <EditText
                 android:id="@+id/et_login_password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:gravity="center"
                 android:textColor="#949494"
                 android:hint="비밀번호 입력"
                 android:password = "true"
                 android:singleLine = "true"
                 android:lines = "1"
-                android:layout_centerVertical="true"
-                android:layout_alignLeft="@id/iv_password"
-                android:layout_alignBottom="@id/iv_password"
-                android:layout_marginBottom="7dp"/>
+                android:layout_marginBottom="6dp"
+                android:layout_below="@id/et_login_id"
+                android:layout_alignLeft="@id/et_login_id"
+                android:layout_centerHorizontal="true" />
 
         </RelativeLayout>
 
@@ -108,8 +96,8 @@
             android:checked="true"
             android:button="@null"
             android:drawableLeft="@drawable/selector_checkbox"
-            android:layout_below="@+id/layout_password"
-            android:layout_alignEnd="@id/layout_id"
+            android:layout_below="@+id/layout_idpassword"
+            android:layout_alignEnd="@id/layout_idpassword"
             android:paddingRight="28dp"/>
 
         <ImageView
@@ -117,7 +105,7 @@
             android:layout_below="@+id/ck_autoLogin"
             android:layout_width="75dp"
             android:layout_height="40dp"
-            android:layout_margin="20dp"
+            android:layout_margin="15dp"
             android:src="@drawable/loginbtn"
             android:layout_centerHorizontal="true">
         </ImageView>
@@ -126,19 +114,22 @@
             xmlns:fb="http://schemas.android.com/apk/res-auto"
             android:id="@+id/login_button"
             android:layout_below="@id/btn_login"
-            android:layout_width="180dp"
+            android:layout_width="182dp"
             android:layout_height="70dp"
+            android:layout_alignRight="@+id/kakao_login"
             android:layout_centerHorizontal="true"
             fb:com_facebook_login_text=""
-            fb:com_facebook_logout_text=""
-            />
+            fb:com_facebook_logout_text="" />
+
         <ImageView
             android:id="@+id/kakao_login"
-            android:layout_width="180dp"
-            android:layout_height="70dp"
+            android:layout_width="210dp"
+            android:layout_height="80dp"
+            android:paddingBottom="40dp"
             android:layout_centerHorizontal="true"
             android:layout_below="@id/login_button"
-            android:src="@drawable/kakaobtn"/>
+            android:src="@drawable/kakaobtn"
+            />
 
     </RelativeLayout>
 
@@ -149,7 +140,7 @@
         android:layout_marginBottom="50dp"
         android:src="@drawable/ivjoin"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true">
+        android:layout_below="@id/ll_body">
     </ImageView>
 
     <!-- content end -->

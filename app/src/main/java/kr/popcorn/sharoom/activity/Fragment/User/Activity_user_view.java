@@ -16,6 +16,7 @@ import kr.popcorn.sharoom.R;
 import kr.popcorn.sharoom.activity.Activity_mainIntro;
 import kr.popcorn.sharoom.activity.Activity_mapMenu;
 import kr.popcorn.sharoom.helper.Helper_server;
+import kr.popcorn.sharoom.helper.Helper_userData;
 
 public class Activity_user_view extends FragmentActivity {
 
@@ -32,6 +33,10 @@ public class Activity_user_view extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_user_view);
 
+        Helper_userData data = Helper_userData.getInstance();
+
+        System.out.println("aaaaa1111 : " + data);
+        System.out.println("aaaaa11111 : " + data.getId() + " +  " + data.getEmail());
 
         AsyncHttpClient client = Helper_server.getInstance();
 

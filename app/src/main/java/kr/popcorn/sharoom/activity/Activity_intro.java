@@ -110,7 +110,7 @@ public class Activity_intro extends Activity {
                 startActivity(intent);
                 finish();
             }
-        }, 3000); // 시간지정
+        }, 5000); // 시간지정
 
     }
 

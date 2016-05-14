@@ -32,6 +32,7 @@ import kr.popcorn.sharoom.activity.Activity_login;
 import kr.popcorn.sharoom.activity.Fragment.Host.Activity_host_view;
 import kr.popcorn.sharoom.activity.Fragment.User.Activity_user_view;
 import kr.popcorn.sharoom.helper.Helper_server;
+import kr.popcorn.sharoom.helper.Helper_userData;
 
 /**
  * Created by Administrator on 2016-05-11.
@@ -47,6 +48,8 @@ public class TabView_myself extends LinearLayout {
     EditText edit_email;
     EditText edit_facebook;
     EditText edit_kakaotalk;
+
+    TextView myname;
 
     TextView text_phone;
     TextView text_email;
@@ -64,6 +67,9 @@ public class TabView_myself extends LinearLayout {
     private void init(){
 
   //      final Activity_user_view aActivity = (Activity_user_view) Activity_user_view.AActivty;
+
+        Helper_server.userData = Helper_userData.getInstance(getContext().getApplicationContext());
+
         Bitmap face = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.myself_50x50);
 
         final View view = LayoutInflater.from(getContext()).inflate(R.layout.activity_myself,null);
@@ -75,12 +81,29 @@ public class TabView_myself extends LinearLayout {
         chage_btn = (Button) view.findViewById(R.id.chage_btn);
         edit_btn = (Button) view.findViewById(R.id.editbutton);
 
+        myname = (TextView) view.findViewById(R.id.myname);
+
         text_phone = (TextView) view.findViewById(R.id.text_phone);
         text_email = (TextView) view.findViewById(R.id.text_email);
         text_facebook = (TextView) view.findViewById(R.id.text_facebook);
         text_kakaotalk = (TextView) view.findViewById(R.id.text_kakao);
 
         myFace.setImageBitmap(getCircleBitmap(face));
+
+
+        //Log.e("check :", "0=" + Helper_server.userData.getName());
+
+        //myname.setText(Helper_server.userData.getName());
+
+        //text_phone.setText(Helper_server.userData.getName());
+        //text_email.setText(Helper_server.userData.getEmail());
+        //text_facebook.setText(Helper_server.userData.getFacebook());
+
+        String str = "" + getContext().getClass();
+
+        if (str.contains("Activity_user_view")) chage_btn.setText("  호스트 모드로 변환  ");
+        else chage_btn.setText("  사용자 모드로 변환  ");
+
 
         logout_btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

@@ -53,9 +53,10 @@ public class Activity_imageUpload extends Activity {
                 intent.putExtra("outputFormat",         // 포맷방식
                         Bitmap.CompressFormat.JPEG.toString());
 
+                Log.d("kisang1", "" + android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                Log.d("kisang111", ""+MediaStore.EXTRA_OUTPUT);
                 startActivityForResult(intent, REQ_CODE_PICK_IMAGE);
                 // REQ_CODE_PICK_IMAGE == requestCode
-                Log.d("kisang1", ""+android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             }
         });
 

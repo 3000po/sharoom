@@ -335,7 +335,7 @@
                     <Button
                         android:id="@+id/chage_btn"
                         android:layout_height="50dp"
-                        android:layout_width="150dp"
+                        android:layout_width="wrap_content"
                         android:layout_gravity="center"
                         android:text="사용자 모드 변환"
                         android:textColor="#FFFFFF"

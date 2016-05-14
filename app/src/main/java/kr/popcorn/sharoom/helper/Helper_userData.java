@@ -1,6 +1,8 @@
 package kr.popcorn.sharoom.helper;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -10,6 +12,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
+import kr.popcorn.sharoom.activity.Fragment.User.Activity_user_view;
 
 /**
  * Created by Administrator on 2016-03-19.
@@ -67,19 +70,20 @@ public class Helper_userData {
                     String facebook;
 
                     try {
-                        userID = Integer.parseInt(response.get("userID").toString());
-                        id = response.get("id").toString();
-                        name = response.get("name").toString();
-                        phoneNumber = response.get("phoneNumber").toString();
-                        email = response.get("email").toString();
-                        sex = Integer.parseInt(response.get("sex").toString());
-                        rate = Integer.parseInt(response.get("rate").toString());
-                        school = response.get("school").toString();
-                        facebook = response.get("facebook").toString();
+                        userID = isNull_Int(response.get("userID"));
+                        id = isNull_String(response.get("id"));
+                        name = isNull_String(response.get("name"));
+                        phoneNumber = isNull_String(response.get("phoneNumber"));;
+                        email = isNull_String(response.get("email"));
+                        sex = isNull_Int(response.get("sex"));
+                        rate = isNull_Int(response.get("rate"));
+                        school = isNull_String(response.get("school"));
+                        facebook = isNull_String(response.get("facebook"));
 
                         Log.i("myself", id + ", " + name + "," + facebook);
 
                         user = new Helper_userData(userID, id, name, phoneNumber, email, sex, rate, school, facebook);
+
                         //list.add(new Helper_userData(userID,id,name,phoneNumber,email,sex,rate,school,facebook));
                         //notifyDataSetChanged();
                     } catch (JSONException e) {
@@ -98,7 +102,7 @@ public class Helper_userData {
         return user;
     }
 
-    public static Helper_userData getInstance(String id) {
+    public static Helper_userData getInstance(String id, final Context mContext) {
         if( user == null ) {
             final RequestParams idParams = new RequestParams("id", id);
 
@@ -117,15 +121,16 @@ public class Helper_userData {
                     String facebook;
 
                     try {
-                        userID = Integer.parseInt(response.get("userID").toString());
-                        id = response.get("id").toString();
-                        name = response.get("name").toString();
-                        phoneNumber = response.get("phoneNumber").toString();
-                        email = response.get("email").toString();
-                        sex = Integer.parseInt(response.get("sex").toString());
-                        rate = Integer.parseInt(response.get("rate").toString());
-                        school = response.get("school").toString();
-                        facebook = response.get("facebook").toString();
+                        System.out.println("ohohohohoh" + response.get("sex"));
+                        userID = isNull_Int(response.get("userID"));
+                        id = isNull_String(response.get("id"));
+                        name = isNull_String(response.get("name"));
+                        phoneNumber = isNull_String(response.get("phoneNumber"));;
+                        email = isNull_String(response.get("email"));
+                        sex = isNull_Int(response.get("sex"));
+                        rate = isNull_Int(response.get("rate"));
+                        school = isNull_String(response.get("school"));
+                        facebook = isNull_String(response.get("facebook"));
 
                         Log.d("userData", id);
                         Log.d("userData", name);
@@ -133,8 +138,13 @@ public class Helper_userData {
                         Log.d("userData", school);
 
                         user = new Helper_userData(userID, id, name, phoneNumber, email, sex, rate, school, facebook);
-                        //list.add(new Helper_userData(userID,id,name,phoneNumber,email,sex,rate,school,facebook));
-                        //notifyDataSetChanged();
+
+                        System.out.println("aaaaa : " + user.getId() + " + " + user.getEmail());
+                        System.out.println("aaaaa : " + user);
+
+                        Intent intent = new Intent(mContext, Activity_user_view.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        mContext.startActivity(intent);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -225,6 +235,16 @@ public class Helper_userData {
 
     public void setFacebook(String facebook) {
         this.facebook = facebook;
+    }
+
+    public static String isNull_String(Object response){
+        if(response == null | response.equals(null)) return "";
+        else return response.toString().trim();
+    }
+    public static int isNull_Int(Object response){
+        if(response == null || response.equals(null)) return -1;
+        else return Integer.parseInt(response.toString().trim());
+
     }
 
 }

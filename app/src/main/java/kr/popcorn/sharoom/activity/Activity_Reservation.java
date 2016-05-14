@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -30,7 +31,8 @@ import me.yokeyword.imagepicker.adapter.GlideFragmentAdapter;
  */
 public class Activity_Reservation extends Activity {
     private ViewPager viewPager;
-    private ViewGroup reservationBtn, requestBtn;
+    private ViewGroup requestBtn;
+    private RelativeLayout reservationBtn;
     private GlideFragmentAdapter listAdapter;
     private ImageAdapter adapter;
     private TextView tvCount, startDate, endDate;
@@ -150,7 +152,7 @@ public class Activity_Reservation extends Activity {
         mMyadapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         peopleNum.setAdapter(mMyadapter);
         */
-        reservationBtn = (ViewGroup)findViewById(R.id.reservationBtn);
+        reservationBtn = (RelativeLayout)findViewById(R.id.reservationBtn);
         reservationBtn.setOnClickListener(new Button.OnClickListener() {
 
             @Override

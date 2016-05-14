@@ -2,6 +2,7 @@ package kr.popcorn.sharoom.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -85,6 +86,7 @@ public class Activity_join extends Activity {
                     if (!Helper_checker.validId_context(Activity_join.this, id)) {
                         id_check_ok = false;
                         form_basic.tv_idCheck.setText("사용불가");
+                        form_basic.tv_idCheck.setTextColor(Color.RED);
                         return;
                     } else {
                         Helper_server.post("idCheck.php", idParams, new JsonHttpResponseHandler() {
@@ -101,6 +103,7 @@ public class Activity_join extends Activity {
                                 Log.d("ok", "" + data);
                                 if (data.equals("true")) {
                                     form_basic.tv_idCheck.setText("사용가능");
+                                    form_basic.tv_idCheck.setTextColor(Color.rgb(0,11,0));
                                     id_check_ok = true;
                                     return;
                                 } else {

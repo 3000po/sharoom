@@ -38,6 +38,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.popcorn.sharoom.R;
+import kr.popcorn.sharoom.helper.GlobalApplication;
 import me.yokeyword.imagepicker.adapter.GlideFragmentAdapter;
 
 
@@ -136,7 +137,7 @@ public class Activity_roomInfo extends FragmentActivity {
 
                 // Getting user input location
                 String location = etLocation.getText().toString();
-                MyApplication myApp = (MyApplication) getApplication();
+                GlobalApplication myApp = (GlobalApplication) getApplication();
                 myApp.setGlobalString(location);
 
 
@@ -301,7 +302,7 @@ public class Activity_roomInfo extends FragmentActivity {
                 markerOptions = new MarkerOptions();
                 markerOptions.position(latLng);
                 markerOptions.title(addressText);
-                markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.mapmaker));
+                markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.mapmarker));
 
                 googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
                 googleMap.addMarker(markerOptions);

@@ -102,7 +102,7 @@ public class Helper_userData {
         return user;
     }
 
-    public static Helper_userData getInstance(String id, final Context mContext) {
+    public static void login_GetData(String id, final Context mContext) {
         if( user == null ) {
             final RequestParams idParams = new RequestParams("id", id);
 
@@ -125,7 +125,8 @@ public class Helper_userData {
                         userID = isNull_Int(response.get("userID"));
                         id = isNull_String(response.get("id"));
                         name = isNull_String(response.get("name"));
-                        phoneNumber = isNull_String(response.get("phoneNumber"));;
+                        phoneNumber = isNull_String(response.get("phoneNumber"));
+                        ;
                         email = isNull_String(response.get("email"));
                         sex = isNull_Int(response.get("sex"));
                         rate = isNull_Int(response.get("rate"));
@@ -158,7 +159,11 @@ public class Helper_userData {
                 }
             });
         }
-        return user;
+        else{
+            Intent intent = new Intent(mContext, Activity_user_view.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            mContext.startActivity(intent);
+        }
     }
 
    public static Helper_userData getInstance(){

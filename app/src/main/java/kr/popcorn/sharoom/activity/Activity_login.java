@@ -58,6 +58,7 @@ public class Activity_login extends Activity {
     EditText et_id;
     EditText et_password;
 
+    public static Activity login_Activity; //Aacitivity_login class선언.
     //페이스북 로그인, 콜백
     private LoginButton loginButton;
     private CallbackManager callbackManager;
@@ -336,13 +337,10 @@ public class Activity_login extends Activity {
         //자동 로그인 파트.
         if (Helper_server.login(myCookieStore)) {
             Log.i("abde", "what the!! ");
-            Intent intent = new Intent(Activity_login.this, Activity_user_view.class);
-
-            Helper_userData user = Helper_userData.getInstance();
-            user.getInstance("111", getApplicationContext());
-
-            startActivity(intent);
-            finish();
+            if(Helper_server.login(myCookieStore)){
+                String id = Helper_server.getCookieValue(myCookieStore, "id");
+                Helper_userData.login_GetData(id, getApplicationContext());
+            }
         } else { //페이스북 자동로그인 파트
             AccessToken accessToken = AccessToken.getCurrentAccessToken();
             if (accessToken == null) {
@@ -465,13 +463,13 @@ public class Activity_login extends Activity {
                                                              newCookie.setDomain("14.63.227.200");
                                                              newCookie.setPath("/");
                                                              myCookieStore.addCookie(newCookie);
+                                                             newCookie = new BasicClientCookie("id", id);
+                                                             newCookie.setVersion(1);
+                                                             newCookie.setDomain("14.63.227.200");
+                                                             newCookie.setPath("/");
+                                                             myCookieStore.addCookie(newCookie);
                                                          }
-
-                                                         Activity_mainIntro activity = (Activity_mainIntro) Activity_mainIntro.mActivity;
-                                                         Intent intent = new Intent(Activity_login.this, Activity_user_view.class);
-                                                         Helper_userData user = new Helper_userData();
-                                                         user.getInstance(id, getApplicationContext());
-
+                                                         Helper_userData.login_GetData(id, getApplicationContext());
                                                      }
                                                      else{
                                                          loginAlert();

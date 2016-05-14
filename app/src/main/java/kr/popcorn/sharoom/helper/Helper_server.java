@@ -69,6 +69,23 @@ public class Helper_server {
         return false;
     }
 
+    public static String getCookieValue(PersistentCookieStore myCookieStore, String name){
+        List<Cookie> cookieList = myCookieStore.getCookies();
+        if (!cookieList.isEmpty()) {
+            for (int i = 0; i < cookieList.size(); i++) {
+                // cookie = cookies.get(i);
+                String cookieString = cookieList.get(i).getName() + "="
+                        + cookieList.get(i).getValue();
+                Log.e("surosuro", cookieString);
+
+                if(cookieList.get(i).getName().equals(name)){
+                        return cookieList.get(i).getValue();
+                }
+            }
+        }
+        return "";
+    }
+
     public static void logout(PersistentCookieStore myCookieStore, Context mContext){
         myCookieStore.clear();
         client.setCookieStore(myCookieStore);

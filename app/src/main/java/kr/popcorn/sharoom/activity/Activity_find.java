@@ -112,7 +112,7 @@ public class Activity_find extends Activity {
                 }
 
                 passwordParams.put("id", id);
-                passwordParams.put("email", id);
+                passwordParams.put("email", email);
 
                 Helper_server.post("findPassword.php", passwordParams, new JsonHttpResponseHandler() {
                     @Override

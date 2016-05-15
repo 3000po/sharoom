@@ -13,6 +13,7 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -65,6 +66,9 @@ public class Activity_login extends Activity {
 
     EditText et_id;
     EditText et_password;
+
+    //찾기 버튼
+    private Button find_button;
 
     //페이스북 로그인, 콜백
     private LoginButton loginButton;
@@ -544,8 +548,15 @@ public class Activity_login extends Activity {
 
             }
         });
-
-
+        //아이디 비밀번호 찾기.
+        find_button = (Button) findViewById(R.id.btn_find);
+        find_button.setOnClickListener(new Button.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent findIntent = new Intent(Activity_login.this, Activity_find.class);
+                startActivity(findIntent);
+            }
+        });
     }//onCreateEnd
 
     public void loginAlert() {

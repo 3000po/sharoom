@@ -53,7 +53,11 @@ public class Activity_find extends Activity {
 
                 RequestParams emailParams = new RequestParams();
                 final String email = et_find_id_email.getText().toString();
-
+                if(email.equals("")){
+                    String str = "이메일을 입력하세요";
+                    Alert(str);
+                    return;
+                }
                 emailParams.put("email", email);
 
                 Helper_server.post("findId.php", emailParams, new JsonHttpResponseHandler() {
@@ -71,10 +75,17 @@ public class Activity_find extends Activity {
                         Log.d("findId", "" + data);
                         if (data.equals("no")) {
                             str = "이메일에 일치하는 아이디가 존재하지 않습니다.";
+
                         } else {
-                            str = "이메일에 일치하는 아이디는 [ "+data+" ] 입니다.";
+
+                            str = "이메일에 일치하는 아이디는 [ "+data.substring(0,data.length()-3)+"*** ] 입니다.";
                         }
-                        id_Alert(str);
+                        Alert(str);
+                    }
+
+                    public void onFailure(int statusCode, Header[] headers, String str, Throwable e) {
+                        str = "오류입니다.";
+                        Alert(str);
                     }
                 });
 
@@ -84,9 +95,56 @@ public class Activity_find extends Activity {
 
         btn_password_find = (Button) findViewById(R.id.btn_find_password);
 
+        btn_password_find.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+
+                RequestParams passwordParams = new RequestParams();
+                final String id = et_find_password_id.getText().toString();
+                final String email = et_find_password_email.getText().toString();
+
+                if(email.equals("") || id.equals("")){
+                    String str = "아이디를 입력하세요";
+                    if(email.equals("")) str = "이메일을 입력하세요";
+                    Alert(str);
+                    return;
+                }
+
+                passwordParams.put("id", id);
+                passwordParams.put("email", id);
+
+                Helper_server.post("findPassword.php", passwordParams, new JsonHttpResponseHandler() {
+                    @Override
+
+                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                        Log.i("Msg", "success");
+                        String data = "";
+                        String str = "";
+                        try {
+                            data = response.get("find").toString();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        Log.d("findPassword", "" + data);
+                        if (data.equals("no")) {
+                            str = "일치하는 정보가 존재하지 않습니다.";
+                        } else {
+                            str = "[" + email + "]" + "로 비밀번호 변경 전송이 완료되었습니다.";
+                        }
+                        Alert(str);
+                    }
+                    public void onFailure(int statusCode, Header[] headers, String str, Throwable e){
+                        str = "오류입니다.";
+                        Alert(str);
+                    }
+                });
+            }
+        });
     }
     protected void onResume() {
+
+
         super.onResume();
 
         // Logs 'install' and 'app activate' App Events.
@@ -101,7 +159,7 @@ public class Activity_find extends Activity {
         AppEventsLogger.deactivateApp(this);
     }
 
-    public void id_Alert(String str) {
+    public void Alert(String str) {
         AlertDialog.Builder alert_id = new AlertDialog.Builder(this);
         alert_id.setTitle("아이디 찾기 결과")
                 .setMessage(str)
@@ -113,31 +171,8 @@ public class Activity_find extends Activity {
                 })
                 .show();
 
-        AlertDialog alert = alert_id.create();
-        alert.show();
-    }
-
-
-
-
-    public void password_Alert() {
-        AlertDialog.Builder alert_confirm = new AlertDialog.Builder(Activity_find.this);
-        alert_confirm.setMessage("이메일인증을 하시겠습니까?").setCancelable(false).setPositiveButton("확인",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Helper_find help= new Helper_find(email);
-                    }
-                }).setNegativeButton("취소",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // 'No'
-                        return;
-                    }
-                });
-        AlertDialog alert = alert_confirm.create();
-        alert.show();
+//        AlertDialog alert = alert_id.create();
+//        alert.show();
     }
 
     public void Helper_find(String id){

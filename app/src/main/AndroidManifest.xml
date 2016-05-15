@@ -104,6 +104,10 @@
             android:windowSoftInputMode="adjustResize|adjustPan">
         </activity>
         <activity
+            android:name=".activity.Activity_find"
+            android:theme="@android:style/Theme.Holo.NoActionBar">
+        </activity>
+        <activity
             android:name=".activity.Activity_join"
             android:theme="@android:style/Theme.Holo.NoActionBar">
         </activity>

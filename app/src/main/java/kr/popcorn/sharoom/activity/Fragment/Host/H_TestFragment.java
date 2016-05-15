@@ -15,6 +15,8 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import kr.popcorn.sharoom.R;
 
 import kr.popcorn.sharoom.activity.Activity_editRoom;
@@ -24,6 +26,7 @@ import kr.popcorn.sharoom.activity.TabView.TabView_registerAdapter;
 import kr.popcorn.sharoom.activity.TabView.TabView_rentListAdapter;
 import kr.popcorn.sharoom.activity.TabView.TabView_reservationAdapter;
 import kr.popcorn.sharoom.floatingactionbutton.FloatingActionButton;
+import kr.popcorn.sharoom.helper.Helper_roomData;
 
 public final class H_TestFragment extends Fragment {
     private static final String KEY_CONTENT = "TestFragment:Content";
@@ -72,8 +75,58 @@ public final class H_TestFragment extends Fragment {
             public void onClick(View v) {
                 startActivity(new Intent(getContext(), Activity_editRoom.class)); // 로딩이 끝난후 이동할 Activity
 
+
             }
         });
+
+
+        Helper_roomData first = new Helper_roomData();
+        Helper_roomData second = new Helper_roomData();
+        Helper_roomData third = new Helper_roomData();
+        first.roomname ="방 화면 예시 1";
+        second.roomname = "방 화면 예시 2";
+        second.roomimage = R.drawable.room2;
+        third.roomimage = R.drawable.room3;
+        third.roomname = "방 화면 예시 3";
+
+        Helper_roomData first2 = new Helper_roomData();
+        Helper_roomData second2 = new Helper_roomData();
+        Helper_roomData third2 = new Helper_roomData();
+
+        first2.roomimage = R.drawable.room2;
+        second2.roomimage = R.drawable.room3;
+        third2.roomimage = R.drawable.room1;
+
+        first2.roomname = "우리집에서 라면먹고 갈래?";
+        second2.roomname = "소주한잔 어때요";
+        third2.roomname = " 오늘밤은 혼자있기가 무서워요";
+
+        Helper_roomData first3 = new Helper_roomData();
+        Helper_roomData second3 = new Helper_roomData();
+        Helper_roomData third3 = new Helper_roomData();
+
+        first3.roomimage = R.drawable.room3;
+        second3.roomimage = R.drawable.room2;
+        third3.roomimage = R.drawable.room1;
+
+        first3.roomname = "등록한 방 예시 1";
+        second3.roomname = "등록한 방 예시 2";
+        third3.roomname = "등록한 방 예시 3";
+
+        ArrayList<Helper_roomData> se = new ArrayList<Helper_roomData>();
+        se.add(first);
+        se.add(second);
+        se.add(third);
+
+        ArrayList<Helper_roomData> se2 = new ArrayList<Helper_roomData>();
+        se2.add(first2);
+        se2.add(second2);
+        se2.add(third2);
+
+        ArrayList<Helper_roomData> se3 = new ArrayList<Helper_roomData>();
+        se3.add(first3);
+        se3.add(second3);
+        se3.add(third3);
 
         switch (cases){
             case RESERVATONROOM:
@@ -81,7 +134,7 @@ public final class H_TestFragment extends Fragment {
                 recyclerView.setItemAnimator(new DefaultItemAnimator());
 
                 reservationAdapter = new TabView_reservationAdapter(getActivity(),
-                        null,
+                        se,
                         (LinearLayoutManager) recyclerView.getLayoutManager());
                 recyclerView.setAdapter(reservationAdapter);
                 break;
@@ -90,7 +143,7 @@ public final class H_TestFragment extends Fragment {
                 recyclerView_register.setItemAnimator(new DefaultItemAnimator());
 
                 registerAdapter = new TabView_registerAdapter(getActivity(),
-                        null,
+                        se2,
                         (LinearLayoutManager) recyclerView_register.getLayoutManager());
                 recyclerView_register.setAdapter(registerAdapter);
                 break;

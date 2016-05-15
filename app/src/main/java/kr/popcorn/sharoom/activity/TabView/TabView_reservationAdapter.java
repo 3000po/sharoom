@@ -16,7 +16,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import kr.popcorn.sharoom.R;
-import kr.popcorn.sharoom.activity.View.Activity_Reservation_check;
+import kr.popcorn.sharoom.activity.View.Host.Activity_host_Reservation_check;
+import kr.popcorn.sharoom.activity.View.User.Activity_user_Reservation_check;
 import kr.popcorn.sharoom.helper.Helper_roomData;
 
 
@@ -105,8 +106,15 @@ public class TabView_reservationAdapter extends RecyclerView.Adapter<TabView_res
 
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(mContext, Activity_Reservation_check.class);
-            mContext.startActivity(intent);
+
+            String str = "" + mContext.getClass();
+            if (str.contains("Activity_user_view")) {
+                Intent intent = new Intent(mContext, Activity_user_Reservation_check.class);
+                mContext.startActivity(intent);
+            } else if (str.contains("Activity_host_view")) {
+                Intent intent = new Intent(mContext, Activity_host_Reservation_check.class);
+                mContext.startActivity(intent);
+            }
 
             Log.e("reservation_check", "roomname : " + list.get(0).roomname);
             Log.e("reservation_check", "index : " + getAdapterPosition());

@@ -1,4 +1,4 @@
-package kr.popcorn.sharoom.activity.View;
+package kr.popcorn.sharoom.activity.View.Host;
 
 import android.content.Context;
 import android.content.Intent;
@@ -42,13 +42,14 @@ import java.util.List;
 import kr.popcorn.sharoom.R;
 import kr.popcorn.sharoom.activity.Activity_FacillitiesInfo;
 import kr.popcorn.sharoom.activity.Activity_largeMap;
+import kr.popcorn.sharoom.activity.View.User.Activity_user_Reservation;
 import kr.popcorn.sharoom.helper.GlobalApplication;
 import me.yokeyword.imagepicker.adapter.GlideFragmentAdapter;
 
 
-public class Activity_roomInfo extends FragmentActivity {
+public class Activity_host_roomInfo extends FragmentActivity {
 
-    public static Activity_roomInfo rActivity;
+    public static Activity_host_roomInfo rActivity;
     private GoogleMap googleMap;
     private MarkerOptions markerOptions;
     private LatLng latLng;
@@ -57,6 +58,8 @@ public class Activity_roomInfo extends FragmentActivity {
 
     private ViewPager viewPager;
     private Button btn_find;
+
+    private TextView bottom_text;
 
     private int[] imgList = new int[] {
             R.drawable.room1, R.drawable.room2, R.drawable.room3, R.drawable.roomimg
@@ -93,6 +96,8 @@ public class Activity_roomInfo extends FragmentActivity {
         // Getting reference to btn_find of the layout activity_main
         btn_find = (Button) findViewById(R.id.map_button);
 
+        bottom_text = (TextView) findViewById(R.id.bottom_text);
+
         //imageview(view pager)
         viewPager = (ViewPager)findViewById(R.id.pager);
         tvCount = (TextView) findViewById(R.id.tv_count);
@@ -105,6 +110,8 @@ public class Activity_roomInfo extends FragmentActivity {
         } else {
             tvCount.setText("");
         }
+
+        bottom_text.setText("방 정보 변경");
 
         //listAdapter = new GlideFragmentAdapter( getSupportFragmentManager(), facillitiesList);
         adapter = new ImageAdapter(this);
@@ -159,7 +166,7 @@ public class Activity_roomInfo extends FragmentActivity {
 
             @Override
             public void onMapClick(LatLng arg0) {
-                Intent mapIntent = new Intent(Activity_roomInfo.this, Activity_largeMap.class);
+                Intent mapIntent = new Intent(Activity_host_roomInfo.this, Activity_largeMap.class);
                 startActivity(mapIntent);
             }
         });
@@ -168,7 +175,7 @@ public class Activity_roomInfo extends FragmentActivity {
         //cFacilities.setBackgroundResource(R.drawable.selector_facilitiesbtn);
         Button fbtn = (Button)findViewById(R.id.facilitiesIcon);
         fbtn.setBackgroundResource(R.drawable.selector_facilitiesbtn);
-        cFacilities.setOnClickListener(new Button.OnClickListener() {
+        cFacilities.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
@@ -177,7 +184,7 @@ public class Activity_roomInfo extends FragmentActivity {
                     case R.id.ll_facilities:
                         StateListDrawable states = new StateListDrawable();
                         states.addState(new int[]{android.R.attr.state_pressed}, getResources().getDrawable(R.drawable.facilitiesicon));
-                        customDialog = new Activity_FacillitiesInfo(Activity_roomInfo.this, cancelListener);
+                        customDialog = new Activity_FacillitiesInfo(Activity_host_roomInfo.this, cancelListener);
                         customDialog.setCanceledOnTouchOutside(true);
                         customDialog.show();
 
@@ -200,7 +207,7 @@ public class Activity_roomInfo extends FragmentActivity {
                 switch (v.getId()) {
                     case R.id.reservationBar:
                         //Toast.makeText(MainActivity.this, "예약버튼이 눌렸습니다.", Toast.LENGTH_SHORT).show();
-                        Intent reservationIntent = new Intent(Activity_roomInfo.this, Activity_Reservation.class);
+                        Intent reservationIntent = new Intent(Activity_host_roomInfo.this, Activity_user_Reservation.class);
                         startActivity(reservationIntent);
                         finish();
                 }
@@ -218,7 +225,7 @@ public class Activity_roomInfo extends FragmentActivity {
     }
 
 
-    private View.OnClickListener cancelListener = new View.OnClickListener(){
+    private OnClickListener cancelListener = new OnClickListener(){
         @Override
         public void onClick(View v) {
             switch (v.getId()){

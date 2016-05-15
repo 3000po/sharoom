@@ -144,82 +144,90 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
+                        android:layout_gravity="center_horizontal"
                         android:background="@color/app_ci_4">
 
                         <EditText
                             android:id="@+id/year1"
-                            android:layout_width="55dp"
+                            android:layout_width="48dp"
                             android:layout_height="wrap_content"
                             android:textColor="#000000"
-                            android:textSize="19sp" />
+                            android:textSize="16sp"
+                            android:gravity="center"
+                            android:paddingBottom="2dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="년"
                             android:textColor="#000000"
-                            android:textSize="19sp"/>
+                            android:textSize="14sp"/>
                         <EditText
                             android:id="@+id/month1"
-                            android:layout_width="35dp"
+                            android:layout_width="32dp"
                             android:layout_height="wrap_content"
                             android:textColor="#000000"
-                            android:textSize="19sp"/>
+                            android:textSize="16sp"
+                            android:paddingBottom="2dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="월"
                             android:textColor="#000000"
-                            android:textSize="19sp"/>
+                            android:textSize="14sp"/>
                         <EditText
                             android:id="@+id/day1"
-                            android:layout_width="35dp"
+                            android:layout_width="32dp"
                             android:layout_height="wrap_content"
                             android:textColor="#000000"
-                            android:textSize="19sp"/>
+                            android:textSize="16sp"
+                            android:paddingBottom="2dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="일 ~"
+                            android:text="일 ~ "
                             android:textColor="#000000"
-                            android:textSize="19sp"/>
+                            android:textSize="14sp"/>
 
                         <EditText
                             android:id="@+id/year2"
-                            android:layout_width="55dp"
+                            android:layout_width="48dp"
                             android:layout_height="wrap_content"
                             android:textColor="#000000"
-                            android:textSize="19sp"/>
+                            android:textSize="16sp"
+                            android:paddingBottom="2dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="년"
                             android:textColor="#000000"
-                            android:textSize="19sp"/>
+                            android:textSize="14sp"/>
 
                         <EditText
                             android:id="@+id/month2"
-                            android:layout_width="35dp"
+                            android:layout_width="32dp"
                             android:layout_height="wrap_content"
                             android:textColor="#000000"
-                            android:textSize="19sp"/>
+                            android:textSize="16sp"
+                            android:paddingBottom="2dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="월"
                             android:textColor="#000000"
-                            android:textSize="19sp"/>
+                            android:textSize="14sp"/>
                         <EditText
                             android:id="@+id/day2"
-                            android:layout_width="35dp"
+                            android:layout_width="32dp"
                             android:layout_height="wrap_content"
                             android:textColor="#000000"
-                            android:textSize="19sp"/>
+                            android:textSize="16sp"
+                            android:paddingBottom="2dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="일"
                             android:textColor="#000000"
-                            android:textSize="19sp"/>
+                            android:textSize="14sp"/>
 
                     </LinearLayout>
 

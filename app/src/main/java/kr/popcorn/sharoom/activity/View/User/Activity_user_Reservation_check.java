@@ -28,7 +28,7 @@ import kr.popcorn.sharoom.activity.Activity_profileView;
 /**
  * Created by parknature on 16. 5. 6..
  */
-public class Activity_user_Reservation_check extends Activity {
+public class Activity_user_reservation_check extends Activity {
 
     private ViewPager viewPager;
     private ViewGroup requestBtn;
@@ -117,7 +117,7 @@ public class Activity_user_Reservation_check extends Activity {
             public void onClick(View v) {
                 switch(v.getId()){
                     case R.id.startDate:
-                        new DatePickerDialog(Activity_user_Reservation_check.this, mDateSetListener1, mYear, mMonth, mDay).show();
+                        new DatePickerDialog(Activity_user_reservation_check.this, mDateSetListener1, mYear, mMonth, mDay).show();
                         break;
 
                 }
@@ -129,7 +129,7 @@ public class Activity_user_Reservation_check extends Activity {
             public void onClick(View v) {
                 switch(v.getId()){
                     case R.id.endDate:
-                        new DatePickerDialog(Activity_user_Reservation_check.this, mDateSetListener2, mYear, mMonth, mDay).show();
+                        new DatePickerDialog(Activity_user_reservation_check.this, mDateSetListener2, mYear, mMonth, mDay).show();
                         break;
 
                 }
@@ -173,7 +173,7 @@ public class Activity_user_Reservation_check extends Activity {
                 {
                     case R.id.requestInfo:
                         //Toast.makeText(Activity_Reservation.this, "문의요청버튼 누름.", Toast.LENGTH_LONG).show();
-                        customDialog = new Activity_profileView(Activity_user_Reservation_check.this);
+                        customDialog = new Activity_profileView(Activity_user_reservation_check.this);
                         customDialog.setCanceledOnTouchOutside(true);
                         customDialog.show();
 

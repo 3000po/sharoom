@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,11 +18,9 @@ import java.util.ArrayList;
 
 import kr.popcorn.sharoom.R;
 
-import kr.popcorn.sharoom.activity.Activity_editRoom;
-import kr.popcorn.sharoom.activity.Fragment.User.Activity_user_view;
+import kr.popcorn.sharoom.activity.View.Host.Activity_host_registerRoom;
 import kr.popcorn.sharoom.activity.TabView.TabView_myself;
 import kr.popcorn.sharoom.activity.TabView.TabView_registerAdapter;
-import kr.popcorn.sharoom.activity.TabView.TabView_rentListAdapter;
 import kr.popcorn.sharoom.activity.TabView.TabView_reservationAdapter;
 import kr.popcorn.sharoom.floatingactionbutton.FloatingActionButton;
 import kr.popcorn.sharoom.helper.Helper_roomData;
@@ -73,7 +70,7 @@ public final class H_TestFragment extends Fragment {
 
         floatActBtn.setOnClickListener(new FloatingActionButton.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(getContext(), Activity_editRoom.class)); // 로딩이 끝난후 이동할 Activity
+                startActivity(new Intent(getContext(), Activity_host_registerRoom.class)); // 로딩이 끝난후 이동할 Activity
 
 
             }

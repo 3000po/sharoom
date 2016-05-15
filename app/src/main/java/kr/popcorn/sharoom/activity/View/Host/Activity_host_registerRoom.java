@@ -1,4 +1,4 @@
-package kr.popcorn.sharoom.activity;
+package kr.popcorn.sharoom.activity.View.Host;
 
 
 import android.app.Activity;
@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -15,13 +14,11 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +35,7 @@ import me.yokeyword.imagepicker.callback.CallbackForImagePicker;
 
 
 //방을 등록하기 위한 액티비티
-public class Activity_editRoom extends Activity  implements View.OnClickListener{
+public class Activity_host_registerRoom extends Activity  implements View.OnClickListener{
     public final int MAX_SIZE=7;
     public final int PICK_THE_ALBUM=1;
 
@@ -145,7 +142,7 @@ public class Activity_editRoom extends Activity  implements View.OnClickListener
         }
     }
     public void openActivity(){
-        Intent it = new Intent(this, Activity_editRoom_roomPic.class);
+        Intent it = new Intent(this, Activity_host_registerRoom_roomPic.class);
         it.putExtra("list", list);
         startActivityForResult(it, PICK_THE_ALBUM);
     }

@@ -34,7 +34,7 @@ import me.yokeyword.imagepicker.adapter.GlideFragmentAdapter;
 /**
  * Created by parknature on 16. 5. 6..
  */
-public class Activity_user_Reservation extends Activity {
+public class Activity_user_reservation extends Activity {
     private ViewPager viewPager;
     private ViewGroup requestBtn;
     private RelativeLayout reservationBtn;
@@ -49,7 +49,7 @@ public class Activity_user_Reservation extends Activity {
     private Paint p;
     private Spinner peopleNum;
     private Activity_profileView customDialog;
-    public static Activity_user_Reservation rActivity;
+    public static Activity_user_reservation rActivity;
 
     private Button callbutton;
     private Button smsbutton;
@@ -65,7 +65,7 @@ public class Activity_user_Reservation extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservation);
 
-        rActivity = Activity_user_Reservation.this;
+        rActivity = Activity_user_reservation.this;
 
         //imageview(view pager)
         viewPager = (ViewPager)findViewById(R.id.pager);
@@ -132,7 +132,7 @@ public class Activity_user_Reservation extends Activity {
             public void onClick(View v) {
                 switch(v.getId()){
                     case R.id.startDate:
-                        new DatePickerDialog(Activity_user_Reservation.this, mDateSetListener1, mYear, mMonth, mDay).show();
+                        new DatePickerDialog(Activity_user_reservation.this, mDateSetListener1, mYear, mMonth, mDay).show();
                         break;
 
                 }
@@ -144,7 +144,7 @@ public class Activity_user_Reservation extends Activity {
             public void onClick(View v) {
                 switch(v.getId()){
                     case R.id.endDate:
-                        new DatePickerDialog(Activity_user_Reservation.this, mDateSetListener2, mYear, mMonth, mDay).show();
+                        new DatePickerDialog(Activity_user_reservation.this, mDateSetListener2, mYear, mMonth, mDay).show();
                         break;
 
                 }
@@ -198,7 +198,7 @@ public class Activity_user_Reservation extends Activity {
                 switch (arg0.getId()) {
                     case R.id.reservationBtn:
 
-                        AlertDialog.Builder aDialog = new AlertDialog.Builder(Activity_user_Reservation.this);
+                        AlertDialog.Builder aDialog = new AlertDialog.Builder(Activity_user_reservation.this);
                         aDialog.setTitle("예약 체크 하기"); //타이틀바 제목
                         aDialog.setMessage("서로 연락이 닿았고 예약 하기로 하셨습니까?");
 
@@ -206,7 +206,7 @@ public class Activity_user_Reservation extends Activity {
                                 new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent finishReservIntent = new Intent(Activity_user_Reservation.this, Activity_FinishReserv.class);
+                                        Intent finishReservIntent = new Intent(Activity_user_reservation.this, Activity_FinishReserv.class);
                                         startActivity(finishReservIntent);
                                     }
                                 }).setNegativeButton("취소",
@@ -235,7 +235,7 @@ public class Activity_user_Reservation extends Activity {
                 {
                     case R.id.requestInfo:
                         //Toast.makeText(Activity_Reservation.this, "문의요청버튼 누름.", Toast.LENGTH_LONG).show();
-                        customDialog = new Activity_profileView(Activity_user_Reservation.this);
+                        customDialog = new Activity_profileView(Activity_user_reservation.this);
                         customDialog.setCanceledOnTouchOutside(true);
                         customDialog.show();
 

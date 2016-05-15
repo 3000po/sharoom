@@ -1,28 +1,18 @@
-package kr.popcorn.sharoom.activity;
+package kr.popcorn.sharoom.activity.View.Host;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
-import com.squareup.picasso.Picasso;
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
 import java.io.File;
@@ -43,7 +33,7 @@ import me.yokeyword.imagepicker.callback.CallbackForImagePicker;
 
 
 //Acitivity_editRoom에서 방사진목록을 따로 편집하기위한 액티비티
-public class Activity_editRoom_roomPic extends Activity {
+public class Activity_host_registerRoom_roomPic extends Activity {
 
         public final int MAX_SIZE=7;
 
@@ -146,7 +136,7 @@ public class Activity_editRoom_roomPic extends Activity {
             case R.id.camera:
                 // camera 이 눌렸을 경우 이벤트 발생
                 if( list.size() > MAX_SIZE ){
-                    Toast.makeText(Activity_editRoom_roomPic.this, "사진을 8개이상 등록 할 수 없습니다.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Activity_host_registerRoom_roomPic.this, "사진을 8개이상 등록 할 수 없습니다.", Toast.LENGTH_SHORT).show();
                 }else {
                     mImagePicker.openCamera(new CallbackForCam());
                 }
@@ -156,7 +146,7 @@ public class Activity_editRoom_roomPic extends Activity {
             case R.id.gallery:
                 // gallery 이 눌렸을 경우 이벤트 발생
                 if( list.size() > MAX_SIZE ){
-                    Toast.makeText(Activity_editRoom_roomPic.this, "사진을 8개이상 등록 할 수 없습니다.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Activity_host_registerRoom_roomPic.this, "사진을 8개이상 등록 할 수 없습니다.", Toast.LENGTH_SHORT).show();
                 }else {
                     mImagePicker.openImagePiker(true, new CallbackForGal());
                 }

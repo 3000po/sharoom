@@ -14,7 +14,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import kr.popcorn.sharoom.R;
-import kr.popcorn.sharoom.activity.View.User.Activity_user_roomInfo;
+import kr.popcorn.sharoom.activity.View.User.Activity_user_infoRoom;
 import kr.popcorn.sharoom.helper.Helper_roomData;
 
 /**
@@ -101,7 +101,7 @@ public class TabView_rentListAdapter extends RecyclerView.Adapter<TabView_rentLi
         @Override
         public void onClick(View v) {
             //when user click the roomlist, it show the room information about index!!!
-            Intent intent = new Intent(mContext, Activity_user_roomInfo.class);
+            Intent intent = new Intent(mContext, Activity_user_infoRoom.class);
             mContext.startActivity(intent);
 
 

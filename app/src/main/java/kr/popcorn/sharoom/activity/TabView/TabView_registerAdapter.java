@@ -14,7 +14,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import kr.popcorn.sharoom.R;
-import kr.popcorn.sharoom.activity.View.Host.Activity_host_roomInfo;
+import kr.popcorn.sharoom.activity.View.Host.Activity_host_infoRoom;
 import kr.popcorn.sharoom.helper.Helper_roomData;
 
 /**
@@ -96,7 +96,7 @@ public class TabView_registerAdapter extends RecyclerView.Adapter<TabView_regist
 
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(mContext, Activity_host_roomInfo.class);
+            Intent intent = new Intent(mContext, Activity_host_infoRoom.class);
             mContext.startActivity(intent);
 
             Log.e("number", "index : " + list.get(0).roomname);

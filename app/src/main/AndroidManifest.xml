@@ -88,11 +88,8 @@
         <activity
             android:name=".activity.Activity_emailCertification"
             android:theme="@android:style/Theme.Holo.NoActionBar" />
-        <activity android:name=".activity.Activity_editRoom">
-        </activity>
-        <activity
-            android:name=".activity.Activity_editRoom_roomPic"
-            android:theme="@style/EditRoomPicTheme" />
+
+
         <activity
             android:name=".helper.Helper_roomPicPreview"
             android:theme="@style/EditRoomPicTheme" />
@@ -111,11 +108,18 @@
             android:name=".activity.Activity_join"
             android:theme="@android:style/Theme.Holo.NoActionBar">
         </activity>
-        <activity android:name=".activity.View.User.Activity_user_Reservation" />
-        <activity android:name=".activity.View.User.Activity_user_Reservation_check"/>
-        <activity android:name=".activity.View.Host.Activity_host_Reservation_check"/>
-        <activity android:name=".activity.View.Host.Activity_host_roomInfo"/>
-        <activity android:name=".activity.View.User.Activity_user_roomInfo" />
+        <activity android:name=".activity.View.User.Activity_user_reservation" />
+        <activity android:name=".activity.View.User.Activity_user_reservation_check"/>
+        <activity android:name=".activity.View.User.Activity_user_infoRoom" />
+
+        <activity android:name=".activity.View.Host.Activity_host_reservation_check"/>
+        <activity android:name=".activity.View.Host.Activity_host_infoRoom"/>
+        <activity android:name=".activity.View.Host.Activity_host_editRoom"/>
+        <activity android:name=".activity.View.Host.Activity_host_registerRoom_roomPic"
+            android:theme="@style/EditRoomPicTheme" />
+        <activity android:name=".activity.View.Host.Activity_host_registerRoom">
+        </activity>
+
         <activity android:name=".activity.Activity_FinishReserv" />
         <activity
             android:name=".activity.Acitivity_test"

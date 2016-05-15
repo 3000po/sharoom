@@ -1,4 +1,4 @@
-package kr.popcorn.sharoom.activity;
+package kr.popcorn.sharoom.activity.View;
 
 import android.content.Context;
 import android.content.Intent;
@@ -40,6 +40,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.popcorn.sharoom.R;
+import kr.popcorn.sharoom.activity.Activity_FacillitiesInfo;
+import kr.popcorn.sharoom.activity.Activity_largeMap;
 import kr.popcorn.sharoom.helper.GlobalApplication;
 import me.yokeyword.imagepicker.adapter.GlideFragmentAdapter;
 

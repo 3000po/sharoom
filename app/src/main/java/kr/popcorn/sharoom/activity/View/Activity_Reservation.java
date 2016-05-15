@@ -1,4 +1,4 @@
-package kr.popcorn.sharoom.activity;
+package kr.popcorn.sharoom.activity.View;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -27,6 +27,8 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import kr.popcorn.sharoom.R;
+import kr.popcorn.sharoom.activity.Activity_FinishReserv;
+import kr.popcorn.sharoom.activity.Activity_profileView;
 import me.yokeyword.imagepicker.adapter.GlideFragmentAdapter;
 
 /**

@@ -7,13 +7,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import kr.popcorn.sharoom.R;
+import kr.popcorn.sharoom.activity.View.Activity_Reservation;
+import kr.popcorn.sharoom.activity.View.Activity_roomInfo;
 
 public class Activity_FinishReserv extends Activity {
     private TextView checkReserv;
 
 
-    Activity_Reservation activity = (kr.popcorn.sharoom.activity.Activity_Reservation) Activity_Reservation.rActivity;
-    Activity_roomInfo rActivity = (kr.popcorn.sharoom.activity.Activity_roomInfo) Activity_roomInfo.rActivity;
+    Activity_Reservation activity = (Activity_Reservation) Activity_Reservation.rActivity;
+    Activity_roomInfo rActivity = (Activity_roomInfo) Activity_roomInfo.rActivity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

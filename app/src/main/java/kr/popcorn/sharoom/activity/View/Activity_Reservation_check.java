@@ -1,4 +1,4 @@
-package kr.popcorn.sharoom.activity;
+package kr.popcorn.sharoom.activity.View;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -23,7 +23,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import kr.popcorn.sharoom.R;
-import me.yokeyword.imagepicker.adapter.GlideFragmentAdapter;
+import kr.popcorn.sharoom.activity.Activity_profileView;
 
 /**
  * Created by parknature on 16. 5. 6..

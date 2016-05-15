@@ -14,7 +14,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import kr.popcorn.sharoom.R;
-import kr.popcorn.sharoom.activity.Activity_roomInfo;
+import kr.popcorn.sharoom.activity.View.Activity_roomInfo;
 import kr.popcorn.sharoom.helper.Helper_roomData;
 
 /**

@@ -4,11 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -21,8 +16,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import kr.popcorn.sharoom.R;
-import kr.popcorn.sharoom.activity.Activity_Reservation_check;
-import kr.popcorn.sharoom.activity.Activity_roomInfo;
+import kr.popcorn.sharoom.activity.View.Activity_Reservation_check;
 import kr.popcorn.sharoom.helper.Helper_roomData;
 
 

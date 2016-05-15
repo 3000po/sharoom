@@ -97,7 +97,7 @@
             android:name=".helper.Helper_roomPicPreview"
             android:theme="@style/EditRoomPicTheme" />
         <activity android:name=".activity.Activity_largeMap" />
-        <activity android:name=".activity.Activity_roomInfo" />
+        <activity android:name=".activity.View.Activity_roomInfo" />
         <activity android:name=".activity.Activity_roomList" />
         <activity
             android:name=".activity.Activity_login"
@@ -108,8 +108,8 @@
             android:name=".activity.Activity_join"
             android:theme="@android:style/Theme.Holo.NoActionBar">
         </activity>
-        <activity android:name=".activity.Activity_Reservation" />
-        <activity android:name=".activity.Activity_Reservation_check"/>
+        <activity android:name=".activity.View.Activity_Reservation" />
+        <activity android:name=".activity.View.Activity_Reservation_check"/>
         <activity android:name=".activity.Activity_FinishReserv" />
         <activity
             android:name=".activity.Acitivity_test"

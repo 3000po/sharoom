@@ -166,6 +166,8 @@ public class Helper_userData {
         }
     }
 
+    public static Helper_userData getInstance(){return user;}
+
    public static Helper_userData getInstance(String id, Context applicationContext){
        return user;
    }

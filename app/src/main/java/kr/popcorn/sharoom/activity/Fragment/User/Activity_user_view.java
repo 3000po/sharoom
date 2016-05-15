@@ -37,10 +37,10 @@ public class Activity_user_view extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_user_view);
 
-       // Helper_userData data = Helper_userData.getInstance(getApplicationContext());
-
-        //Activity_login login = (Activity_login) Activity_login.login_Activity; //login_Activity_finish
-        //login.finish();
+        Helper_userData data = Helper_userData.getInstance();
+        System.out.println("aaaaa"+data.getId());
+        Activity_login login = (Activity_login) Activity_login.login_Activity; //login_Activity_finish
+        login.finish();
 
         AsyncHttpClient client = Helper_server.getInstance();
 

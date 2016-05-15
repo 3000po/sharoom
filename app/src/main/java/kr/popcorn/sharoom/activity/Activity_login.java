@@ -60,6 +60,8 @@ import kr.popcorn.sharoom.helper.Helper_userData;
 
 public class Activity_login extends Activity {
     private String login_id = "";
+    public static Activity login_Activity; //Aacitivity_login class선언.
+
 
     EditText et_id;
     EditText et_password;
@@ -87,6 +89,13 @@ public class Activity_login extends Activity {
         finish();
         //activity.finish();
     }
+    public void open_UserView_Activity(String id, Context mContext){
+        Helper_userData.login_GetData(id, mContext);
+    }
+
+
+
+
 
     public void getPermission(){
         ted = new TedPermission(getApplication());
@@ -142,6 +151,7 @@ public class Activity_login extends Activity {
 
                 final RequestParams idParams = new RequestParams("ktid", userId);
                 idParams.put("name", userName);
+                System.out.println("kkkkk" + userName);
                 Helper_server.post("ktCheck.php", idParams, new JsonHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -153,7 +163,7 @@ public class Activity_login extends Activity {
                             e.printStackTrace();
                         }
                         if (data.equals("true")) {  //카카오톡 가입이 안되있을경우
-
+                            System.out.println("kkkkk" + "no katalk");
                             if( phoneNum == null ) return ;
                             idParams.put("phone", phoneNum);
 
@@ -161,6 +171,7 @@ public class Activity_login extends Activity {
                                 @Override
 
                                 public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                                    System.out.println("kkkkk" + "okSuccess");
                                     openActivity();
                                 }
 
@@ -210,6 +221,9 @@ public class Activity_login extends Activity {
         //더불어 콜백 매니저도 생성한다.
         FacebookSdk.sdkInitialize(getApplicationContext());
         callbackManager = CallbackManager.Factory.create();
+
+        //액티비티 저장
+        login_Activity = Activity_login.this;
 
         setContentView(R.layout.activity_login); // 항상 제공되는
         // activity_layout.xml을
@@ -283,7 +297,7 @@ public class Activity_login extends Activity {
                                                 String email = data.getString("email");
                                                 String gender = data.getString("gender");
                                                 String phone = phoneNum;
-
+                                                System.out.println("ffffff" + id + name);
                                                 RequestParams params = new RequestParams();
                                                 params.put("id", id);
                                                 params.put("name", name);
@@ -300,6 +314,7 @@ public class Activity_login extends Activity {
 
                                                     public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                                                         openActivity();
+                                                        System.out.println("ffffff" + "in the success");
                                                     }
 
                                                     @Override
@@ -317,6 +332,7 @@ public class Activity_login extends Activity {
 
                             return;
                         } else {
+                            System.out.println("fffffff openAcitivity");
                             openActivity();
                             return;
                         }
@@ -353,9 +369,11 @@ public class Activity_login extends Activity {
         client.setCookieStore(myCookieStore);
 
         //자동 로그인 파트.
+        //배치 변경 필요.
         if (Helper_server.login(myCookieStore)) {
             Log.i("abde", "what the!! ");
-            openActivity();
+            String id = Helper_server.getCookieValue(myCookieStore,"id");
+            open_UserView_Activity(id, getApplicationContext());
         }else if( Session.getCurrentSession().isOpened() ) {
             openActivity();
         }else
@@ -476,13 +494,15 @@ public class Activity_login extends Activity {
                                                              newCookie.setDomain("14.63.227.200");
                                                              newCookie.setPath("/");
                                                              myCookieStore.addCookie(newCookie);
+                                                             newCookie = new BasicClientCookie("id", id);
+                                                             newCookie.setVersion(1);
+                                                             newCookie.setDomain("14.63.227.200");
+                                                             newCookie.setPath("/");
+                                                             myCookieStore.addCookie(newCookie);
                                                          }
 
                                                          Activity_mainIntro activity = (Activity_mainIntro) Activity_mainIntro.mActivity;
-                                                         Intent intent = new Intent(Activity_login.this, Activity_user_view.class);
-                                                         Helper_userData user = new Helper_userData();
-                                                         user.getInstance(id, getApplicationContext());
-
+                                                         Helper_userData.login_GetData(id, getApplicationContext());
                                                      }
                                                      else{
                                                          loginAlert();

@@ -188,8 +188,8 @@ public class TabView_myself extends LinearLayout {
                                 }
                             });
                     AlertDialog ad = aDialog.create();
-                    ad.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-                    ad.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                    //ad.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+                    //ad.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
                     ad.show();//보여줌!
 
 

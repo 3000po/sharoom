@@ -79,12 +79,13 @@
         <activity
             android:name=".activity.Fragment.User.Activity_user_view">
         </activity>
+        <activity
+            android:name=".activity.Fragment.Host.Activity_host_view">
+        </activity>
+
         <activity android:name=".activity.TabView.Activity_Host_to_User_animation"/>
         <activity android:name=".activity.TabView.Activity_User_to_Host_animation"/>
-        <activity
-            android:name=".activity.Fragment.Host.Activity_host_view"
-            android:theme="@android:style/Theme.Holo.NoActionBar" >
-        </activity>
+
         <activity
             android:name=".activity.Activity_emailCertification"
             android:theme="@android:style/Theme.Holo.NoActionBar" />

@@ -25,8 +25,8 @@ import java.util.GregorianCalendar;
 import kr.popcorn.sharoom.R;
 import kr.popcorn.sharoom.activity.Activity_profileView;
 
-/**
- * Created by parknature on 16. 5. 6..
+/*
+수정짜응><
  */
 public class Activity_user_reservation_check extends Activity {
 

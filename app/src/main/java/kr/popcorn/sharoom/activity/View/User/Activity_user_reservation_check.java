@@ -38,7 +38,6 @@ public class Activity_user_reservation_check extends Activity {
     private int mYear, mMonth, mDay;
 
     private String url = "http://i.imgur.com/DvpvklR.png";
-
     private int position;
     private Paint p;
     private Spinner peopleNum;
@@ -172,7 +171,7 @@ public class Activity_user_reservation_check extends Activity {
                 switch (v.getId())
                 {
                     case R.id.requestInfo:
-                        //Toast.makeText(Activity_Reservation.this, "문의요청버튼 누름.", Toast.LENGTH_LONG).show();
+                        //Toast.makeText(Activity_reservation.this, "문의요청버튼 누름.", Toast.LENGTH_LONG).show();
                         customDialog = new Activity_profileView(Activity_user_reservation_check.this);
                         customDialog.setCanceledOnTouchOutside(true);
                         customDialog.show();

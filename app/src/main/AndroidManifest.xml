@@ -65,10 +65,6 @@
         <activity
             android:name=".activity.Activity_intro"
             android:label="@string/app_name">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".activity.Activity_mainIntro">
 
@@ -115,7 +111,12 @@
 
         <activity android:name=".activity.View.Host.Activity_host_reservation_check"/>
         <activity android:name=".activity.View.Host.Activity_host_infoRoom"/>
-        <activity android:name=".activity.View.Host.Activity_host_editRoom"/>
+        <activity android:name=".activity.View.Host.Activity_host_editRoom">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".activity.View.Host.Activity_host_registerRoom_roomPic"
             android:theme="@style/EditRoomPicTheme" />
         <activity android:name=".activity.View.Host.Activity_host_registerRoom">
